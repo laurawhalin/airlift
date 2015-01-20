@@ -43,4 +43,10 @@ RSpec.describe Item, :type => :model do
   xit 'responds to orders' do
     expect(item).to respond_to(:orders)
   end
+
+  it 'must have a unique title' do
+    item
+    item2 = Item.new(title: "Green Chili Burrito", description:"Amazingly spicey burrito", price:655, image: "image/path")
+    expect(user2).to_not be_valid?
+  end
 end
