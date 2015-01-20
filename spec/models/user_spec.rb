@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
   let(:user) {
-              User.create(fullname: "Daisy",
-              display_name: "lildaisy",
-              email: "daisy@example.com",
-              password: "password",
-              role: "default")
-             }
+              User.create(
+                          fullname: "Daisy",
+                          display_name: "lildaisy",
+                          email: "daisy@example.com",
+                          password: "password",
+                          role: "default"
+                          )
+              }
 
   it 'is valid' do
     expect(user).to be_valid
@@ -25,11 +27,13 @@ RSpec.describe User, :type => :model do
 
   it 'is not valid without a unique email' do
     user
-    user_2 = User.new(fullname: "Daisy",
-    display_name: "lildaisy",
-    email: "daisy@example.com",
-    password: "password",
-    role: "default")
+    user_2 = User.new(
+                      fullname: "Daisy",
+                      display_name: "lildaisy",
+                      email: "daisy@example.com",
+                      password: "password",
+                      role: "default"
+                      )
     expect(user_2).to_not be_valid
   end
 
@@ -44,20 +48,24 @@ RSpec.describe User, :type => :model do
   end
 
   it 'is not valid with a display name under 2 characters' do
-    user_2 = User.new(fullname: "Daisy",
-    display_name: "l",
-    email: "daisy@example.com",
-    password: "password",
-    role: "default")
+    user_2 = User.new(
+                      fullname: "Daisy",
+                      display_name: "l",
+                      email: "daisy@example.com",
+                      password: "password",
+                      role: "default"
+                      )
     expect(user_2).to_not be_valid
   end
 
   it 'is not valid with a display name over 32 characters' do
-    user_2 = User.new(fullname: "Daisy",
-    display_name: "llskdjflawierlansvllaiwjekajdsfljkwelkjlakjlkasdlfkj",
-    email: "daisy@example.com",
-    password: "password",
-    role: "default")
+    user_2 = User.new(
+                      fullname: "Daisy",
+                      display_name: "llskdjflawierlansvllaiwjekajdsfljkwelkjlakjlkasdlfkj",
+                      email: "daisy@example.com",
+                      password: "password",
+                      role: "default"
+                      )
     expect(user_2).to_not be_valid
   end
 
