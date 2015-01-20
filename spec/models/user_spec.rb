@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
                           password: "password",
                           role: "default"
                           )
-              }
+  }
 
   it 'is valid' do
     expect(user).to be_valid
@@ -61,7 +61,7 @@ RSpec.describe User, type: :model do
   it 'is not valid with a display name over 32 characters' do
     user_2 = User.new(
                       fullname: "Daisy",
-                      display_name: "llskdjflawierlansvllaiwjekajdsfljkwelkjlakjlkasdlfkj",
+                      display_name: "llskdjflawierlansvllaiwjekajdsfljkwelkjla",
                       email: "daisy@example.com",
                       password: "password",
                       role: "default"
