@@ -23,12 +23,8 @@ RSpec.describe Item, :type => :model do
     expect(item).to be_invalid
   end
 
-  it 'is invalid without an image' do
-    item.image = nil
-    expect(item).to be_invalid
-  end
 
-  it 'returns an empty item array' do
+  xit 'returns an empty item array' do
     expect(item.categories).to eq([])
   end
 
@@ -47,6 +43,23 @@ RSpec.describe Item, :type => :model do
   it 'must have a unique title' do
     item
     item2 = Item.new(title: "Green Chili Burrito", description:"Amazingly spicey burrito", price:655, image: "image/path")
-    expect(user2).to_not be_valid?
+    expect(item2).to_not be_valid
+  end
+
+  xit 'must belong to at least one category' do
+    item
+    category = Category.create(name: "spicy")
+    item.categories << category
+
+    expect(item.count).to eq(1)
+  end
+
+  it 'should have a valid numeric decimal value greater than zero' do
+    item.price = -3
+    expect(item).to_not be_valid
+  end
+
+  xit 'should have a stock photo if no photo is added' do
+
   end
 end
