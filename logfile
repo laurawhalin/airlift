@@ -1,0 +1,13 @@
+LOG:  database system was shut down at 2015-01-19 09:57:52 MST
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+FATAL:  database "db/test.postgresql" does not exist
+FATAL:  database "db/development.postgresql" does not exist
+FATAL:  database "dinner_dash_test" does not exist
+FATAL:  database "dinner_dash_test" does not exist
+ERROR:  column orders_items.item_id does not exist at character 75
+STATEMENT:  SELECT "items".* FROM "items" INNER JOIN "orders_items" ON "items"."id" = "orders_items"."item_id" WHERE "orders_items"."order_id" = $1
+ERROR:  column orders_items.item_id does not exist at character 75
+STATEMENT:  SELECT "items".* FROM "items" INNER JOIN "orders_items" ON "items"."id" = "orders_items"."item_id" WHERE "orders_items"."order_id" = $1
+ERROR:  column orders_items.item_id does not exist at character 75
+STATEMENT:  SELECT "items".* FROM "items" INNER JOIN "orders_items" ON "items"."id" = "orders_items"."item_id" WHERE "orders_items"."order_id" = $1
