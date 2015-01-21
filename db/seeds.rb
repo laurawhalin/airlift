@@ -2,6 +2,7 @@ class Seed
   def initialize
     build_items
     build_category
+    build_orders
     build_users
   end
 
@@ -34,6 +35,19 @@ class Seed
     category3 = Category.create(name: "Specialty", description: "Chef's favorites.")
     category4 = Category.create(name: "Breakfast", description: "Start your day off right.")
     category5 = Category.create(name: "Sides", description: "&#192; la carte options.")
+  end
+
+  def orders
+    order1 = Order.create(user_id: 1, status: "Ordered", total: "1500")
+    order2 = Order.create(user_id: 2, status: "Ordered", total: "600")
+    order3 = Order.create(user_id: 3, status: "Completed", total: "700")
+    order4 = Order.create(user_id: 4, status: "Completed", total: "1100")
+    order5 = Order.create(user_id: 6, status: "Paid", total: "2400")
+    order6 = Order.create(user_id: 7, status: "Paid", total: "400")
+    order7 = Order.create(user_id: 8, status: "Canceled", total: "1200")
+    order8 = Order.create(user_id: 9, status: "Canceled", total: "2000")
+    order9 = Order.create(user_id: 1, status: "Completed", total: "3200")
+    order10 = Order.create(user_id: 2, status: "Completed", total: "1600")
   end
 
   def build_users
