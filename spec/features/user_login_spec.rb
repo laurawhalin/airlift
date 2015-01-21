@@ -23,7 +23,6 @@ feature "User login" do
     within("#session") do
       fill_in "session[email]", with: "jimbobfrank@aol.com"
       fill_in "session[password]", with: "foobar1234"
-      fill_in "session[password_confirmation]", with: "foobar1234"
     end
     click_link_or_button "Login"
     # save_and_open_page
@@ -37,7 +36,6 @@ feature "User login" do
     within("#session") do
       fill_in "session[email]", with: "XXjimbobfrank@aol.com"
       fill_in "session[password]", with: "XXfoobar1234"
-      fill_in "session[password_confirmation]", with: "XXfoobar1234"
     end
     click_link_or_button "Login"
     # save_and_open_page
