@@ -1,9 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ItemsCategory, type: :model do
-  let(:items_category) {
-                        ItemsCategory.new(item_id: 1, category_id: 1)
-  }
+  let(:items_category) { ItemsCategory.new(item_id: 1, category_id: 1) }
 
   it "is valid" do
     expect(items_category).to be_valid
