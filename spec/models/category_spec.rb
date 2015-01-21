@@ -1,11 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Category, type: :model do
-  let(:category) {
-                  Category.new(
-                               name: "burritos",
-                               description: "all the burritos"
-                               )
+  let(:category) { Category.new(
+                                name: "burritos",
+                                description: "all the burritos"
+                                )
   }
 
   it "is valid" do
