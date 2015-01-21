@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <div id="user_nav">
+    <% if current_user %>
+    Logged in as <%= current_user.email %>.
+    <%= link_to('Logout', logout_path, :method => :delete) %>
+    <% end %>
+  </div>
+
   <div id="session">
 
     <%= form_for(:session, url: login_path) do |f| %>
