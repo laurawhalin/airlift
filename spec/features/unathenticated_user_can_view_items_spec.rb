@@ -2,12 +2,12 @@ require "rails_helper"
 
 feature "unathenticated Users can see a list of items" do
   background do
-  @item = Item.create(
-  title: "Green Burrito",
-  description: "Spicy and Lovely",
-  price: 2000,
-  image: nil,
-  )
+    @item = Item.create(
+    title: "Green Burrito",
+    description: "Spicy and Lovely",
+    price: 2000,
+    image: nil,
+    )
   end
 
   scenario "User can see a list of all items" do
