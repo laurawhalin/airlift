@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  validates :users_id, presence: true
+  validates :user_id, presence: true
   validates :status, presence: true
   validates :total, presence: true
   has_many :orders_items

@@ -37,7 +37,7 @@ class Seed
     category5 = Category.create(name: "Sides", description: "&#192; la carte options.")
   end
 
-  def orders
+  def build_orders
     order1 = Order.create(user_id: 1, status: "Ordered", total: 1500)
     order2 = Order.create(user_id: 2, status: "Ordered", total: 600)
     order3 = Order.create(user_id: 3, status: "Completed", total: 700)
