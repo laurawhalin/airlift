@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20150121040625) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "items_categories", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "category_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
