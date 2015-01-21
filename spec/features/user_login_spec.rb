@@ -14,7 +14,7 @@ feature "User login" do
 
   scenario "User can Welcome Page" do
     visit "/"
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content("Hello")
   end
 
@@ -42,6 +42,6 @@ feature "User login" do
     click_link_or_button "Login"
     # save_and_open_page
     # within("#errors") do
-      expect(page).to have_content("Invalid login")
+    expect(page).to have_content("Invalid login")
   end
 end
