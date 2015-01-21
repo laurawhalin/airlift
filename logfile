@@ -11,3 +11,6 @@ ERROR:  column orders_items.item_id does not exist at character 75
 STATEMENT:  SELECT "items".* FROM "items" INNER JOIN "orders_items" ON "items"."id" = "orders_items"."item_id" WHERE "orders_items"."order_id" = $1
 ERROR:  column orders_items.item_id does not exist at character 75
 STATEMENT:  SELECT "items".* FROM "items" INNER JOIN "orders_items" ON "items"."id" = "orders_items"."item_id" WHERE "orders_items"."order_id" = $1
+LOG:  database system was shut down at 2015-01-20 21:52:58 MST
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
