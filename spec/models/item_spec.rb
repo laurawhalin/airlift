@@ -1,8 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Item, :type => :model do
-  let (:order) { Order.create(users_id: 1, status:"ordered", total: 1700)}
-  let (:item) { Item.create(title: "Green Chili Burrito", description:"Amazingly spicey burrito", price:655, image: "image/path")}
+RSpec.describe Item, type: :model do
+  let (:order) {
+    Order.create(
+                 users_id: 1,
+                 status: "ordered",
+                 total: 1700
+                 )
+  }
+
+  let (:item) {
+    Item.create(
+                title: "Green Chili Burrito",
+                description: "Amazingly spicey burrito",
+                price: 655,
+                image: "image/path"
+                )
+  }
 
   it 'is valid' do
     expect(item).to be_valid
@@ -41,7 +55,12 @@ RSpec.describe Item, :type => :model do
 
   it 'must have a unique title' do
     item
-    item2 = Item.new(title: "Green Chili Burrito", description:"Amazingly spicey burrito", price:655, image: "image/path")
+    item2 = Item.new(
+                     title: "Green Chili Burrito",
+                     description: "Amazingly spicey burrito",
+                     price: 655,
+                     image: "image/path"
+                     )
     expect(item2).to_not be_valid
   end
 
