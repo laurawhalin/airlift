@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Order, :type => :model do
-  let (:order) { Order.create(users_id: 1, status:"ordered", total: 1700)}
+  let (:order) { Order.create(user_id: 1, status:"ordered", total: 1700)}
   let (:item) { Item.create(title: "Green Chili Burrito", description:"Amazingly spicey burrito", price:655, image: "image/path")}
 
   it 'is valid' do
     expect(order).to be_valid
   end
 
-  it 'is invalid without a users_id' do
-    order.users_id = nil
+  it 'is invalid without a user_id' do
+    order.user_id = nil
     expect(order).to be_invalid
   end
 

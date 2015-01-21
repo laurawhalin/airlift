@@ -11,10 +11,7 @@ feature "unathenticated Users can see a list of items" do
   end
 
   scenario "User can see a list of all items" do
-    visit "/items"
-    # save_and_open_page
-    within("table") do
-      expect(page).to have_content("Green Burrito")
-    end
+    visit items_path
+    expect(page).to have_content("Green Burrito")
   end
 end
