@@ -23,7 +23,6 @@ RSpec.describe Item, :type => :model do
     expect(item).to be_invalid
   end
 
-
   xit 'returns an empty item array' do
     expect(item.categories).to eq([])
   end
