@@ -20,8 +20,7 @@ feature "User login" do
         fill_in "session[password_confirmation]", :with => "foobar1234"
     end
     click_link_or_button "Login"
-    save_and_open_page
-    within("#flash_success") do
+    within("#success") do
       expect(page).to have_content("You have successfully logged in")
     end
   end
