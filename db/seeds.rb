@@ -6,7 +6,7 @@ class Seed
 
   def build_items
     item1 = Item.create(title: "Gut Buster", description: "If its in the store, it's in this burrito!", price: 1000, image:"burrito_360.png")
-    item2 = Item.create(title: "", description: "If its in the store, it's in this burrito!", price: 1000, image:"burrito_360.png")
+    item2 = Item.create(title: "", description: "", price: , image:"burrito_360.png")
   end
 
   def build_category
