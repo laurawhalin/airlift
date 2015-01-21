@@ -2,14 +2,14 @@ require "rails_helper"
 
 feature "User login" do
   background do
-  @user = User.create(
-  fullname: "jimbobfrank",
-  email: "jimbobfrank@aol.com",
-  role:  0,
-  password: "foobar1234",
-  password_confirmation: "foobar1234",
-  display_name: "frankyboy"
-  )
+    @user = User.create(
+    fullname: "jimbobfrank",
+    email: "jimbobfrank@aol.com",
+    role:  0,
+    password: "foobar1234",
+    password_confirmation: "foobar1234",
+    display_name: "frankyboy"
+    )
   end
 
   scenario "User can sign in with correct credentials" do
