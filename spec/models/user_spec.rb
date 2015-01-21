@@ -1,14 +1,15 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  let(:user) {
-              User.create(
-                          fullname: "Daisy",
-                          display_name: "lildaisy",
-                          email: "daisy@example.com",
-                          password: "password",
-                          role: "default"
-                          )
+  let(:user) do
+    {
+     User.create(
+                 fullname: "Daisy",
+                 display_name: "lildaisy",
+                 email: "daisy@example.com",
+                 password: "password",
+                 role: "default"
+                 )
   }
 
   it "is valid" do
