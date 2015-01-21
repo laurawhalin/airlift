@@ -2,6 +2,8 @@ class Seed
   def initialize
     build_items
     build_category
+    build_orders
+    build_users
   end
 
   def build_items
@@ -33,6 +35,32 @@ class Seed
     category3 = Category.create(name: "Specialty", description: "Chef's favorites.")
     category4 = Category.create(name: "Breakfast", description: "Start your day off right.")
     category5 = Category.create(name: "Sides", description: "&#192; la carte options.")
+  end
+
+  def orders
+    order1 = Order.create(user_id: 1, status: "Ordered", total: 1500)
+    order2 = Order.create(user_id: 2, status: "Ordered", total: 600)
+    order3 = Order.create(user_id: 3, status: "Completed", total: 700)
+    order4 = Order.create(user_id: 4, status: "Completed", total: 1100)
+    order5 = Order.create(user_id: 6, status: "Paid", total: 2400)
+    order6 = Order.create(user_id: 7, status: "Paid", total: 400)
+    order7 = Order.create(user_id: 8, status: "Canceled", total: 1200)
+    order8 = Order.create(user_id: 9, status: "Canceled", total: 2000)
+    order9 = Order.create(user_id: 1, status: "Completed", total: 3200)
+    order10 = Order.create(user_id: 2, status: "Completed", total: 1600)
+  end
+
+  def build_users
+    user1 = User.create(fullname: "Johnny Bravo", email: "hooaa@gmail.com", display_name: "jbravo", password: "password", role: 0)
+    user2 = User.create(fullname: "Rachel Warbelow", email: "demo+rachel@jumpstartlab.com", password: "password", role: 0)
+    user3 = User.create(fullname: "Jeff Casmir", email: "demo+jeff@jumpstartlab.com", display_name: "j3", password: "password", role: 0)
+    user4 = User.create(fullname: "Jeorge Tellez", email: "demo+jorge@jumpstartlab.com", display_name: "novohispano", password: "password", role: 0)
+    user5 = User.create(fullname: "Josh Cheek", email: "demo+josh@jumpstartlab.com", display_name: "josh", password: "password", role: 1)
+    user6 = User.create(fullname: "Steve Kinney", email: "demo+steve@jumpstartlab.com", display_name: "steveo", password: "password", role: 0)
+    user7 = User.create(fullname: "Horace Williams", email: "demo+horace@jumpstartlab.com", display_name: "horace", password: "password", role: 0)
+    user8 = User.create(fullname: "Raissa Shafer", email: "demo+raissa@jumpstartlab.com", password: "password", role: 0)
+    user9 = User.create(fullname: "Josh Mejia", email: "demo+jmeija@jumpstartlab.com", display_name: "meija", password: "password", role: 0)
+    user10 = User.create(fullname: "Joe Blow", email: "joe@gmail.com", display_name: "joe", password: "joe", role: 1)
   end
 end
 Seed.new
