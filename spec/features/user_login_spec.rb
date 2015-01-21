@@ -28,7 +28,7 @@ feature "User login" do
     click_link_or_button "Login"
     # save_and_open_page
     within("#banner") do
-      expect(page).to have_content("Welcome, frankyboy")
+    expect(page).to have_content("Welcome, frankyboy")
     end
   end
 
