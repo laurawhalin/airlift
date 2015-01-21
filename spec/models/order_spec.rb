@@ -8,7 +8,7 @@ RSpec.describe Order, :type => :model do
     expect(order).to be_valid
   end
 
-  it i"s invalid without a user_id" do
+  it "is invalid without a user_id" do
     order.user_id = nil
     expect(order).to be_invalid
   end
