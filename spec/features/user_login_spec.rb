@@ -1,5 +1,4 @@
 require "rails_helper"
-require 'capybara/rspec'
 
 feature "User login" do
   background do
@@ -14,7 +13,6 @@ feature "User login" do
       fill_in "session[password_confirmation]", :with => "foobar1234"
     end
     click_button "Login"
-
     expect(page).to have_content("You have successfully logged in")
   end
 end
