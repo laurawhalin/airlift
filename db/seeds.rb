@@ -6,15 +6,15 @@ class Seed
 
   def build_items
     item1 = Item.create(title: "Gut Buster", description: "If its in the store, it's in this burrito!", price: 1000, image:"burrito_360.png")
-    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potatoe burrito.", price: 850 , image:"burrito_360.png")
+    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potatoe burrito.", price: 850, image:"burrito_360.png")
     item3 = Item.create(title: "Fiesta Especial", description: "A 6 foot party sized burrito to share with your family and friends.", price: 10000, image:"burrito_360.png")
     item4 = Item.create(title: "UF burritO", description: "Monthly special. It's out of this world.", price: 689, image:"burrito_360.png")
     item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image:"burrito_360.png")
     item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image:"torpedo_tacos.png")
     item7 = Item.create(title: "Queso Quesadillas", description: "These delicious veggie dillas can be frisbeed to your door upon request.", price: 550, image:"quick_quesadillas.png")
-    item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: , image:"death_by_burrito.png")
+    item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: 750, image:"death_by_burrito.png")
     item9 = Item.create(title: "Flaming Fajitas", description: "These veggie fajitas will set your mouth on fire.", price: 1200, image:"flaming_fajitas.png")
-    item10 = Item.create(title: "Breakfast Quesadilla", description: "One deliscious egg, cheese, and potatoe dilla.", price: 650 , image:"breakfast_dilla.png")
+    item10 = Item.create(title: "Breakfast Quesadilla", description: "One deliscious egg, cheese, and potatoe dilla.", price: 650, image:"breakfast_dilla.png")
     item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine", price: 500, image:"burrito_360.png")
     item12 = Item.create(title: "Vegi delight", description: "Eat all your vegies, tomatoes, red onions, green pepers, mushrooms and more)", price: 700, image:"burrito_360.png")
     item13 = Item.create(title: "Not too Sweet", description: "Just enough to satisfy for sweet quench, all sweet things", price: 500, image:"burrito_360.png")
