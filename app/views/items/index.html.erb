@@ -11,7 +11,7 @@
       <%= item.price %>
     </td>
     <td>
-      <%= button_to "Add to Cart", cart_item_path(item) %>
+      <%= button_to "Add to Cart", cart_index_path(item_id: item) %>
     </td>
   </tr>
   <% end %>

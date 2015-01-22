@@ -12,10 +12,16 @@ feature "Add Items to Cart" do
 
   scenario "an item has a cart button" do
     visit items_path
-    within('table') do
+    within("table") do
       expect(page).to have_button("Add to Cart")
     end
   end
 
   scenario "user can add item to cart" do
+    visit items_path
+    click_button("Add to Cart")
+    within("#cart") do
+      expect(page).to have_content("1")
+    end
+  end
 end
