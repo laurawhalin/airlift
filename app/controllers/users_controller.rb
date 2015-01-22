@@ -16,14 +16,14 @@ class UsersController < ApplicationController
     #make sure user is logged in when created
     #flash success message when user is created
     #else render new possible error flash message
-    
+
   end
 
   def show
     @user = User.find(params[:id])
     # authorize! :read, @user
   end
-
+  
   private
 
   def user_params
