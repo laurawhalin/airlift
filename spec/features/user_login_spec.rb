@@ -1,12 +1,12 @@
 require "rails_helper"
 
 feature "User login" do
-  let(:default_user_attributes) { {fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: "default", password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
-  let(:admin_user_attributes) { {fullname: "frank", email: "frank@aol.com", role: "admin", password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
-  let(:protected_user_attributes) { {fullname: "bob", email: "bob@aol.com", role: "default", password: "pass", password_confirmation: "pass", display_name: "bob" } }
-  let(:user) { User.create(default_user_attributes)}
-  let(:admin_user) { User.create(admin_user_attributes)}
-  let(:protected_user) { User.create(protected_user_attributes)}
+  let(:default_user_attributes) { { fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: "default", password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
+  let(:admin_user_attributes) { { fullname: "frank", email: "frank@aol.com", role: "admin", password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
+  let(:protected_user_attributes) { { fullname: "bob", email: "bob@aol.com", role: "default", password: "pass", password_confirmation: "pass", display_name: "bob" } }
+  let(:user) { User.create(default_user_attributes) }
+  let(:admin_user) { User.create(admin_user_attributes) }
+  let(:protected_user) { User.create(protected_user_attributes) }
 
   scenario "User can Welcome Page" do
     visit "/"
