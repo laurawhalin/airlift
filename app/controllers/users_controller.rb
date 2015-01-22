@@ -10,13 +10,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    flash[:success] = "You have successfully registered."
-    redirect_to "/"
-    
-    #make sure user is logged in when created
-    #flash success message when user is created
-    #else render new possible error flash message
+    @user = User.new(params[:user])
+    if @user.save
+      auto_login(@user)
+      flash[:success] = "You have successfully registered."
+      redirect_to root_url
+    else
+      flash[:errors] = "Unsuccessful login."
+      render :new
+    end
   end
 
   def show
