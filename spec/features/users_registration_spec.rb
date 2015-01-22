@@ -11,7 +11,7 @@ feature "User can register" do
     fill_in "user[password_confirmation]", with: "foobar12"
     fill_in "user[display_name]", with: "frankyboi"
     click_link_or_button "Signup"
-    within("#success") do
+    within("#flash_success") do
       expect(page).to have_content("You have successfully registered.")
     end
   #expect current page to be the root?
