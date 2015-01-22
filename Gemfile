@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'cancancan'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
+  private
+
   def authorize
     redirect_to login_path, alert: "Not authorized" if current_user.nil?
   end
