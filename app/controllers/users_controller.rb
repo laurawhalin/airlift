@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
-      auto_login(@user)
+      session[:user_id] = @user.id
       flash[:success] = "You have successfully registered."
       redirect_to root_url
     else
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:full_name,
+    params.require(:user).permit(:fullname,
                                  :email,
                                  :password,
                                  :display_name)
