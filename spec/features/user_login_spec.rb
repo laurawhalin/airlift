@@ -38,7 +38,8 @@ feature "User login" do
   end
 
   scenario "registered user cannot view other user information" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+                                                .and_return(user)
     protected_user
     visit user_path(protected_user)
     within("#flash_alert") do
@@ -48,7 +49,8 @@ feature "User login" do
 
   scenario "an admin can view other users information" do
     admin_user
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+                                                .and_return(admin_user)
     visit user_path(user)
     within("#banner") do
       expect(page).to have_content("Welcome, frankyboy")
