@@ -5,11 +5,11 @@ feature "User can register" do
   visit "/"
   click_link_or_button "Register"
   visit "/register"
-  fill_in "register[full_name]", with: "Jim Bob"
-  fill_in "register[email]", with: "jimbob@gmail.com"
-  fill_in "register[password]", with: "foobar12"
-  fill_in "register[password_confirmation]", with: "foobar12"
-  fill_in "register[display_name]", with: "frankyboi"
+  fill_in "user[fullname]", with: "Jim Bob"
+  fill_in "user[email]", with: "jimbob@gmail.com"
+  fill_in "user[password]", with: "foobar12"
+  fill_in "user[password_confirmation]", with: "foobar12"
+  fill_in "user[display_name]", with: "frankyboi"
   click_link_or_button "Signup"
   within("#success") do
     expect(page).to have_content("You have successfully registered.")
