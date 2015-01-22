@@ -12,8 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     flash[:success] = "You have successfully registered."
-    #make sure user is logged in when created
     redirect_to "/"
+    #make sure user is logged in when created
     #flash success message when user is created
     #else render new possible error flash message
   end
@@ -24,10 +24,11 @@ class UsersController < ApplicationController
   end
 
   private
+  
   def user_params
     params.require(:user).permit(:full_name,
-                                :email,
-                                :password,
-                                :display_name)
+                                 :email,
+                                 :password,
+                                 :display_name)
   end
 end
