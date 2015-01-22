@@ -1,17 +1,6 @@
 require "rails_helper"
 
 feature "User login" do
-  background do
-    @user = User.create(
-      fullname: "jimbobfrank",
-      email: "jimbobfrank@aol.com",
-      role:  0,
-      password: "foobar1234",
-      password_confirmation: "foobar1234",
-      display_name: "frankyboy"
-    )
-  end
-
   let(:default_user_attributes) { { fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: "default", password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
   let(:admin_user_attributes) { { fullname: "frank", email: "frank@aol.com", role: "admin", password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
   let(:protected_user_attributes) { { fullname: "bob", email: "bob@aol.com", role: "default", password: "pass", password_confirmation: "pass", display_name: "bob" } }
@@ -21,7 +10,7 @@ feature "User login" do
 
   scenario "User can Welcome Page" do
     visit "/"
-    expect(page).to have_content("Hello")
+    expect(page).to have_content("Welcome")
   end
 
   scenario "User can sign in with correct credentials" do
@@ -51,7 +40,6 @@ feature "User login" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(user)
     visit user_orders_path(protected_user)
-    save_and_open_page
     within("#flash_alert") do
       expect(page).to have_content("You are not authorized to access this page")
     end
