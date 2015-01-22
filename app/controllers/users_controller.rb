@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     #make sure user is logged in when created
     #flash success message when user is created
     #else render new possible error flash message
+    
   end
 
   def show
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:full_name,
                                  :email,
