@@ -1,42 +1,42 @@
 <%= form_for(@user) do |f| %>
 <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :fullname, "Full Name" %>
-    <%= f.text_field :fullname, placeholder: "Enter Full Name" %>
-  </div>
+<div class="field">
+  <%= f.label :fullname, "Full Name" %>
+  <%= f.text_field :fullname, placeholder: "Enter Full Name" %>
+</div>
 
-  <div class="field">
-    <%= f.label :display_name, "Display Name" %>
-    <%= f.text_field :display_name, placeholder: "Enter Display Name" %>
-  </div>
+<div class="field">
+  <%= f.label :display_name, "Display Name" %>
+  <%= f.text_field :display_name, placeholder: "Enter Display Name" %>
+</div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, placeholder: "Enter Email" %>
-  </div>
+<div class="field">
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "Enter Email" %>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, placeholder: "Enter Password" %>
-  </div>
+<div class="field">
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "Enter Password" %>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, placeholder: "Enter Password Confirmation" %>
-  </div>
-  
-  <div class="action">
-    <%= f.submit "Signup" %>
-  </div>
+<div class="field">
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, placeholder: "Enter Password Confirmation" %>
+</div>
+
+<div class="action">
+  <%= f.submit "Signup" %>
+</div>
 
 <% end %>

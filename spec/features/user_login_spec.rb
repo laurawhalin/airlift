@@ -10,7 +10,7 @@ feature "User login" do
 
   scenario "User can Welcome Page" do
     visit "/"
-    expect(page).to have_content("Hello")
+    expect(page).to have_content("Welcome")
   end
 
   scenario "User can sign in with correct credentials" do
@@ -21,9 +21,8 @@ feature "User login" do
       fill_in "session[password]", with: "foobar1234"
     end
     click_link_or_button "Login"
-    # save_and_open_page
-    within("#banner") do
-    expect(page).to have_content("Welcome, frankyboy")
+    within("#user_nav") do
+      expect(page).to have_content("Welcome, jimbobfrank")
     end
   end
 
@@ -40,14 +39,13 @@ feature "User login" do
   scenario "registered user cannot view other user information" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(user)
-    protected_user
-    visit user_path(protected_user)
+    visit user_orders_path(protected_user)
     within("#flash_alert") do
       expect(page).to have_content("You are not authorized to access this page")
     end
   end
 
-  scenario "an admin can view other users information" do
+  xscenario "an admin can view other users information" do
     admin_user
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(admin_user)
