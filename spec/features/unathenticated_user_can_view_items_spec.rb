@@ -14,4 +14,12 @@ feature "unathenticated Users can see a list of items" do
     visit items_path
     expect(page).to have_content("Green Burrito")
   end
+
+  scenario "User can see a list of all spicy items" do
+    visit "/"
+    click_link_or_button "Spicy"
+    expect(page).to have_content("Hot n Spicy")
+  end
+
+
 end

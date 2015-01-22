@@ -34,6 +34,6 @@
 <% end %>
 <%= yield %>
 <%= debug(params) if Rails.env.development? %>
-
+<%= render partial: './partials/category_bar' %>
 </body>
 </html>
