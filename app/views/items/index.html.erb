@@ -10,6 +10,9 @@
     <td>
       <%= item.price %>
     </td>
+    <td>
+      <%= button_to "Add to Cart", cart_item_path(item) %>
+    </td>
   </tr>
   <% end %>
 </table>
