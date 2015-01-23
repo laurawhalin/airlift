@@ -37,7 +37,7 @@ RSpec.describe Item, type: :model do
     expect(item).to be_invalid
   end
 
-  xit 'returns an empty item array' do
+  it 'returns an empty categories array' do
     expect(item.categories).to eq([])
   end
 
@@ -45,11 +45,11 @@ RSpec.describe Item, type: :model do
     expect(item).to respond_to(:categories)
   end
 
-  xit 'returns an empty item array' do
+  it 'returns an empty orders array' do
     expect(item.orders).to eq([])
   end
 
-  xit 'responds to orders' do
+  it 'responds to orders' do
     expect(item).to respond_to(:orders)
   end
 
@@ -64,12 +64,12 @@ RSpec.describe Item, type: :model do
     expect(item2).to_not be_valid
   end
 
-  xit 'must belong to at least one category' do
+  it 'must belong to at least one category' do
     item
-    category = Category.create(name: "spicy")
+    category = Category.create(name: "spicy", description: "super hot")
     item.categories << category
 
-    expect(item.count).to eq(1)
+    expect(item.categories.count).to eq(1)
   end
 
   it 'should have a valid numeric decimal value greater than zero' do

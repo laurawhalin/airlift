@@ -23,7 +23,7 @@ RSpec.describe Order, :type => :model do
     expect(order).to be_invalid
   end
 
-  xit "returns an empty items array" do
+  it "returns an empty items array" do
     expect(order.items).to eq([])
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Order, :type => :model do
     expect(order).to respond_to(:items)
   end
 
-  xit "is associated with a user" do
+  it "is associated with a user" do
     expect(order).to respond_to(:user)
   end
 end

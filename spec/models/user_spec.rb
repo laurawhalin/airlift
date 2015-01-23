@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  xit "can have many orders" do
+  it "can have many orders" do
     user.orders.create(status: "pending", total: "2434")
     expect(user.orders.map(&:user_id)).to eq([user.id])
   end
