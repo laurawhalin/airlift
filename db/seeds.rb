@@ -4,6 +4,7 @@ class Seed
     build_category
     build_orders
     build_users
+    build_items_category
   end
 
   def build_items
@@ -27,6 +28,39 @@ class Seed
     item18 = Item.create(title: "Hot Sauce Bucket", description: "Just what it sounds like: a small bucket of our house hot sauce.", price: 300, image:"sauce_bucket.png")
     item19 = Item.create(title: "Chips and Salsa", description: "A bag of chips bubble wrapped for special delivery with a small bucket of our house hot sauce.", price: 400, image:"chips_salsa.png")
     item20 = Item.create(title: "Enola Empenada", description: "This empenada is filled with our famous mushroom salsa.", price: 500, image:"girl_from_empenada.png")
+  end
+
+  def build_items_category
+    test1 = ItemsCategory.create(item_id: 1, category_id: 3)
+    test2 = ItemsCategory.create(item_id: 2, category_id: 2)
+    test3 = ItemsCategory.create(item_id: 2, category_id: 3)
+    test4 = ItemsCategory.create(item_id: 3, category_id: 3)
+    test5 = ItemsCategory.create(item_id: 3, category_id: 2)
+    test6 = ItemsCategory.create(item_id: 4, category_id: 3)
+    test7 = ItemsCategory.create(item_id: 5, category_id: 3)
+    test8 = ItemsCategory.create(item_id: 5, category_id: 2)
+    test9 = ItemsCategory.create(item_id: 6, category_id: 3)
+    test10 = ItemsCategory.create(item_id: 7, category_id: 3)
+    test11 = ItemsCategory.create(item_id: 7, category_id: 1)
+    test12 = ItemsCategory.create(item_id: 8, category_id: 3)
+    test13 = ItemsCategory.create(item_id: 8, category_id: 2)
+    test14 = ItemsCategory.create(item_id: 9, category_id: 2)
+    test15 = ItemsCategory.create(item_id: 10, category_id: 1)
+    test16 = ItemsCategory.create(item_id: 10, category_id: 4)
+    test17 = ItemsCategory.create(item_id: 11, category_id: 1)
+    test18 = ItemsCategory.create(item_id: 11, category_id: 4)
+    test19 = ItemsCategory.create(item_id: 12, category_id: 1)
+    test20 = ItemsCategory.create(item_id: 13, category_id: 3)
+    test21 = ItemsCategory.create(item_id: 14, category_id: 2)
+    test22 = ItemsCategory.create(item_id: 15, category_id: 2)
+    test23 = ItemsCategory.create(item_id: 16, category_id: 5)
+    test24 = ItemsCategory.create(item_id: 16, category_id: 2)
+    test25 = ItemsCategory.create(item_id: 17, category_id: 5)
+    test25 = ItemsCategory.create(item_id: 18, category_id: 5)
+    test26 = ItemsCategory.create(item_id: 18, category_id: 2)
+    test27 = ItemsCategory.create(item_id: 19, category_id: 5)
+    test28 = ItemsCategory.create(item_id: 19, category_id: 2)
+    test29 = ItemsCategory.create(item_id: 20, category_id: 5)
   end
 
   def build_category

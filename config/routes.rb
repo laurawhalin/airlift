@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :items
   resources :cart
+  resources :categories
   root "welcome#index"
 
   resources :users do
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   # namespace :admin do
   #   resources :categories
   # end
+
 end

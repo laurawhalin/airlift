@@ -1,0 +1,18 @@
+<table>
+  <% @listing.each do |list_item| %>
+  <tr>
+    <td>
+      <%= list_item.title %>
+    </td>
+    <td>
+      <%= list_item.description %>
+    </td>
+    <td>
+      <%= list_item.price %>
+    </td>
+    <td>
+      <%= list_item.image %>
+    </td>
+  </tr>
+  <% end %>
+</table>
