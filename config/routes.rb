@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :items
   resources :cart
   resources :categories
+  resources :orders_items
   root "welcome#index"
 
   resources :users do

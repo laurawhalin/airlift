@@ -1,1 +1,23 @@
 <h1>Your Cart</h1>
+
+<table>
+  <% @cart.items.each do |line_item| %>
+  <tr>
+    <td>
+      <%= line_item[1] %>
+    </td>
+    <td>
+      <%= line_item[0].title %>
+    </td>
+    <td>
+      <%= line_item[0].description %>
+    </td>
+    <!-- <td>
+      <%#= line_item.subtotal %>
+    </td> -->
+    <td>
+      <%= button_to "Delete", orders_item_path(line_item), method: :delete %>
+    </td>
+  </tr>
+  <% end %>
+</table>

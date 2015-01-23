@@ -17,4 +17,11 @@ class Cart
   def count_total
     data.values.sum
   end
+
+  def items
+    data.keys.map do |item_id|
+      [Item.find(item_id), data[item_id]]
+    end
+
+  end
 end

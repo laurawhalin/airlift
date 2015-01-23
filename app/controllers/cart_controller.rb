@@ -14,6 +14,6 @@ class CartController < ApplicationController
   end
 
   def show
-
+    cart = @cart
   end
 end
