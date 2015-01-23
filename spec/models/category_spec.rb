@@ -36,6 +36,7 @@ RSpec.describe Category, type: :model do
                           image: "image/path"
                           )
     expect(category.items.count).to eq 2
-    expect(category.items.map(&:title)).to eq(["Green Chili Burrito", "Hot n Spicy"])
+    expect(category.items.map(&:title)).to eq(["Green Chili Burrito",
+                                                "Hot n Spicy"])
   end
 end
