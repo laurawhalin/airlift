@@ -1,14 +1,17 @@
 <table>
-  <% @category.items.all.each do |item| %>
+  <% @listing.each do |list_item| %>
   <tr>
     <td>
-      <%= item.title %>
+      <%= list_item.title %>
     </td>
     <td>
-      <%= item.description %>
+      <%= list_item.description %>
     </td>
     <td>
-      <%= item.price %>
+      <%= list_item.price %>
+    </td>
+    <td>
+      <%= list_item.image %>
     </td>
   </tr>
   <% end %>

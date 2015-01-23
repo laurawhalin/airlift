@@ -1,7 +1,10 @@
 class CategoriesController < ApplicationController
   def show
-    @spicy = @category.items.find(spicy) = Category.find(params[:id])
+    @category = Category.find(params[:id])
+    @listing = @category.items.all
   end
+
+  helper_method :show
 
   def index
     @categories = Category.all
