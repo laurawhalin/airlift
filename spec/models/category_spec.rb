@@ -37,6 +37,6 @@ RSpec.describe Category, type: :model do
                           )
     expect(category.items.count).to eq 2
     expect(category.items.map(&:title)).to eq(["Green Chili Burrito",
-                                                "Hot n Spicy"])
+                                               "Hot n Spicy"])
   end
 end
