@@ -3,7 +3,7 @@
 <h1>Past Orders</h1>
   <table>
     <tr>
-      <th>Order #</th><th>Order date</th><th>item</th><th>Quantity</th><th>Price</th>
+      <th>Order#</th><th>Order date</th><th>Item</th><th>Quantity</th><th>Price</th>
     </tr>
     <% @past_orders.each do |order| %>
       <tr><td><%= order.id %></td><td><%= order.created_at %></td></tr>
