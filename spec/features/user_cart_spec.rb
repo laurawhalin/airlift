@@ -27,9 +27,10 @@ feature "Add Items to Cart" do
 
   scenario "user can view their cart" do
     visit items_path
-    click_button("Add to Cart")
-    click_button("Add to Cart")
-    click_button("2")
+    save_and_open_page
+    click_link("Add to Cart")
+    click_link("Add to Cart")
+    click_link("2")
     within("#table") do
       expect(page).to have_content("Qty")
       expect(page).to have_content("2")
