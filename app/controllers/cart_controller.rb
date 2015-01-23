@@ -1,5 +1,4 @@
 class CartController < ApplicationController
-
   def index
     redirect_to :back
   end
@@ -14,6 +13,5 @@ class CartController < ApplicationController
   end
 
   def show
-    cart = @cart
   end
 end

@@ -22,7 +22,7 @@ class Cart
     data.keys.map do |item_id|
       item = Item.find(item_id)
       quantity = data[item_id]
-      subtotal = (item.price * quantity)/100
+      subtotal = (item.price * quantity) / 100
       [item, quantity, subtotal]
     end
   end
