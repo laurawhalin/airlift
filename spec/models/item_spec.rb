@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Item, type: :model do
   let (:order) {
@@ -18,42 +18,42 @@ RSpec.describe Item, type: :model do
                 )
   }
 
-  it 'is valid' do
+  it "is valid" do
     expect(item).to be_valid
   end
 
-  it 'is invalid without a title' do
+  it "is invalid without a title" do
     item.title = nil
     expect(item).to be_invalid
   end
 
-  it 'is invalid without a description' do
+  it "is invalid without a description" do
     item.description = nil
     expect(item).to be_invalid
   end
 
-  it 'is invalid without a price' do
+  it "is invalid without a price" do
     item.price = nil
     expect(item).to be_invalid
   end
 
-  it 'returns an empty categories array' do
+  it "returns an empty categories array" do
     expect(item.categories).to eq([])
   end
 
-  it 'responds to categories' do
+  it "responds to categories" do
     expect(item).to respond_to(:categories)
   end
 
-  it 'returns an empty orders array' do
+  it "returns an empty orders array" do
     expect(item.orders).to eq([])
   end
 
-  it 'responds to orders' do
+  it "responds to orders" do
     expect(item).to respond_to(:orders)
   end
 
-  it 'must have a unique title' do
+  it "must have a unique title" do
     item
     item2 = Item.new(
                      title: "Green Chili Burrito",
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
     expect(item2).to_not be_valid
   end
 
-  it 'must belong to at least one category' do
+  it "must belong to at least one category" do
     item
     category = Category.create(name: "spicy", description: "super hot")
     item.categories << category
@@ -72,12 +72,12 @@ RSpec.describe Item, type: :model do
     expect(item.categories.count).to eq(1)
   end
 
-  it 'should have a valid numeric decimal value greater than zero' do
+  it "should have a valid numeric decimal value greater than zero" do
     item.price = -3
     expect(item).to_not be_valid
   end
 
-  xit 'should have a stock photo if no photo is added' do
+  xit "should have a stock photo if no photo is added" do
 
   end
 end
