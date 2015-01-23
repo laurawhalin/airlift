@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
   validates :display_name, length: { in: 2..32 }, allow_nil: true
   has_many :orders
   enum role: %w(default admin)
+
+  def past_orders
+    orders
+    #orders.where(status: :completed)
+  end
 end

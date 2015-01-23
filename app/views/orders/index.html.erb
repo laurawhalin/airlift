@@ -1,4 +1,17 @@
 <div id="banner">
 
 <h1>Past Orders</h1>
+  <table>
+    <tr>
+      <th>Order #</th><th>Order date</th><th>item</th><th>Quantity</th><th>Price</th>
+    </tr>
+    <% @past_orders.each do |order| %>
+      <tr><td><%= order.id %></td><td><%= order.created_at %></td></tr>
+      <% order.orders_items.each do |order_item|%>
+        <tr><td/><td/><td><%= order_item.item.title %></td><td><%= order_item.quantity %></td><td><%= order_item.subtotal %></td></tr>
+      <% end %>
+      <tr><td/><td/><td/><td/><td><%= order.total %></td></tr>
+    <% end %>
+  </table>
+
 </div>
