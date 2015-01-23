@@ -31,9 +31,10 @@ feature "Add Items to Cart" do
     click_button("Add to Cart")
     click_link("2")
     save_and_open_page
-    within("#table") do
+    within("#cart_table") do
       expect(page).to have_content("Qty")
       expect(page).to have_content("2")
+      expect(page).to have_content("$16.00")
     end
   end
 end

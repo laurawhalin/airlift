@@ -18,10 +18,12 @@ class Cart
     data.values.sum
   end
 
-  def items
+  def line_items
     data.keys.map do |item_id|
-      [Item.find(item_id), data[item_id]]
+      item = Item.find(item_id)
+      quantity = data[item_id]
+      subtotal = (item.price * quantity)/100
+      [item, quantity, subtotal]
     end
-
   end
 end
