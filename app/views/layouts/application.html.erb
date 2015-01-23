@@ -2,21 +2,24 @@
 <html>
 <head>
   <title>DinnerDash</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
 
   <div id="user_nav">
     <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to('Logout', logout_path, :method => :delete) %>
+      Welcome, <%= current_user.fullname %>
+      <%= link_to('Logout', logout_path, :method => :delete) %>
+    <% else %>
+      <%= link_to('Register', register_path) %>
     <% end %>
+    <div id="cart">
+      <p><i class="fa fa-shopping-cart fa-3x"></i> <%= @cart.count_total %></p>
   </div>
 
   <div id="session">
-
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :email %>
@@ -34,6 +37,10 @@
 <% end %>
 <%= yield %>
 <%= debug(params) if Rails.env.development? %>
+
 <%= render partial: './partials/category_bar' %>
+
+<%= javascript_include_tag 'application' %>
+
 </body>
 </html>
