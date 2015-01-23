@@ -1,0 +1,40 @@
+<h1>Your Cart</h1>
+
+<table id="cart_table">
+  <tr>
+    <td>
+      Qty
+    </td>
+    <td>
+      Item
+    </td>
+    <td>
+      Description
+    </td>
+    <td>
+      Subtotal
+    </td>
+  </tr>
+  <tr>
+
+  </tr>
+  <% @cart.line_items.each do |line_item| %>
+  <tr>
+    <td>
+      <%= line_item[1] %>
+    </td>
+    <td>
+      <%= line_item[0].title %>
+    </td>
+    <td>
+      <%= line_item[0].description %>
+    </td>
+    <td>
+      <%= number_to_currency(line_item[2]) %>
+    </td>
+    <td>
+      <%= button_to "Delete", orders_item_path(line_item), method: :delete %>
+    </td>
+  </tr>
+  <% end %>
+</table>
