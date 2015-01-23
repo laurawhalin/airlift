@@ -24,4 +24,15 @@ feature "Add Items to Cart" do
       expect(page).to have_content("1")
     end
   end
+
+  scenario "user can view their cart" do
+    visit items_path
+    click_button("Add to Cart")
+    click_button("Add to Cart")
+    click_button("2")
+    within("#table") do
+      expect(page).to have_content("Qty")
+      expect(page).to have_content("2")
+    end
+  end
 end
