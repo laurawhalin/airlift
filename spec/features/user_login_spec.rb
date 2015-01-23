@@ -45,13 +45,13 @@ feature "User login" do
     end
   end
 
-  xscenario "an admin can view other users information" do
+  scenario "an admin can view other users information" do
     admin_user
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(admin_user)
-    visit user_path(user)
+    visit user_orders_path(user)
     within("#banner") do
-      expect(page).to have_content("Welcome, frankyboy")
+      expect(page).to have_content("Past Orders")
     end
   end
 end
