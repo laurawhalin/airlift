@@ -28,7 +28,7 @@ class Cart
   end
 
   def delete_item(item_id)
-    data.delete(item_id)
+    data.delete(item_id.to_s)
     data
   end
 end
