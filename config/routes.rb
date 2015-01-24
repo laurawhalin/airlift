@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :orders
   end
+  namespace :admin do
+    resources :categories
+  end
 
   # resources :users, only: [:show, :edit, :update] do
   #   member do

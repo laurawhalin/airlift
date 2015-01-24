@@ -26,4 +26,9 @@ feature "unathenticated Users can see a list of items" do
       "You have 1, Hot n Spicy in your cart."
     end
   end
+
+  scenario "User can not visit Admin pages" do
+    visit admin_categories_path
+    expect(current_path).to eq(root_path)
+  end
 end
