@@ -33,7 +33,7 @@
       <%= number_to_currency(line_item[2]) %>
     </td>
     <td>
-      <%= button_to "Delete", orders_item_path(line_item), method: :delete %>
+      <%= button_to "Delete", cart_path(line_item[0]), method: :delete %>
     </td>
   </tr>
   <% end %>

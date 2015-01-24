@@ -30,11 +30,26 @@ feature "Add Items to Cart" do
     click_button("Add to Cart")
     click_button("Add to Cart")
     click_link("2")
-    save_and_open_page
     within("#cart_table") do
       expect(page).to have_content("Qty")
       expect(page).to have_content("2")
       expect(page).to have_content("$16.00")
+    end
+  end
+
+  scenario "user can delete item from cart" do
+    visit items_path
+    click_button("Add to Cart")
+    click_button("Add to Cart")
+    click_link("2")
+    click_button("Delete")
+    save_and_open_page
+    within("#cart") do
+      expect(page).to have_content("0")
+    end
+    within("#cart_table") do
+      expect(page).to_not have_content("1")
+      expect(page).to_not have_content("$8.00")
     end
   end
 end

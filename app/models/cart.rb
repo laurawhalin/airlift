@@ -26,4 +26,9 @@ class Cart
       [item, quantity, subtotal]
     end
   end
+
+  def delete_item(item_id)
+    data.delete(item_id)
+    data
+  end
 end
