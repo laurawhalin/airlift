@@ -1,9 +1,9 @@
-<div class="form-horizontal">
+<div class="form-horizontal text-right">
   <%= form_for(:session, url: login_path) do |f| %>
   <div class="form-group">
     <%= f.label :email, class: "col-sm-2 control-label" %>
     <div class="col-sm-8">
-      <%= f.email_field :email, class: "form-control" %>
+      <%= f.email_field :email, class: "form-control logout" %>
     </div>
   </div>
   <div class="form-group">
