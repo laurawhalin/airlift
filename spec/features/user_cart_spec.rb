@@ -43,7 +43,6 @@ feature "Add Items to Cart" do
     click_button("Add to Cart")
     click_link("2")
     click_button("Delete")
-    save_and_open_page
     within("#cart") do
       expect(page).to have_content("0")
     end
