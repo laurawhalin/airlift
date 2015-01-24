@@ -13,6 +13,9 @@
     <td>
       <%= list_item.image %>
     </td>
+    <td>
+      <%= button_to "Add to Cart", cart_index_path(item_id: list_item) %>
+    </td>
   </tr>
   <% end %>
 </table>
