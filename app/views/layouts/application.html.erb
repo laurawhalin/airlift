@@ -33,23 +33,23 @@
           Welcome, <%= current_user.fullname %>
           <%= link_to('Logout', logout_path, :method => :delete) %>
         <% else %>
-          <%= link_to('Register', register_path) %>
+          <%= form_for(:session, url: login_path) do |f| %>
+
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+
+            <%= f.submit "Login" %>
+          <% end %>
         <% end %>
         <div id="cart">
           <i class="fa fa-shopping-cart fa-2x"></i><%= link_to @cart.count_total, cart_path(cart_id = @cart) %>
         </div>
 
       <div id="session">
-        <%= form_for(:session, url: login_path) do |f| %>
 
-          <%= f.label :email %>
-          <%= f.email_field :email %>
-
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-
-          <%= f.submit "Login" %>
-        <% end %>
       </div>
       </div>
 
