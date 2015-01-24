@@ -46,6 +46,7 @@
             </div>
           <% else %>
             <%= render partial: "./partials/login" %>
+            <%= link_to('Register', register_path) %>
           <% end %>
         </div>
         <div id="cart" class="col-md-2 text-right">
@@ -64,7 +65,7 @@
     <%= yield %>
   </div>
 
-<!-- <%= debug(params) if Rails.env.development? %> -->
+<%= debug(params) if Rails.env.development? %>
 
 <%= javascript_include_tag 'application' %>
 
