@@ -31,4 +31,10 @@ class Cart
     data.delete(item_id.to_s)
     data
   end
+
+  # def edit_quantity
+  #   byebug
+  #   quantity = line_items[0][1]
+  #   #set edit_quantity to equal = dropdown number
+  # end
 end

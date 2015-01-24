@@ -6,6 +6,17 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Galindo' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+
+  <meta charset=utf-8 />
+  <title>A simple map</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+  <style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; left: -1px; top: 150px; bottom:0; width:100%; }
+  </style>
+
 </head>
 <body>
 
