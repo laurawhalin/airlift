@@ -1,2 +1,44 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#restaurant_name {
+  font-family: Galindo, Arial, sans-serif;
+}
+
+#logo img {
+  height: 125px;
+}
+
+#restaurant_name a {
+  text-decoration: none;
+  color: black;
+}
+
+#cart {
+  float: right;
+  margin-top: 10px;
+}
+
+#user-nav {
+  text-align: right;
+}
+
+.form-control .logout {
+  margin-top: 2px;
+}
+.btn {
+  padding: 4px 17px;
+}
+
+.logout {
+  margin-top: 2px;
+}
+
+.form-horizonal {
+  margin: 0px;
+}
+
+.form-control {
+  padding: 5px;
+  height: 30px;
+}
