@@ -39,9 +39,8 @@ feature "Admin User" do
   end
 
   scenario "Admin can visit admin dashboard" do
-    admin_user
     allow_any_instance_of(ApplicationController).to receive(:current_user).
-    and_return(admin_user)
+    and_return(@admin_user)
     visit "/"
     expect(page).to have_content("Admin Dashboard")
     click_link_or_button("Admin Dashboard")
