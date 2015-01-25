@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   enum role: %w(default admin)
 
   def past_orders
-    orders
-    #orders.where(status: :completed)
+    orders.where(status: :Completed)
   end
 
   def admin?
