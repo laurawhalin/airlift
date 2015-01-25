@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   helper_method :show
 
   def create
-    category = Category.create(categories_params)
+    Category.create(categories_params)
     redirect_to admin_categories_path
   end
 
@@ -15,5 +15,4 @@ class CategoriesController < ApplicationController
   def categories_params
     params.require(:category).permit(:name, :description)
   end
-
 end

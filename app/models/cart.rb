@@ -35,7 +35,7 @@ class Cart
     unless self.data.empty?
       data.keys.map do |item_id|
         item = Item.find(item_id)
-        item.price * quantity = data[item_id]
+        item.price * data[item_id] #data[item_id] = quantity
       end.reduce(:+) / 100
     end
   end
