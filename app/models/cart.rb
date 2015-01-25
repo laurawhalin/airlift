@@ -1,6 +1,5 @@
 class Cart
   attr_reader :data
-
   def initialize(input_data)
     @data = input_data || Hash.new
   end
@@ -17,4 +16,32 @@ class Cart
   def count_total
     data.values.sum
   end
+
+  def line_items
+    data.keys.map do |item_id|
+      item = Item.find(item_id)
+      quantity = data[item_id]
+      subtotal = (item.price * quantity) / 100
+      [item, quantity, subtotal]
+    end
+  end
+
+  def delete_item(item_id)
+    data.delete(item_id.to_s)
+    data
+  end
+
+  def total
+    unless data.empty?
+      data.keys.map do |item_id|
+        item = Item.find(item_id)
+        item.price * data[item_id] # data[item_id] = quantity
+      end.reduce(:+) / 100
+    end
+  end
+  # def edit_quantity
+  #   byebug
+  #   quantity = line_items[0][1]
+  #   #set edit_quantity to equal = dropdown number
+  # end
 end

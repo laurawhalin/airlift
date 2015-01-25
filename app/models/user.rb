@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
     orders
     #orders.where(status: :completed)
   end
+
+  def admin?
+    role == "admin"
+  end
 end
