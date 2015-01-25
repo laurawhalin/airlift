@@ -32,7 +32,7 @@ class Cart
   end
 
   def total
-    unless self.data.empty?
+    unless data.empty?
       data.keys.map do |item_id|
         item = Item.find(item_id)
         item.price * data[item_id] #data[item_id] = quantity
