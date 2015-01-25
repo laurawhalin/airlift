@@ -32,10 +32,12 @@ class Cart
   end
 
   def total
-    data.keys.map do |item_id|
-      item = Item.find(item_id)
-      item.price * quantity = data[item_id]
-    end.reduce(:+) / 100
+    unless self.data.empty?
+      data.keys.map do |item_id|
+        item = Item.find(item_id)
+        item.price * quantity = data[item_id]
+      end.reduce(:+) / 100
+    end
   end
   # def edit_quantity
   #   byebug

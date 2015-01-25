@@ -40,7 +40,5 @@
 </table>
 
 <div id="cart_total">
-  <% unless @cart.data.empty? %>
     Cart Total: <%= number_to_currency(@cart.total) %>
-  <% end   %>
 </div>
