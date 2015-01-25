@@ -32,6 +32,17 @@ class Cart
     data
   end
 
+  def total
+    items.map { |item| item.price}
+          .reduce(:+) / 100
+    end
+
+    def items
+      data.keys.map do |item_id|
+        item = Item.find(item_id)
+    end
+  end
+
   # def edit_quantity
   #   byebug
   #   quantity = line_items[0][1]
