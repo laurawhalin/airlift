@@ -1,4 +1,7 @@
-<h1>Welcome Admin</h1>
-
+<h1>Admin Dashboard</h1>
+  <h2>Welcome Back <%= current_user.fullname %></h2>
+  <div id="thumbnail">
+    <%= image_tag current_user.image %>
+  </div>
 <%= link_to "Categories Information", admin_categories_path %>
 <%= link_to "Items Information", admin_items_path %>
