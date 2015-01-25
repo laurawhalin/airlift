@@ -1,7 +1,6 @@
 module Admin
   class ItemsController < AdminController
-      def index
-
-      end
+    def index
+    end
   end
 end
