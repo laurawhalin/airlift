@@ -70,4 +70,7 @@
 <%= javascript_include_tag 'application' %>
 
 </body>
+<footer>
+  <%= link_to "Admin Dashboard", admin_dashboard_index_path if admin? %>
+</footer>
 </html>

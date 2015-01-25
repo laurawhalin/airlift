@@ -4,7 +4,12 @@ class CategoriesController < ApplicationController
     @listing = @category.items.all
   end
   helper_method :show
-  
+
+  def create
+    Category.create(categories_params)
+    redirect_to admin_categories_path
+  end
+
   private
 
   def categories_params

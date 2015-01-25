@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "unathenticated Users can see a list of items" do
   background do
-    @category = Category.create(name: "Spicy", description: "Hot! Hot! Hot!")
+    @category = Category.create(name: "Meaty", description: "Hot! Hot! Hot!")
     @item = Item.create(title: "Hot n Spicy", description: "All the hot and spicy things you can handle", price: 1000, image:"burrito_360.png")
     @category.items << @item
   end
@@ -14,7 +14,7 @@ feature "unathenticated Users can see a list of items" do
 
   scenario "User can see a list of all spicy items" do
     visit "/"
-    click_link_or_button "Spicy"
+    click_link_or_button "Meaty"
     expect(current_path).to eq(category_path(@category))
     expect(page).to have_content("Hot n Spicy")
   end
@@ -25,5 +25,10 @@ feature "unathenticated Users can see a list of items" do
     within("#flash_notice") do
       "You have 1, Hot n Spicy in your cart."
     end
+  end
+
+  scenario "User can not visit Admin pages" do
+    visit admin_categories_path
+    expect(current_path).to eq(root_path)
   end
 end
