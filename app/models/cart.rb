@@ -1,6 +1,5 @@
 class Cart
   attr_reader :data
-
   def initialize(input_data)
     @data = input_data || Hash.new
   end
@@ -33,16 +32,11 @@ class Cart
   end
 
   def total
-    items.map { |item| item.price}
-          .reduce(:+) / 100
-    end
-
-    def items
-      data.keys.map do |item_id|
-        item = Item.find(item_id)
-    end
+    data.keys.map do |item_id|
+      item = Item.find(item_id)
+      item.price * quantity = data[item_id]
+    end.reduce(:+) / 100
   end
-
   # def edit_quantity
   #   byebug
   #   quantity = line_items[0][1]
