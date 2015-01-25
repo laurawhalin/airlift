@@ -7,5 +7,6 @@ module Admin
     def new
       @category = Category.new
     end
+
   end
 end
