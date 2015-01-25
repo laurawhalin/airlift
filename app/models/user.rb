@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_many :orders
   enum role: %w(default admin)
 
+  def past_orders
+    orders.where(status: :Completed)
+  end
+
   def admin?
     role == "admin"
   end

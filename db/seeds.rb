@@ -7,6 +7,44 @@ class Seed
     build_items_category
   end
 
+  def build_orders
+    order1 = Order.create(user_id: 1, status: "Ordered", total: 2000)
+    order1_item1 = OrdersItem.create(item_id: 1, order_id: 1, quantity: 2, subtotal: 2000)
+
+    order2 = Order.create(user_id: 2, status: "Ordered", total: 1500)
+    order2_item1 = OrdersItem.create(item_id: 1, order_id: 2, quantity: 1, subtotal: 1000)
+    order2_item6 = OrdersItem.create(item_id: 6, order_id: 2, quantity: 1, subtotal: 500)
+
+    order3 = Order.create(user_id: 3, status: "Completed", total: 1000)
+    order3_item6 = OrdersItem.create(item_id: 6, order_id: 3, quantity: 2, subtotal: 1000)
+
+    order4 = Order.create(user_id: 4, status: "Completed", total: 3400)
+    order4_item1 = OrdersItem.create(item_id: 1, order_id: 4, quantity: 1, subtotal: 1000)
+    order4_item6 = OrdersItem.create(item_id: 6, order_id: 4, quantity: 2, subtotal: 1000)
+    order4_item12 = OrdersItem.create(item_id: 12, order_id: 4, quantity: 2, subtotal: 1400)
+
+    order5 = Order.create(user_id: 6, status: "Paid", total: 1700)
+    order5_item1 = OrdersItem.create(item_id: 11, order_id: 5, quantity: 1, subtotal: 500)
+    order5_item1 = OrdersItem.create(item_id: 9, order_id: 5, quantity: 1, subtotal: 1200)
+
+    order6 = Order.create(user_id: 7, status: "Paid", total: 600)
+    order6_item17 = OrdersItem.create(item_id: 17, order_id: 6, quantity: 2, subtotal: 600)
+
+    order7 = Order.create(user_id: 8, status: "Canceled", total: 700)
+    order7_item18 = OrdersItem.create(item_id: 18, order_id: 7, quantity: 1, subtotal: 300)
+    order7_item19 = OrdersItem.create(item_id: 19, order_id: 7, quantity: 1, subtotal: 400)
+
+    order8 = Order.create(user_id: 9, status: "Canceled", total: 1000)
+    order8_item20 = OrdersItem.create(item_id: 20, order_id: 8, quantity: 2, subtotal: 1000)
+
+    order9 = Order.create(user_id: 1, status: "Completed", total: 2000)
+    order9_item1 = OrdersItem.create(item_id: 1, order_id: 9, quantity: 2, subtotal: 2000)
+
+    order10 = Order.create(user_id: 2, status: "Completed", total: 1100)
+    order10_item7 = OrdersItem.create(item_id: 7, order_id: 10, quantity: 2, subtotal: 1100)
+
+  end
+
   def build_items
     item1 = Item.create(title: "Gut Buster", description: "If its in the store, it's in this burrito!", price: 1000, image:"burrito_360.png")
     item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potatoe burrito.", price: 850, image:"burrito_360.png")
@@ -71,18 +109,6 @@ class Seed
     category5 = Category.create(name: "Sides", description: "&#192; la carte options.")
   end
 
-  def build_orders
-    order1 = Order.create(user_id: 1, status: "Ordered", total: 1500)
-    order2 = Order.create(user_id: 2, status: "Ordered", total: 600)
-    order3 = Order.create(user_id: 3, status: "Completed", total: 700)
-    order4 = Order.create(user_id: 4, status: "Completed", total: 1100)
-    order5 = Order.create(user_id: 6, status: "Paid", total: 2400)
-    order6 = Order.create(user_id: 7, status: "Paid", total: 400)
-    order7 = Order.create(user_id: 8, status: "Canceled", total: 1200)
-    order8 = Order.create(user_id: 9, status: "Canceled", total: 2000)
-    order9 = Order.create(user_id: 1, status: "Completed", total: 3200)
-    order10 = Order.create(user_id: 2, status: "Completed", total: 1600)
-  end
 
   def build_users
     user1 = User.create(fullname: "Johnny Bravo", email: "hooaa@gmail.com", display_name: "jbravo", password: "password", role: 0)
@@ -96,5 +122,7 @@ class Seed
     user9 = User.create(fullname: "Josh Mejia", email: "demo+jmeija@jumpstartlab.com", display_name: "meija", password: "password", role: 0)
     user10 = User.create(fullname: "Joe Blow", email: "joe@gmail.com", display_name: "joe", password: "joe", role: 1, image: "joe_blow.jpg")
   end
+
+
 end
 Seed.new
