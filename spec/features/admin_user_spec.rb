@@ -37,4 +37,14 @@ feature "Admin User" do
     expect(current_path).to eq(admin_categories_path)
     expect(page).to have_content("Veggie2")
   end
+
+  scenario "Admin can visit admin dashboard" do
+    admin_user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).
+    and_return(admin_user)
+    visit "/"
+    expect(page).to have_content("Admin Dashboard")
+    click_link_or_button("Admin Dashboard")
+    expect(current_path).to eq(admin_dashboard_index_path)
+  end
 end

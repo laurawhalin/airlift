@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :categories
+    resources :dashboard
+    resources :items
   end
 
   # resources :users, only: [:show, :edit, :update] do
