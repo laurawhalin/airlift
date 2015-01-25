@@ -28,6 +28,11 @@ class ApplicationController < ActionController::Base
     @categoryindex = Category.all
   end
 
+  def is_admin?
+    current_user.admin? if !current_user.nil?
+  end
+
   helper_method :current_categories
   helper_method :current_user
+  helper_method :is_admin?
 end
