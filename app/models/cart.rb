@@ -41,7 +41,7 @@ class Cart
   end
 
   def update_qty(params)
-    if data.keys.any? {|key| key == params[:item_id]}
+    if data.keys.any? { |key| key == params[:item_id] }
       data[params[:item_id]] = params[:qty].to_i
       line_items
     end
