@@ -36,3 +36,29 @@ DETAIL:  There is 1 other session using the database.
 STATEMENT:  DROP DATABASE IF EXISTS "dinner_dash_development"
 ERROR:  database "dinner_dash_development" already exists
 STATEMENT:  CREATE DATABASE "dinner_dash_development" ENCODING = 'utf8'
+LOG:  database system was shut down at 2015-01-25 17:41:08 MST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  unexpected EOF on client connection with an open transaction
+LOG:  unexpected EOF on client connection with an open transaction
+LOG:  unexpected EOF on client connection with an open transaction
+ERROR:  database "dinner_dash_development" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "dinner_dash_development"
+ERROR:  database "dinner_dash_development" already exists
+STATEMENT:  CREATE DATABASE "dinner_dash_development" ENCODING = 'utf8'
+ERROR:  database "dinner_dash_development" already exists
+STATEMENT:  CREATE DATABASE "dinner_dash_development" ENCODING = 'utf8'
+ERROR:  database "dinner_dash_development" is being accessed by other users
+DETAIL:  There are 2 other sessions using the database.
+STATEMENT:  DROP DATABASE IF EXISTS "dinner_dash_development"
+LOG:  could not send data to client: Broken pipe
+STATEMENT:  DROP DATABASE IF EXISTS "dinner_dash_development"
+FATAL:  connection to client lost
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2015-01-26 00:00:03 MST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

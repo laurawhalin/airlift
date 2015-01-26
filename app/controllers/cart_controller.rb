@@ -12,9 +12,14 @@ class CartController < ApplicationController
     redirect_to :back
   end
 
+  def update
+    @cart = @cart.update_qty(params)
+    redirect_to :back
+  end
+
   def show
   end
-    
+
   def destroy
     item = Item.find(params[:id])
     @cart.delete_item(item.id)
