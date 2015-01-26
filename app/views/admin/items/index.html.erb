@@ -1,0 +1,20 @@
+<h2>All Items</h2>
+<table>
+  <% @items.each do |item| %>
+  <tr>
+    <td>
+      <%= item.title %>
+    </td>
+    <td>
+      <%= item.description %>
+    </td>
+    <td>
+      <%= number_to_currency(item.price / 100) %>
+    </td>
+    <td>
+      <%= image_tag(item.image) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Create New Item", new_admin_item_path %>
