@@ -46,7 +46,7 @@ feature "Admin User" do
     visit admin_categories_path
     click_link "Delete"
     expect(current_path).to eq(admin_categories_path)
-    #expect(page).to have_content("Are you sure?")
+    # expect(page).to have_content("Are you sure?")
     expect(current_path).to eq(admin_categories_path)
     expect(page).not_to have_content("Meat")
   end
