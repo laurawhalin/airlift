@@ -5,4 +5,16 @@ class User < ActiveRecord::Base
   validates :display_name, length: { in: 2..32 }, allow_nil: true
   has_many :orders
   enum role: %w(default admin)
+
+  # def completed
+  #   orders.where(status: :Completed)
+  # end
+  #
+  # def cancelled
+  #   orders.where(status: :Cancel)
+  # end
+
+  def admin?
+    role == "admin"
+  end
 end

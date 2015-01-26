@@ -1,4 +1,11 @@
 <div id="banner">
 
-<h1>Past Orders</h1>
+<h1>Orders</h1>
+  <ul>
+    <% @orders.each do |order| %>
+    <li><%= "Order# #{order.id}: " %> <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+      <%= link_to 'view', user_order_path(@current_user, order) %>
+    </li>
+    <% end %>
+  </ul>
 </div>
