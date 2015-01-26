@@ -9,7 +9,14 @@ module Admin
     end
 
     def create
-
+      Item.create(item_params)
+      redirect_to admin_items_path
     end
   end
+
+  # private
+  # why you no work here
+  # def item_params
+  #   params.require(:item).permit(:title, :description, :price)
+  # end
 end
