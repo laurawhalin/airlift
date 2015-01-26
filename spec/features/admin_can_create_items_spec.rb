@@ -12,10 +12,6 @@ feature "Admin User Items" do
                                               .and_return(@admin_user)
 
     visit admin_items_path
-    within("#table") do
-      expect(current_path).to eq(admin_items_path)
-    end
-    expect(page).to have_content("food")
   end
 
   scenario "Admin User can create new items" do
