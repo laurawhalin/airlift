@@ -17,7 +17,7 @@ feature "Admin User Items" do
     fill_in "item[title]", with: "new"
     fill_in "item[description]", with: "this is it"
     fill_in "item[price]", with: "2200"
-    click_link_or_button 'Save'
+    click_link_or_button "Save"
     expect(current_path).to eq(admin_items_path)
     expect(page).to have_content("new")
     expect(page).to have_content("this is it")
