@@ -6,7 +6,7 @@ feature "Admin User Items" do
                               password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
   end
 
-  scenario "User Admin can see a list of items" do
+  scenario "User Admin can visit items index page" do
     item = Item.create(title: "food", description: "Yummy", image: "joe.jpeg")
     allow_any_instance_of(ApplicationController).to receive(:current_user)
                                               .and_return(@admin_user)
@@ -14,7 +14,7 @@ feature "Admin User Items" do
     visit admin_items_path
   end
 
-  scenario "Admin User can create new items" do
+  scenario "Admin User can create new items and see them on index page" do
     allow_any_instance_of(ApplicationController).to receive(:current_user)
     .and_return(@admin_user)
     visit admin_items_path
