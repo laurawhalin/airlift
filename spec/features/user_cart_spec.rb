@@ -50,6 +50,7 @@ feature "Add Items to Cart" do
       expect(page).to_not have_content("1")
       expect(page).to_not have_content("$8.00")
     end
+  end
 
   scenario "user can update quantity of item in cart" do
     visit items_path

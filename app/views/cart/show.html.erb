@@ -21,7 +21,11 @@
   <% @cart.line_items.each do |line_item| %>
   <tr>
     <td>
-      <%= number_field_tag("", value = line_item[1]) %>
+      <%= form_tag(cart_path, method: :put, multipart: true) do %>
+        <%= number_field_tag("qty", line_item[1]) %>
+        <%= hidden_field_tag("item_id", line_item[0].id) %>
+        <%= submit_tag "Update Qty" %>
+      <% end %>
     </td>
     <td>
       <%= line_item[0].title %>
