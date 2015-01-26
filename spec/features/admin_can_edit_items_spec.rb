@@ -8,7 +8,7 @@ feature "Admin User Items" do
 
   scenario "Admin User can edit current items and see them updated on index page" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
-    item = Item.create(title:"yum", description: "you bet", price: 12300)
+    item = Item.create(title: "yum", description: "you bet", price: 12300)
 
     visit admin_items_path
     click_link_or_button "Edit Item"
