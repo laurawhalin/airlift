@@ -32,7 +32,6 @@ feature "Add Items to Cart" do
     click_link("2")
     within("#cart_table") do
       expect(page).to have_content("Qty")
-      expect(page).to have_content("2")
       expect(page).to have_content("$16.00")
     end
   end
@@ -48,6 +47,18 @@ feature "Add Items to Cart" do
     end
     within("#cart_table") do
       expect(page).to_not have_content("1")
+      expect(page).to_not have_content("$8.00")
+    end
+  end
+
+  scenario "user can update quantity of item in cart" do
+    visit items_path
+    click_button("Add to Cart")
+    click_link("1")
+    fill_in "qty", with: "2"
+    click_button("Update Qty")
+    within("#cart_table") do
+      expect(page).to have_content("$16.00")
       expect(page).to_not have_content("$8.00")
     end
   end

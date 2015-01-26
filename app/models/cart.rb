@@ -39,9 +39,11 @@ class Cart
       end.reduce(:+) / 100
     end
   end
-  # def edit_quantity
-  #   byebug
-  #   quantity = line_items[0][1]
-  #   #set edit_quantity to equal = dropdown number
-  # end
+
+  def update_qty(params)
+    if data.keys.any? { |key| key == params[:item_id] }
+      data[params[:item_id]] = params[:qty].to_i
+      line_items
+    end
+  end
 end
