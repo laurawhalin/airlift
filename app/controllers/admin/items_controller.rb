@@ -13,9 +13,8 @@ module Admin
       redirect_to admin_items_path
     end
   end
-
   # private
-  # why you no work here
+  # why you no work here??? only works in Admin Controller
   # def item_params
   #   params.require(:item).permit(:title, :description, :price)
   # end

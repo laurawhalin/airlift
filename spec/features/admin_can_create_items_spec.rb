@@ -2,17 +2,22 @@ require "rails_helper"
 
 feature "Admin User" do
   background do
+    @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: "admin",
+                              password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
   end
+
   scenario "User Admin can see a list of items" do
-    @item = Item.create(title: "The big one", description: "Yummy", image: "joe.jpeg")
+    item = Item.create(title: "food", description: "Yummy", image: "joe.jpeg")
     allow_any_instance_of(ApplicationController).to receive(:current_user)
                                               .and_return(@admin_user)
+
     visit admin_items_path
-    expect(page).to have_content("The big one")
+    expect(current_path).to eq(admin_items_path)
+    expect(page).to have_content("food")
   end
 
   scenario "Admin User can create new items" do
-    allow_any_instance_of(ApplicatonController).to receive(:current_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
     .and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Create New Item"
@@ -20,6 +25,7 @@ feature "Admin User" do
 
     fill_in "item[title]", with: "Delish"
     fill_in "item[description]", with: "It's the best"
+    fill_in "item[price]", with: "1234"
     click_link_or_button "Save"
     expect(current_path).to eq(admin_items_path)
     expect(page).to have_content("Delish")
