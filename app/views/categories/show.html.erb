@@ -9,7 +9,7 @@
       <%= list_item.description %>
     </td>
     <td>
-      <%= list_item.price %>
+      <%= number_to_currency(list_item.price.to_f / 100.00) %>
     </td>
     <td>
       <%= list_item.image %>
