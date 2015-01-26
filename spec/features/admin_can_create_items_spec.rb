@@ -8,15 +8,13 @@ feature "Admin User Items" do
 
   scenario "User Admin can visit items index page" do
     item = Item.create(title: "food", description: "Yummy", image: "joe.jpeg")
-    allow_any_instance_of(ApplicationController).to receive(:current_user)
-                                              .and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
 
     visit admin_items_path
   end
 
   scenario "Admin User can create new items and see them on index page" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user)
-    .and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Create New Item"
     expect(current_path).to eq(new_admin_item_path)
