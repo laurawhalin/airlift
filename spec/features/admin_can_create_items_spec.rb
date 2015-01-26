@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Admin User" do
+feature "Admin User Items" do
   background do
     @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: "admin",
                               password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
@@ -12,7 +12,9 @@ feature "Admin User" do
                                               .and_return(@admin_user)
 
     visit admin_items_path
-    expect(current_path).to eq(admin_items_path)
+    within("#table") do
+      expect(current_path).to eq(admin_items_path)
+    end
     expect(page).to have_content("food")
   end
 
