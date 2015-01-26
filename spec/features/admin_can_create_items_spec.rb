@@ -2,12 +2,18 @@ require "rails_helper"
 
 feature "Admin User Items" do
   background do
-    @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: "admin",
-                              password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
+    @admin_user = User.create(fullname: "frank",
+      email: "frank@aol.com",
+      role: "admin",
+      password: "foobar1234",
+      password_confirmation: "foobar1234",
+      display_name: "franky")
   end
 
   scenario "User Admin can visit items index page" do
-    item = Item.create(title: "food", description: "Yummy", image: "joe.jpeg")
+    item = Item.create(title: "food",
+     description: "Yummy",
+      image: "joe.jpeg")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
 
     visit admin_items_path
