@@ -51,7 +51,7 @@ feature "User login" do
                                                   and_return(admin_user)
     visit user_orders_path(user)
     within("#banner") do
-      expect(page).to have_content("Past Orders")
+      expect(page).to have_content("Orders")
     end
   end
 end

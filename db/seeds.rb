@@ -51,7 +51,7 @@ class Seed
     item3 = Item.create(title: "Fiesta Especial", description: "A 6 foot party sized burrito to share with your family and friends.", price: 10000, image:"burrito_360.png")
     item4 = Item.create(title: "UF burritO", description: "Monthly special. It's out of this world.", price: 689, image:"burrito_360.png")
     item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image:"burrito_360.png")
-    item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image:"torpedo_tacos.png")
+    item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image:"torpedo_tacos.png", retired: true)
     item7 = Item.create(title: "Queso Quesadillas", description: "These delicious veggie dillas can be frisbeed to your door upon request.", price: 550, image:"quick_quesadillas.png")
     item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: 750, image:"death_by_burrito.png")
     item9 = Item.create(title: "Flaming Fajitas", description: "These veggie fajitas will set your mouth on fire.", price: 1200, image:"flaming_fajitas.png")
