@@ -6,8 +6,4 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :items_categories
   has_many :orders_items
   has_many :orders, through: :orders_items
-
-  def retired?
-    
-  end
 end

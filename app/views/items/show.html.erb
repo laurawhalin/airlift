@@ -1,0 +1,8 @@
+<div>
+  <h3><%= @item.title %></h3>
+  <%= @item.description %><br/>
+  price: <%= number_to_currency(@item.price / 100) %><br/>
+  <% if !@item.retired %>
+    <%= button_to "Add to Cart", cart_index_path(item_id: @item) %><br/>
+  <% end %>
+</div>
