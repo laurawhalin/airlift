@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150126234941) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,19 +27,13 @@ ActiveRecord::Schema.define(version: 20150126234941) do
     t.string   "title"
     t.string   "description"
     t.integer  "price"
-<<<<<<< HEAD
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.boolean  "retired"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-=======
-    t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "retired"
->>>>>>> master
   end
 
   create_table "items_categories", force: :cascade do |t|

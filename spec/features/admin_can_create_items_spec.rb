@@ -12,8 +12,7 @@ feature "Admin User Items" do
 
   scenario "User Admin can visit items index page" do
     item = Item.create(title: "food",
-                       description: "Yummy",
-                       image: "joe.jpeg")
+                       description: "Yummy")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
 
     visit admin_items_path
