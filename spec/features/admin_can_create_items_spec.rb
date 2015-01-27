@@ -32,6 +32,21 @@ feature "Admin User Items" do
     expect(page).to have_content("Delish")
   end
 
+  scenario "Admin User can assign items to a category and see tags on our index page" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    visit admin_items_path
+    click_link_or_button "Create New Item"
+    expect(current_path).to eq(new_admin_items_path)
+    fill_in "item[title]", with: "Delish"
+    fill_in "item[description]", with: "It's the best"
+    fill_in "item[price]", with: "1234"
+    check "Spicy"
+    click_link_or_button "Save"
+    expect(current_path).to eq(admin_items_path)
+    # within('#item.id')
+    within(page).to have_content("Spicy")
+  end
+
   xscenario "Admin User can create item with image" do
   end
 end
