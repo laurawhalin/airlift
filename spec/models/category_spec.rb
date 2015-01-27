@@ -26,14 +26,12 @@ RSpec.describe Category, type: :model do
     category.items.create(
                           title: "Green Chili Burrito",
                           description: "Amazingly spicey burrito",
-                          price: 655,
-                          image: "image/path"
+                          price: 655                          
                           )
     category.items.create(
                           title: "Hot n Spicy",
                           description: "spicey burrito",
-                          price: 700,
-                          image: "image/path"
+                          price: 700
                           )
     expect(category.items.count).to eq 2
     expect(category.items.map(&:title)).to eq(["Green Chili Burrito",
