@@ -1,18 +1,18 @@
-<h2><%= @category.name %> <%= "Items" %></h2>
-<table>
+<h3><%= @category.name %> <%= "Items" %></h3>
+<table class="table">
   <% @listing.each do |list_item| %>
   <tr>
     <td>
-      <%= list_item.title %>
+      <%= link_to list_item.title, item_path(list_item) %>
+    </td>
+    <td>
+      <%= image_tag list_item.image.url(:thumb) %>
     </td>
     <td>
       <%= list_item.description %>
     </td>
     <td>
       <%= number_to_currency(list_item.price.to_f / 100.00) %>
-    </td>
-    <td>
-      <%= image_tag list_item.image.url(:thumb) %>
     </td>
     <td>
       <%= button_to "Add to Cart", cart_index_path(item_id: list_item) %>
