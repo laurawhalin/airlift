@@ -47,6 +47,13 @@
   Cart Total: <%= number_to_currency(@cart.total) %>
 </div>
 
-<div id="checkout">
-  <%= button_to "Checkout", user_orders_path(@cart) %>
+  <% if current_user == nil %>
+    <div id="checkout" class="not_logged_in">
+      <button type="button">Checkout</button>
+    </div>
+  <% else %>
+    <div id="checkout" class="logged_in">
+      <%= button_to "Checkout", user_orders_path(current_user, @cart) %>
+    </div>
+  <% end %>
 </div>

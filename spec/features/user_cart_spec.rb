@@ -7,6 +7,13 @@ feature "Add Items to Cart" do
       description: "A tasty burrito for your mouth.",
       price: 800
     )
+    @user = User.create(
+      fullname: "Frank",
+      email: "frank@gmail.com",
+      role: "default",
+      password: "password",
+      password_confirmation: "password"
+    )
   end
 
   scenario "an item has a cart button" do
@@ -63,14 +70,22 @@ feature "Add Items to Cart" do
   end
 
   scenario "authenticated user can checkout" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).
+                                                 and_return(@user)
     visit items_path
     click_button("Add to Cart")
     click_link("1")
     click_button("Checkout")
-    expect(current_path).to eq(user_order_path)
-    within("checkout") do
-      expect(page).to have_content("Thank you for your order!")
-      expect(page).to have_css("video blah blah")
+    within("#cart") do
+      expect(page).to have_content("0")
     end
+  end
+
+  scenario "unauthorized user cannot checkout" do
+    visit items_path
+    click_button("Add to Cart")
+    click_link("1")
+    click_button("Checkout")
+    expect(page).to_not have_content("Status: ordered")
   end
 end
