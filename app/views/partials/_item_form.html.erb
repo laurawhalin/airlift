@@ -27,7 +27,7 @@
 <div class="field">
   <%= f.file_field :image %>
 </div>
-<div id="field">
+<div id="categories">
   <%   @categories.each do |category| %>
   <%=  f.label :category_list, category.name %>
   <%=  check_box(:category_list, "categories", {:multiple => true}, category.name, nil ) %>

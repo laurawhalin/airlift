@@ -11,10 +11,15 @@ module Admin
 
     def create
       item = Item.create(item_params)
-      string_category_tags = params[:category_list][:categories].uniq
-      found_tags = string_category_tags.collect{|name| Category.find_or_create_by(name: name)}
-      item.categories = found_tags
-      redirect_to admin_items_path
+      if params[:category_list] == nil
+        flash[:errors] = "You must select a category"
+        redirect_to new_admin_item_path
+      else
+        string_category_tags = params[:category_list][:categories].uniq
+        found_tags = string_category_tags.collect{|name| Category.find_or_create_by(name: name)}
+        item.categories = found_tags
+        redirect_to admin_items_path
+      end
     end
 
     def edit
@@ -26,7 +31,15 @@ module Admin
       @item = Item.find(params[:id])
       @item.image = nil
       @item.update(item_params)
-      redirect_to admin_items_path
+      if params[:category_list] == nil
+        flash[:errors] = "You must select a category"
+        redirect_to new_admin_item_path
+      else
+        string_category_tags = params[:category_list][:categories].uniq
+        found_tags = string_category_tags.collect{|name| Category.find_or_create_by(name: name)}
+        @item.categories = found_tags
+        redirect_to admin_items_path
+      end
     end
   end
 end

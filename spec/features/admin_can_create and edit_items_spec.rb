@@ -8,6 +8,11 @@ feature "Admin User Items" do
                               password: "foobar1234",
                               password_confirmation: "foobar1234",
                               display_name: "franky")
+    @category = Category.create(name: "Meat",
+                                description: "Bacon! Bacon! Bacon!")
+    @item = Item.create(title: "Hot n Spicy",
+                        description: "All the hot and spicy things you can handle",
+                        price: 1000)
   end
 
   scenario "User Admin can visit items index page" do
@@ -23,10 +28,10 @@ feature "Admin User Items" do
     visit admin_items_path
     click_link_or_button "Create New Item"
     expect(current_path).to eq(new_admin_item_path)
-
     fill_in "item[title]", with: "Delish"
     fill_in "item[description]", with: "It's the best"
     fill_in "item[price]", with: "1234"
+    find(:css, "#category_list_categories_meat[value='Meat']").set(true)
     click_link_or_button "Save"
     expect(current_path).to eq(admin_items_path)
     expect(page).to have_content("Delish")
@@ -36,17 +41,27 @@ feature "Admin User Items" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Create New Item"
-    expect(current_path).to eq(new_admin_items_path)
     fill_in "item[title]", with: "Delish"
     fill_in "item[description]", with: "It's the best"
     fill_in "item[price]", with: "1234"
-    check "Spicy"
+    find(:css, "#category_list_categories_meat[value='Meat']").set(true)
     click_link_or_button "Save"
     expect(current_path).to eq(admin_items_path)
-    # within('#item.id')
-    within(page).to have_content("Spicy")
+    click_link "Meat"
+    expect(page).to have_content("Delish")
   end
 
-  xscenario "Admin User can create item with image" do
+  scenario "Admin User can edit an item and reassign it to a category" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    visit admin_items_path
+    click_link_or_button "Edit Item"
+    fill_in "item[title]", with: "Hot n Spicy"
+    fill_in "item[description]", with: "It's the best"
+    fill_in "item[price]", with: "1234"
+    find(:css, "#category_list_categories_meat[value='Meat']").set(true)
+    click_link_or_button "Save"
+    expect(current_path).to eq(admin_items_path)
+    click_link "Meat"
+    expect(page).to have_content("It's the best")
   end
 end
