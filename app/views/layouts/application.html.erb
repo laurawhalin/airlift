@@ -48,8 +48,8 @@
             <%= link_to('Register', register_path) %>
           <% end %>
         </div>
-        <div id="cart" class="col-md-2 text-right">
-          <i class="fa fa-shopping-cart fa-2x"></i><%= link_to @cart.count_total, cart_path(cart_id = @cart) %>
+        <div id="cart" class="col-md-6 text-right">
+          <i class="fa fa-shopping-cart fa-2x"></i> <%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
         </div>
       </div>
   </div>
