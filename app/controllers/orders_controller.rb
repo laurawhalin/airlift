@@ -22,12 +22,12 @@ class OrdersController < ApplicationController
                           )
     items = Item.find(@cart.data.keys)
     @line_items = items.map do |item|
-                    OrdersItem.create(
-                    order_id: @order.id,
-                    item_id: item.id,
-                    quantity: @cart.data[item.id.to_s],
-                    subtotal: item.price * @cart.data[item.id.to_s]
-                    )
+      OrdersItem.create(
+                        order_id: @order.id,
+                        item_id: item.id,
+                        quantity: @cart.data[item.id.to_s],
+                        subtotal: item.price * @cart.data[item.id.to_s]
+                        )
     end
     session[:cart] = nil
     redirect_to user_order_path(@user, @order)
