@@ -3,11 +3,9 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :items
-  resources :cart do
-    member do
-      delete :remove_item
-    end
-  end
+  resources :cart
+
+  # get "/cart", to: "cart#show", as: "cart"
   resources :categories
   resources :orders_items
   root "welcome#index"

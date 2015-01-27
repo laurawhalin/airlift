@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){
+  $(".not_logged_in").click(function(){
+    alert("You must be logged in to check out!")
+  });
+});
