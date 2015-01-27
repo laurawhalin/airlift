@@ -62,4 +62,16 @@ feature "Add Items to Cart" do
       expect(page).to_not have_content("$8.00")
     end
   end
+
+  scenario "authenticated user can checkout" do
+    visit items_path
+    click_button("Add to Cart")
+    click_link("1")
+    click_button("Checkout")
+    expect(current_path).to eq(user_order_path)
+    within("checkout") do
+      expect(page).to have_content("Thank you for your order!")
+      expect(page).to have_css("video blah blah")
+    end
+  end
 end

@@ -44,5 +44,9 @@
 </table>
 
 <div id="cart_total">
-    Cart Total: <%= number_to_currency(@cart.total) %>
+  Cart Total: <%= number_to_currency(@cart.total) %>
+</div>
+
+<div id="checkout">
+  <%= button_to "Checkout", user_orders_path(@cart) %>
 </div>

@@ -9,4 +9,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     authorize! :read, @order
   end
+
+  def new
+
+  end
 end
