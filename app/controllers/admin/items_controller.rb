@@ -9,7 +9,6 @@ module Admin
     end
 
     def create
-      # Item.create(item_params)
       Item.create(item_params)
       redirect_to admin_items_path
     end
@@ -20,6 +19,7 @@ module Admin
 
     def update
       @item = Item.find(params[:id])
+      @item.image = nil
       @item.update(item_params)
       redirect_to admin_items_path
     end

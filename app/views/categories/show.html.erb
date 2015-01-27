@@ -12,7 +12,7 @@
       <%= number_to_currency(list_item.price.to_f / 100.00) %>
     </td>
     <td>
-      <%= image_tag(list_item.image) %>
+      <%= image_tag list_item.image.url(:thumb) %>
     </td>
     <td>
       <%= button_to "Add to Cart", cart_index_path(item_id: list_item) %>
