@@ -5,8 +5,7 @@ feature "Add Items to Cart" do
     @item = Item.create(
       title: "Green Burrito",
       description: "A tasty burrito for your mouth.",
-      price: 800,
-      image: "burrito.jpg"
+      price: 800
     )
   end
 

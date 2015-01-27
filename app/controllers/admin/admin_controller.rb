@@ -8,5 +8,9 @@ module Admin
     def verify_admin
       redirect_to root_url unless current_user && current_user.role == "admin"
     end
+
+    def item_params
+      params.require(:item).permit(:title, :description, :price, :image)
+    end
   end
 end
