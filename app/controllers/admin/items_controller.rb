@@ -9,7 +9,6 @@ module Admin
     end
 
     def create
-      # Item.create(item_params)
       Item.create(item_params)
       redirect_to admin_items_path
     end
