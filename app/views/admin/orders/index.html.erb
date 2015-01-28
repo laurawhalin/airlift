@@ -8,9 +8,11 @@
       <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
         <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
         <% if status == :ordered %>
-          <%= link_to "cancel" %>/<%= link_to "mark as paid" %>
+          <%= link_to "cancel", admin_orders_path %> /
+          <%= link_to "mark as paid", admin_orders_path %>
         <% elsif status == :paid %>
-          <%= link_to "cancel" %>/<%= link_to "mark as completed" %>
+          <%= link_to "cancel", admin_orders_path %> /
+          <%= link_to "mark as completed", admin_orders_path %>
         <% end %>
       </li>
     <% end %>
