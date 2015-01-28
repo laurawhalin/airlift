@@ -7,7 +7,11 @@
     <% @orders[status].each do |order| %>
       <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
         <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-        <%= link_to 'change status' %>
+        <% if status == :ordered %>
+          <%= link_to "cancel" %>/<%= link_to "mark as paid" %>
+        <% elsif status == :paid %>
+          <%= link_to "cancel" %>/<%= link_to "mark as completed" %>
+        <% end %>
       </li>
     <% end %>
   <% end %>
