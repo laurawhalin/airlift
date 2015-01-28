@@ -6,8 +6,10 @@ class Order < ActiveRecord::Base
   has_many :items, through: :orders_items
   belongs_to :user
 
-  # scope :completed -> { where(status: "completed") }
-  # scope :expensive -> { where("price > ?", 100) }
+  scope :ordered, -> { where(status: "ordered") }
+  scope :paid, -> { where(status: "paid") }
+  scope :cancelled, -> { where(status: "cancelled") }
+  scope :completed, -> { where(status: "completed") }
   #
   # def self.completed
   #   where(status: "completed")

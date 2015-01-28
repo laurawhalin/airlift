@@ -4,7 +4,7 @@ feature "User login" do
   let(:default_user_attributes) { { fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: "default", password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
   let(:admin_user_attributes) { { fullname: "frank", email: "frank@aol.com", role: "admin", password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
   let(:protected_user_attributes) { { fullname: "bob", email: "bob@aol.com", role: "default", password: "pass", password_confirmation: "pass", display_name: "bob" } }
-  let(:user) { User.create(default_user_attributes) }
+  let!(:user) { User.create(default_user_attributes) }
   let(:admin_user) { User.create(admin_user_attributes) }
   let(:protected_user) { User.create(protected_user_attributes) }
 
@@ -14,7 +14,6 @@ feature "User login" do
   end
 
   scenario "User can sign in with correct credentials" do
-    user
     visit "/"
     within("#session") do
       fill_in "session[email]", with: "jimbobfrank@aol.com"
@@ -46,12 +45,18 @@ feature "User login" do
   end
 
   scenario "an admin can view other users information" do
-    admin_user
+    order = user.orders.create(status: "completed", total: 1000)
+    item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
+    order1_item1 = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(admin_user)
     visit user_orders_path(user)
-    within("#banner") do
+    within("#orders") do
       expect(page).to have_content("Orders")
+      expect(page).to have_content("view")
     end
+    click_link_or_button 'view'
+    expect(page).to have_content("Order Total")
+    expect(current_path).to eq(user_order_path(admin_user, order))
   end
 end
