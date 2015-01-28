@@ -1,17 +1,23 @@
 <div id="orders" class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-  <h2>Manage Customer Orders</h2>
-  <ul>
-    <% @orders.keys.each do |status| %>
+    <h2>Manage Customer Orders</h2>
+    <ul>
+      <% @orders.keys.each do |status| %>
       <h3><%= status %></h3>
       <% @orders[status].each do |order| %>
-        <li><%= "Order# #{order.id}: " %> <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-          <%= link_to 'view', admin_order_path(order) %>
+        <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
+          <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+          <% if status == :ordered %>
+            <%= link_to "cancel", admin_orders_path %> /
+            <%= link_to "mark as paid", admin_orders_path %>
+          <% elsif status == :paid %>
+            <%= link_to "cancel", admin_orders_path %> /
+            <%= link_to "mark as completed", admin_orders_path %>
+          <% end %>
         </li>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
   </div>
   <div class="col-md-1"></div>
 </div>
