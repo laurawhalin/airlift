@@ -21,10 +21,6 @@
 
       <div id="restaurant_name" class="col-md-5">
         <h1><%= link_to("Burrito Bombers", root_url )%></h1>
-
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>
       </div>
 
       <div id="logo" class="col-md-2">
@@ -60,12 +56,18 @@
     </div>
   </div>
 
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+
   <div class="row">
     <%= yield %>
   </div>
 
 <footer>
-  <%= link_to "Admin Dashboard", admin_dashboard_index_path if admin? %>
+
+  <% if admin, show the following:  %>
+    <%= link_to "Admin Dashboard", admin_dashboard_index_path if admin? %>
 </footer>
 <%= debug(params) if Rails.env.development? %>
 
