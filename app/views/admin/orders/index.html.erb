@@ -5,8 +5,9 @@
   <% @orders.keys.each do |status| %>
     <h3><%= status %></h3>
     <% @orders[status].each do |order| %>
-      <li><%= "Order# #{order.id}: " %> <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-        <%= link_to 'view', admin_order_path(order) %>
+      <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
+        <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+        <%= link_to 'change status' %>
       </li>
     <% end %>
   <% end %>
