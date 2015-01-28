@@ -11,20 +11,21 @@ feature "Admin User Items" do
     @category = Category.create(name: "Meat",
                                 description: "Bacon! Bacon! Bacon!")
     @item = Item.create(title: "Hot n Spicy",
-                        description: "All the hot and spicy things you can handle",
+                        description: "All the hot and spicy things",
                         price: 1000)
   end
 
   scenario "User Admin can visit items index page" do
-    item = Item.create(title: "food",
-                       description: "Yummy")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    Item.create(title: "food", description: "Yummy")
+    allow_any_instance_of(ApplicationController).
+      to receive(:current_user).and_return(@admin_user)
 
     visit admin_items_path
   end
 
   scenario "Admin User can create new items and see them on index page" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).
+      to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Create New Item"
     expect(current_path).to eq(new_admin_item_path)
@@ -38,7 +39,8 @@ feature "Admin User Items" do
   end
 
   scenario "Admin User can assign items to a category and see tags on our index page" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).
+      to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Create New Item"
     fill_in "item[title]", with: "Delish"
@@ -52,7 +54,8 @@ feature "Admin User Items" do
   end
 
   scenario "Admin User can edit an item and reassign it to a category" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).
+      to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Edit Item"
     fill_in "item[title]", with: "Hot n Spicy"
