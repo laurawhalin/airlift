@@ -15,9 +15,7 @@ feature "Admin User Items" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Edit Item"
-    save_and_open_page
     expect(current_path).to eq(edit_admin_item_path(@item))
-
     fill_in "item[title]", with: "new"
     fill_in "item[description]", with: "this is it"
     fill_in "item[price]", with: "2200"
