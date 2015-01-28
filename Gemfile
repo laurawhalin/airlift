@@ -34,6 +34,10 @@ gem 'autoprefixer-rails'
 gem 'cancancan'
 gem "paperclip", "~> 4.2"
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
