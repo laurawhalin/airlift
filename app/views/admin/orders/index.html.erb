@@ -8,13 +8,19 @@
       <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
         <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
         <% if status == :ordered %>
-          <%= form_tag(admin_order_path(order.id), method: :put) do %>
-          <%= submit_tag("cancel") %> /
+          <%= form_tag(admin_order_path(order.id), method: :put,) do %>
+            <%= submit_tag("cancel") %>
           <% end %>
-          <%= link_to "mark as paid", admin_orders_path %>
+          <%= form_tag(admin_order_path(order.id), method: :put) do %>
+            <%= submit_tag("mark as paid") %>
+          <% end %>
         <% elsif status == :paid %>
-          <%= link_to "cancel", admin_orders_path %> /
-          <%= link_to "mark as completed", admin_orders_path %>
+          <%= form_tag(admin_order_path(order.id), method: :put) do %>
+            <%= submit_tag("cancel") %>
+          <% end %>
+          <%= form_tag(admin_order_path(order.id), method: :put) do %>
+            <%= submit_tag("mark as completed") %>
+          <% end %>        
         <% end %>
       </li>
     <% end %>
