@@ -10,16 +10,13 @@ module Admin
     end
 
     def create
-      item = Item.create(item_params)
       if params[:category_list] == nil
-        flash[:errors] = "You must select a category"
+        flash[:errors] = "You must select at least one category when creating a new item! Duh!"
         redirect_to new_admin_item_path
       else
-        string_category_tags = params[:category_list][:categories].uniq
-        found_tags = string_category_tags.map do |name|
-          Category.find_or_create_by(name: name)
-        end
-        item.categories = found_tags
+        update_category_tag
+        item = Item.create(item_params)
+        item.categories = @found_tags
         redirect_to admin_items_path
       end
     end
@@ -30,19 +27,22 @@ module Admin
     end
 
     def update
-      @item = Item.find(params[:id])
-      @item.image = nil
-      @item.update(item_params)
       if params[:category_list] == nil
-        flash[:errors] = "You must select a category"
+        flash[:errors] = "You must reassign your item to a category "
         redirect_to new_admin_item_path
       else
-        string_category_tags = params[:category_list][:categories].uniq
-        found_tags = string_category_tags.map do |name|
-          Category.find_or_create_by(name: name)
-        end
-        @item.categories = found_tags
+        update_category_tag
+        @item = Item.find(params[:id])
+        @item.update(item_params)
+        @item.categories = @found_tags
         redirect_to admin_items_path
+      end
+    end
+
+    def update_category_tag
+      string_category_tags = params[:category_list][:categories].uniq
+      @found_tags = string_category_tags.map do |name|
+        Category.find_or_create_by(name: name)
       end
     end
   end

@@ -65,6 +65,7 @@ feature "Admin User Items" do
     click_link_or_button "Save"
     expect(current_path).to eq(admin_items_path)
     click_link "Meat"
+    save_and_open_page
     expect(page).to have_content("It's the best")
   end
 end
