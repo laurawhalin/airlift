@@ -15,7 +15,7 @@
       <%= image_tag item.image.url(:thumb) %>
     </td>
     <td>
-      <%= button_to "Add to Cart", cart_index_path(item_id: item) %>
+      <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
     </td>
   </tr>
   <% end %>
