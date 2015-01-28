@@ -15,9 +15,10 @@ module Admin
 
     def update
       @order = Order.find(params[:id])
-      @order.status = "cancelled"
-      redirect_to :back
+      if params[:commit] == "cancel"
+        @order.update(status: "cancelled")
+        redirect_to admin_orders_path
+      end
     end
-
   end
 end
