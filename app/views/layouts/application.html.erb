@@ -38,8 +38,13 @@
               <h4>Welcome, <%= current_user.fullname %></h4>
             </div>
             <div class="col-sm-4">
-              <%= link_to('Orders', user_orders_path(current_user), class: "btn btn-default orders") %>
+              <%= link_to('My Orders', user_orders_path(current_user), class: "btn btn-default orders") %>
             </div>
+            <% if current_user.admin? %>
+              <div class="col-sm-4">
+                <%= link_to('All Orders', admin_orders_path, class: "btn btn-default orders") %>
+              </div>
+            <% end %>
             <div class="col-sm-4">
               <%= link_to('Logout', logout_path, :method => :delete, class: "btn btn-default logout") %>
             </div>
