@@ -2,13 +2,16 @@ require "rails_helper"
 
 feature "Admin User Items" do
   background do
-    @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: "admin",
-                              password: "foobar1234", password_confirmation: "foobar1234",
+    @admin_user = User.create(fullname: "frank",
+                              email: "frank@aol.com",
+                              role: "admin",
+                              password: "foobar1234",
+                              password_confirmation: "foobar1234",
                               display_name: "franky")
     @category = Category.create(name: "Meat",
                                 description: "Bacon! Bacon! Bacon!")
     @item = Item.create(title: "Hot n Spicy",
-                        description: "All the hot and spicy things you can handle",
+                        description: "All the hot and spicy things",
                         price: 1000)
   end
 

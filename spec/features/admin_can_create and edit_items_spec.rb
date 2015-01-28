@@ -38,7 +38,7 @@ feature "Admin User Items" do
     expect(page).to have_content("Delish")
   end
 
-  scenario "Admin User can assign items to a category and see tags on our index page" do
+  scenario "Admin User can create new item and assign to a category" do
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
