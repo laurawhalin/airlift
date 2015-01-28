@@ -66,10 +66,8 @@ feature "Admin User" do
     visit "/"
     expect(page).to have_content("All Orders")
     click_link_or_button("All Orders")
-    save_and_open_page
     expect(current_path).to eq(admin_orders_path)
     expect(page).to have_content("ordered")
+    expect(page).to have_content("paid")
   end
-
-
 end

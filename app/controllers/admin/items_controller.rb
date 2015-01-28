@@ -31,7 +31,7 @@ module Admin
 
     def update
       @item = Item.find(params[:id])
-      @item.image = nil
+      # @item.image = nil
       @item.update(item_params)
       if params[:category_list] == nil
         flash[:errors] = "You must select a category"
