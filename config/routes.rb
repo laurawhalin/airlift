@@ -13,10 +13,13 @@ Rails.application.routes.draw do
   resources :users do
     resources :orders
   end
+
+
   namespace :admin do
     resources :categories
     resources :dashboard
     resources :items
+    resources :orders
   end
 
   # resources :users, only: [:show, :edit, :update] do

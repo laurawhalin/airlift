@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   enum role: %w(default admin)
 
   # def completed
-  #   orders.where(status: :Completed)
+  #   orders.where(status: :completed)
   # end
   #
   # def cancelled
