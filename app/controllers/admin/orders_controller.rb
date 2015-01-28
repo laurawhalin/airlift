@@ -13,5 +13,11 @@ module Admin
       @user = User.find(@order.user_id)
     end
 
+    def update
+      @order = Order.find(params[:id])
+      @order.status = "cancelled"
+      redirect_to :back
+    end
+
   end
 end
