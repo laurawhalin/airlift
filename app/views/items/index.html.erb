@@ -1,5 +1,5 @@
 <h2>All Items</h2>
-<table>
+<table class="table">
   <% @items.each do |item| %>
   <tr>
     <td>
@@ -12,7 +12,7 @@
       <%= number_to_currency(item.price.to_f / 100.00) %>
     </td>
     <td>
-      <%= image_tag(item.image) %>
+      <%= image_tag item.image.url(:thumb) %>
     </td>
     <td>
       <%= button_to "Add to Cart", cart_index_path(item_id: item) %>

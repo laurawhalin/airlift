@@ -1,48 +1,51 @@
-<h1>Your Cart</h1>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Your Cart</h3>
 
-<table id="cart_table">
-  <tr>
-    <td>
-      Qty
-    </td>
-    <td>
-      Item
-    </td>
-    <td>
-      Description
-    </td>
-    <td>
-      Subtotal
-    </td>
-  </tr>
-  <tr>
+    <table id="cart_table" class="table">
+      <tr>
+        <td>Qty</td><td>Item</td><td>Description</td><td>Subtotal</td><td></td></tr>
+      <tr>
 
-  </tr>
-  <% @cart.line_items.each do |line_item| %>
-  <tr>
-    <td>
-      <%= form_tag(cart_path, method: :put) do %>
-        <%= number_field_tag("qty", line_item[1]) %>
-        <%= hidden_field_tag("item_id", line_item[0].id) %>
-        <%= submit_tag "Update Qty" %>
+      </tr>
+      <% @cart.line_items.each do |line_item| %>
+      <tr>
+        <td>
+          <%= form_tag(cart_path, method: :put) do %>
+            <%= number_field_tag("qty", line_item[1]) %>
+            <%= hidden_field_tag("item_id", line_item[0].id) %>
+            <%= submit_tag "Update Qty" %>
+          <% end %>
+        </td>
+        <td>
+          <%= line_item[0].title %>
+        </td>
+        <td>
+          <%= line_item[0].description %>
+        </td>
+        <td>
+          <%= number_to_currency(line_item[2]) %>
+        </td>
+        <td>
+          <%= button_to "Delete", cart_path(line_item[0]), method: :delete %>
+        </td>
+      </tr>
       <% end %>
-    </td>
-    <td>
-      <%= line_item[0].title %>
-    </td>
-    <td>
-      <%= line_item[0].description %>
-    </td>
-    <td>
-      <%= number_to_currency(line_item[2]) %>
-    </td>
-    <td>
-      <%= button_to "Delete", cart_path(line_item[0]), method: :delete %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+    </table>
 
-<div id="cart_total">
-    Cart Total: <%= number_to_currency(@cart.total) %>
+    <div id="cart_total">
+      Cart Total: <%= number_to_currency(@cart.total) %>
+    </div>
+
+      <% if current_user == nil %>
+        <div id="checkout" class="not_logged_in">
+          <button type="button">Checkout</button>
+        </div>
+      <% else %>
+        <div id="checkout" class="logged_in">
+          <%= button_to "Checkout", user_orders_path(current_user, @cart) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
