@@ -16,7 +16,7 @@
 <div id="status">
   <%= @order.created_at.strftime("Submitted at: %b %d, %Y %H:%M")%></br>
   Status: <%= @order.status %>
-  <% if @order.status == "Completed" || @order.status == "Canceled" %>
+  <% if @order.status == "completed" || @order.status == "cancelled" %>
     <%= " - #{time_ago_in_words(@order.updated_at)} ago" %>
   <% end %>
 </div>

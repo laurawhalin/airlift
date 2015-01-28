@@ -59,4 +59,15 @@ feature "Admin User" do
     click_link_or_button("Admin Dashboard")
     expect(current_path).to eq(admin_dashboard_index_path)
   end
+
+  scenario "Admin can visit see all orders" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).
+    and_return(@admin_user)
+    visit "/"
+    expect(page).to have_content("All Orders")
+    click_link_or_button("All Orders")
+    expect(current_path).to eq(admin_orders_path)
+    expect(page).to have_content("ordered")
+    expect(page).to have_content("paid")
+  end
 end

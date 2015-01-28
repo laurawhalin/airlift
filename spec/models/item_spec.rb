@@ -57,7 +57,7 @@ RSpec.describe Item, type: :model do
     item2 = Item.new(
                      title: "Green Chili Burrito",
                      description: "Amazingly spicey burrito",
-                     price: 655                  
+                     price: 655
                      )
     expect(item2).to_not be_valid
   end

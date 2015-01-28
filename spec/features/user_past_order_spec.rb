@@ -1,18 +1,24 @@
 require "rails_helper"
 
 feature "Past Orders" do
-  let(:user) { User.create(fullname: "Jeff Casmir", email: "demo+jeff@jumpstartlab.com", display_name: "j3", password: "password", role: 0)}
-  let(:order) { Order.create(user_id: user.id, status: "Completed", total: 1000)}
-  let(:item) { Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image:"torpedo_tacos.png")}
-  let(:order1_item1) { OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)}
-
 
   scenario "a user can view his orders" do
+    # user.orders.create(status: "completed", total: 1000)
+    user = User.create(fullname: "Jeff Casmir", email: "demo+jeff@jumpstartlab.com", display_name: "j3", password: "password", role: 0)
+    order = user.orders.create(status: "completed", total: 1000)
+    item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
+    order1_item1 = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                           and_return(user)
     visit user_orders_path(user)
-    within("#banner") do
+    within("#orders") do
       expect(page).to have_content("Orders")
+      expect(page).to have_content("view")
     end
+
+    click_link_or_button 'view'
+    expect(page).to have_content("Order Total")
+    expect(current_path).to eq(user_order_path(user, order))
   end
 end
