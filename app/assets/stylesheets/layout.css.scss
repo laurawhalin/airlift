@@ -7,11 +7,13 @@
 
 a {
   text-decoration: none;
-  color: black;
+  font-weight: bold;
+  color: #537344;
 }
 
 #logo img {
   height: 125px;
+  margin-bottom: 10px;
 }
 
 #restaurant_name a {
@@ -33,6 +35,13 @@ a {
   color: #6AB088;
 }
 
+.footer {
+  width: 100%;
+  margin: 20px -10px -10px 0;
+  padding: 15px 20px 40px 20px;
+  background-color: #f5f5f5;
+}
+
 .form-control .logout {
   margin-top: 2px;
 }
@@ -51,4 +60,12 @@ a {
 .form-control {
   padding: 5px;
   height: 30px;
+}
+
+.create {
+  margin-bottom: 10px;
+}
+
+.footer h4 {
+  margin-bottom: 30px;
 }

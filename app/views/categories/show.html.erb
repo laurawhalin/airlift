@@ -15,7 +15,7 @@
       <%= number_to_currency(list_item.price.to_f / 100.00) %>
     </td>
     <td>
-      <%= button_to "Add to Cart", cart_index_path(item_id: list_item) %>
+      <%= button_to "Add to Cart", cart_index_path(item_id: list_item), class: "btn btn-default" %>
     </td>
   </tr>
   <% end %>
