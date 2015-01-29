@@ -1,15 +1,22 @@
 module AdminOrdersHelper
   def change_status
-    @order = Order.find(params[:id])
-    if params[:commit] == "cancel"
-      @order.update(status: "cancelled")
-      redirect_to admin_orders_path
-    elsif params[:commit] == "mark as paid"
-      @order.update(status: "paid")
-      redirect_to admin_orders_path
-    elsif params[:commit] == "mark as completed"
-      @order.update(status: "completed")
-      redirect_to admin_orders_path
+    set_order
+    case params[:commit]
+    when "cancel"
+      update_order("cancelled")
+    when "mark as paid"
+      update_order("paid")
+    when "mark as completed"
+      update_order("completed")
     end
-  end  
+    redirect_to admin_orders_path
+  end
+
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def update_order(status)
+    @order.update(status: status)
+  end
 end
