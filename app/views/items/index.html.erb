@@ -2,6 +2,7 @@
 <table class="table">
   <tr><th>Item</th><th></th><th>Description</th><th>Price</th><th></th></tr>
   <% @items.each do |item| %>
+  <% if !item.retired %>
   <tr>
     <td>
       <%= link_to item.title, item_path(item) %>
@@ -19,5 +20,6 @@
       <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
     </td>
   </tr>
+  <% end %>
   <% end %>
 </table>
