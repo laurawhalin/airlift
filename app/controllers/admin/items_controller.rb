@@ -11,7 +11,7 @@ module Admin
     end
 
     def create
-      if category_list?
+      if category_list_nil?
         flash[:errors] = "You must select at least one category when creating a new item! Duh!"
         redirect_to new_admin_item_path
       else
@@ -28,7 +28,7 @@ module Admin
     end
 
     def update
-      if category_list?
+      if category_list_nil?
         flash[:errors] = "Please reassign your item to at least one category "
         redirect_to new_admin_item_path
       else
