@@ -11,7 +11,7 @@ module Admin
     end
 
     def show
-      @order = Order.find(params[:id])
+      set_order
       @user = User.find(@order.user_id)
     end
 
