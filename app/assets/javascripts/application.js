@@ -19,4 +19,9 @@ $(document).ready(function(){
   $(".not_logged_in").click(function(){
     alert("You must be logged in to check out!")
   });
+
+  // $("#footer").exists(function() {
+  //   $(".container").css({padding-bottom: "150px"})
+  // });
+  //
 });

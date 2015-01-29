@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-image: url('/assets/burrito_logo.jpg');
+  background-repeat: no-repeat;
+  background-position-x: 50px;
+  background-size: 200px;
+}
+
 .container {
   padding-bottom: 150px;
 }
@@ -15,9 +22,8 @@ a {
   color: #537344;
 }
 
-#logo img {
-  height: 125px;
-  margin-bottom: 10px;
+#logo {
+  height: 150px;
 }
 
 #restaurant_name a {
