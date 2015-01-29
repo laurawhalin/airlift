@@ -7,7 +7,7 @@ module Admin
 
     def new
       @item = Item.new
-      @categories = Category.all
+      set_all_categories
     end
 
     def create
@@ -24,7 +24,7 @@ module Admin
 
     def edit
       @item = Item.find(params[:id])
-      @categories = Category.all
+      set_all_categories
     end
 
     def update

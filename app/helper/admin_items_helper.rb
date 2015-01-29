@@ -5,4 +5,8 @@ module AdminItemsHelper
       Category.find_or_create_by(name: name)
     end
   end
+    
+  def set_all_categories
+    @categories = Category.all
+  end
 end
