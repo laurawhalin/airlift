@@ -20,5 +20,6 @@ module AdminItemsHelper
 
   def found_category_tags
     @item.categories = @found_tags
+    @found_tags
   end
 end

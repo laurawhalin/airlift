@@ -16,7 +16,7 @@ module Admin
         redirect_to new_admin_item_path
       else
         set_category_tag
-        item = Item.create(item_params)
+        @item = Item.create(item_params)
         found_category_tags
         redirect_to admin_items_path
       end
