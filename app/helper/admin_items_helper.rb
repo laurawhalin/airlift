@@ -29,4 +29,10 @@ module AdminItemsHelper
     @item.update(item_params)
     found_category_tags
   end
+
+  def create_category
+    set_category_tag
+    @item = Item.create(item_params)
+    found_category_tags
+  end
 end
