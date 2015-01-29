@@ -53,7 +53,8 @@ feature "Admin User Items" do
   end
 
   scenario "Admin User can edit current items and see them updated on index page" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).
+    to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
     click_link_or_button "Edit Item"
     expect(current_path).to eq(edit_admin_item_path(@item))
@@ -83,7 +84,7 @@ feature "Admin User Items" do
     expect(page).to have_content("It's the best")
   end
 
-  scenario "Admin User can edit an item and change its status to retired check on views" do
+  scenario "Admin User can change item status to retired and check views" do
     allow_any_instance_of(ApplicationController).
     to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
