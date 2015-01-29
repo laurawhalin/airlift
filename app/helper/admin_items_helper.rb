@@ -22,4 +22,11 @@ module AdminItemsHelper
     @item.categories = @found_tags
     @found_tags
   end
+
+  def update_category
+    set_category_tag
+    find_item
+    @item.update(item_params)
+    found_category_tags
+  end
 end
