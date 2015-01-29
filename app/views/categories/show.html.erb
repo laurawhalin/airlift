@@ -3,9 +3,7 @@
   <tr><th>Item</th><th></th><th>Description</th><th>Price</th><th></th></tr>
   <% @listing.each do |list_item| %>
   <tr>
-    <td>
       <% if !list_item.retired %>
-    </td>
     <td>
       <%= link_to list_item.title, item_path(list_item) %>
     </td>
