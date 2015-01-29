@@ -52,7 +52,7 @@ feature "Admin User Items" do
     expect(page).to have_content("Delish")
   end
 
-  scenario "Admin User can edit current items and see them updated on index page" do
+  scenario "Admin User can edit items and see them updated on index page" do
     allow_any_instance_of(ApplicationController).
     to receive(:current_user).and_return(@admin_user)
     visit admin_items_path
