@@ -16,7 +16,6 @@ module Admin
       else
         update_category_tag
         item = Item.create(item_params)
-        # require 'pry' ; binding.pry
         item.categories = @found_tags
         redirect_to admin_items_path
       end
