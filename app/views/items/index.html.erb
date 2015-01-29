@@ -1,6 +1,7 @@
 <h2>All Items</h2>
 <table class="table">
   <% @items.each do |item| %>
+  <% if !item.retired %>
   <tr>
     <td>
       <%= item.title %>
@@ -18,5 +19,6 @@
       <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
     </td>
   </tr>
+  <% end %>
   <% end %>
 </table>

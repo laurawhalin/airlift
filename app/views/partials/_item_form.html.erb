@@ -24,6 +24,12 @@
   <%= f.label :price, "Item Price" %>
   <%= f.text_field :price, placeholder: "New Item Price" %>
 </div>
+
+<div class="field">
+  <%= f.label "Retire Item?" %>
+  <%= f.check_box :retired %> <br />
+</div>
+
 <div class="field">
   <%= f.file_field :image %>
 </div>

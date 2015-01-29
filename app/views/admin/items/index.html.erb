@@ -7,10 +7,13 @@
       <div class="create">
         <%= link_to "Create New Item", new_admin_item_path, class: "btn btn-lg btn-default create" %>
       </div>
-      
+
       <table class="table">
         <% @items.each do |item| %>
         <tr>
+          <td>
+            <%= item.retired %>
+          </td>
           <td>
             <%= item.title %>
           </td>
