@@ -65,7 +65,7 @@
   <%= yield %>
 
   <% if !current_user.nil? && current_user.admin? %>
-    <footer class="footer navbar-fixed-bottom">
+    <footer id="footer" class="footer navbar-fixed-bottom">
       <div class="row">
         <div class="col-md-12">
             <h4>Administrator Controls</h4>

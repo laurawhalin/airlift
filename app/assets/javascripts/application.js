@@ -20,8 +20,8 @@ $(document).ready(function(){
     alert("You must be logged in to check out!")
   });
 
-  // adding css properties to an element
-  $("#change-css").click(function(){
-    $("#change-css-target").css({'font-size': 50, 'color': 'purple'})
-  });
+  // $("#footer").exists(function() {
+  //   $(".container").css({padding-bottom: "150px"})
+  // });
+  //
 });
