@@ -6,6 +6,7 @@ module Admin
                   completed: Order.completed,
                   cancelled: Order.cancelled
                 }
+      @all_orders = Order.all
     end
 
     def show
