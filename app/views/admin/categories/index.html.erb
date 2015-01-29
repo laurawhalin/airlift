@@ -1,32 +1,28 @@
-<div class="row">
-  <div class="col-md-1"></div>
-    <div class="col-md-10">
+<div class="container">
 
-      <h2> Manage Categories </h2>
+  <h2>Manage Categories </h2>
 
-      <div class="create">
-        <%= link_to "Create New Category", new_admin_category_path, class: "btn btn-lg btn-default create" %>
-      </div>
-
-      <table class="table">
-        <% @categories.each do |category| %>
-        <tr>
-          <td>
-            <%= category.name %>
-          </td>
-          <td>
-            <%= category.description %>
-          </td>
-          <td>
-            <%= link_to "Edit", edit_admin_category_path(category.id), as: category.id %>
-          </td>
-          <td>
-            <%= link_to "Delete", admin_category_path(category.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
-
-    </div>
+  <div class="create text-right">
+    <%= link_to "Create New Category", new_admin_category_path, class: "btn btn-lg btn-default create" %>
   </div>
+
+  <table class="table">
+    <% @categories.each do |category| %>
+    <tr>
+      <td>
+        <%= category.name %>
+      </td>
+      <td>
+        <%= category.description %>
+      </td>
+      <td>
+        <%= link_to "Edit", edit_admin_category_path(category.id), as: category.id %>
+      </td>
+      <td>
+        <%= link_to "Delete", admin_category_path(category.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
 </div>
