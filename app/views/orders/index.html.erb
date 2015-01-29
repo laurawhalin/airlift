@@ -1,10 +1,9 @@
 <div id="orders">
 
-<h1>Orders</h1>
+<h2>Orders</h2>
   <ul>
     <% @orders.each do |order| %>
-    <li><%= "Order# #{order.id}: " %> <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-      <%= link_to 'view', user_order_path(current_user, order) %>
+    <li><%= link_to "Order# #{order.id}: ", user_order_path(current_user, order) %> <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
     </li>
     <% end %>
   </ul>
