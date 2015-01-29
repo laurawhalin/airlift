@@ -11,11 +11,11 @@ module Admin
     end
 
     def create
-      if params[:category_list] == nil
+      if category_list?
         flash[:errors] = "You must select at least one category when creating a new item! Duh!"
         redirect_to new_admin_item_path
       else
-        update_category_tag
+        set_category_tag
         item = Item.create(item_params)
         item.categories = @found_tags
         redirect_to admin_items_path
@@ -28,11 +28,11 @@ module Admin
     end
 
     def update
-      if params[:category_list] == nil
+      if category_list?
         flash[:errors] = "Please reassign your item to at least one category "
         redirect_to new_admin_item_path
       else
-        update_category_tag
+        set_category_tag
         @item = Item.find(params[:id])
         @item.update(item_params)
         @item.categories = @found_tags
