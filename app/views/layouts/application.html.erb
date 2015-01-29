@@ -56,27 +56,28 @@
     </div>
 
   <div class="row">
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>
-    <%= yield %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
   </div>
 
-<% if !current_user.nil? && current_user.admin? %>
-  <footer class="footer navbar-fixed-bottom">
-    <div class="row">
-      <div class="col-md-12">
-          <h4>Administrator Controls</h4>
-          <%= link_to('Manage Customer Orders', admin_orders_path, class: "btn btn-lg btn-default orders") %>
-          <%= link_to "Manage Categories", admin_categories_path, class: "btn btn-lg btn-default" %>
-          <%= link_to "Manage Items", admin_items_path, class: "btn btn-lg btn-default" %>
-      </div>
-    </div>
-  </footer>
-<% end %>
-<!-- <%= debug(params) if Rails.env.development? %> -->
+  <%= yield %>
 
-<%= javascript_include_tag 'application' %>
+  <% if !current_user.nil? && current_user.admin? %>
+    <footer class="footer navbar-fixed-bottom">
+      <div class="row">
+        <div class="col-md-12">
+            <h4>Administrator Controls</h4>
+            <%= link_to('Manage Customer Orders', admin_orders_path, class: "btn btn-lg btn-default orders") %>
+            <%= link_to "Manage Categories", admin_categories_path, class: "btn btn-lg btn-default" %>
+            <%= link_to "Manage Items", admin_items_path, class: "btn btn-lg btn-default" %>
+        </div>
+      </div>
+    </footer>
+  <% end %>
+  <!-- <%= debug(params) if Rails.env.development? %> -->
+
+  <%= javascript_include_tag 'application' %>
 
 </body>
 </html>
