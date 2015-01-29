@@ -1,5 +1,6 @@
 module Admin
   class ItemsController < AdminController
+    include AdminItemsHelper
     def index
       @items = Item.all
     end
@@ -36,13 +37,6 @@ module Admin
         @item.update(item_params)
         @item.categories = @found_tags
         redirect_to admin_items_path
-      end
-    end
-
-    def update_category_tag
-      string_category_tags = params[:category_list][:categories].uniq
-      @found_tags = string_category_tags.map do |name|
-        Category.find_or_create_by(name: name)
       end
     end
   end
