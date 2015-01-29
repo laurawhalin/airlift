@@ -21,6 +21,7 @@ module AdminOrdersHelper
   end
 
   private
+  
   def params_commit
     params[:commit]
   end
