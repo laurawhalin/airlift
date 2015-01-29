@@ -42,16 +42,16 @@
           <% end %>
         </div>
       </div>
-  </div>
+    </div>
 
-  <div class="row">
-    <div id="cart" class="text-right">
+  <div class="row text-right">
+    <div id="cart">
       <i class="fa fa-shopping-cart fa-2x"></i> <%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
     </div>
   </div>
 
   <div class="row">
-    <div id="category-nav" class="col-md-12">
+    <div id="category-nav">
       <%= render partial: './partials/category_bar' %>
       </div>
     </div>
@@ -76,6 +76,7 @@
       </div>
     </footer>
   <% end %>
+</div>
   <!-- <%= debug(params) if Rails.env.development? %> -->
 
   <%= javascript_include_tag 'application' %>
