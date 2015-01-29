@@ -43,7 +43,7 @@ feature "User login" do
       expect(page).to have_content("You are not authorized to access this page")
     end
   end
-  
+
   scenario "an admin can view other users information" do
     order = user.orders.create(status: "completed", total: 1000)
     item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
@@ -53,9 +53,9 @@ feature "User login" do
     visit user_orders_path(user)
     within("#orders") do
       expect(page).to have_content("Orders")
-      expect(page).to have_content("view")
+      expect(page).to have_content("Order#")
     end
-    click_link_or_button 'view'
+    click_link_or_button "Order#"
     expect(page).to have_content("Order Total")
     expect(current_path).to eq(user_order_path(admin_user, order))
   end

@@ -10,7 +10,11 @@ module Admin
     end
 
     def item_params
-      params.require(:item).permit(:title, :description, :price, :image)
+      params.require(:item).permit(:title,
+                                   :description,
+                                   :price,
+                                   :image,
+                                   :retired)
     end
   end
 end
