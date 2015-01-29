@@ -3,7 +3,7 @@
   <% @items.each do |item| %>
   <tr>
     <td>
-      <%= item.title %>
+      <%= link_to item.title, item_path(item) %>
     </td>
     <td>
       <%= item.description %>
