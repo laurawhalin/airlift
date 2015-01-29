@@ -12,7 +12,11 @@
         <% @items.each do |item| %>
         <tr>
           <td>
-            <%= item.retired %>
+          <% if item.retired %>
+            retired
+            <% else %>
+            active
+        <% end %>
           </td>
           <td>
             <%= item.title %>

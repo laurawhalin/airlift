@@ -29,7 +29,7 @@ module Admin
 
     def update
       if params[:category_list] == nil
-        flash[:errors] = "You must reassign your item to a category "
+        flash[:errors] = "Please reassign your item to at least one category "
         redirect_to new_admin_item_path
       else
         update_category_tag

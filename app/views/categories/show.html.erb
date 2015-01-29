@@ -3,6 +3,9 @@
   <% @listing.each do |list_item| %>
   <tr>
     <td>
+      <% if !list_item.retired %>
+    </td>
+    <td>
       <%= link_to list_item.title, item_path(list_item) %>
     </td>
     <td>
@@ -18,5 +21,6 @@
       <%= button_to "Add to Cart", cart_index_path(item_id: list_item), class: "btn btn-default" %>
     </td>
   </tr>
+  <% end %>
   <% end %>
 </table>
