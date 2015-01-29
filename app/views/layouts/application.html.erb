@@ -18,15 +18,12 @@
 
   <div class="container">
     <div class="row">
-
       <div id="restaurant_name" class="col-md-5">
         <h1><%= link_to("Burrito Bombers", root_url )%></h1>
       </div>
-
       <div id="logo" class="col-md-2">
         <%= image_tag "logo.png" %>
       </div>
-
       <div id="user_nav" class="col-md-5 text-right">
         <div class="row">
           <% if current_user %>
@@ -55,8 +52,8 @@
   <div class="row">
     <div id="category-nav" class="col-md-12">
       <%= render partial: './partials/category_bar' %>
+      </div>
     </div>
-  </div>
 
   <div class="row">
         <% flash.each do |name, msg| %>
