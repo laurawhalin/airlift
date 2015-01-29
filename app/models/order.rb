@@ -16,7 +16,6 @@ class Order < ActiveRecord::Base
   # end
 
   def self.status_counts(status_type)
-    statuses = group(:status).having(status: status_type).count
-
+    group(:status).having(status: status_type).count
   end
 end
