@@ -13,4 +13,8 @@ module AdminItemsHelper
   def category_list?
     params[:category_list] == nil
   end
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
 end

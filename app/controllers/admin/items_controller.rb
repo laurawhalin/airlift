@@ -23,7 +23,7 @@ module Admin
     end
 
     def edit
-      @item = Item.find(params[:id])
+      find_item
       set_all_categories
     end
 
@@ -33,7 +33,7 @@ module Admin
         redirect_to new_admin_item_path
       else
         set_category_tag
-        @item = Item.find(params[:id])
+        find_item
         @item.update(item_params)
         @item.categories = @found_tags
         redirect_to admin_items_path
