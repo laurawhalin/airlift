@@ -1,7 +1,7 @@
 module AdminOrdersHelper
   def change_status
     set_order
-    case params[:commit]
+    case params_commit
     when "cancel"
       update_order("cancelled")
     when "mark as paid"
@@ -18,5 +18,10 @@ module AdminOrdersHelper
 
   def update_order(status)
     @order.update(status: status)
+  end
+
+  private
+  def params_commit
+    params[:commit]
   end
 end
