@@ -3,7 +3,6 @@ require "rails_helper"
 feature "Past Orders" do
 
   scenario "a user can view his orders" do
-    # user.orders.create(status: "completed", total: 1000)
     user = User.create(fullname: "Jeff Casmir", email: "demo+jeff@jumpstartlab.com", display_name: "j3", password: "password", role: 0)
     order = user.orders.create(status: "completed", total: 1000)
     item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
