@@ -19,4 +19,9 @@ $(document).ready(function(){
   $(".not_logged_in").click(function(){
     alert("You must be logged in to check out!")
   });
+
+  // adding css properties to an element
+  $("#change-css").click(function(){
+    $("#change-css-target").css({'font-size': 50, 'color': 'purple'})
+  });
 });
