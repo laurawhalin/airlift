@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :items
   resources :cart
 
-  # get "/cart", to: "cart#show", as: "cart"
   resources :categories
   resources :orders_items
   root "welcome#index"
@@ -19,15 +18,4 @@ Rails.application.routes.draw do
     resources :items
     resources :orders
   end
-
-  # resources :users, only: [:show, :edit, :update] do
-  #   member do
-  #     resources :orders, only: [:index, :show, :create, :new]
-  #   end
-  # end
-  #
-  # namespace :admin do
-  #   resources :categories
-  # end
-
 end
