@@ -93,11 +93,11 @@ feature "Admin User Items" do
     fill_in "item[description]", with: "It's the best"
     fill_in "item[price]", with: "1234"
     find(:css, "#category_list_categories_meat[value='Meat']").set(true)
-    save_and_open_page
-    find(:css, "#category_list_categories_meat[value='Meat']").set(true)
+    find(:css, "#item_retired[value='1']").set(true)
     click_link_or_button "Save"
     expect(current_path).to eq(admin_items_path)
-    click_link "Meat"
     expect(page).to have_content("It's the best")
+    click_link "Meat"
+    expect(page).to_not have_content("It's the best")
   end
 end
