@@ -26,7 +26,7 @@ RSpec.describe Category, type: :model do
     category.items.create(
                           title: "Green Chili Burrito",
                           description: "Amazingly spicey burrito",
-                          price: 655                          
+                          price: 655
                           )
     category.items.create(
                           title: "Hot n Spicy",

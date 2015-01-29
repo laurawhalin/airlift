@@ -5,8 +5,9 @@
   <% @orders.keys.each do |status| %>
     <h3><%= status %> (<%= @all_orders.status_counts(status).values.join.to_i != 0 ? @all_orders.status_counts(status).values.join : 0 %>)</h3>
     <% @orders[status].each do |order| %>
-      <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
+      <li><%= "Order# #{order.id}: " %>
         <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+        <%= link_to 'view', admin_order_path(order) %>
         <% if status == :ordered %>
           <%= form_tag(admin_order_path(order.id), method: :put,) do %>
             <%= submit_tag("cancel") %>
