@@ -43,13 +43,13 @@ feature "User login" do
       expect(page).to have_content("You are not authorized to access this page")
     end
   end
-
+  
   scenario "an admin can view other users information" do
     order = user.orders.create(status: "completed", total: 1000)
     item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
     order1_item1 = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
     allow_any_instance_of(ApplicationController).to receive(:current_user).
-                                                  and_return(admin_user)
+    and_return(admin_user)
     visit user_orders_path(user)
     within("#orders") do
       expect(page).to have_content("Orders")
