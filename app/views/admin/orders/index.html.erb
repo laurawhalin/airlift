@@ -3,7 +3,7 @@
 <h1>All Orders</h1>
 <ul>
   <% @orders.keys.each do |status| %>
-    <h3><%= status %></h3>
+    <h3><%= status %> (<%= @all_orders.status_counts(status).values.join.to_i != 0 ? @all_orders.status_counts(status).values.join : 0 %>)</h3>
     <% @orders[status].each do |order| %>
       <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
         <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
@@ -20,7 +20,7 @@
           <% end %>
           <%= form_tag(admin_order_path(order.id), method: :put) do %>
             <%= submit_tag("mark as completed") %>
-          <% end %>        
+          <% end %>
         <% end %>
       </li>
     <% end %>
