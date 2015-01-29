@@ -17,7 +17,7 @@ module Admin
       else
         set_category_tag
         item = Item.create(item_params)
-        item.categories = @found_tags
+        found_category_tags
         redirect_to admin_items_path
       end
     end
@@ -35,7 +35,7 @@ module Admin
         set_category_tag
         find_item
         @item.update(item_params)
-        @item.categories = @found_tags
+        found_category_tags
         redirect_to admin_items_path
       end
     end

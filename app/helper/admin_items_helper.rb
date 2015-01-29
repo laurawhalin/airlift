@@ -17,4 +17,8 @@ module AdminItemsHelper
   def find_item
     @item = Item.find(params[:id])
   end
+
+  def found_category_tags
+    @item.categories = @found_tags
+  end
 end
