@@ -74,8 +74,4 @@ RSpec.describe Item, type: :model do
     item.price = -3
     expect(item).to_not be_valid
   end
-
-  xit "should have a stock photo if no photo is added" do
-
-  end
 end

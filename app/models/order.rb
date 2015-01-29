@@ -10,11 +10,7 @@ class Order < ActiveRecord::Base
   scope :paid, -> { where(status: "paid") }
   scope :cancelled, -> { where(status: "cancelled") }
   scope :completed, -> { where(status: "completed") }
-  #
-  # def self.completed
-  #   where(status: "completed")
-  # end
-
+  
   def self.status_counts(status_type)
     group(:status).having(status: status_type).count
   end
