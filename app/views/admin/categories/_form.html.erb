@@ -1,27 +1,28 @@
+<div class="form-horizontal">
+  <%= form_for(@category) do |f| %>
+    <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <ul>
+        <% @category.errors.full_messages.each do |message| %>
+        <li><%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 
-<%= form_for(@category) do |f| %>
-  <% if @category.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-    <ul>
-      <% @category.errors.full_messages.each do |message| %>
-      <li><%= message %> </li>
-      <% end %>
-    </ul>
-  </div>
+    <div class="form-group">
+      <%= f.label :name, "Category Name" %>
+      <%= f.text_field :name, placeholder: "New Category Name" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, "Category Description" %>
+      <%= f.text_field :description, placeholder: "New Category Description" %>
+    </div>
+
+    <div class="action">
+      <%= f.submit "Save" %>
+    </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name, "Category Name" %>
-    <%= f.text_field :name, placeholder: "New Category Name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description, "Category Description" %>
-    <%= f.text_field :description, placeholder: "New Category Description" %>
-  </div>
-
-  <div class="action">
-    <%= f.submit "Save" %>
-  </div>
-<% end %>
+</div>
