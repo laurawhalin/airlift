@@ -14,4 +14,8 @@ class Order < ActiveRecord::Base
   # def self.completed
   #   where(status: "completed")
   # end
+
+  def self.status_counts(status_type)
+    group(:status).having(status: status_type).count
+  end
 end

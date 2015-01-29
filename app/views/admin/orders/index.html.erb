@@ -1,23 +1,30 @@
-<div id="orders" class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <h2>Manage Customer Orders</h2>
-    <ul>
-      <% @orders.keys.each do |status| %>
-      <h3><%= status %></h3>
-      <% @orders[status].each do |order| %>
-        <li><%= link_to "Order# #{order.id}: ", admin_order_path(order) %>
-          <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-          <% if status == :ordered %>
-            <%= link_to "cancel", admin_orders_path %> /
-            <%= link_to "mark as paid", admin_orders_path %>
-          <% elsif status == :paid %>
-            <%= link_to "cancel", admin_orders_path %> /
-            <%= link_to "mark as completed", admin_orders_path %>
+<div id="orders">
+
+<h1>All Orders</h1>
+<ul>
+  <% @orders.keys.each do |status| %>
+    <h3><%= status %> (<%= @all_orders.status_counts(status).values.join.to_i != 0 ? @all_orders.status_counts(status).values.join : 0 %>)</h3>
+    <% @orders[status].each do |order| %>
+      <li><%= "Order# #{order.id}: " %>
+        <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+        <%= link_to 'view', admin_order_path(order) %>
+        <% if status == :ordered %>
+          <%= form_tag(admin_order_path(order.id), method: :put,) do %>
+            <%= submit_tag("cancel") %>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="col-md-1"></div>
+          <%= form_tag(admin_order_path(order.id), method: :put) do %>
+            <%= submit_tag("mark as paid") %>
+          <% end %>
+        <% elsif status == :paid %>
+          <%= form_tag(admin_order_path(order.id), method: :put) do %>
+            <%= submit_tag("cancel") %>
+          <% end %>
+          <%= form_tag(admin_order_path(order.id), method: :put) do %>
+            <%= submit_tag("mark as completed") %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
 </div>
