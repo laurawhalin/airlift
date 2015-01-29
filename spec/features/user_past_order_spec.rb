@@ -13,10 +13,10 @@ feature "Past Orders" do
     visit user_orders_path(user)
     within("#orders") do
       expect(page).to have_content("Orders")
-      expect(page).to have_content("view")
+      expect(page).to have_content("Order#")
     end
 
-    click_link_or_button 'view'
+    click_link_or_button "Order#"
     expect(page).to have_content("Order Total")
     expect(current_path).to eq(user_order_path(user, order))
   end
