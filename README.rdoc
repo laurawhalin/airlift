@@ -1,6 +1,6 @@
 == README
 Site for app-
-https://git.heroku.com/burrito-bombers.git
+http://burrito-bombers.herokuapp.com
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
