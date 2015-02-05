@@ -1,5 +1,5 @@
 module Admin
-  class OrdersController < ApplicationController
+  class OrdersController < AdminController
     include AdminOrdersHelper
     def index
       @orders = { ordered: Order.ordered,
