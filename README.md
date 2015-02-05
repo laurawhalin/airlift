@@ -2,12 +2,12 @@ http://burrito-bombers.herokuapp.com
 
 ![ScreenShot](./app/assets/images/burrito-bombers-home.pdf?raw=true "Burrito Bombers")
 
-Burrito Bombers is a fully functioning ecommerce web application
-designed for a Downtown Denver delivery business.  This 10 day
-project was constructed by Bhargavi Satpathy, Brandon Mrsny,
-Chris Luhring and Laura Whalin.  The group created detailed
-wireframes using gliffy.com and utilized waffle.io as their project
-management tool: https://waffle.io/bhargavisatpathy/dinner_dash
+Burrito Bombers is an ecommerce web application designed for a
+Downtown Denver delivery business.  This 10 day project was
+constructed by Bhargavi Satpathy, Brandon Mrsny, Chris Luhring
+and Laura Whalin.  The group created detailed wireframes using
+gliffy.com and utilized waffle.io as their project management
+tool: https://waffle.io/bhargavisatpathy/dinner_dash
 
 Burrito Bombers was built using TDD to drive development and includes
 full cart functionality, administrative tools, user authentication and
@@ -15,7 +15,6 @@ authorization and a custom front end. Additional project
 specifications can be found here:
 http://tutorials.jumpstartlab.com/projects/dinner_dash.html
 
-Dinner Dash - Because you've got to eat!
 
 Checkout our project: "git clone https://github.com/bhargavisatpathy/dinner_dash.git"
 
