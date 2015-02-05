@@ -1,14 +1,14 @@
 == README
 http://burrito-bombers.herokuapp.com
 
-![Alt text](./app/assets/images/burrito-bombers-home.pdf)
+![Alt text](../app/assets/images/burrito-bombers-home.pdf)
 
 Burrito Bombers is a fully functioning ecommerce web application
 designed for a Downtown Denver delivery business.  This 10 day
 project was constructed by Bhargavi Satpathy, Brandon Mrsny,
 Chris Luhring and Laura Whalin.  The group created detailed
-wireframes using gliffy.com and utilized waffle.io to manage
-development: https://waffle.io/bhargavisatpathy/dinner_dash
+wireframes using gliffy.com and utilized waffle.io as their project
+management tool: https://waffle.io/bhargavisatpathy/dinner_dash
 
 Burrito Bombers was built using TDD to drive development and includes
 full cart functionality, administrative tools, user authentication and
