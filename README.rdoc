@@ -1,30 +1,35 @@
 == README
-Site for app-
 http://burrito-bombers.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Burrito Bombers is a fully functioning ecommerce web application
+designed for a Downtown Denver delivery business.  This 10 day
+project was constructed by Bhargavi Satpathy, Brandon Mrsny,
+Chris Luhring and Laura Whalin.  The group created detailed
+wireframes using gliffy.com and utilized waffle.io to manage
+development: https://waffle.io/bhargavisatpathy/dinner_dash
 
-Things you may want to cover:
+Burrito Bombers was built using TDD to drive development and includes
+full cart functionality, administrative tools, user authentication and
+authorization and a custom front end. Additional project
+specifications can be found here:
+http://tutorials.jumpstartlab.com/projects/dinner_dash.html
 
-* Ruby version
+Dinner Dash - Because you've got to eat!
 
-* System dependencies
+Checkout our project: "git clone https://github.com/bhargavisatpathy/dinner_dash.git"
 
-* Configuration
+Install any missing gems: "bundle"
 
-* Database creation
+Make sure PostgreSQL is running on your local machine.
 
-* Database initialization
+Initialize the database using the command "rake db:rebuild" to create, 
+migrate and seed the application.
 
-* How to run the test suite
+Start your local server using: "unicorn"
 
-* Services (job queues, cache servers, search engines, etc.)
+Then go to 'localhost:8080' to checkout the site.
 
-* Deployment instructions
+Burrito Bombers was built on Rails 4.2.0. and depends on Mapbox, which
+was used to create the delivery zone map on the homepage.
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Run the test suite using: "rspec"
