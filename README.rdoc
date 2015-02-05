@@ -1,6 +1,8 @@
 == README
 http://burrito-bombers.herokuapp.com
 
+![Alt text](./app/assets/images/burrito-bombers-home.pdf)
+
 Burrito Bombers is a fully functioning ecommerce web application
 designed for a Downtown Denver delivery business.  This 10 day
 project was constructed by Bhargavi Satpathy, Brandon Mrsny,
@@ -22,7 +24,7 @@ Install any missing gems: "bundle"
 
 Make sure PostgreSQL is running on your local machine.
 
-Initialize the database using the command "rake db:rebuild" to create, 
+Initialize the database using the command "rake db:rebuild" to create,
 migrate and seed the application.
 
 Start your local server using: "unicorn"
