@@ -1,4 +1,4 @@
-== README
+README /n \n
 http://burrito-bombers.herokuapp.com
 
 ![Alt text](./app/assets/images/burrito-bombers-home.pdf?raw=true "Burrito Bombers")
