@@ -8,7 +8,7 @@ module Admin
     def verify_admin
       unless current_user && current_user.role == "admin"
         flash[:errors] = "Not authorized"
-      redirect_to root_url
+        redirect_to root_url
       end
     end
 
