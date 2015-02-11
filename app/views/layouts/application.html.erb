@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DinnerDash</title>
+  <title>Airlift</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 
   <meta charset=utf-8 />
-  <title>A simple map</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
 
 </head>
 <body>
@@ -19,11 +15,11 @@
   <div class="container">
     <div class="row">
       <div id="logo" class="col-md-1">
-        <!-- <%#= image_tag "burrito_logo.jpg" %> -->
+        <!-- airlift logo -->
       </div>
       <div id="restaurant_name" class="col-md-6">
-        <h1><%= link_to("Burrito Bombers", root_url )%></h1>
-        <h4>Drone-Delivery to Your Mouth</h4>
+        <h1><%= link_to("Airlift", root_url )%></h1>
+        <h4>Emergency Supplies Delivered Fast</h4>
       </div>
       <div id="user_nav" class="col-md-5 text-right">
         <div class="row">

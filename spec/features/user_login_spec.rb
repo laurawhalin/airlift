@@ -10,7 +10,7 @@ feature "User login" do
 
   scenario "User can Welcome Page" do
     visit "/"
-    expect(page).to have_content("Are you")
+    expect(page).to have_content("Emergency Supplies")
   end
 
   scenario "User can sign in with correct credentials" do
