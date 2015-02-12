@@ -32,10 +32,6 @@ class ApplicationController < ActionController::Base
     current_user.admin? if current_user.present?
   end
 
-  # def supplier_admin?
-    # current_user.supplier? if current_user.present?
-  # end
-
   helper_method :current_categories
   helper_method :current_user
   helper_method :admin?
