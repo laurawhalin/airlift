@@ -41,7 +41,6 @@ feature "User login" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(user)
     visit user_orders_path(protected_user)
-    save_and_open_page
     within("#flash_alert") do
       expect(page).to have_content("You are not authorized to access this page")
     end
