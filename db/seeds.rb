@@ -5,6 +5,9 @@ class Seed
     build_orders
     build_users
     build_items_category
+		build_supplier
+		build_supplier_admin
+
   end
 
   def build_orders
@@ -122,6 +125,14 @@ class Seed
     user9 = User.create(fullname: "Josh Mejia", email: "demo+jmeija@jumpstartlab.com", display_name: "meija", password: "password", role: 0)
     user10 = User.create(fullname: "Joe Blow", email: "joe@gmail.com", display_name: "joe", password: "joe", role: 1, image: "joe_blow.jpg")
   end
+
+	def	build_supplier_admin
+		SupplierAdmin.create(user_id: 10, supplier_id: 1)
+	end
+
+	def build_supplier
+		Supplier.create(name: "Joe's big warehouse", slug: "joe-s-big-warehouse", description: "the best", retired: false, address: "1510 blake St. , CO" )
+	end
 
 
 end
