@@ -27,8 +27,8 @@ feature "Supplier Login" do
 
   scenario "Supplier admin can log In" do
     visit root_path
-    first(:link, "Log In").click
-    within("#modal") do
+    first(:button, "Log In").click
+    within(".modal") do
       fill_in "session[email]", with: user.email
       fill_in "session[password]", with: user.password
       click_link_or_button "Log In"
