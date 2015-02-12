@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    current_user.admin? if !current_user.nil?
+    current_user.admin? if current_user.present?
   end
 
   helper_method :current_categories

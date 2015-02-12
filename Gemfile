@@ -43,6 +43,7 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'shoulda-matchers', require: false
   gem 'byebug'
   gem 'better_errors'
   gem 'binding_of_caller'
