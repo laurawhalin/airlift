@@ -1,18 +1,61 @@
 <div class="welcome">
   <div class="row">
     <div class="col-md-12">
+      
       <div class="col-md-6 col-xs-12" id="hurricane">
-        <img src="assets/Hurricane_Katrina_23.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+          <div class="flipper">
+            <div class="front">
+              <img src="assets/Hurricane_Katrina_23.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+            <div class="back">
+              <img src="assets/house-fire.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 col-xs-12" id="earthquake">
-        <img src="assets/earthquake.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+
+      <div class="col-md-6 col-xs-12" id="fire">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+          <div class="flipper">
+            <div class="front">
+              <img src="assets/house-fire.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+            <div class="back">
+              <img src="assets/flood.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="col-md-6 col-xs-12" id="flood">
-        <img src="assets/flood.jpg" class="disaster alt="Hurricane Image" width="300" height="300">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+          <div class="flipper">
+            <div class="front">
+              <img src="assets/flood.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+            <div class="back">
+              <img src="assets/house-fire.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 col-xs-12" id="houseFire">
-        <img src="assets/house-fire.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
-      </div> 
+
+      <div class="col-md-6 col-xs-12" id="earthquake">
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+          <div class="flipper">
+            <div class="front">
+              <img src="assets/earthquake.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+            <div class="back">
+              <img src="assets/flood.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js">
+<script src="jquery.flip.js">
