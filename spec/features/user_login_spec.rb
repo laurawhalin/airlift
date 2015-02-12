@@ -1,9 +1,30 @@
 require "rails_helper"
 
 feature "User login" do
-  let(:default_user_attributes) { { fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: 0, password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
-  let(:admin_user_attributes) { { fullname: "frank", email: "frank@aol.com", role: 2, password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
-  let(:protected_user_attributes) { { fullname: "bob", email: "bob@aol.com", role: 0, password: "pass", password_confirmation: "pass", display_name: "bob" } }
+  let(:default_user_attributes) do
+      { fullname: "jimbobfrank",
+        email: "jimbobfrank@aol.com",
+        role: 0,
+        password: "foobar1234",
+        password_confirmation: "foobar1234",
+        display_name: "frankyboy" }
+  end
+  let(:admin_user_attributes) do
+      { fullname: "frank",
+        email: "frank@aol.com",
+        role: 2,
+        password: "foobar1234",
+        password_confirmation: "foobar1234",
+        display_name: "franky" }
+  end
+  let(:protected_user_attributes) do
+      { fullname: "bob",
+        email: "bob@aol.com",
+        role: 0,
+        password: "pass",
+        password_confirmation: "pass",
+        display_name: "bob" }
+  end
   let!(:user) { User.create(default_user_attributes) }
   let(:admin_user) { User.create(admin_user_attributes) }
   let(:protected_user) { User.create(protected_user_attributes) }
@@ -15,7 +36,7 @@ feature "User login" do
 
   scenario "User can sign in with correct credentials" do
     visit "/"
-    first(:link,"Log In").click
+    first(:link, "Log In").click
     within("#modal") do
       fill_in "session[email]", with: "jimbobfrank@aol.com"
       fill_in "session[password]", with: "foobar1234"
@@ -28,7 +49,7 @@ feature "User login" do
 
   scenario "unregistered user cannot login" do
     visit "/"
-    first(:link,"Log In").click
+    first(:link, "Log In").click
     within("#modal") do
       fill_in "session[email]", with: "XXjimbobfrank@aol.com"
       fill_in "session[password]", with: "XXfoobar1234"
