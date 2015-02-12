@@ -22,11 +22,11 @@ RSpec.describe SupplierAdmin, :type => :model do
     expect(supplier_admin).to_not be_valid
   end
 
-  it "is associated with a user" do
-    expect(supplier_admin.user.fullname).to eq("user1")
-  end
-
-  it "is associated with a supplier" do
-    expect(supplier_admin.supplier.slug).to eq("supplier-x")
-  end
+  # it "is associated with a user" do
+  #   expect(supplier_admin.user.fullname).to eq("user1")
+  # end
+  #
+  # it "is associated with a supplier" do
+  #   expect(supplier_admin.supplier.slug).to eq("supplier-x")
+  # end
 end

@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Admin User" do
   background do
     @category = Category.create(name: "Meat", description: "Bacon! Bacon! Bacon!")
-    @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: "admin", password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
+    @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: 2, password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
   end
 
   scenario "Admin User can see a list of Categories" do
@@ -17,6 +17,7 @@ feature "Admin User" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).
     and_return(@admin_user)
     visit admin_categories_path
+    save_and_open_page
     click_link_or_button "Create New Category"
     expect(current_path).to eq(new_admin_category_path)
     expect(page).to have_content("New Category")

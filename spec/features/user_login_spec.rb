@@ -1,9 +1,9 @@
 require "rails_helper"
 
 feature "User login" do
-  let(:default_user_attributes) { { fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: "default", password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
-  let(:admin_user_attributes) { { fullname: "frank", email: "frank@aol.com", role: "admin", password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
-  let(:protected_user_attributes) { { fullname: "bob", email: "bob@aol.com", role: "default", password: "pass", password_confirmation: "pass", display_name: "bob" } }
+  let(:default_user_attributes) { { fullname: "jimbobfrank", email: "jimbobfrank@aol.com", role: 0, password: "foobar1234", password_confirmation: "foobar1234", display_name: "frankyboy" } }
+  let(:admin_user_attributes) { { fullname: "frank", email: "frank@aol.com", role: 2, password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky" } }
+  let(:protected_user_attributes) { { fullname: "bob", email: "bob@aol.com", role: 0, password: "pass", password_confirmation: "pass", display_name: "bob" } }
   let!(:user) { User.create(default_user_attributes) }
   let(:admin_user) { User.create(admin_user_attributes) }
   let(:protected_user) { User.create(protected_user_attributes) }
@@ -15,11 +15,13 @@ feature "User login" do
 
   scenario "User can sign in with correct credentials" do
     visit "/"
-    within("#session") do
+    first(:link,"Log In").click
+    save_and_open_page
+    within("#modal") do
       fill_in "session[email]", with: "jimbobfrank@aol.com"
       fill_in "session[password]", with: "foobar1234"
+      click_link_or_button "Log In"
     end
-    click_link_or_button "Login"
     within("#user_nav") do
       expect(page).to have_content("Welcome, jimbobfrank")
     end
@@ -27,11 +29,12 @@ feature "User login" do
 
   scenario "unregistered user cannot login" do
     visit "/"
-    within("#session") do
+    first(:link,"Log In").click
+    within("#modal") do
       fill_in "session[email]", with: "XXjimbobfrank@aol.com"
       fill_in "session[password]", with: "XXfoobar1234"
+      click_link_or_button "Log In"
     end
-    click_link_or_button "Login"
     expect(page).to have_content("Invalid login")
   end
 
