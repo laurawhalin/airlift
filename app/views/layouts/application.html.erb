@@ -33,19 +33,22 @@
             <div class="col-sm-2">
               <%= link_to('My Orders', user_orders_path(current_user), class: "btn btn-default logout") %>
             </div>
-          <% else %>
-            <%= link_to "Log In", '#', data: {toggle: "modal", target: "#modal"} %>
-            <div class="modal" id="modal" >
-              <%= render partial: "./partials/login" %>
-            </div>
+					<% else %>
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Log In</button>
+						<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-sm">
+								<div class="modal-content">
+              		<%= render partial: "./partials/login" %>
+						    </div>
+						  </div>
+						</div>
           <% end %>
         </div>
       </div>
     </div>
-
   <div class="row text-right">
     <div id="cart">
-      <i class="fa fa-shopping-cart fa-2x"></i> <%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
+      <i class="fa fa-shopping-cart fa-2x"></i><%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
     </div>
   </div>
 
@@ -63,8 +66,8 @@
 
   <%= yield %>
 
-  <% if !current_user.nil? && current_user.admin? %>
-    <footer id="footer" class="footer navbar-fixed-bottom">
+	<% if current_user.present? && current_user.admin? %>
+		<footer id="footer" class="footer navbar-fixed-bottom">
       <div class="row">
         <div class="col-md-12">
             <h4>Administrator Controls</h4>

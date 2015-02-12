@@ -36,8 +36,8 @@ feature "User login" do
 
   scenario "User can sign in with correct credentials" do
     visit "/"
-    first(:link, "Log In").click
-    within("#modal") do
+    first(:button, "Log In").click
+    within(".modal") do
       fill_in "session[email]", with: "jimbobfrank@aol.com"
       fill_in "session[password]", with: "foobar1234"
       click_link_or_button "Log In"
@@ -49,8 +49,8 @@ feature "User login" do
 
   scenario "unregistered user cannot login" do
     visit "/"
-    first(:link, "Log In").click
-    within("#modal") do
+    first(:button, "Log In").click
+    within(".modal") do
       fill_in "session[email]", with: "XXjimbobfrank@aol.com"
       fill_in "session[password]", with: "XXfoobar1234"
       click_link_or_button "Log In"
