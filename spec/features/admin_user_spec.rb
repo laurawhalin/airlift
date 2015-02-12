@@ -64,16 +64,9 @@ feature "Admin User" do
   end
 
   scenario "Admin can visit see all orders" do
-   # allow_any_instance_of(ApplicationController).to receive(:current_user).
-   # and_return(@admin_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).
+      and_return(@admin_user)
     visit "/"
-    first(:button, "Log In").click
-		 within(".modal") do
-      fill_in "session[email]", with: @admin_user.email
-      fill_in "session[password]", with: @admin_user.password
-      click_link_or_button "Log In"
-    end
-
     expect(page).to have_content("Manage Customer Orders")
     click_link_or_button("Manage Customer Orders")
     expect(current_path).to eq(admin_orders_path)
