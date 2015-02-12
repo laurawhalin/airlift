@@ -1,4 +1,5 @@
 class Ability
+  require 
   include CanCan::Ability
 
   def initialize(user)
