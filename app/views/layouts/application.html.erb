@@ -34,7 +34,10 @@
               <%= link_to('My Orders', user_orders_path(current_user), class: "btn btn-default logout") %>
             </div>
           <% else %>
-            <%= render partial: "./partials/login" %>
+            <%= link_to "Log In", '#', data: {toggle: "modal", target: "#modal"} %>
+            <div class="modal" id="modal" >
+              <%= render partial: "./partials/login" %>
+            </div>
           <% end %>
         </div>
       </div>

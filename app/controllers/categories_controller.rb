@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @listing = @category.items.all
   end
+
   helper_method :show
 
   def create
