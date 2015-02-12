@@ -1,25 +1,28 @@
 require "rails_helper"
 
 feature "Supplier Login" do
-  let(:default_supplier_attributes) {
+  let(:default_supplier_attributes) do
     { name: "Supplier X",
       slug: "supplier-x",
       description: "A store for all of you disaster relief needs",
       retired: false,
-      address: "101 William White Blvd, Pueblo, Co 80111" }}
-  let(:default_user_attributes) {
+      address: "101 William White Blvd, Pueblo, Co 80111" }
+    end
+  let(:default_user_attributes) do
     { fullname: "user1",
       email: "user1@aol.com",
       role: 1,
       password: "foobar1234",
       password_confirmation: "foobar1234",
-      display_name: "frankyboy" }}
+      display_name: "frankyboy" }
+    end
   let(:supplier) { Supplier.create(default_supplier_attributes) }
   let(:user) { User.create(default_user_attributes) }
   let(:default_supplier_admin_attributes) {
     { supplier_id: supplier.id, user_id: user.id  } }
-  let!(:supplier_admin){
-    SupplierAdmin.create(default_supplier_admin_attributes) }
+  let!(:supplier_admin) do
+    SupplierAdmin.create(default_supplier_admin_attributes)
+  end
 
   scenario "Supplier admin can log In" do
     visit root_path

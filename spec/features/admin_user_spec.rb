@@ -3,7 +3,12 @@ require "rails_helper"
 feature "Admin User" do
   background do
     @category = Category.create(name: "Meat", description: "Bacon! Bacon! Bacon!")
-    @admin_user = User.create(fullname: "frank", email: "frank@aol.com", role: 2, password: "foobar1234", password_confirmation: "foobar1234", display_name: "franky")
+    @admin_user = User.create(fullname: "frank",
+                              email: "frank@aol.com",
+                              role: 2,
+                              password: "foobar1234",
+                              password_confirmation: "foobar1234",
+                              display_name: "franky")
   end
 
   scenario "Admin User can see a list of Categories" do
