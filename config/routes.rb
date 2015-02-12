@@ -13,13 +13,13 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  resources :admin
+
   namespace :admin do
     resources :categories
     resources :items
     resources :orders
   end
-
+  
   resources :suppliers, path: "", param: :slug
   namespace :suppliers, as: :supplier, path: "/:slug" do
     resources :categories

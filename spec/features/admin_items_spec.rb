@@ -4,7 +4,7 @@ feature "Admin User Items" do
   background do
     @admin_user = User.create(fullname: "frank",
                               email: "frank@aol.com",
-                              role: "admin",
+                              role: 2,
                               password: "foobar1234",
                               password_confirmation: "foobar1234",
                               display_name: "franky")

@@ -16,7 +16,6 @@ feature "User login" do
   scenario "User can sign in with correct credentials" do
     visit "/"
     first(:link,"Log In").click
-    save_and_open_page
     within("#modal") do
       fill_in "session[email]", with: "jimbobfrank@aol.com"
       fill_in "session[password]", with: "foobar1234"
@@ -42,6 +41,7 @@ feature "User login" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(user)
     visit user_orders_path(protected_user)
+    save_and_open_page
     within("#flash_alert") do
       expect(page).to have_content("You are not authorized to access this page")
     end

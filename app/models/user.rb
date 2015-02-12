@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   enum role: %w(default supplier_admin super_admin)
 
   def admin?
-    role == 2
+    role == "super_admin"
   end
 
   def supplier?
