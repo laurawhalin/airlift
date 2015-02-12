@@ -1,4 +1,4 @@
-<div id="session" class="form-horizontal text-right">
+<div id="session" class="form-horizontal">
   <%= form_for(:session, url: login_path) do |f| %>
     <div class="form-group">
       <%= f.label :email, class: "col-sm-4 control-label" %>
@@ -16,5 +16,5 @@
       </div>
     </div>
   <% end %>
-    <%= link_to('Not Registered?', register_path, class: "register") %>
+  <button type="button" class="btn btn-link btn-default" data-toggle="modal" data-target=".reg-modal">Not Registered?</button>
 </div>
