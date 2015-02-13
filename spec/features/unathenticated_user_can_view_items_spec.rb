@@ -2,19 +2,28 @@ require "rails_helper"
 
 feature "unathenticated Users can see a list of items" do
   background do
-    @category = Category.create(name: "Meaty", description: "Hot! Hot! Hot!")
-    @item = Item.create(title: "Hot n Spicy", description: "All the hot and spicy things you can handle", price: 1000)
+    @category = Category.create(name: "Baby", description: "Baby supplies.")
+    @item = Item.create(title: "Formula", description: "Can of powdered baby formula", price: 1600)
     @category.items << @item
   end
 
   scenario "User can see a list of all items" do
-    visit items_path
-    expect(page).to have_content("Hot n Spicy")
+    visit root_url
+    click_button "View All Supplies"
+    expect(page).to have_content("Formula")
+    # visit items_path
+    # expect(page).to have_content("Formula")
   end
 
-  scenario "User can see a list of all spicy items" do
+  scenario "user can filter the list of items by category" do
+    visit items_path
+    click_link "Baby"
+    expect(page).to have_content("Baby Supplies")
+  end
+
+  scenario "User can see a list of items by category" do
     visit "/"
-    click_link_or_button "Meaty"
+    fill_in "search[:search_bar]", with: "Baby"
     expect(current_path).to eq(category_path(@category))
     expect(page).to have_content("Hot n Spicy")
   end
