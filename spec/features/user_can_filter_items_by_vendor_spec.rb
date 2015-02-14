@@ -25,4 +25,20 @@ feature "User Supplier Items" do
 		click_link_or_button("Fireproof")
 		expect(page).to	have_content(item1.title)
 	end
+
+	scenario "User can view item's aggregate data by clicking link" do
+		supplier = Supplier.create(supplier_attributes)
+		item     = Item.create(item_attributes)
+		supplier.listings.create(
+														item_id: item.id, 
+														supplier_id: supplier.id, 
+														quantity: 3
+														)
+
+		visit supplier_path(supplier.slug) 
+		expect(current_path).to eq("/fireproof")
+	
+		click_link("water purifier")
+		expect(page).to have_content(item.title)
+	end
 end

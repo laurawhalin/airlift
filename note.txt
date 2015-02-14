@@ -1,0 +1,2 @@
+Group: discuss refactor of the supplier show page method to remove the Item call
+			 or re-structuring the relationships to lower unnecessary complexity
