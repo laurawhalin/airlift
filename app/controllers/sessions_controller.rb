@@ -8,8 +8,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:success] = "You have successfully logged in"
-      if user.supplier?
+      if user.supplier? && user.has_company?(user.id)
         redirect_to supplier_path(user.supplier_slug(user.id))
+      elsif user.supplier? && !user.has_company?(user.id)
+        flash[:errors] = "User account not connected to supplier account, please contact system admin"
+        redirect_to :back
       else
         redirect_to :back
       end
