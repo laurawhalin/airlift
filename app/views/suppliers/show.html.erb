@@ -1,3 +1,14 @@
 <div id="supplier_home">
-  <h1><%= @supplier.name %> Supplier Page</h1>
+	<h1><%= @supplier.name %> Supplier Page</h1>
+	<ul>
+		<% @listings.each do |listing|  %>	
+			<li>
+				<% item = Item.find(listing.item_id)  %>
+				Title: <%= item.title  %></br>
+				Description: <%= item.description  %></br>
+				Price: <%= number_to_currency(item.price) %></br>
+				Quantity:	<%= listing.quantity %></br>
+			</li>
+		<% end  %>
+	</ul>
 </div>

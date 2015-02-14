@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
 		@suppliers = Supplier.all
+		
   end
 
   def show

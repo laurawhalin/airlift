@@ -1,8 +1,9 @@
 <div class="supplier_list">
+<ul>
 	<% @suppliers.each do |supplier| %>
-		<%= form_for(supplier) do |f| %>
-			<%= check_box(:current_suppliers, "suppliers", {:multiple => true}, supplier.name, nil)  %>
-		<%= f.label supplier.name  %>
-		<% end %>
+		<li>
+			<%= link_to supplier.name, supplier_path(supplier.slug)  %>
+		</li>
 	<% end  %>
+	</ul>
 </div>

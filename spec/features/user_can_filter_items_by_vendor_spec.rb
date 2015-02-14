@@ -10,16 +10,19 @@ feature "User Supplier Items" do
 	end
 
 	scenario "User filters items by a vendor" do
-		user = User.create(user_attributes)
 		item1 = Item.create(item_attributes)
-		item2 = Item.create(item_attributes(title: "can o beans"))
 		supplier = Supplier.create(supplier_attributes)
-		
+		supplier.listings.create(
+														 item_id: item1.id, 
+														 supplier_id: supplier.id, 
+														 quantity: 500
+														)	
 		visit items_path
 		within(".supplier_list") do
-			find(:css, "#current_suppliers_suppliers_fireproof[value='Fireproof']").set(true)
-			check('current_suppliers_suppliers_fireproof')
+			find_link("Fireproof").visible?
 		end
-		expect(page).to_not have_content(item2.title)
+
+		click_link_or_button("Fireproof")
+		expect(page).to	have_content(item1.title)
 	end
 end
