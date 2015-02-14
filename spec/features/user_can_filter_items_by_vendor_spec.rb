@@ -38,7 +38,6 @@ feature "User Supplier Items" do
 		visit supplier_path(supplier.slug) 
 		expect(current_path).to eq("/fireproof")
 	
-		save_and_open_page
 		click_link("water purifier")
 		expect(page).to have_content(item.title)
 	end
