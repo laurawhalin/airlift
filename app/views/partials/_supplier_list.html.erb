@@ -1,0 +1,9 @@
+<div class="supplier_list">
+<ul>
+	<% @suppliers.each do |supplier| %>
+		<li>
+			<%= link_to supplier.name, supplier_path(supplier.slug)  %>
+		</li>
+	<% end  %>
+	</ul>
+</div>
