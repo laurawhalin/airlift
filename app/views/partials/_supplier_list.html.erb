@@ -1,0 +1,8 @@
+<div class="supplier_list">
+	<% @suppliers.each do |supplier| %>
+		<%= form_for(supplier) do |f| %>
+			<%= check_box(:current_suppliers, "suppliers", {:multiple => true}, supplier.name, nil)  %>
+		<%= f.label supplier.name  %>
+		<% end %>
+	<% end  %>
+</div>

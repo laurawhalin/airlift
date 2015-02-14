@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       end
     else
       flash[:errors] = "Invalid login"
-      render :new
+      redirect_to :back
     end
   end
 
