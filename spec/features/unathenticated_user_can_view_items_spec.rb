@@ -11,8 +11,6 @@ feature "unathenticated Users can see a list of items" do
     visit root_url
     click_button "View All Supplies"
     expect(page).to have_content("Formula")
-    # visit items_path
-    # expect(page).to have_content("Formula")
   end
 
   scenario "user can filter the list of items by category" do
@@ -21,11 +19,21 @@ feature "unathenticated Users can see a list of items" do
     expect(page).to have_content("Baby Supplies")
   end
 
-  scenario "User can see a list of items by category" do
-    visit "/"
-    fill_in "search[:search_bar]", with: "Baby"
-    expect(current_path).to eq(category_path(@category))
-    expect(page).to have_content("Hot n Spicy")
+  xscenario "User can search for an item by title match" do
+    visit root_url
+    fill_in "search", with: "Formula"
+    click_button "Search"
+    expect(current_path).to eq(items_path(@items))
+    expect(page).to have_content("Formula")
+  end
+
+  xscenario "User can search for an item by description match" do
+    visit root_url
+    fill_in "search", with: "baby"
+    click_button "Search"
+    save_and_open_page
+    expect(current_path).to eq(items_path(@items))
+    expect(page).to have_content("baby")
   end
 
   scenario "User can add item to cart from category page" do
