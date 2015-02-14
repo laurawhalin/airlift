@@ -4,7 +4,7 @@
 		<% @listings.each do |listing|  %>	
 			<li>
 				<% item = Item.find(listing.item_id)  %>
-				Title: <%=  item.title  %></br>
+				Title: <%= link_to item.title, item_path(item)  %></br>
 				Description: <%= item.description  %></br>
 				Price: <%= number_to_currency(item.price) %></br>
 				Quantity:	<%= listing.quantity %></br>
