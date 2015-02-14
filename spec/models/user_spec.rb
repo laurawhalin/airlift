@@ -10,6 +10,15 @@ RSpec.describe User, type: :model do
                 role: "default"
                 )
   }
+  let(:default_supplier_attributes) do
+    { name: "Supplier X",
+      slug: "supplier-x",
+      description: "A store for all of you disaster relief needs",
+      retired: false,
+      address: "101 William White Blvd, Pueblo, Co 80111" }
+  end
+  let(:supplier) { Supplier.create(default_supplier_attributes) }
+  let!(:supplier_admin) { SupplierAdmin.create(user_id: user.id, supplier_id: supplier.id) }
 
   it "is valid" do
     expect(user).to be_valid
@@ -77,5 +86,9 @@ RSpec.describe User, type: :model do
   it "can have many orders" do
     user.orders.create(status: "pending", total: "2434")
     expect(user.orders.map(&:user_id)).to eq([user.id])
+  end
+
+  it "can find it admin_supplier id" do
+    expect(user.find_supplier_admin(user.id).id).to eq(17)
   end
 end
