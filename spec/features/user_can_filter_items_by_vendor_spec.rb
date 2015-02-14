@@ -25,4 +25,8 @@ feature "User Supplier Items" do
 		click_link_or_button("Fireproof")
 		expect(page).to	have_content(item1.title)
 	end
+
+	scenario "User can view item's aggregate data by clicking link" do
+
+	end
 end

@@ -1,0 +1,1 @@
+refactor the supplier show page method to remove the Item call
