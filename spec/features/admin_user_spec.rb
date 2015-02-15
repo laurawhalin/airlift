@@ -2,6 +2,11 @@ require "rails_helper"
 
 feature "Admin User" do
   background do
+    @supplier = Supplier.create(name: "Supplier X",
+                                slug: "supplier-x",
+                                description: "A store for all of you disaster relief needs",
+                                retired: false,
+                                address: "101 William White Blvd, Pueblo, Co 80111")
     @category = Category.create(name: "Meat", description: "Bacon! Bacon! Bacon!")
     @admin_user = User.create(fullname: "frank",
                               email: "frank@aol.com",
@@ -73,5 +78,12 @@ feature "Admin User" do
     expect(current_path).to eq(admin_orders_path)
     expect(page).to have_content("ordered")
     expect(page).to have_content("paid")
+  end
+
+  scenario "Admin can visit a supplier listing page" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).
+      and_return(@admin_user)
+      visit supplier_path(@supplier.slug)
+      expect(page).to have_content("Supplier X Supplier Page")
   end
 end

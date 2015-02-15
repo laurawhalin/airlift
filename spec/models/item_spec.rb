@@ -74,4 +74,13 @@ RSpec.describe Item, type: :model do
     item.price = -3
     expect(item).to_not be_valid
   end
+
+	xit "should have a supplier" do
+		item = Item.create(item_attributes)
+		supplier = Supplier.create(supplier_attributes)
+		listing = Listing.create(item_id: item.id, supplier_id: supplier.id)
+		#supplier.listings << item
+
+		expect(supplier.items.first).to eq(item)
+	end
 end

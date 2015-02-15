@@ -31,7 +31,6 @@ feature "unathenticated Users can see a list of items" do
     visit root_url
     fill_in "search", with: "baby"
     click_button "Search"
-    save_and_open_page
     expect(current_path).to eq(items_path(@items))
     expect(page).to have_content("baby")
   end
