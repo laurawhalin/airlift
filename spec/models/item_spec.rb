@@ -83,4 +83,9 @@ RSpec.describe Item, type: :model do
 
 		expect(supplier.items.first).to eq(item)
 	end
+
+	it "should have a quantity" do
+		item = Item.create(item_attributes)
+		expect(item.quantity).to eq(50)
+	end
 end
