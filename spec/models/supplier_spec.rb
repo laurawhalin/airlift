@@ -9,7 +9,7 @@ RSpec.describe Supplier, :type => :model do
 			 	supplier.items << item
 
         expect(supplier.items.count).to eq(1)
-        expect(supplier.items.first.id).to eq(40)
+        expect(supplier.items.first.id).to eq(item.id)
      end
   end
 end
