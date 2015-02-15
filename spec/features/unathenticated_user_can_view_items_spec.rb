@@ -19,7 +19,7 @@ feature "unathenticated Users can see a list of items" do
     expect(page).to have_content("Baby Supplies")
   end
 
-  xscenario "User can search for an item by title match" do
+  scenario "User can search for an item by title match" do
     visit root_url
     fill_in "search", with: "Formula"
     click_button "Search"
@@ -27,7 +27,7 @@ feature "unathenticated Users can see a list of items" do
     expect(page).to have_content("Formula")
   end
 
-  xscenario "User can search for an item by description match" do
+  scenario "User can search for an item by description match" do
     visit root_url
     fill_in "search", with: "baby"
     click_button "Search"

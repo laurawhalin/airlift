@@ -21,7 +21,7 @@
         <h1><%= link_to("Airlift", root_url )%></h1>
         <h4>Emergency Supplies Delivered Fast</h4>
         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Items" %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Supplies" %>
           <%= submit_tag "Search", :name => nil %>
         <% end %>
       </div>

@@ -11,8 +11,12 @@ class Item < ActiveRecord::Base
   has_many :orders_items
   has_many :orders, through: :orders_items
 
-  def self.search(query)
-    where("title like ?", "%#{query}%")
-    where("description like ?", "%#{query}%")
+  def self.search(search)
+    if search
+      # find(:all, :conditions => ['title LIKE ? || description LIKE ?', "%#{search}%", "%#{search}%"])
+      where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%") #:conditions => ['title LIKE ?', "%#{search}%"]
+    else
+      self.all
+    end
   end
 end
