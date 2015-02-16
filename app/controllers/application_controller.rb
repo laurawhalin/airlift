@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
     @user = User.new
   end
   before_action :set_new_user
-  
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
-  end
+  end 
 
   private
 

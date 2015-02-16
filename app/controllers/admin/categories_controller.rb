@@ -18,9 +18,19 @@ module Admin
         redirect_to new_admin_category_path
       end
     end
+    
+    # def edit
+    #   @category = Category.find(params[:id])
+    # end
 
-    def edit
+    def update
       @category = Category.find(params[:id])
+      @category.update(category_params)
+      if @category.save
+        redirect_to admin_categories_path
+      else
+        render "admin/categories/edit"
+      end
     end
 
     def destroy
@@ -30,7 +40,7 @@ module Admin
     end
 
     private
-    
+
     def category_params
       params.require(:category).permit(:name, :description)
     end

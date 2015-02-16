@@ -20,6 +20,10 @@
       <div id="restaurant_name" class="col-md-6">
         <h1><%= link_to("Airlift", root_url )%></h1>
         <h4>Emergency Supplies Delivered Fast</h4>
+        <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Supplies" %>
+          <%= submit_tag "Search", :name => nil %>
+        <% end %>
       </div>
       <div id="user_nav" class="col-md-5 text-right">
         <div class="row">
@@ -61,12 +65,6 @@
     </div>
   </div>
 
-  <div class="row">
-    <div id="category-nav">
-      <%= render partial: './partials/category_bar' %>
-      </div>
-    </div>
-
   <div class="alert-danger" role="alert">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -76,16 +74,7 @@
   <%= yield %>
 
 	<% if current_user.present? && current_user.admin? %>
-		<footer id="footer" class="footer navbar-fixed-bottom">
-      <div class="row">
-        <div class="col-md-12">
-            <h4>Administrator Controls</h4>
-            <%= link_to('Manage Customer Orders', admin_orders_path, class: "btn btn-lg btn-default orders") %>
-            <%= link_to "Manage Categories", admin_categories_path, class: "btn btn-lg btn-default" %>
-            <%= link_to "Manage Items", admin_items_path, class: "btn btn-lg btn-default" %>
-        </div>
-      </div>
-    </footer>
+		<%= render partial: "./partials/footer" %>
   <% end %>
 </div>
   <!-- <%= debug(params) if Rails.env.development? %> -->
