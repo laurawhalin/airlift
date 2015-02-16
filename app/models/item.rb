@@ -14,7 +14,6 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      # find(:all, :conditions => ['title LIKE ? || description LIKE ?', "%#{search}%", "%#{search}%"])
       where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%") #:conditions => ['title LIKE ?', "%#{search}%"]
     else
       self.all
