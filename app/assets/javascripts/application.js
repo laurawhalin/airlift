@@ -20,9 +20,9 @@ $(document).ready(function(){
     alert("You must be logged in to check out!")
   });
 
-  // $("#footer").exists(function() {
-  //   $(".container").css({padding-bottom: "150px"})
-  // });
-  //
+  $("input[type=checkbox]").click(function(){
+    var category = $(this).val();
+    // var $all = $('.categories').hide();
+    $('.' + category).toggle("show");
+  });
 });
-
