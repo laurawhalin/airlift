@@ -9,8 +9,8 @@ def item_attributes(overrides={})
 end
 
 def user_attributes(overrides={})
-	{ 
-	   fullname: "Joe Guy", 
+	{
+	   fullname: "Joe Guy",
 		 email: "joe@gmial.com",
 		 role: 0,
 		 password: "foobar1234",
@@ -26,5 +26,12 @@ def supplier_attributes(overrides={})
 	 slug: "fireproof",
 	 description: "Fire disaster products",
 	 retired: false
+	}.merge(overrides)
+end
+
+def supplier_admin_attributes(overrides={})
+	{
+		user_id: 1,
+		supplier_id: 1
 	}.merge(overrides)
 end
