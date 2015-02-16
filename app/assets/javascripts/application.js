@@ -30,6 +30,5 @@ $(document).ready(function(){
 		var supplier = $(this).val();
 		var all = $('.suppliers').hide();
 		$('.' + supplier).show();
-		//$('.' + supplier).
 	});
 });
