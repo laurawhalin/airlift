@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   $("input[type=checkbox]").click(function(){
     var category = $(this).val();
-    // var $all = $('.categories').hide();
+    var all = $('.categories').hide();
     $('.' + category).toggle("show");
   });
 });
