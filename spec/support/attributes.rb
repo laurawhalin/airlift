@@ -3,7 +3,8 @@ def item_attributes(overrides={})
 	 title: "water purifier",
 	 description: "good",
 	 price: 500,
-	 retired: false
+	 retired: false,
+	 quantity: 50
 	}.merge(overrides)
 end
 
