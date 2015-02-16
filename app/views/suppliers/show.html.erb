@@ -5,7 +5,7 @@
 			<li>
 				Title: <%= link_to item.title, item_path(item)  %></br>
 				Description: <%= item.description  %></br>
-				Price: <%= number_to_currency(item.price) %></br>
+				Price: <%= number_to_currency(item.price.to_f/100) %></br>
 				Quantity:	<%= item.quantity %></br>
 				<%= image_tag item.image.url(:medium) %>
 				<% if !item.retired %>
