@@ -10,7 +10,10 @@ feature "unathenticated Users can see a list of items" do
   scenario "User can see a list of all items" do
     visit root_url
     click_link "View All Supplies"
-    expect(page).to have_content("Formula")
+		item = Item.create(item_attributes)
+
+		expect(current_path).to eq(items_path)
+    expect(page).to have_text(item.title)
   end
 
   scenario "user can filter the list of items by category" do
