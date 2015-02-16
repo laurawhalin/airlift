@@ -26,9 +26,10 @@ $(document).ready(function(){
     $('.' + category).toggle("show");
   });
 
-	$("input[type=checkbox]").click(function(){
+	$("checkbox:checked").click(function(){
 		var supplier = $(this).val();
-	//	var $all = $('.suppliers').hide();
-		$('.' + supplier).toggle('show');
+		var all = $('.suppliers').hide();
+		$('.' + supplier).show();
+		//$('.' + supplier).
 	});
 });
