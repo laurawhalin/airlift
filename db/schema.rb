@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211231548) do
+ActiveRecord::Schema.define(version: 20150216001927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(version: 20150211231548) do
     t.string   "title"
     t.string   "description"
     t.integer  "price"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.boolean  "retired"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "supplier_id"
+    t.integer  "quantity",           default: 0
   end
+
+  add_index "items", ["supplier_id"], name: "index_items_on_supplier_id", using: :btree
 
   create_table "items_categories", force: :cascade do |t|
     t.integer  "item_id"
@@ -95,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150211231548) do
     t.datetime "image_updated_at"
   end
 
+  add_foreign_key "items", "suppliers"
   add_foreign_key "supplier_admins", "suppliers"
   add_foreign_key "supplier_admins", "users"
 end

@@ -14,10 +14,10 @@ class ApplicationController < ActionController::Base
     @user = User.new
   end
   before_action :set_new_user
-  
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
-  end
+  end 
 
   private
 
@@ -37,7 +37,12 @@ class ApplicationController < ActionController::Base
     current_user.admin? if current_user.present?
   end
 
+	def current_suppliers
+		@suppliers = Supplier.all
+	end
+
   helper_method :current_categories
   helper_method :current_user
   helper_method :admin?
+	helper_method :current_suppliers
 end

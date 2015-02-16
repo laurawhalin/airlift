@@ -74,4 +74,16 @@ RSpec.describe Item, type: :model do
     item.price = -3
     expect(item).to_not be_valid
   end
+
+	 it { should belong_to(:supplier) }
+	
+	it "should have a quantity" do
+		item = Item.create(item_attributes)
+		expect(item.quantity).to eq(50)
+	end
+
+	it "should have a default quantity of 0" do
+		item 
+		expect(item.quantity).to eq(0)
+	end
 end

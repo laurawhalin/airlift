@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.search(params[:search])
+		@suppliers = Supplier.all
   end
 
   def show
