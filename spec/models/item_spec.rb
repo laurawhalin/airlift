@@ -75,12 +75,15 @@ RSpec.describe Item, type: :model do
     expect(item).to_not be_valid
   end
 
-	xit "should have a supplier" do
+	 it { should belong_to(:supplier) }
+	
+	it "should have a quantity" do
 		item = Item.create(item_attributes)
-		supplier = Supplier.create(supplier_attributes)
-		listing = Listing.create(item_id: item.id, supplier_id: supplier.id)
-		#supplier.listings << item
+		expect(item.quantity).to eq(50)
+	end
 
-		expect(supplier.items.first).to eq(item)
+	it "should have a default quantity of 0" do
+		item 
+		expect(item.quantity).to eq(0)
 	end
 end
