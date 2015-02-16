@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216001927) do
+ActiveRecord::Schema.define(version: 20150215235220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(version: 20150216001927) do
     t.datetime "image_updated_at"
   end
 
-  add_foreign_key "items", "suppliers"
   add_foreign_key "supplier_admins", "suppliers"
   add_foreign_key "supplier_admins", "users"
 end

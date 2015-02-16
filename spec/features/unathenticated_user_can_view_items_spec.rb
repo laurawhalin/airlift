@@ -9,14 +9,14 @@ feature "unathenticated Users can see a list of items" do
 
   scenario "User can see a list of all items" do
     visit root_url
-    click_button "View All Supplies"
+    click_link "View All Supplies"
     expect(page).to have_content("Formula")
   end
 
   scenario "user can filter the list of items by category" do
     visit items_path
     find(:css, "#BabyID[type='checkbox']").set(true)
-    expect(page).to have_content("Baby Supplies")
+    expect(page).to have_content("Formula")
   end
 
   scenario "user can filter the list of items by multiple categories" do

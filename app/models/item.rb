@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   validates :price, presence: true, numericality: { :greater_than_or_equal_to => 0 }
   has_attached_file :image, styles: { medium: "300x300>",
                                         thumb: "100x100>" },
-                                        default_url: "batteries.jpg"
+                                        default_url: "beans.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   has_many :items_categories
   has_many :categories, through: :items_categories
@@ -14,10 +14,21 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      # find(:all, :conditions => ['title LIKE ? || description LIKE ?', "%#{search}%", "%#{search}%"])
-      where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%") #:conditions => ['title LIKE ?', "%#{search}%"]
+      where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
     else
       self.all
     end
+  end
+
+  def item_supplier
+    supplier_id = self.supplier_id
+    Supplier.find(supplier_id).name
+  end
+
+  def item_categories
+    items_categories = self.items_categories.all
+    category_ids = items_categories.map { |ic| ic.category_id }
+    require 'pry' ; binding.pry
+    category_ids.each { |category_id| Category.find(category_id) }
   end
 end

@@ -49,26 +49,26 @@ class Seed
   end
 
   def build_items
-    item1 = Item.create(title: "Gut Buster", description: "If it's in the store, it's in this burrito!", price: 1000, image: open("app/assets/images/batteries.jpg"))
-    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potato burrito.", price: 850, image: open("app/assets/images/batteries.jpg"))
-    item3 = Item.create(title: "Fiesta Especial", description: "A 4-foot party-sized burrito to share with your family and friends.", price: 8000, image:open("app/assets/images/batteries.jpg"))
-    item4 = Item.create(title: "UF burritO", description: "Monthly special. It's out of this world.", price: 689, image: open("app/assets/images/batteries.jpg"))
-    item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image: open("app/assets/images/batteries.jpg"))
-    item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    item7 = Item.create(title: "Queso Quesadillas", description: "These delicious veggie dillas can be frisbeed to your door upon request.", price: 550, image: open("app/assets/images/batteries.jpg"))
-    item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: 750, image: open("app/assets/images/batteries.jpg"))
-    item9 = Item.create(title: "Flaming Fajitas", description: "These veggie fajitas will set your mouth on fire.", price: 1200, image: open("app/assets/images/batteries.jpg"))
-    item10 = Item.create(title: "Breakfast Quesadilla", description: "One delicious egg, cheese, and potato dilla.", price: 650, image: open("app/assets/images/batteries.jpg"))
-    item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    item12 = Item.create(title: "Veggie delight", description: "Eat all your veggies, tomatoes, red onions, green peppers, mushrooms and more!", price: 700, image: open("app/assets/images/batteries.jpg"))
-    item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    item14 = Item.create(title: "Classic", description: "Our classic burrito with authentic flavors.", price: 800, image: open("app/assets/images/batteries.jpg"))
-    item15 = Item.create(title: "Hot 'n Spicy", description: "All the hot and spicy things you can handle.", price: 1000, image: open("app/assets/images/batteries.jpg"))
-    item16 = Item.create(title: "Tamale Torpedo", description: "These little tamale bombs come in one flavor: spicy!", price: 400, image: open("app/assets/images/batteries.jpg"))
-    item17 = Item.create(title: "Rice and Bombs", description: "Our slow-simmered black beans and cilantro-lime rice packaged up in individual parachute packs.", price: 300, image: open("app/assets/images/batteries.jpg"))
-    item18 = Item.create(title: "Hot Sauce Bucket", description: "Just what it sounds like: a small bucket of our house hot sauce.", price: 300, image: open("app/assets/images/batteries.jpg"))
-    item19 = Item.create(title: "Chips and Salsa", description: "A bag of chips bubble-wrapped for special delivery with a small bucket of our house hot sauce.", price: 400, image: open("app/assets/images/batteries.jpg"))
-    item20 = Item.create(title: "Enola Empenada", description: "This empenada is filled with cheese and our famous mushroom salsa.", price: 500, image: open("app/assets/images/batteries.jpg"))
+    item1 = Item.create(title: "Gut Buster", description: "If it's in the store, it's in this burrito!", price: 1000, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potato burrito.", price: 850, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item3 = Item.create(title: "Fiesta Especial", description: "A 4-foot party-sized burrito to share with your family and friends.", price: 8000, image:open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item4 = Item.create(title: "UF burritO", description: "Monthly special. It's out of this world.", price: 689, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item7 = Item.create(title: "Queso Quesadillas", description: "These delicious veggie dillas can be frisbeed to your door upon request.", price: 550, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: 750, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item9 = Item.create(title: "Flaming Fajitas", description: "These veggie fajitas will set your mouth on fire.", price: 1200, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item10 = Item.create(title: "Breakfast Quesadilla", description: "One delicious egg, cheese, and potato dilla.", price: 650, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item12 = Item.create(title: "Veggie delight", description: "Eat all your veggies, tomatoes, red onions, green peppers, mushrooms and more!", price: 700, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item14 = Item.create(title: "Classic", description: "Our classic burrito with authentic flavors.", price: 800, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item15 = Item.create(title: "Hot 'n Spicy", description: "All the hot and spicy things you can handle.", price: 1000, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item16 = Item.create(title: "Tamale Torpedo", description: "These little tamale bombs come in one flavor: spicy!", price: 400, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item17 = Item.create(title: "Rice and Bombs", description: "Our slow-simmered black beans and cilantro-lime rice packaged up in individual parachute packs.", price: 300, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item18 = Item.create(title: "Hot Sauce Bucket", description: "Just what it sounds like: a small bucket of our house hot sauce.", price: 300, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item19 = Item.create(title: "Chips and Salsa", description: "A bag of chips bubble-wrapped for special delivery with a small bucket of our house hot sauce.", price: 400, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item20 = Item.create(title: "Enola Empenada", description: "This empenada is filled with cheese and our famous mushroom salsa.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
   end
 
   def build_items_category
@@ -105,11 +105,11 @@ class Seed
   end
 
   def build_category
-    category1 = Category.create(name: "Vegetarian", description: "Meatless options.")
-    category2 = Category.create(name: "Spicy", description: "Hot! Hot! Hot!")
-    category3 = Category.create(name: "Specialty", description: "Chef's favorites.")
-    category4 = Category.create(name: "Breakfast", description: "Start your day off right.")
-    category5 = Category.create(name: "Sides", description: "A la carte options.")
+    category1 = Category.create(name: "Power", description: "Meatless options.")
+    category2 = Category.create(name: "Baby", description: "Hot! Hot! Hot!")
+    category3 = Category.create(name: "Food & Water", description: "Chef's favorites.")
+    category4 = Category.create(name: "Clothing", description: "Start your day off right.")
+    category5 = Category.create(name: "Shelter", description: "A la carte options.")
   end
 
 

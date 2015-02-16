@@ -19,4 +19,10 @@ $(document).ready(function(){
   $(".not_logged_in").click(function(){
     alert("You must be logged in to check out!")
   });
+
+  $("input[type=checkbox]").click(function(){
+    var category = $(this).val();
+    // var $all = $('.categories').hide();
+    $('.' + category).toggle("show");
+  });
 });
