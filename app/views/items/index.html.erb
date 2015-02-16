@@ -1,5 +1,4 @@
 <h2>All Items</h2>
-<%= render partial: "partials/supplier_list" %>
 <table class="table">
   <tr><th>Item</th><th></th><th>Description</th><th>Price</th><th></th></tr>
   <% @items.each do |item| %>
@@ -27,5 +26,7 @@
 
 <div class="filters sidebar">
   <h4>Categories</h4>
-    <%= render partial: "./partials/categories" %>
+    <%= render partial: "partials/categories" %>
+  <h4>Vendors</h4>
+    <%= render partial: "partials/supplier_list" %>
 </div>
