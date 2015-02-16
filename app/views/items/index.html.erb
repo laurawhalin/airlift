@@ -4,7 +4,7 @@
 	<div class="suppliers categories col-md-3 <%#= supplier.name %> <%#= category.name %>" > -->
   		<% @items.each do |item| %>
   			<% if !item.retired %>
-        <div class="suppliers categories col-md-3 <%= item.item_supplier %> >
+        <div class="suppliers categories col-md-3 <%= item.item_supplier %>">
             <%= item.title %><br>
     				<%= item.description %><br>
     				<%= image_tag item.image.url(:thumb) %><br>

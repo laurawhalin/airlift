@@ -22,7 +22,7 @@ class Item < ActiveRecord::Base
 
   def item_supplier
     supplier_id = self.supplier_id
-    Supplier.find(supplier_id).name
+    Supplier.find(supplier_id).slug
   end
 
   def item_categories
