@@ -50,10 +50,10 @@ class Seed
 
   def build_items
     item1 = Item.create(title: "Gut Buster", description: "If it's in the store, it's in this burrito!", price: 1000, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
-    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potato burrito.", price: 850, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potato burrito.", price: 850, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 2)
     item3 = Item.create(title: "Fiesta Especial", description: "A 4-foot party-sized burrito to share with your family and friends.", price: 8000, image:open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item4 = Item.create(title: "UF burritO", description: "Monthly special. It's out of this world.", price: 689, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
-    item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 2)
     item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item7 = Item.create(title: "Queso Quesadillas", description: "These delicious veggie dillas can be frisbeed to your door upon request.", price: 550, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: 750, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
@@ -61,7 +61,7 @@ class Seed
     item10 = Item.create(title: "Breakfast Quesadilla", description: "One delicious egg, cheese, and potato dilla.", price: 650, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item12 = Item.create(title: "Veggie delight", description: "Eat all your veggies, tomatoes, red onions, green peppers, mushrooms and more!", price: 700, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
-    item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
+    item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 2)
     item14 = Item.create(title: "Classic", description: "Our classic burrito with authentic flavors.", price: 800, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item15 = Item.create(title: "Hot 'n Spicy", description: "All the hot and spicy things you can handle.", price: 1000, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
     item16 = Item.create(title: "Tamale Torpedo", description: "These little tamale bombs come in one flavor: spicy!", price: 400, image: open("app/assets/images/batteries.jpg"), quantity: 8, supplier_id: 1)
@@ -132,6 +132,7 @@ class Seed
 
 	def build_supplier
 		Supplier.create(name: "Joe's big warehouse", slug: "joe-s-big-warehouse", description: "the best", retired: false, address: "1510 blake St. , CO" )
+		Supplier.create(name: "Get Relief Now", slug: "get-relief-now", description: "one stop shop for emergency supplies", retired: false, address: "2020 blake St. , ME " )
 	end
 
 
