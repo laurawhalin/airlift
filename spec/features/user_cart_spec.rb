@@ -1,27 +1,12 @@
 require "rails_helper"
 
 feature "Add Items to Cart" do
-  background do
-    @item = Item.create(
-      title: "Green Burrito",
-      description: "A tasty burrito for your mouth.",
-      price: 800,
-      supplier_id: 1,
-      retired: false
-    )
-    @user = User.create(
-      fullname: "Frank",
-      email: "frank@gmail.com",
-      role: "default",
-      password: "password",
-      password_confirmation: "password"
-    )
-    @supplier = Supplier.create(
-      name: "NewSupplier"
-    )
-  end
-
+    
   scenario "an item has a cart button" do
+    item = Item.create(item_attributes)
+    user = User.create(user_attributes)
+    supplier = Supplier.create(supplier_attributes)
+
     visit items_path
     within(".suppliers") do
       expect(page).to have_button("Add to Cart")
