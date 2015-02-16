@@ -4,7 +4,8 @@ def item_attributes(overrides={})
 	 description: "good",
 	 price: 500,
 	 retired: false,
-	 quantity: 50
+	 quantity: 50,
+   supplier_id: 1
 	}.merge(overrides)
 end
 
