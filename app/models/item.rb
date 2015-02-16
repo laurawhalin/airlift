@@ -28,7 +28,6 @@ class Item < ActiveRecord::Base
   def item_categories
     items_categories = self.items_categories.all
     category_ids = items_categories.map { |ic| ic.category_id }
-    require 'pry' ; binding.pry
-    category_ids.each { |category_id| Category.find(category_id) }
+    category_ids.map { |category_id| Category.find(category_id) }
   end
 end
