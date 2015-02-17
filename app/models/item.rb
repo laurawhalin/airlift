@@ -22,7 +22,6 @@ class Item < ActiveRecord::Base
 
   def item_supplier
     supplier_id = self.supplier_id
-    require 'pry' ; binding.pry
     Supplier.find(supplier_id).name
   end
 

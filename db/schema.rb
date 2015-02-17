@@ -99,6 +99,5 @@ ActiveRecord::Schema.define(version: 20150215235220) do
     t.datetime "image_updated_at"
   end
 
-  add_foreign_key "supplier_admins", "suppliers"
   add_foreign_key "supplier_admins", "users"
 end
