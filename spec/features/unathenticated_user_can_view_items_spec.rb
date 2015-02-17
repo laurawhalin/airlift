@@ -1,10 +1,10 @@
 require "rails_helper"
 
-feature "unathenticated Users can see a list of items" do
+feature "unathenticated users can see a list of items" do
   background do
-    @category = Category.create(category_attributes)
     @supplier = Supplier.create(supplier_attributes)
-    @item = Item.create(item_attributes)
+    @category = Category.create(category_attributes)
+    @item = Item.create(item_attributes(supplier_id: @supplier.id))
     @category.items << @item
   end
 
@@ -20,8 +20,14 @@ feature "unathenticated Users can see a list of items" do
     expect(page).to have_content("Water Purifier")
   end
 
-  scenario "user can filter the list of items by multiple categories" do
-
+  xscenario "user can filter the list of items by multiple categories" do
+    @category2 = Category.create(name: "Supplies", description: "Things you'll need.")
+    @item2 = Item.create(name: "BB Gun", description: "For fending off zombie squirrels.", price: 7000, supplier_id: @supplier.id)
+    visit items_path
+    find(:css, "#WaterID[type='checkbox']").set(true)
+    find(:css, "#SuppliesID[type='checkbox']").set(true)
+    expect(page).to have_content("Water Purifier")
+    expect(page).to have_content("BB Gun")
   end
 
   scenario "User can search for an item by title match" do

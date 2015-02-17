@@ -10,6 +10,7 @@ feature "Admin User Items" do
   scenario "User Admin can visit items index page" do
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@admin_user)
+    save_and_open_page
     visit admin_items_path
     expect(page).to have_content("Water Filter")
   end

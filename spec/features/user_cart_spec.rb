@@ -2,14 +2,13 @@ require "rails_helper"
 
 feature "Add Items to Cart" do
   background do
-    @item = Item.create(item_attributes)
-    @user = User.create(user_attributes)
     @supplier = Supplier.create(supplier_attributes)
+    @item = Item.create(item_attributes(supplier_id: @supplier.id))
+    @user = User.create(user_attributes)
   end
 
   scenario "an item has a cart button" do
     visit items_path
-    save_and_open_page
     within("#item-list") do
       expect(page).to have_button("Add to Cart")
     end
@@ -17,7 +16,6 @@ feature "Add Items to Cart" do
 
   scenario "user can add item to cart" do
     visit items_path
-    save_and_open_page
     within("#item-list") do
       click_button("Add to Cart")
     end
