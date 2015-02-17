@@ -1,6 +1,6 @@
 <div class="supplier_list">
-	<% @suppliers.each do |supplier| %>
-			<div><%= check_box(:current_suppliers, "suppliers",{multipart: true},  supplier.slug, nil) %>
+	<% current_suppliers.each do |supplier| %>
+		<div><%= check_box(:current_suppliers, supplier.slug,{multipart: true},  supplier.slug, nil) %>
 				<%= supplier.name  %>
 			</div>
 	<% end  %>
