@@ -2,14 +2,14 @@ class Seed
   def initialize
     build_items
     build_category
-    build_orders
+    #build_orders
     build_users
     build_items_category
 		build_supplier
 		build_supplier_admin
-
   end
 
+=begin
   def build_orders
     order1 = Order.create(user_id: 1, status: "ordered", total: 2000)
     order1_item1 = OrdersItem.create(item_id: 1, order_id: 1, quantity: 2, subtotal: 2000)
@@ -45,43 +45,53 @@ class Seed
 
     order10 = Order.create(user_id: 2, status: "completed", total: 1100)
     order10_item7 = OrdersItem.create(item_id: 7, order_id: 10, quantity: 2, subtotal: 1100)
-
   end
+=end
 
   def build_items
-    item1 = Item.create(title: "Gut Buster", description: "If it's in the store, it's in this burrito!", price: 1000, image: open("app/assets/images/batteries.jpg"))
-    item2 = Item.create(title: "Atomic Sunrise", description: "Spicy green chili, egg, and potato burrito.", price: 850, image: open("app/assets/images/batteries.jpg"))
-    item3 = Item.create(title: "Fiesta Especial", description: "A 4-foot party-sized burrito to share with your family and friends.", price: 8000, image:open("app/assets/images/batteries.jpg"))
-    item4 = Item.create(title: "UF burritO", description: "Monthly special. It's out of this world.", price: 689, image: open("app/assets/images/batteries.jpg"))
-    item5 = Item.create(title: "Smothered Dynamite", description: "Classic pork green chili smothered burrito, your choice of fillings.", price: 899, image: open("app/assets/images/batteries.jpg"))
-    item6 = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    item7 = Item.create(title: "Queso Quesadillas", description: "These delicious veggie dillas can be frisbeed to your door upon request.", price: 550, image: open("app/assets/images/batteries.jpg"))
-    item8 = Item.create(title: "Death by Burrito", description: "That's no moon, that's a Beef Burrito smoothered in spicy green chili sauce!", price: 750, image: open("app/assets/images/batteries.jpg"))
-    item9 = Item.create(title: "Flaming Fajitas", description: "These veggie fajitas will set your mouth on fire.", price: 1200, image: open("app/assets/images/batteries.jpg"))
-    item10 = Item.create(title: "Breakfast Quesadilla", description: "One delicious egg, cheese, and potato dilla.", price: 650, image: open("app/assets/images/batteries.jpg"))
-    item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    item12 = Item.create(title: "Veggie delight", description: "Eat all your veggies, tomatoes, red onions, green peppers, mushrooms and more!", price: 700, image: open("app/assets/images/batteries.jpg"))
-    item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    item14 = Item.create(title: "Classic", description: "Our classic burrito with authentic flavors.", price: 800, image: open("app/assets/images/batteries.jpg"))
-    item15 = Item.create(title: "Hot 'n Spicy", description: "All the hot and spicy things you can handle.", price: 1000, image: open("app/assets/images/batteries.jpg"))
-    item16 = Item.create(title: "Tamale Torpedo", description: "These little tamale bombs come in one flavor: spicy!", price: 400, image: open("app/assets/images/batteries.jpg"))
-    item17 = Item.create(title: "Rice and Bombs", description: "Our slow-simmered black beans and cilantro-lime rice packaged up in individual parachute packs.", price: 300, image: open("app/assets/images/batteries.jpg"))
-    item18 = Item.create(title: "Hot Sauce Bucket", description: "Just what it sounds like: a small bucket of our house hot sauce.", price: 300, image: open("app/assets/images/batteries.jpg"))
-    item19 = Item.create(title: "Chips and Salsa", description: "A bag of chips bubble-wrapped for special delivery with a small bucket of our house hot sauce.", price: 400, image: open("app/assets/images/batteries.jpg"))
-    item20 = Item.create(title: "Enola Empenada", description: "This empenada is filled with cheese and our famous mushroom salsa.", price: 500, image: open("app/assets/images/batteries.jpg"))
+    item1 = Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/canteen.jpg"))
+    
+    item2 = Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/water.jpg"))
+    item3 = Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/water_purifier.jpg"))
+    item4 = Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/water_tablets.jpg"))
+    item5 = Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/beans.jpg"))
+
+    item6 = Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/beans.jpg"))
+    item7 = Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/formula.jpg"))
+    item8 = Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/soup.jpg"))
+    item9 = Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/tuna.jpg"))
+    item10 = Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/beans.jpg"))
+    
+    
+    
+    
+    #item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine.", price: 500, image: open("app/assets/images/batteries.jpg"))
+    #item12 = Item.create(title: "Veggie delight", description: "Eat all your veggies, tomatoes, red onions, green peppers, mushrooms and more!", price: 700, image: open("app/assets/images/batteries.jpg"))
+    #item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"))
+    #item14 = Item.create(title: "Classic", description: "Our classic burrito with authentic flavors.", price: 800, image: open("app/assets/images/batteries.jpg"))
+    #item15 = Item.create(title: "Hot 'n Spicy", description: "All the hot and spicy things you can handle.", price: 1000, image: open("app/assets/images/batteries.jpg"))
+    #item16 = Item.create(title: "Tamale Torpedo", description: "These little tamale bombs come in one flavor: spicy!", price: 400, image: open("app/assets/images/batteries.jpg"))
+    #item17 = Item.create(title: "Rice and Bombs", description: "Our slow-simmered black beans and cilantro-lime rice packaged up in individual parachute packs.", price: 300, image: open("app/assets/images/batteries.jpg"))
+    #item18 = Item.create(title: "Hot Sauce Bucket", description: "Just what it sounds like: a small bucket of our house hot sauce.", price: 300, image: open("app/assets/images/batteries.jpg"))
+    #item19 = Item.create(title: "Chips and Salsa", description: "A bag of chips bubble-wrapped for special delivery with a small bucket of our house hot sauce.", price: 400, image: open("app/assets/images/batteries.jpg"))
+    #item20 = Item.create(title: "Enola Empenada", description: "This empenada is filled with cheese and our famous mushroom salsa.", price: 500, image: open("app/assets/images/batteries.jpg"))
   end
 
   def build_items_category
-    test1 = ItemsCategory.create(item_id: 1, category_id: 3)
-    test2 = ItemsCategory.create(item_id: 2, category_id: 2)
-    test3 = ItemsCategory.create(item_id: 2, category_id: 3)
-    test4 = ItemsCategory.create(item_id: 3, category_id: 3)
-    test5 = ItemsCategory.create(item_id: 3, category_id: 2)
-    test6 = ItemsCategory.create(item_id: 4, category_id: 3)
-    test7 = ItemsCategory.create(item_id: 5, category_id: 3)
-    test8 = ItemsCategory.create(item_id: 5, category_id: 2)
-    test9 = ItemsCategory.create(item_id: 6, category_id: 3)
-    test10 = ItemsCategory.create(item_id: 7, category_id: 3)
+    test1 = ItemsCategory.create(item_id: 1, category_id: 1)
+    test2 = ItemsCategory.create(item_id: 2, category_id: 1)
+    test3 = ItemsCategory.create(item_id: 3, category_id: 1)
+    test4 = ItemsCategory.create(item_id: 4, category_id: 1)
+    test5 = ItemsCategory.create(item_id: 5, category_id: 1)
+    
+    test6 = ItemsCategory.create(item_id: 6, category_id: 4)
+    test7 = ItemsCategory.create(item_id: 7, category_id: 4)
+    test8 = ItemsCategory.create(item_id: 8, category_id: 4)
+    test9 = ItemsCategory.create(item_id: 9, category_id: 4)
+    test10 = ItemsCategory.create(item_id: 10, category_id: 4)
+=begin
+
+
     test11 = ItemsCategory.create(item_id: 7, category_id: 1)
     test12 = ItemsCategory.create(item_id: 8, category_id: 3)
     test13 = ItemsCategory.create(item_id: 8, category_id: 2)
@@ -102,14 +112,15 @@ class Seed
     test27 = ItemsCategory.create(item_id: 19, category_id: 5)
     test28 = ItemsCategory.create(item_id: 19, category_id: 2)
     test29 = ItemsCategory.create(item_id: 20, category_id: 5)
+=end
   end
 
   def build_category
-    category1 = Category.create(name: "Vegetarian", description: "Meatless options.")
-    category2 = Category.create(name: "Spicy", description: "Hot! Hot! Hot!")
-    category3 = Category.create(name: "Specialty", description: "Chef's favorites.")
-    category4 = Category.create(name: "Breakfast", description: "Start your day off right.")
-    category5 = Category.create(name: "Sides", description: "A la carte options.")
+    category1 = Category.create(name: "Water", description: "Water Options")
+    category2 = Category.create(name: "Power", description: "Power Supplies")
+    category3 = Category.create(name: "Clothes", description: "Clothing")
+    category4 = Category.create(name: "Food", description: "Food options")
+    category5 = Category.create(name: "Communications", description: "Communicate clearly")
   end
 
 
