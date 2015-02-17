@@ -1,8 +1,21 @@
 <div id="supplier_home">
 	<h1><%= @supplier.name %> Supplier Page</h1>
-	<% current_user.supplier? %>
+	<% if current_user.supplier? %>
 		<%= render partial: "./partials/item_index" %>
 	<% else %>
-		
+		<ul>
+			<% @items.each do |item|  %>
+			<li>
+				Title: <%= link_to item.title, item_path(item)  %></br>
+				Description: <%= item.description  %></br>
+				Price: <%= number_to_currency(item.price.to_f/100) %></br>
+				Quantity:	<%= item.quantity %></br>
+				<%= image_tag item.image.url(:medium) %>
+				<% if !item.retired %>
+				<%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-lg btn-default" %>
+				<% end %>
+			</li>
+			<% end  %>
+		</ul>
 	<% end %>
 </div>
