@@ -10,10 +10,10 @@
 
 	<% @items.each do |item| %>
 		<% if !item.retired %>
-    <div class="suppliers categories col-md-3 <%= item.item_supplier %> <%= render partial: "/partials/categories_class", locals: {item: item} %>" >
-        <h4>
+    <div id="item-list" class="suppliers categories col-md-3 <%= item.item_supplier %> <%= render partial: "/partials/categories_class", locals: {item: item} %>" >
+        <h5>
           <%= item.title %>
-        </h4>
+        </h5>
         <p>
           <%= item.description %>
         </p>

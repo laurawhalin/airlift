@@ -18,7 +18,8 @@ feature "Add Items to Cart" do
 
   scenario "an item has a cart button" do
     visit items_path
-    within("table") do
+    save_and_open_page
+    within("#item-list") do
       expect(page).to have_button("Add to Cart")
     end
   end

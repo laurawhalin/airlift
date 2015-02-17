@@ -1,16 +1,24 @@
 def item_attributes(overrides={})
 	{
-	 title: "water purifier",
-	 description: "good",
+	 title: "Water Purifier",
+	 description: "Water purification system with pump and cartridge.",
 	 price: 500,
 	 retired: false,
-	 quantity: 50
+	 quantity: 50,
+	 supplier_id: 1
+	}.merge(overrides)
+end
+
+def category_attributes(overrides={})
+	{
+		name: "Water",
+		description: "Drinkable goods."
 	}.merge(overrides)
 end
 
 def user_attributes(overrides={})
-	{ 
-	   fullname: "Joe Guy", 
+	{
+	   fullname: "Joe Guy",
 		 email: "joe@gmial.com",
 		 role: 0,
 		 password: "foobar1234",
