@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { :greater_than_or_equal_to => 0 }
+	validates :supplier_id, presence: true
   has_attached_file :image, styles: { medium: "300x300>",
                                         thumb: "100x100>" },
                                         default_url: "beans.jpg"

@@ -11,7 +11,7 @@ feature "unathenticated Users can see a list of items" do
     visit root_url
     click_link "View All Supplies"
 		item = Item.create(item_attributes)
-
+		save_and_open_page
 		expect(current_path).to eq(items_path)
     expect(page).to have_text(item.title)
   end
