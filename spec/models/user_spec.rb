@@ -89,6 +89,6 @@ RSpec.describe User, type: :model do
   end
 
   it "can find it admin_supplier id" do
-    expect(user.find_supplier_admin(user.id).id).to eq(17)
+    expect(user.find_supplier_admin(user.id).id).to eq(18)
   end
 end

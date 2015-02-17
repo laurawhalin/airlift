@@ -1,6 +1,6 @@
 <div id="supplier_home">
 	<h1><%= @supplier.name %> Supplier Page</h1>
-	<% if current_user.supplier? %>
+	<% if current_user && current_user.supplier? %>
 		<%= render partial: "./partials/item_index" %>
 	<% else %>
 		<ul>

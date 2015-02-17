@@ -16,9 +16,6 @@ feature "supplier visits the site" do
       fill_in "session[password]", with: @user.password
       click_link_or_button "Log In"
     end
-    save_and_open_page
-    within(".table")
-      expect(page).to have_content(@item.title)
-      expect(page).to have_
+    expect(page).to have_content(@item.title)
   end
 end
