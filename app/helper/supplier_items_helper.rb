@@ -1,4 +1,4 @@
-module AdminItemsHelper
+module SupplierItemsHelper
   def set_category_tag
     string_category_tags = params[:category_list][:categories].uniq
     @found_tags = string_category_tags.map do |name|
