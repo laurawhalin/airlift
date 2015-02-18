@@ -8,6 +8,10 @@ feature "Add Items to Cart" do
   end
 
   scenario "an item has a cart button" do
+    # supplier = Supplier.create(supplier_attributes)
+    # item = Item.create(item_attributes)
+    # user = User.create(user_attributes)
+
     visit items_path
     within("#item-list") do
       expect(page).to have_button("Add to Cart")

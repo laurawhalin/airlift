@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
-  end 
+  end
 
   private
 
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
 	def current_suppliers
-		@suppliers = Supplier.all
+		@suppliers ||= Supplier.all
 	end
 
   helper_method :current_categories

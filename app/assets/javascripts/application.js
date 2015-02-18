@@ -25,4 +25,10 @@ $(document).ready(function(){
     var all = $('.categories').hide();
     $('.' + category).toggle("show");
   });
+
+	$("checkbox:checked").click(function(){
+		var supplier = $(this).val();
+		var all = $('.suppliers').hide();
+		$('.' + supplier).show();
+	});
 });

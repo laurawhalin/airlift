@@ -51,27 +51,27 @@ class Seed
   def build_items
     item1 = Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/canteen.jpg"), supplier_id: 1)
     item2 = Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/water.jpg"), supplier_id: 1)
-    item3 = Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/water_purifier.jpg"), supplier_id: 1)
-    item4 = Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/water_tablets.jpg"), supplier_id: 1)
-    item5 = Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/beans.jpg"), supplier_id: 1)
-    item6 = Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/beans.jpg"), supplier_id: 1)
-    item7 = Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/formula.jpg"), supplier_id: 1)
-    item8 = Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/soup.jpg"), supplier_id: 1)
-    item9 = Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/tuna.jpg"), supplier_id: 1)
-    item10 = Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/beans.jpg"), supplier_id: 1)
-    end
+    item3 = Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/water_purifier.jpg"), supplier_id: 2)
+    item4 = Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/water_tablets.jpg"), supplier_id: 2)
+    item5 = Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/beans.jpg"), supplier_id: 3)
+    item6 = Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/beans.jpg"), supplier_id: 3)
+    item7 = Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/formula.jpg"), supplier_id: 4)
+    item8 = Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/soup.jpg"), supplier_id: 4)
+    item9 = Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/tuna.jpg"), supplier_id: 5)
+    item10 = Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/beans.jpg"), supplier_id: 5)
+  end
 
   def build_items_category
-    test1 = ItemsCategory.create(item_id: 1, category_id: 1)
-    test2 = ItemsCategory.create(item_id: 2, category_id: 1)
-    test3 = ItemsCategory.create(item_id: 3, category_id: 1)
-    test4 = ItemsCategory.create(item_id: 4, category_id: 1)
-    test5 = ItemsCategory.create(item_id: 5, category_id: 1)
+    test1 = ItemsCategory.create(item_id: 1, category_id: 3)
+    test2 = ItemsCategory.create(item_id: 2, category_id: 2)
+    test3 = ItemsCategory.create(item_id: 3, category_id: 3)
+    test4 = ItemsCategory.create(item_id: 4, category_id: 3)
+    test5 = ItemsCategory.create(item_id: 5, category_id: 2)
     test6 = ItemsCategory.create(item_id: 6, category_id: 4)
-    test7 = ItemsCategory.create(item_id: 7, category_id: 4)
-    test8 = ItemsCategory.create(item_id: 8, category_id: 4)
-    test9 = ItemsCategory.create(item_id: 9, category_id: 4)
-    test10 = ItemsCategory.create(item_id: 10, category_id: 4)
+    test7 = ItemsCategory.create(item_id: 7, category_id: 5)
+    test8 = ItemsCategory.create(item_id: 8, category_id: 1)
+    test9 = ItemsCategory.create(item_id: 9, category_id: 5)
+    test10 = ItemsCategory.create(item_id: 10, category_id: 1)
   end
 
   def build_category
@@ -102,6 +102,10 @@ class Seed
 
 	def build_supplier
 		Supplier.create(name: "Joe's big warehouse", slug: "joe-s-big-warehouse", description: "the best", retired: false, address: "1510 blake St. , CO" )
+		Supplier.create(name: "Get Relief Now", slug: "get-relief-now", description: "one stop shop for emergency supplies", retired: false, address: "2020 blake St. , ME " )
+		Supplier.create(name: "Big Supplies", slug: "big-supplies", description: "oversized supplies", retired: false, address: "2000 lake St. , IL " )
+		Supplier.create(name: "To the Rescue", slug: "to-the-rescue", description: "Supplies for those in need.", retired: false, address: "20 bake St. , CA " )
+		Supplier.create(name: "Band-Aid", slug: "band-aid", description: "temporary solutions for big problems", retired: false, address: "2 baker St. , NY " )
 	end
 
 
