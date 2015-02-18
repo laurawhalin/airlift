@@ -1,4 +1,4 @@
-class Suppliers::ItemsController < AdminController
+class Suppliers::ItemsController < SuppliersController
   include SupplierItemsHelper
   def index
     @items = Item.all
