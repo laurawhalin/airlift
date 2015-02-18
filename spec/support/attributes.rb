@@ -47,3 +47,10 @@ def supplier_attributes(overrides={})
 	 retired: false
 	}.merge(overrides)
 end
+
+def supplier_admin_attributes(overrides={})
+	{
+		user_id: 1,
+		supplier_id: 1
+	}.merge(overrides)
+end
