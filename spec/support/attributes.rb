@@ -27,6 +27,17 @@ def user_attributes(overrides={})
 	}.merge(overrides)
 end
 
+def admin_user_attributes(overrides={})
+	{
+	   fullname: "Joe Admin",
+		 email: "joe@gmial.com",
+		 role: 1,
+		 password: "foobar1234",
+		 password_confirmation: "foobar1234",
+		 display_name: "foo"
+	}.merge(overrides)
+end
+
 def supplier_attributes(overrides={})
 	{
 	 name: "Fireproof",
