@@ -1,8 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+button {
+  margin: 10px;
+}
+
+.row {
+  margin: 5px;
+}
+
+#header-box {
+  border-style: solid;
+}
+
+.container {
+  background-color: rgb(202,205,170);
+}
+
 body {
-  background-image: image-url('burrito_logo.jpg');
+  background-image: image-url('beans.jpg');
   background-repeat: no-repeat;
   background-position-x: 50px;
   background-size: 200px;

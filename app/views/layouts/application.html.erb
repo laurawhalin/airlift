@@ -14,6 +14,7 @@
 <body>
 
   <div class="container">
+    <div id="header-box">
     <div class="row">
       <div id="logo" class="col-md-1">
         <!-- airlift logo -->
@@ -69,7 +70,7 @@
       <% end %>
     </div>
   </div>
-
+</div>
   <div class="alert-danger" role="alert">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
