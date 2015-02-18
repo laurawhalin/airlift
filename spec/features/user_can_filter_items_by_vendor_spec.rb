@@ -35,13 +35,12 @@ feature "User Supplier Items" do
 		expect(page).to have_content(item.title)
 	end
 
-	scenario "User can add supplier item to cart from supplier index" do
+	scenario "User can add supplier item to cart from item index" do
 		supplier = Supplier.create(supplier_attributes)
 		item = supplier.items.create(item_attributes(supplier_id: supplier.id))
 
-		visit supplier_path(supplier.slug)
-		click_link_or_button "Add to Cart"
-
+		visit items_path
+		first(:button, "Add to Cart").click
 		within("#cart") do
 			expect(page).to have_content("1")
 		end
