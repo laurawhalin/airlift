@@ -2,12 +2,11 @@ class Seed
   def initialize
     build_items
     build_category
-    build_orders
+    #build_orders
     build_users
     build_items_category
 		build_supplier
 		build_supplier_admin
-
   end
 
   def build_orders
@@ -45,8 +44,8 @@ class Seed
 
     order10 = Order.create(user_id: 2, status: "completed", total: 1100)
     order10_item7 = OrdersItem.create(item_id: 7, order_id: 10, quantity: 2, subtotal: 1100)
-
   end
+
 
   def build_items
     item1 = Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/canteen.jpg"), supplier_id: 1)
@@ -107,7 +106,5 @@ class Seed
 		Supplier.create(name: "To the Rescue", slug: "to-the-rescue", description: "Supplies for those in need.", retired: false, address: "20 bake St. , CA " )
 		Supplier.create(name: "Band-Aid", slug: "band-aid", description: "temporary solutions for big problems", retired: false, address: "2 baker St. , NY " )
 	end
-
-
 end
 Seed.new
