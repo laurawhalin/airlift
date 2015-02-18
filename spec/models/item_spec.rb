@@ -13,7 +13,8 @@ RSpec.describe Item, type: :model do
     Item.create(
                 title: "Green Chili Burrito",
                 description: "Amazingly spicey burrito",
-                price: 655
+                price: 655,
+								supplier_id: 1
                 )
   }
 
@@ -85,5 +86,16 @@ RSpec.describe Item, type: :model do
 	it "should have a default quantity of 0" do
 		item 
 		expect(item.quantity).to eq(0)
+	end
+
+	it "should have a supplier" do
+		item 
+		expect(item.supplier_id).to eq(1)
+	end
+
+	it "should not be valid without a supplier id" do
+		i = Item.create(item_attributes)
+		i.supplier_id = nil
+		expect(i).to_not be_valid
 	end
 end

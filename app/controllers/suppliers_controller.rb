@@ -3,4 +3,8 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find_by(slug: params[:slug])
 		@items = @supplier.items.all
   end
+
+  def index
+
+  end
 end

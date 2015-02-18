@@ -9,7 +9,6 @@ class Seed
 		build_supplier_admin
   end
 
-=begin
   def build_orders
     order1 = Order.create(user_id: 1, status: "ordered", total: 2000)
     order1_item1 = OrdersItem.create(item_id: 1, order_id: 1, quantity: 2, subtotal: 2000)
@@ -46,73 +45,32 @@ class Seed
     order10 = Order.create(user_id: 2, status: "completed", total: 1100)
     order10_item7 = OrdersItem.create(item_id: 7, order_id: 10, quantity: 2, subtotal: 1100)
   end
-=end
+
 
   def build_items
-    item1 = Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/canteen.jpg"))
-    
-    item2 = Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/water.jpg"))
-    item3 = Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/water_purifier.jpg"))
-    item4 = Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/water_tablets.jpg"))
-    item5 = Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/beans.jpg"))
-
-    item6 = Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/beans.jpg"))
-    item7 = Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/formula.jpg"))
-    item8 = Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/soup.jpg"))
-    item9 = Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/tuna.jpg"))
-    item10 = Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/beans.jpg"))
-    
-    
-    
-    
-    #item11 = Item.create(title: "Halo", description: "All fresh vegetables which gives you the moring shine.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    #item12 = Item.create(title: "Veggie delight", description: "Eat all your veggies, tomatoes, red onions, green peppers, mushrooms and more!", price: 700, image: open("app/assets/images/batteries.jpg"))
-    #item13 = Item.create(title: "Not Too Sweet", description: "Just enough to satisfy your sweet tooth, all sweet things.", price: 500, image: open("app/assets/images/batteries.jpg"))
-    #item14 = Item.create(title: "Classic", description: "Our classic burrito with authentic flavors.", price: 800, image: open("app/assets/images/batteries.jpg"))
-    #item15 = Item.create(title: "Hot 'n Spicy", description: "All the hot and spicy things you can handle.", price: 1000, image: open("app/assets/images/batteries.jpg"))
-    #item16 = Item.create(title: "Tamale Torpedo", description: "These little tamale bombs come in one flavor: spicy!", price: 400, image: open("app/assets/images/batteries.jpg"))
-    #item17 = Item.create(title: "Rice and Bombs", description: "Our slow-simmered black beans and cilantro-lime rice packaged up in individual parachute packs.", price: 300, image: open("app/assets/images/batteries.jpg"))
-    #item18 = Item.create(title: "Hot Sauce Bucket", description: "Just what it sounds like: a small bucket of our house hot sauce.", price: 300, image: open("app/assets/images/batteries.jpg"))
-    #item19 = Item.create(title: "Chips and Salsa", description: "A bag of chips bubble-wrapped for special delivery with a small bucket of our house hot sauce.", price: 400, image: open("app/assets/images/batteries.jpg"))
-    #item20 = Item.create(title: "Enola Empenada", description: "This empenada is filled with cheese and our famous mushroom salsa.", price: 500, image: open("app/assets/images/batteries.jpg"))
+    item1 = Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/canteen.jpg"), supplier_id: 1)
+    item2 = Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/water.jpg"), supplier_id: 1)
+    item3 = Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/water_purifier.jpg"), supplier_id: 2)
+    item4 = Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/water_tablets.jpg"), supplier_id: 2)
+    item5 = Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/beans.jpg"), supplier_id: 3)
+    item6 = Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/beans.jpg"), supplier_id: 3)
+    item7 = Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/formula.jpg"), supplier_id: 4)
+    item8 = Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/soup.jpg"), supplier_id: 4)
+    item9 = Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/tuna.jpg"), supplier_id: 5)
+    item10 = Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/beans.jpg"), supplier_id: 5)
   end
 
   def build_items_category
-    test1 = ItemsCategory.create(item_id: 1, category_id: 1)
-    test2 = ItemsCategory.create(item_id: 2, category_id: 1)
-    test3 = ItemsCategory.create(item_id: 3, category_id: 1)
-    test4 = ItemsCategory.create(item_id: 4, category_id: 1)
-    test5 = ItemsCategory.create(item_id: 5, category_id: 1)
-    
+    test1 = ItemsCategory.create(item_id: 1, category_id: 3)
+    test2 = ItemsCategory.create(item_id: 2, category_id: 2)
+    test3 = ItemsCategory.create(item_id: 3, category_id: 3)
+    test4 = ItemsCategory.create(item_id: 4, category_id: 3)
+    test5 = ItemsCategory.create(item_id: 5, category_id: 2)
     test6 = ItemsCategory.create(item_id: 6, category_id: 4)
-    test7 = ItemsCategory.create(item_id: 7, category_id: 4)
-    test8 = ItemsCategory.create(item_id: 8, category_id: 4)
-    test9 = ItemsCategory.create(item_id: 9, category_id: 4)
-    test10 = ItemsCategory.create(item_id: 10, category_id: 4)
-=begin
-
-
-    test11 = ItemsCategory.create(item_id: 7, category_id: 1)
-    test12 = ItemsCategory.create(item_id: 8, category_id: 3)
-    test13 = ItemsCategory.create(item_id: 8, category_id: 2)
-    test14 = ItemsCategory.create(item_id: 9, category_id: 2)
-    test15 = ItemsCategory.create(item_id: 10, category_id: 1)
-    test16 = ItemsCategory.create(item_id: 10, category_id: 4)
-    test17 = ItemsCategory.create(item_id: 11, category_id: 1)
-    test18 = ItemsCategory.create(item_id: 11, category_id: 4)
-    test19 = ItemsCategory.create(item_id: 12, category_id: 1)
-    test20 = ItemsCategory.create(item_id: 13, category_id: 3)
-    test21 = ItemsCategory.create(item_id: 14, category_id: 2)
-    test22 = ItemsCategory.create(item_id: 15, category_id: 2)
-    test23 = ItemsCategory.create(item_id: 16, category_id: 5)
-    test24 = ItemsCategory.create(item_id: 16, category_id: 2)
-    test25 = ItemsCategory.create(item_id: 17, category_id: 5)
-    test25 = ItemsCategory.create(item_id: 18, category_id: 5)
-    test26 = ItemsCategory.create(item_id: 18, category_id: 2)
-    test27 = ItemsCategory.create(item_id: 19, category_id: 5)
-    test28 = ItemsCategory.create(item_id: 19, category_id: 2)
-    test29 = ItemsCategory.create(item_id: 20, category_id: 5)
-=end
+    test7 = ItemsCategory.create(item_id: 7, category_id: 5)
+    test8 = ItemsCategory.create(item_id: 8, category_id: 1)
+    test9 = ItemsCategory.create(item_id: 9, category_id: 5)
+    test10 = ItemsCategory.create(item_id: 10, category_id: 1)
   end
 
   def build_category
@@ -143,8 +101,10 @@ class Seed
 
 	def build_supplier
 		Supplier.create(name: "Joe's big warehouse", slug: "joe-s-big-warehouse", description: "the best", retired: false, address: "1510 blake St. , CO" )
+		Supplier.create(name: "Get Relief Now", slug: "get-relief-now", description: "one stop shop for emergency supplies", retired: false, address: "2020 blake St. , ME " )
+		Supplier.create(name: "Big Supplies", slug: "big-supplies", description: "oversized supplies", retired: false, address: "2000 lake St. , IL " )
+		Supplier.create(name: "To the Rescue", slug: "to-the-rescue", description: "Supplies for those in need.", retired: false, address: "20 bake St. , CA " )
+		Supplier.create(name: "Band-Aid", slug: "band-aid", description: "temporary solutions for big problems", retired: false, address: "2 baker St. , NY " )
 	end
-
-
 end
 Seed.new

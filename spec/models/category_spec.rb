@@ -1,12 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Category, type: :model do
-  let(:category) {
-    Category.create(
-                 name: "burritos",
-                 description: "all the burritos"
-                 )
-  }
+  let(:category) { Category.create(category_attributes) }
 
   it "is valid" do
     expect(category).to be_valid
@@ -23,18 +18,10 @@ RSpec.describe Category, type: :model do
   end
 
   it "can have many items" do
-    category.items.create(
-                          title: "Green Chili Burrito",
-                          description: "Amazingly spicey burrito",
-                          price: 655
-                          )
-    category.items.create(
-                          title: "Hot n Spicy",
-                          description: "spicey burrito",
-                          price: 700
-                          )
+    category.items.create(item_attributes)
+    category.items.create(item_attributes(title: "BB Gun"))
     expect(category.items.count).to eq 2
-    expect(category.items.map(&:title)).to eq(["Green Chili Burrito",
-                                               "Hot n Spicy"])
+    expect(category.items.map(&:title)).to eq(["Water Purifier",
+                                               "BB Gun"])
   end
 end
