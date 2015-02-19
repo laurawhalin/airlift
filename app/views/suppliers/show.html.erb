@@ -1,4 +1,22 @@
 <div id="supplier_home">
 	<h1><%= @supplier.name %> Supplier Page</h1>
-	<%= render partial: "./partials/item_index" %>
+	<div class="open-orders">
+		<h2>Open Orders</h2>
+		<%= link_to "View All Orders", supplier_orders_path %><br>
+		<%= link_to "Manage Items", supplier_items_path %>
+		<div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Show Account Details</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+				</div>
+		</div>
+	</div>
 </div>
