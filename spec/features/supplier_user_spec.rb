@@ -18,4 +18,14 @@ feature "supplier visits the site" do
     end
     expect(page).to have_content(@item.title)
   end
+
+	scenario "Supplier can visit their profile page and see their orders" do 
+		allow_any_instance_of(ApplicationController).to receive(:current_user)
+			.and_return(@user)
+		visit supplier_path(@supplier.slug)
+		within('.open-orders') do
+			expect(page).to have_content("Open Orders")
+		end
+		expect(page).to have_link("View All Orders")
+	end
 end
