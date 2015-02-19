@@ -7,6 +7,7 @@ button {
 
 .row {
   margin: 5px;
+  width: 100%;
 }
 
 #header-box {
@@ -21,11 +22,14 @@ button {
   border-width: 4px;
 }
 
+
+
 .container {
   width: 100%;
   padding-right: 0px;
   padding-left: 0px;
   background-color: #DCDCDC;
+  padding-bottom: 150px;
 }
 
 body {
@@ -43,10 +47,6 @@ body {
   margin-bottom: 20px;
   border-radius: 4px;
   padding-left: 15px;
-}
-
-.container {
-  padding-bottom: 150px;
 }
 
 #welcome {
@@ -78,6 +78,7 @@ a {
 #cart {
   float: right;
   margin-top: 10px;
+  padding-right: 10px;
 }
 
 #user-nav {
@@ -113,6 +114,10 @@ a {
 
 .sidebar {
   height: 100%;
+  margin-bottom: 800px;
+  // position: fixed;
+  z-index: 0;
+  // margin-lef: 400px;
 }
 
 #status {
@@ -123,6 +128,9 @@ a {
   padding-bottom: 10px;
 }
 
+#item-list .btn {
+  padding-left: 5px;
+}
 #cart_total {
   font-size: 20px;
 }
@@ -186,4 +194,31 @@ a {
 
 .footer h4 {
   margin-bottom: 30px;
+}
+
+.view-btn {
+  margin: 0;
+  padding: 0;
+}
+
+#item-list {
+  border-left: solid;
+  border-width: 1px;
+  height: 300px;
+  padding: 20px;
+  // margin-left: 250px;
+}
+
+#categories ul {
+  padding-left: 0;
+}
+
+#categories-checkbox label {
+  font-size: 16px;
+  font-family: Arial;
+}
+
+#supplier-checkbox {
+  font-size: 16px;
+  font-family: Arial;
 }
