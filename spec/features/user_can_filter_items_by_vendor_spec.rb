@@ -28,11 +28,11 @@ feature "User Supplier Items" do
 		supplier = Supplier.create(supplier_attributes)
 		item     = supplier.items.create(item_attributes(supplier_id: supplier.id))
 
-		visit supplier_path(supplier.slug)
-		expect(current_path).to eq("/fireproof")
-
-		click_link("Water Purifier")
-		expect(page).to have_content(item.title)
+		visit items_path
+		first(:button,"View More Info").click
+		within(".Water") do
+			expect(page).to have_content("Water")
+		end
 	end
 
 	scenario "User can add supplier item to cart from item index" do

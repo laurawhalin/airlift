@@ -14,14 +14,13 @@ feature "Admin User Items" do
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@admin_user)
     visit supplier_items_path(@slug)
-    expect(page).to have_content("Water Filter")
+    expect(page).to have_content("Water Purifier")
   end
 
   xscenario "Admin User can create new items and see them on index page" do
     allow_any_instance_of(ApplicationController).
       to receive(:current_user).and_return(@admin_user)
     visit supplier_items_path(@slug)
-    save_and_open_page
     click_link_or_button "Create New Item"
     expect(current_path).to eq(new_supplier_item_path(@slug))
     fill_in "item[title]", with: "BB Gun"

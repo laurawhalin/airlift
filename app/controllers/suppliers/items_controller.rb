@@ -1,7 +1,7 @@
 class Suppliers::ItemsController < SuppliersController
   include SupplierItemsHelper
   def index
-    @items = Item.all
+		 @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
   end
 
   def new
