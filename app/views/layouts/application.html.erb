@@ -17,13 +17,12 @@
     <div id="header-box">
     <div class="row">
       <div id="logo" class="col-md-1">
-        <!-- airlift logo -->
       </div>
       <div id="restaurant_name" class="col-md-6">
         <h1><%= link_to("Airlift", root_url )%></h1>
         <h4>Emergency Supplies Delivered Fast</h4>
         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Supplies" %>
+          <%= text_field_tag :search, params[:search], size: 53, placeholder: "Search Supplies" %>
           <%= submit_tag "Search", :name => nil %>
         <% end %>
       </div>
