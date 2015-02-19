@@ -14,6 +14,9 @@
               <img src="assets/Hurricane_Katrina_23.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
             </div>
             <div class="back">
+              <% @items.each do |item| %>
+                <%= item.title %><br/>
+              <% end %>
             </div>
           </div>
         </div>

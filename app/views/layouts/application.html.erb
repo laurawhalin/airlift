@@ -12,64 +12,10 @@
 
 </head>
 <body>
-
-  <div class="container">
-    <div id="header-box">
-    <div class="row">
-      <div id="logo" class="col-md-1">
-      </div>
-      <div id="restaurant_name" class="col-md-6">
-        <h1><%= link_to("Airlift", root_url )%></h1>
-        <h4>Emergency Supplies Delivered Fast</h4>
-        <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], size: 53, placeholder: "Search Supplies" %>
-          <%= submit_tag "Search", :name => nil %>
-        <% end %>
-      </div>
-      <div id="user_nav" class="col-md-5 text-right">
-        <div class="row">
-          <% if current_user %>
-           <% if !current_user.supplier? %>
-              <div class="col-sm-7">
-                <h4>Welcome, <%= current_user.fullname %></h4>
-              </div>
-              <div class="col-sm-2">
-                <%= link_to('My Orders', user_orders_path(current_user), class: "btn btn-default logout") %>
-              </div>
-            <% end %>
-              <div class="col-sm-3">
-                <%= link_to('Logout', logout_path, :method => :delete, class: "btn btn-default logout") %>
-              </div>
-					<% else %>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target=".login-modal">Log In</button>
-						<div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-						  <div class="modal-dialog modal-md">
-								<div class="modal-content">
-              		<%= render partial: "./partials/login" %>
-						    </div>
-						  </div>
-						</div>
-            <button type="button" class="btn btn-link btn-default" data-toggle="modal" data-target=".reg-modal">Register</button>
-            <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <%= render partial: "./partials/register_form" %>
-                </div>
-              </div>
-            </div>
-
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <div class="row text-right">
-    <div id="cart">
-      <% if !current_user.present? || !current_user.supplier? %>
-        <i class="fa fa-shopping-cart fa-2x"></i><%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
-      <% end %>
-    </div>
+  <%= render partial: './partials/header' %>
+  <div id="space" style="padding-top: 170px">
   </div>
-</div>
+<div class="container">
   <div class="alert-danger" role="alert">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
