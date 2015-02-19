@@ -4,7 +4,7 @@
 
 <table class="table">
   <tr><th>Item</th><th></th><th>Description</th><th>Status</th><th>Price</th><th></th></tr>
-  <% @items.each do |item| %>
+  <% @supplier.items.each do |item| %>
   <tr>
     <td>
       <%= link_to item.title, item_path(item) %>
