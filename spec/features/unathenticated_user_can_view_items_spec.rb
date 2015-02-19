@@ -58,9 +58,9 @@ feature "unathenticated users can see a list of items" do
   end
 
   scenario "searching for items is case indifferent" do
-    visit root_url
-    fill_in "search", with: "canteen"
+    visit items_path
+    fill_in "search", with: "purifier"
     click_button "Search"
-    expect(page).to have_content("Canteen")
+    expect(page).to have_content("Purifier")
   end
 end

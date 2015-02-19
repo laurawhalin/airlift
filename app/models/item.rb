@@ -16,7 +16,8 @@ class Item < ActiveRecord::Base
 
   def self.search(search)
     if search
-      self.all.where("lower(title) LIKE ? OR lower(description) LIKE ?", "%#{search.downcase}%", "%#{search.downcase}%")
+      query = "%#{search.downcase}%"
+      self.all.where("lower(title) LIKE ? OR lower(description) LIKE ?", query, query)
     else
       self.all
     end
