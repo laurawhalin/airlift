@@ -1,10 +1,12 @@
 <div id="categories">
   <ul>
     <% current_categories.each do |category| %>
+    <div id="category-checkbox">
     <label>
       <input type="checkbox" value="<%= category.name %>" id="<%= category.name %>ID"/>
       <%= category.name %>
     </label>
+    </div>
     <% end %>
   </ul>
 </div>
