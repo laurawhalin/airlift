@@ -108,14 +108,14 @@ class Seed
   end
 
   def build_supplier
-    Supplier.create(name: "Joe's big warehouse", slug: "joe-s-big-warehouse", description: "the best", retired: false, address: "1510 blake St. , CO" )
-    Supplier.create(name: "Get Relief Now", slug: "get-relief-now", description: "one stop shop for emergency supplies", retired: false, address: "2020 blake St. , ME " )
-    Supplier.create(name: "Big Supplies", slug: "big-supplies", description: "oversized supplies", retired: false, address: "2000 lake St. , IL " )
-    Supplier.create(name: "Mike's Surplus", slug: "mike-s-surplus", description: "retired military supplies", retired: false, address: "13500 State St. , OR " )
-    Supplier.create(name: "Big Bob's extras", slug: "big-bob-s-extras", description: "Extra stuff i found", retired: false, address: "69343 Blake St. , CA " )
-    Supplier.create(name: "Turing Support", slug: "turing-support", description: "Support by the most amazing techs", retired: false, address: "1510 Blake St. , OR " )
+    Supplier.create(name: "Joe's big warehouse", slug: "joe-s-big-warehouse", description: "the best", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
+    Supplier.create(name: "Get Relief Now", slug: "get-relief-now", description: "one stop shop for emergency supplies", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
+    Supplier.create(name: "Big Supplies", slug: "big-supplies", description: "oversized supplies", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
+    Supplier.create(name: "Mike's Surplus", slug: "mike-s-surplus", description: "retired military supplies", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
+    Supplier.create(name: "Big Bob's extras", slug: "big-bob-s-extras", description: "Extra stuff i found", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
+    Supplier.create(name: "Turing Support", slug: "turing-support", description: "Support by the most amazing techs", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
     Supplier.create(name: "Batmans Help", slug: "batmans-help", description: "extra bat supplies", retired: false, address: "Cave somewhere, GO " )
-    Supplier.create(name: "Home Depot Rejects", slug: "home-depot-rejects", description: "The stuff we cant sell to anyone else", retired: false, address: "79030 Hagle Rd. , GA " )
+    Supplier.create(name: "Home Depot Rejects", slug: "home-depot-rejects", description: "The stuff we cant sell to anyone else", retired: false, address: Faker::Address.street_address + " " + Faker::Address.street_suffix + " " + Faker::Address.city + ", " + Faker::Address.state_abbr + " " +  Faker::Address.zip )
     Supplier.create(name: "To the Rescue", slug: "to-the-rescue", description: "Supplies for those in need.", retired: false, address: "20 bake St. , CA " )
     Supplier.create(name: "Band-Aid", slug: "band-aid", description: "temporary solutions for big problems", retired: false, address: "2 baker St. , NY " )
   end
