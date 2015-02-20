@@ -47,6 +47,11 @@ feature "User login" do
     end
   end
 
+  scenario "regular User cannot visit Admin pages" do
+    visit admin_categories_path
+    expect(current_path).to eq(root_path)
+  end
+
   scenario "unregistered user cannot login" do
     visit "/"
     first(:button, "Log In").click

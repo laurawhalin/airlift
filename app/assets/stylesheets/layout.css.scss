@@ -10,6 +10,12 @@ button {
   width: 100%;
 }
 
+.row-items {
+  margin-left: 250px;
+}
+
+
+
 #header-box {
   background-image: image-url('burrito_logo.jpg');
   background-repeat: no-repeat;
@@ -115,9 +121,8 @@ a {
 .sidebar {
   height: 100%;
   margin-bottom: 800px;
-  // position: fixed;
+  position: fixed;
   z-index: 0;
-  // margin-lef: 400px;
 }
 
 #status {
