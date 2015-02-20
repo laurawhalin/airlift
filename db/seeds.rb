@@ -2,7 +2,7 @@ class Seed
   def initialize
     build_items
     build_category
-    #build_orders
+    build_orders
     build_users
     build_items_category
     build_supplier
@@ -10,45 +10,20 @@ class Seed
   end
 
   def build_orders
-    Order.create(user_id: 1, status: "ordered", total: 2000)
-    OrdersItem.create(item_id: 1, order_id: 1, quantity: 2, subtotal: 2000)
+    statuses = ["ordered", "completed", "paid", "cancelled"]
+    50.times do
+      order_status = statuses.sample
+      Order.create(user_id: rand(1...10), status: order_status, total: rand(1...2000))
 
-    Order.create(user_id: 2, status: "ordered", total: 1500)
-    OrdersItem.create(item_id: 1, order_id: 2, quantity: 1, subtotal: 1000)
-    OrdersItem.create(item_id: 6, order_id: 2, quantity: 1, subtotal: 500)
-
-    Order.create(user_id: 3, status: "completed", total: 1000)
-    OrdersItem.create(item_id: 6, order_id: 3, quantity: 2, subtotal: 1000)
-
-    Order.create(user_id: 4, status: "completed", total: 3400)
-    OrdersItem.create(item_id: 1, order_id: 4, quantity: 1, subtotal: 1000)
-    OrdersItem.create(item_id: 6, order_id: 4, quantity: 2, subtotal: 1000)
-    OrdersItem.create(item_id: 12, order_id: 4, quantity: 2, subtotal: 1400)
-
-    Order.create(user_id: 6, status: "paid", total: 1700)
-    OrdersItem.create(item_id: 11, order_id: 5, quantity: 1, subtotal: 500)
-    OrdersItem.create(item_id: 9, order_id: 5, quantity: 1, subtotal: 1200)
-
-    Order.create(user_id: 7, status: "paid", total: 600)
-    OrdersItem.create(item_id: 17, order_id: 6, quantity: 2, subtotal: 600)
-
-    Order.create(user_id: 8, status: "cancelled", total: 700)
-    OrdersItem.create(item_id: 18, order_id: 7, quantity: 1, subtotal: 300)
-    OrdersItem.create(item_id: 19, order_id: 7, quantity: 1, subtotal: 400)
-
-    Order.create(user_id: 9, status: "cancelled", total: 1000)
-    OrdersItem.create(item_id: 20, order_id: 8, quantity: 2, subtotal: 1000)
-
-    Order.create(user_id: 1, status: "completed", total: 2000)
-    OrdersItem.create(item_id: 1, order_id: 9, quantity: 2, subtotal: 2000)
-
-    Order.create(user_id: 2, status: "completed", total: 1100)
-    OrdersItem.create(item_id: 7, order_id: 10, quantity: 2, subtotal: 1100)
+      rand(1...10).times do
+        OrdersItem.create(item_id: rand(1...300), order_id: rand(1...50), quantity: 2)
+      end
+    end
   end
 
 
   def build_items
-    filenames = Dir.glob("app/assets/images/items/items/*")
+    filenames = Dir.glob("app/assets/images/items/*")
     Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/items/canteen.jpg"), supplier_id: 1)
     Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/items/water.jpg"), supplier_id: 1)
     Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/items/water_purifier.jpg"), supplier_id: 2)
@@ -109,6 +84,7 @@ class Seed
   end
 
   def build_supplier_admin
+    SupplierAdmin.create(user_id: 10, supplier_id: 1)
     SupplierAdmin.create(user_id: 11, supplier_id: 1)
     SupplierAdmin.create(user_id: 12, supplier_id: 1)
     SupplierAdmin.create(user_id: 13, supplier_id: 2)
