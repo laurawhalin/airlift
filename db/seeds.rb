@@ -2,7 +2,7 @@ class Seed
   def initialize
     build_items
     build_category
-    #build_orders
+    build_orders
     build_users
     build_items_category
 		build_supplier
@@ -74,7 +74,7 @@ class Seed
   end
 
   def build_category
-    category1 = Category.create(name: "Water", description: "Water Options")
+    category1 = Category.create(name: "Shelter", description: "Temporary shelter")
     category2 = Category.create(name: "Power", description: "Power Supplies")
     category3 = Category.create(name: "Clothes", description: "Clothing")
     category4 = Category.create(name: "Food", description: "Food options")
