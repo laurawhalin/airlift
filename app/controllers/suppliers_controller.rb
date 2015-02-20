@@ -5,4 +5,15 @@ class SuppliersController < ApplicationController
 
   def index
   end
+
+	def new
+	end
+
+  def item_params
+    params.require(:item).permit(:title,
+                                 :description,
+                                 :price,
+                                 :image,
+                                 :retired)
+  end
 end

@@ -11,7 +11,7 @@ feature "supplier items page" do
 	scenario "Supplier can create a new item" do
 		allow_any_instance_of(ApplicationController).to receive(:current_user)
 			.and_return(@user)
-		visit supplier_items_path(@suplier.slug)
+		visit supplier_items_path(@supplier.slug)
 		click_link_or_button "Create New Item"
 		fill_in "item[title]", with: "Battery Pack"	
 	end

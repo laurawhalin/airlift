@@ -2,11 +2,12 @@ class Suppliers::ItemsController < SuppliersController
   include SupplierItemsHelper
   def index
 		 @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
+		 @item = Item.new
+    set_all_categories
   end
 
   def new
-    @item = Item.new
-    set_all_categories
+	 	@item = Item.new
   end
 
   def create
