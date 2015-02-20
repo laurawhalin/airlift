@@ -7,8 +7,10 @@ feature "supplier visits the site" do
   end
 	
 	scenario "Supplier can create a new item" do
+		allow_any_instance_of(AppliactionController).to receive(:current_user)
+			.and_return(@user)
 		visit supplier_items_path(@suplier.slug)
 		click_link_or_button "Create New Item"
-		
+		fill_in "item[title]", with: "Battery Pack"	
 	end
 end

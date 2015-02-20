@@ -1,7 +1,13 @@
 <div class="create text-right">
-  <%= link_to "Create New Item", new_admin_item_path, class: "btn btn-lg btn-default create" %>
+	<button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Create New Item</button>
+  	 <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			 <div class="modal-dialog modal-lg">
+		  	 <div class="modal-content">
+		   		<%= render partial: "./partials/register_form" %>
+		   	 </div>
+			 </div>
+		 </div>
 </div>
-
 <table class="table">
   <tr><th>Item</th><th></th><th>Description</th><th>Status</th><th>Price</th><th></th></tr>
   <% @supplier.items.each do |item| %>
