@@ -80,16 +80,17 @@ a {
 #cart {
   float: right;
   margin-top: 10px;
-  padding-right: 10px;
+  padding-right: 40px;
+}
+
+#search-bar {
+  float: left;
+  margin-top: 10px;
+  padding-left: 255px;
 }
 
 #user-nav {
   text-align: right;
-}
-
-#category-nav a {
-  font-family: 'Chango', Arial, sans-serif;
-  color: #6AB088;
 }
 
 #item_show {
@@ -214,14 +215,19 @@ a {
   padding-left: 0;
 }
 
-#categories-checkbox label {
+#categories-checkbox {
   font-size: 16px;
-  font-family: Arial;
+  font-family: 'Chango', Arial, sans-serif;
+  color: black;
 }
 
-#supplier-checkbox {
-  font-size: 16px;
-  font-family: Arial;
+#categories {
+  color: black;
+}
+
+.supplier_list {
+  color: black;
+  font-weight: bold;
 }
 
 .item-box {
