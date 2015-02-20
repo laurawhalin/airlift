@@ -48,20 +48,20 @@ class Seed
 
 
   def build_items
-    filenames = Dir.glob("app/assets/images/*")
-    rand_image = filenames.shuffle.first
-    Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/canteen.jpg"), supplier_id: 1)
-    Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/water.jpg"), supplier_id: 1)
-    Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/water_purifier.jpg"), supplier_id: 2)
-    Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/water_tablets.jpg"), supplier_id: 2)
-    Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/beans.jpg"), supplier_id: 3)
-    Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/beans.jpg"), supplier_id: 3)
-    Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/formula.jpg"), supplier_id: 4)
-    Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/soup.jpg"), supplier_id: 4)
-    Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/tuna.jpg"), supplier_id: 5)
-    Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/beans.jpg"), supplier_id: 5)
+    filenames = Dir.glob("app/assets/images/items/items/*")
+    Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/items/canteen.jpg"), supplier_id: 1)
+    Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/items/water.jpg"), supplier_id: 1)
+    Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/items/water_purifier.jpg"), supplier_id: 2)
+    Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/items/water_tablets.jpg"), supplier_id: 2)
+    Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/items/beans.jpg"), supplier_id: 3)
+    Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/items/beans.jpg"), supplier_id: 3)
+    Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/items/formula.jpg"), supplier_id: 4)
+    Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/items/soup.jpg"), supplier_id: 4)
+    Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/items/tuna.jpg"), supplier_id: 5)
+    Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/items/beans.jpg"), supplier_id: 5)
     300.times do
-      Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(1...500)}", image: open("#{rand_image}"))
+      rand_image = filenames.sample
+      Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(1...500)}", image: open(rand_image), supplier_id: "#{rand(1...10)}")
     end
   end
 
@@ -79,6 +79,7 @@ class Seed
   end
 
   def build_category
+    Category.create(name: "Shelter", description: "Temporary Shelter")
     Category.create(name: "Power", description: "Power Supplies")
     Category.create(name: "Clothes", description: "Clothing")
     Category.create(name: "Food", description: "Food options")
@@ -97,7 +98,7 @@ class Seed
     User.create(fullname: "Raissa Shafer", email: "demo+raissa@jumpstartlab.com", password: "password", role: 0)
     User.create(fullname: "Josh Mejia", email: "demo+jmeija@jumpstartlab.com", display_name: "meija", password: "password", role: 0)
     User.create(fullname: "Joe Blow", email: "joe@gmail.com", display_name: "joe", password: "joe", role: 1, image: "joe_blow.jpg")
-    
+
     20.times do
       User.create(fullname: Faker::Name.name, email: Faker::Internet.email, display_name: Faker::Internet.user_name, password: "password", role: 1)
     end
