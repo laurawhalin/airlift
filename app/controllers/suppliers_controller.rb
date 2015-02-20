@@ -14,6 +14,7 @@ class SuppliersController < ApplicationController
                                  :description,
                                  :price,
                                  :image,
-                                 :retired)
-  end
+                                 :retired,
+																:supplier_id)
+	end
 end
