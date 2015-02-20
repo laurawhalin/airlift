@@ -1,4 +1,6 @@
-feature "supplier visits the site" do
+require "rails_helper"
+
+feature "supplier items page" do
   before(:each) do
     @user = User.create(user_attributes({role: 1}))
     @supplier = Supplier.create(supplier_attributes)
@@ -7,7 +9,7 @@ feature "supplier visits the site" do
   end
 	
 	scenario "Supplier can create a new item" do
-		allow_any_instance_of(AppliactionController).to receive(:current_user)
+		allow_any_instance_of(ApplicationController).to receive(:current_user)
 			.and_return(@user)
 		visit supplier_items_path(@suplier.slug)
 		click_link_or_button "Create New Item"
