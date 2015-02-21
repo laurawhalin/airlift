@@ -1,22 +1,24 @@
-<h3>Pending Orders (<%= @orders[:ordered].count %>)</h3>
+<div roll="tabpanel" id="status-ordered" class="tab-pane fade in active">
+  <h3>Pending Orders (<%= @orders[:ordered].count %>)</h3>
 
-<table class="table">
-  <% @orders[:ordered].each do |order| %>
-  <tr>
-    <td>
-      <%= link_to "Order# #{order.id}: ", supplier_order_path(:id, order) %>
-      <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-    </td>
-    <td class="text-right">
-      <%= form_tag(supplier_order_path(order.id), method: :put) do %>
-        <%= submit_tag("Mark as Shipped", class: "btn btn-default") %>
-      <% end %>
-    </td>
-    <td class="text-right">
-      <%= form_tag(supplier_order_path(order.id), method: :put) do %>
-        <%= submit_tag("Cancel Order", class: "btn btn-default") %>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+  <table class="table">
+    <% @orders[:ordered].each do |order| %>
+    <tr>
+      <td>
+        <%= link_to "Order# #{order[:id]}: ", supplier_order_path(id: order[:id]) %>
+        <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+      </td>
+      <td class="text-right">
+        <%= form_tag(supplier_order_path(id: order[:id]), method: :put) do %>
+          <%= submit_tag("Mark as Shipped", class: "btn btn-default") %>
+        <% end %>
+      </td>
+      <td class="text-right">
+        <%= form_tag(supplier_order_path(id: order[:id]), method: :put) do %>
+          <%= submit_tag("Cancel Order", class: "btn btn-default") %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

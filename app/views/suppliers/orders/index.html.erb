@@ -1,9 +1,17 @@
 <div id="orders">
 
-<h2>Manage Customer Orders</h2>
+  <h2>Manage Orders</h2>
 
-    <%= render partial: 'ordered' %>
-    <%= render partial: 'shipped' %>
-    <%= render partial: 'cancelled' %>
+  <ul id="order-tabs" class="nav nav-pills nav-justified" role="tab-list">
+    <li role="presentation" class="active"><a href="#status-ordered" data-toggle="tab">Open</a></li>
+    <li role="presentation"><a href="#status-shipped" data-toggle="tab">Shipped</a></li>
+    <li role="presentation"><a href="#status-cancelled" data-toggle="tab">Cancelled</a></li>
+  </ul>
+
+  <div id="tab-content" class="tab-content">
+      <%= render partial: 'ordered' %>
+      <%= render partial: 'shipped' %>
+      <%= render partial: 'cancelled' %>
+  </div>
 
 </div>
