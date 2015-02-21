@@ -24,7 +24,7 @@ feature "User Supplier Items" do
 		expect(page).to_not have_content(@item2.title)
 	end
 
-	scenario "User can view item's aggregate data by clicking link" do
+	xscenario "User can view item's aggregate data by clicking link" do
 		supplier = Supplier.create(supplier_attributes)
 		item     = supplier.items.create(item_attributes(supplier_id: supplier.id))
 

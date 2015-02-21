@@ -10,25 +10,25 @@
     <div id="col-md-3">
     	<% @items.each do |item| %>
     		<% if !item.retired %>
-        <div class="suppliers categories col-md-3 <%= item.item_supplier %> <%= render partial: "/partials/categories_class", locals: {item: item} %>" >
+        <div class="suppliers categories item-box col-md-3 <%= item.item_supplier %> <%= render partial: "/partials/categories_class", locals: {item: item} %>" >
           <div id="item-list">
             <div id="item-image">
               <p>
                 <%= image_tag item.image.url(:thumb) %>
               </p>
             </div>
-            <button type="button" class="btn btn-link view-btn" data-toggle="modal" data-target=".<%= item.title.split.join %>">View More Info</button></br>
-            <h5>
-              <%= item.title %>
-            </h5>
-            <p>
-              <%= item.description %>
-            </p>
-            <p>
-              <%= number_to_currency(item.price.to_f / 100.00) %>
-            </p>
-            <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
+              <div id="item-info">
+              <button type="button" class="btn btn-link view-btn" data-toggle="modal" data-target=".<%= item.title.split.join %>">View More Info</button></br>
+              <h5>
+                <%= item.title %>
+              </h5>
+              <p>
+                <%= number_to_currency(item.price.to_f / 100.00) %>
+              </p>
+              <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
+            </div>
           </div>
+
           <div class="modal fade <%= item.title.split.join %>"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md">
         				<div class="modal-content">

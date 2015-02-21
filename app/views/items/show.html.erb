@@ -7,7 +7,9 @@
     <p><%= @item.description %></p>
     <p><b>price: <%= number_to_currency(@item.price.to_f / 100.00) %></b></p>
     <% if !@item.retired %>
-      <%= button_to "Add to Cart", cart_index_path(item_id: @item), class: "btn btn-lg btn-default" %>
+      <div id="modal-add-to-cart">
+        <%= button_to "Add to Cart", cart_index_path(item_id: @item), class: "btn btn-lg btn-default" %>
+      </div>
     <% end %>
   </div>
 </div>
