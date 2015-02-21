@@ -13,7 +13,7 @@ feature "supplier views orders" do
                                            subtotal: @item.price * 3
                                           )
   end
-                         
+
   scenario "a supplier can view current order" do
    	allow_any_instance_of(ApplicationController).to receive(:current_user)
 			.and_return(@user)
@@ -21,4 +21,26 @@ feature "supplier views orders" do
     click_link("View All Orders")
     expect(page).to have_content("Order# #{@order.id}")
   end
+
+  scenario "a supplier can mark an order as shipped", js: true do
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit supplier_orders_path(@supplier.slug)
+    first(:button, "Mark as Shipped").click
+    expect(page).to_not have_content("Order# #{@order.id}")
+    click_link_or_button("Shipped")
+    expect(page).to have_content("Order# #{@order.id}")
+  end
+
+  scenario "a supplier can cancel an order", js: true do
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit supplier_orders_path(@supplier.slug)
+    first(:button, "Cancel Order").click
+    save_and_open_page
+    expect(page).to_not have_content("Order# #{@order.id}")
+    click_link_or_button("Cancelled")
+    expect(page).to have_content("Order# #{@order.id}")
+  end
+
 end
