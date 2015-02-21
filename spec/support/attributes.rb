@@ -23,7 +23,8 @@ def user_attributes(overrides={})
 		 role: 0,
 		 password: "foobar1234",
 		 password_confirmation: "foobar1234",
-		 display_name: "foo"
+		 display_name: "foo",
+		 address: "1410 Forever St, Denver, CO 80202"
 	}.merge(overrides)
 end
 
@@ -61,4 +62,3 @@ def order_attributes(overrides={})
    total: 5000,
   }.merge(overrides)
 end
-

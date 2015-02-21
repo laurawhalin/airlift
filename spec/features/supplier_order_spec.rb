@@ -42,4 +42,11 @@ feature "supplier views orders" do
     expect(page).to have_content("Order# #{@order.id}")
   end
 
+  scenario "a supplier can view the details of an order" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit supplier_orders_path(@supplier.slug)
+    click_link("Order#")
+    expect(page).to have_content("Water Purifier")
+  end
 end
