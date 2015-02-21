@@ -16,15 +16,6 @@ ActiveRecord::Schema.define(version: 20150220234116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -59,17 +50,6 @@ ActiveRecord::Schema.define(version: 20150220234116) do
 
   add_index "items", ["supplier_id"], name: "index_items_on_supplier_id", using: :btree
 
-  create_table "line_items", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "item_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 1
-  end
-
-  add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
-  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
-
   create_table "orders", force: :cascade do |t|
     t.string   "status"
     t.integer  "total"
@@ -83,12 +63,6 @@ ActiveRecord::Schema.define(version: 20150220234116) do
     t.integer  "order_id"
     t.integer  "quantity"
     t.integer  "subtotal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "statuses", force: :cascade do |t|
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
