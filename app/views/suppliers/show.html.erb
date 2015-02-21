@@ -7,13 +7,24 @@
 		<div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Show Account Details</a>
+                <h4 class="panel-title" >
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Click Here To Show Account Details</a>
                 </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse">
+            <div id="collapseOne" class="panel-collapse account-details collapse ">
                 <div class="panel-body">
-                    <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+									<p><%= @supplier.name %></p>
+									<p><%= @supplier.description %></p>
+									<div class="create text-right">
+										<button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Edit</button>
+									  	 <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+												 <div class="modal-dialog modal-lg">
+											  	 <div class="modal-content">
+														 <%= render partial: "/partials/supplier_edit_info_form"	%>
+													 </div>
+												 </div>
+											 </div>
+									</div>
                 </div>
             </div>
 				</div>
