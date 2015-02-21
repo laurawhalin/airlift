@@ -21,4 +21,22 @@ feature "supplier items page" do
 		expect(current_path).to eq(supplier_items_path(@supplier.slug))
 		expect(page).to have_content("Battery Pack")
 	end
+
+  scenario "Supplier can edit an existing item" do
+    item = Item.create(item_attributes(supplier_id: @supplier.id))
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit supplier_items_path(@supplier.slug)
+    visit supplier_items_path(@supplier.slug)
+    save_and_open_page
+    within(".WaterPurifier") do
+      click_link_or_button "Edit Item"
+    end
+    fill_in "item[title]", with: "Life Straw"
+    click_link_or_button "Save"
+    expect(page).to eq(supplier_items_path(@supplier.slug))
+    within(".LifeStraw") do
+      expect(page).to have_content("Life Straw")
+    end
+  end
 end
