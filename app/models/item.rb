@@ -27,4 +27,10 @@ class Item < ActiveRecord::Base
     supplier_id = self.supplier_id
     Supplier.find(supplier_id).slug
   end
+
+  def add_categories_to_item(categories)
+    categories.each do |cat_name|
+      self.categories << Category.find_or_create_by(name: cat_name)
+    end
+  end
 end
