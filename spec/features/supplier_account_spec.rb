@@ -32,4 +32,17 @@ feature "Supplier account information" do
 			expect(page).to have_content("Disaster Supplies Worldwide")
 		end
 	end
+
+	scenario "Supplier can not update account information with invalid entry" do
+		visit supplier_path(@supplier.slug)
+		click_link_or_button "Click Here To Show Account Details"
+		within(".account-details") do
+			click_link_or_button "Edit"
+			fill_in "supplier[name]", with: ""
+			fill_in "supplier[description]", with: ""
+			click_button "Update"
+		end
+
+		expect(@supplier).to_not be_valid
+	end
 end

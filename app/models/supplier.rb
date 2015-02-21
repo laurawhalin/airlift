@@ -1,4 +1,6 @@
 class Supplier < ActiveRecord::Base
+	validates :name, presence: true
+	validates :description, presence: true
 	has_many :items
   has_many :supplier_admins
   has_many :users, through: :supplier_admins
