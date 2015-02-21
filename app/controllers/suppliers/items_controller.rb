@@ -7,26 +7,26 @@ class Suppliers::ItemsController < SuppliersController
   end
 
   def new
+    @supplier = Supplier.find_by(slug: params[:slug])
 	 	@item = Item.new
+    @categories = Category.all
   end
 
   def create
 		@supplier = Supplier.find_by(slug: params[:slug])
 		item = Item.new(supplier_item_params)
-		 params[:category_list][:categories].each do |cat_name|
+		params[:category_list][:categories].each do |cat_name|
 			item.categories << Category.find_or_create_by(name: cat_name)
-		 end	
-		 require "pry" 
-		  binding.pry
+		end
     if category_list_nil?
       flash[:errors] = "You must select at least one category when creating a new item! Duh!"
-      redirect_to :back 
+      redirect_to :back
 		elsif item.save
 			flash[:success] = "Item successfully saved"
       redirect_to supplier_items_path(@supplier.slug)
 		else
 			flash[:error] = "Item not saved"
-			redirect_to :back
+			redirect_to new_supplier_item_path(@supplier.slug)
     end
   end
 
@@ -57,6 +57,6 @@ class Suppliers::ItemsController < SuppliersController
 																	 :price,
 																	 :retired,
 																	 :supplier_id,
-																	 :quantity)	
+																	 :quantity)
 		end
 end

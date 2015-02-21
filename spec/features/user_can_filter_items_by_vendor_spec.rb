@@ -30,8 +30,9 @@ feature "User Supplier Items" do
 
 		visit items_path
 		first(:button,"View More Info").click
-		within(".Water") do
-			expect(page).to have_content("Water")
+		save_and_open_page
+		within(".WaterPurifier") do
+			expect(page).to have_content("Water Purifier")
 		end
 	end
 
