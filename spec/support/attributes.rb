@@ -4,8 +4,13 @@ def item_attributes(overrides={})
 	 description: "Water purification system with pump and cartridge.",
 	 price: 500,
 	 retired: false,
-	 quantity: 50,
-	 supplier_id: 1
+	 quantity: 0,
+	 supplier_id: 1,
+	 available: true,
+	 unit_size: 100,
+	 location: "Denver, CO, USA",
+	 shippable: true,
+	 unit_weight: 100
 	}.merge(overrides)
 end
 
@@ -61,4 +66,3 @@ def order_attributes(overrides={})
    total: 5000,
   }.merge(overrides)
 end
-

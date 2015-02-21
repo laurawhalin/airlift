@@ -1,22 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Item, type: :model do
-  let (:order) {
-    Order.create(
-                 users_id: 1,
-                 status: "ordered",
-                 total: 1700
-                 )
-  }
-
-  let (:item) {
-    Item.create(
-                title: "Green Chili Burrito",
-                description: "Amazingly spicey burrito",
-                price: 655,
-								supplier_id: 1
-                )
-  }
+  let (:order) { Order.create(order_attributes(users_id: 1)) }
+  let (:item) { Item.create(item_attributes) }
 
   it "is valid" do
     expect(item).to be_valid
@@ -34,6 +20,11 @@ RSpec.describe Item, type: :model do
 
   it "is invalid without a price" do
     item.price = nil
+    expect(item).to be_invalid
+  end
+
+  it "is invalid without a location" do
+    item.location = nil
     expect(item).to be_invalid
   end
 
@@ -55,12 +46,10 @@ RSpec.describe Item, type: :model do
 
   it "must have a unique title" do
     item
-    item2 = Item.new(
-                     title: "Green Chili Burrito",
-                     description: "Amazingly spicey burrito",
-                     price: 655
-                     )
+    item2 = Item.new(item_attributes)
+    item3 = Item.new(item_attributes(title: "Green Chili Burrito"))
     expect(item2).to_not be_valid
+    expect(item3).to be_valid
   end
 
   it "must belong to at least one category" do
@@ -77,19 +66,19 @@ RSpec.describe Item, type: :model do
   end
 
 	 it { should belong_to(:supplier) }
-	
+
 	it "should have a quantity" do
-		item = Item.create(item_attributes)
+		item = Item.create(item_attributes(quantity: 50))
 		expect(item.quantity).to eq(50)
 	end
 
 	it "should have a default quantity of 0" do
-		item 
+		item
 		expect(item.quantity).to eq(0)
 	end
 
 	it "should have a supplier" do
-		item 
+		item
 		expect(item.supplier_id).to eq(1)
 	end
 

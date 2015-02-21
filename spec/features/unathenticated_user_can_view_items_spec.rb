@@ -21,8 +21,14 @@ feature "unathenticated users can see a list of items" do
   end
 
   scenario "user can filter the list of items by multiple categories" do
-    @category2 = Category.create(name: "Supplies", description: "Things you'll need.")
-    @item2 = Item.create(title: "BB Gun", description: "For fending off zombie squirrels.", price: 7000, supplier_id: @supplier.id)
+    @category2 = Category.create(name: "Supplies",
+                                 description: "Things you'll need.")
+    @item2 = Item.create(
+      item_attributes(title: "BB Gun",
+                      description: "For fending off zombie squirrels.",
+                      price: 7000,
+                      supplier_id: @supplier.id)
+                        )
     visit items_path
     find(:css, "#WaterID[type='checkbox']").set(true)
     find(:css, "#SuppliesID[type='checkbox']").set(true)
@@ -39,7 +45,12 @@ feature "unathenticated users can see a list of items" do
   end
 
   scenario "user can search for a second item from entire list" do
-    @item2 = Item.create(title: "BB Gun", description: "For fending off zombie squirrels.", price: 7000, supplier_id: @supplier.id)
+    @item2 = Item.create(
+      item_attributes(title: "BB Gun",
+                      description: "For fending off zombie squirrels.",
+                      price: 7000,
+                      supplier_id: @supplier.id)
+                        )
     visit root_url
     fill_in "search", with: "Water"
     click_button "Search"
