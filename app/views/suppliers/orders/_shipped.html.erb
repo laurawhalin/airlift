@@ -1,0 +1,12 @@
+<h3>Pending Orders (<%= @orders[:paid].count %>)</h3>
+
+<table class="table">
+  <% @orders[:paid].each do |order| %>
+  <tr>
+    <td>
+      <%= link_to "Order# #{order.id}: ", supplier_order_path(order) %>
+      <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+    </td>
+  </tr>
+  <% end %>
+</table>
