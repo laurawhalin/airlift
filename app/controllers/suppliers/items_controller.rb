@@ -3,21 +3,19 @@ class Suppliers::ItemsController < SuppliersController
   def index
 		 @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
 		 @item = Item.new
-		 @categories = Category.all
+		 get_all_categories
   end
 
   def new
     @supplier = Supplier.find_by(slug: params[:slug])
-	 	@item = Item.new
-    @categories = Category.all
+	 	@item = @supplier.items.new
+    get_all_categories
   end
 
   def create
 		@supplier = Supplier.find_by(slug: params[:slug])
-		item = Item.new(supplier_item_params)
-		params[:category_list][:categories].each do |cat_name|
-			item.categories << Category.find_or_create_by(name: cat_name)
-		end
+		item = @supplier.items.new(supplier_item_params)
+    add_categories_to_item(params[:category_list][:categories], item)
     if category_list_nil?
       flash[:errors] = "You must select at least one category when creating a new item! Duh!"
       redirect_to :back
@@ -31,32 +29,33 @@ class Suppliers::ItemsController < SuppliersController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
+    @item = @supplier.items.where(id: params[:id]).take
     @categories = Category.all
   end
 
   def update
+    @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
+    item = @supplier.items.where(id: params[:id]).take
+    add_categories_to_item(params[:category_list][:categories], item)
     if category_list_nil?
       flash[:errors] = "Please reassign your item to at least one category "
-      redirect_to suppliers_path
+      redirect_to :back
     else
-      update_category
-      redirect_to suppliers_path
+      item.update(supplier_item_params)
+      flash[:success] = "Item successfully updated"
+      redirect_to supplier_items_path(@supplier.slug)
     end
   end
 
-	  def category_list_nil?
-    params[:category_list] == nil
-  end
+	private
 
-		private
-
-		def supplier_item_params
-			params.require(:item).permit(:title,
-																	 :description,
-																	 :price,
-																	 :retired,
-																	 :supplier_id,
-																	 :quantity)
-		end
+	def supplier_item_params
+		params.require(:item).permit(:title,
+																 :description,
+																 :price,
+																 :retired,
+																 :supplier_id,
+																 :quantity)
+	end
 end

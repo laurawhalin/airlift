@@ -1,12 +1,17 @@
 <div class="create text-right">
-	<%= link_to "Create New Item", new_supplier_item_path, class: "btn btn-lg btn-default create" %>
+	<button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Create New Item</button>
+  	 <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+			 <div class="modal-dialog modal-lg">
+		  	 <div class="modal-content">
+		   		<%= render partial: "./partials/item_form" %>
+		   	 </div>
+			 </div>
+		 </div>
 </div>
-
 <table class="table">
-  <tr><th>Item</th><th></th><th>Description</th><th>Status</th><th>Price</th><th></th></tr>
+  <tr><th>Item</th><th></th><th>Description</th><th>Status</th><th>Price</th><th>Quantity</th><th></th></tr>
   <% @supplier.items.each do |item| %>
-	<div class= "<%= item.title.split.join %>">
-
+	<div class="<%= item.title.split.join %>">
   <tr>
     <td>
       <%= link_to item.title, item_path(item) %>
@@ -17,9 +22,6 @@
     <td>
       <%= item.description %>
     </td>
-		<td>
-			<%= item.quantity %>
-		</td>
     <td>
       <% if item.retired %>
       retired
@@ -30,6 +32,9 @@
     <td>
       <%= number_to_currency(item.price.to_f / 100) %>
     </td>
+		<td>
+			<%= item.quantity %>
+		</td>
     <td>
       <%= link_to "Edit Item", edit_supplier_item_path(@supplier.slug, item) %>
     </td>

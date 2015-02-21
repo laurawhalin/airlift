@@ -30,9 +30,11 @@ feature "supplier items page" do
     within(".WaterPurifier") do
       click_link_or_button "Edit Item"
     end
+    expect(current_path).to eq(edit_supplier_item_path(@supplier.slug, item))
     fill_in "item[title]", with: "Life Straw"
+    find(:css, "#category_list_categories_water[type='checkbox']").set(true)
     click_link_or_button "Save"
-    expect(page).to eq(supplier_items_path(@supplier.slug))
+    expect(current_path).to eq(supplier_items_path(@supplier.slug))
     within(".LifeStraw") do
       expect(page).to have_content("Life Straw")
     end
