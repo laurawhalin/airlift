@@ -6,7 +6,7 @@ module SupplierItemsHelper
   end
 
   def get_all_categories
-    @categories = Category.all
+    @categories = Category.all.uniq
   end
 
   def category_list_nil?
