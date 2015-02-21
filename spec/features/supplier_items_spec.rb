@@ -27,8 +27,6 @@ feature "supplier items page" do
     allow_any_instance_of(ApplicationController).to receive(:current_user)
       .and_return(@user)
     visit supplier_items_path(@supplier.slug)
-    visit supplier_items_path(@supplier.slug)
-    save_and_open_page
     within(".WaterPurifier") do
       click_link_or_button "Edit Item"
     end

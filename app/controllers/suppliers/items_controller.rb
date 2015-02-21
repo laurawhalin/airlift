@@ -31,8 +31,8 @@ class Suppliers::ItemsController < SuppliersController
   end
 
   def edit
-    find_item
-    set_all_categories
+    @item = Item.find(params[:id])
+    @categories = Category.all
   end
 
   def update
