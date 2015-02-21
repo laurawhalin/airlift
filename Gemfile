@@ -33,6 +33,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'cancancan'
 gem "paperclip", "~> 4.2"
+gem "bootstrap_form"
 gem "faker"
 
 group :production do

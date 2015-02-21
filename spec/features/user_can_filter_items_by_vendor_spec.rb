@@ -24,14 +24,14 @@ feature "User Supplier Items" do
 		expect(page).to_not have_content(@item2.title)
 	end
 
-	xscenario "User can view item's aggregate data by clicking link" do
+	scenario "User can view item's aggregate data by clicking link" do
 		supplier = Supplier.create(supplier_attributes)
 		item     = supplier.items.create(item_attributes(supplier_id: supplier.id))
 
 		visit items_path
 		first(:button,"View More Info").click
-		within(".Water") do
-			expect(page).to have_content("Water")
+		within(".WaterPurifier") do
+			expect(page).to have_content("Water Purifier")
 		end
 	end
 

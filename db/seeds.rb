@@ -41,16 +41,16 @@ class Seed
   end
 
   def build_items_category
-    ItemsCategory.create(item_id: 1, category_id: 3)
-    ItemsCategory.create(item_id: 2, category_id: 2)
-    ItemsCategory.create(item_id: 3, category_id: 3)
-    ItemsCategory.create(item_id: 4, category_id: 3)
-    ItemsCategory.create(item_id: 5, category_id: 2)
-    ItemsCategory.create(item_id: 6, category_id: 4)
-    ItemsCategory.create(item_id: 7, category_id: 5)
-    ItemsCategory.create(item_id: 8, category_id: 1)
-    ItemsCategory.create(item_id: 9, category_id: 5)
-    ItemsCategory.create(item_id: 10, category_id: 1)
+    ItemCategory.create(item_id: 1, category_id: 3)
+    ItemCategory.create(item_id: 2, category_id: 2)
+    ItemCategory.create(item_id: 3, category_id: 3)
+    ItemCategory.create(item_id: 4, category_id: 3)
+    ItemCategory.create(item_id: 5, category_id: 2)
+    ItemCategory.create(item_id: 6, category_id: 4)
+    ItemCategory.create(item_id: 7, category_id: 5)
+    ItemCategory.create(item_id: 8, category_id: 1)
+    ItemCategory.create(item_id: 9, category_id: 5)
+    ItemCategory.create(item_id: 10, category_id: 1)
   end
 
   def build_category

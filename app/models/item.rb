@@ -6,10 +6,10 @@ class Item < ActiveRecord::Base
 	validates :supplier_id, presence: true
   has_attached_file :image, styles: { medium: "300x300>",
                                         thumb: "100x100>" },
-                                        default_url: "beans.jpg"
+                                        default_url: "items/beans.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  has_many :items_categories
-  has_many :categories, through: :items_categories
+  has_many :item_categories
+  has_many :categories, through: :item_categories
   has_many :orders_items
   has_many :orders, through: :orders_items
 	belongs_to :supplier
@@ -26,11 +26,5 @@ class Item < ActiveRecord::Base
   def item_supplier
     supplier_id = self.supplier_id
     Supplier.find(supplier_id).slug
-  end
-
-  def item_categories
-    items_categories = self.items_categories.all
-    category_ids = items_categories.map { |ic| ic.category_id }
-    category_ids.map { |category_id| Category.find(category_id) }
   end
 end

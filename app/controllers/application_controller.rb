@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 	def current_suppliers
 		@suppliers ||= Supplier.all
 	end
-
+	 
   helper_method :current_categories
   helper_method :current_user
   helper_method :admin?

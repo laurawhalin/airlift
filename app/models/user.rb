@@ -7,15 +7,7 @@ class User < ActiveRecord::Base
   has_one :supplier_admin
 
 
-  enum role: %w(default supplier_admin super_admin)
-
-  def admin?
-    role == "super_admin"
-  end
-
-  def supplier?
-    role == "supplier_admin"
-  end
+  enum role: %w(default supplier admin)
 
   def supplier_slug(id)
     find_supplier_admin(id).supplier.slug
