@@ -24,4 +24,11 @@ RSpec.describe Category, type: :model do
     expect(category.items.map(&:title)).to eq(["Water Purifier",
                                                "BB Gun"])
   end
+
+  it "is not valid with a duplicate name" do
+    category1 = category
+    category2 = Category.new(category_attributes)
+    expect(category1).to be_valid
+    expect(category2).to_not be_valid
+  end
 end

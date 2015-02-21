@@ -30,7 +30,7 @@ class Item < ActiveRecord::Base
 
   def add_categories_to_item(categories)
     categories.each do |cat_name|
-      self.categories << Category.find_or_create_by(name: cat_name)
+      self.categories << Category.find_by(name: cat_name)
     end
   end
 end
