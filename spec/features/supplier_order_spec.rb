@@ -37,10 +37,16 @@ feature "supplier views orders" do
       .and_return(@user)
     visit supplier_orders_path(@supplier.slug)
     first(:button, "Cancel Order").click
-    save_and_open_page
     expect(page).to_not have_content("Order# #{@order.id}")
     click_link_or_button("Cancelled")
     expect(page).to have_content("Order# #{@order.id}")
   end
 
+  scenario "a supplier can view order details" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit supplier_orders_path(@supplier.slug)
+    click_link("Order#")
+
+  end
 end
