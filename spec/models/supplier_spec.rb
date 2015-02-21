@@ -11,5 +11,12 @@ RSpec.describe Supplier, :type => :model do
         expect(supplier.items.count).to eq(1)
         expect(supplier.items.first.id).to eq(item.id)
      end
+
+		 it "changes the slug after update of supplier name" do
+			supplier = Supplier.create(supplier_attributes)
+			supplier.update(name: "Newbie")
+
+			expect(supplier.slug).to eq("newbie")
+		 end
   end
 end
