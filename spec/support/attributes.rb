@@ -24,7 +24,6 @@ def user_attributes(overrides={})
 		 password: "foobar1234",
 		 password_confirmation: "foobar1234",
 		 display_name: "foo",
-		 address: "1410 Forever St, Denver, CO 80202"
 	}.merge(overrides)
 end
 
@@ -61,4 +60,29 @@ def order_attributes(overrides={})
    status: "ordered",
    total: 5000,
   }.merge(overrides)
+end
+
+def shipping_address_attributes(overrides={})
+	{
+		line_one: "Relief Supplier Acme",
+		line_two: "1410 Forever St",
+		city: "Denver",
+		state: "CO",
+		postal_code: "80202",
+		country: "United States",
+		address_type: "shipping"
+	}
+end
+
+def billing_address_attributes(overrides={})
+	{
+		line_one: "Relief Supplier Acme",
+		line_two: "1550 Blake St",
+		city: "Denver",
+		state: "CO",
+		postal_code: "80222",
+		country: "United States",
+		address_type: "billing",
+		order_id: 1
+	}
 end

@@ -4,9 +4,10 @@ feature "supplier views orders" do
   before(:each) do
     @supplier = Supplier.create(supplier_attributes)
     @item = @supplier.items.create(item_attributes)
-    @user = User.create(user_attributes)
+    @user = User.create(user_attributes(role: 1))
     @cart = { @item.id => 3 }
-    @order = @user.orders.create(order_attributes)
+    @order = Order.create(order_attributes)
+    @billing_address = @user.addresses.create(billing_address_attributes(order_id: @order.id))
     @line_items = @item.orders_items.create(
                                            order_id: @order.id,
                                            quantity: 3,

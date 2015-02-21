@@ -1,8 +1,11 @@
 <div id="status">
   <h4>Customer Order</h4>
-  <p>Customer Name: <%= @user.fullname %> </p>
+  <h5>Customer Name:<h5>
+    <p><%= @user.fullname %></p>
+  <%= render "delivery_method" %>  
+  <h5></h5>
+
   <p>email: <%= @user.email %> </p>
-  <p>address: <%= @user.address %></p>
   <p><%= @order.created_at.strftime("Submitted at: %b %d, %Y %H:%M")%></p>
   <p>
     Status: <%= @order.status %>
