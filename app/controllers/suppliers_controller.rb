@@ -5,9 +5,13 @@ class SuppliersController < ApplicationController
 
 	def update
 			@supplier = Supplier.find_by(slug: params[:slug])
-	  	@supplier.update(supplier_params)
-			flash[:success] = "Supplier successfully updated."
-			redirect_to supplier_path(@supplier.slug)
+	  	if @supplier.update(supplier_params)
+				flash[:success] = "Supplier successfully updated."
+				redirect_to supplier_path(@supplier.slug)
+			else
+				flash[:error] = "Supplier could not be updated."
+				redirect_to :back
+			end
 	end
 
 	private
