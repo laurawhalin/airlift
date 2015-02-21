@@ -73,10 +73,25 @@ feature "supplier items page" do
     find(:css, "#item_retired[type='checkbox']").set(true)
     find(:css, "#category_list_categories_water[type='checkbox']").set(true)
     click_link_or_button "Save"
+    save_and_open_page
     within(".WaterPurifier") do
       expect(page).to have_content("Retired")
     end
     visit items_path
     expect(page).to_not have_css(".WaterPurifier")
+  end
+
+  scenario "supplier can view listings index but cannot add an item to the cart" do
+    item = Item.create(item_attributes(supplier_id: @supplier.id))
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit items_path
+    within("#item-info") do
+      click_link_or_button "View More Info"
+      expect(page).to_not have_content("Add to Cart")
+    end
+    within(".modal-content") do
+      expect(page).to_not have_content("Add to Cart")
+    end
   end
 end

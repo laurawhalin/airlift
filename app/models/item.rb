@@ -34,4 +34,33 @@ class Item < ActiveRecord::Base
       self.categories << Category.find_by(name: cat_name)
     end
   end
+
+  def item_available
+    if self.available
+      "Currently Available"
+    else
+      "Not Currently Available"
+    end
+  end
+
+  def item_shippable
+    if self.shippable
+      "Shipping Available"
+    else
+      "Pick Up Only"
+    end
+  end
+
+  def format_price
+    self.price.to_f / 100.00
+  end
+
+  def item_retired
+    if self.retired
+      "Retired"
+    else
+      "Active"
+    end
+  end
+
 end

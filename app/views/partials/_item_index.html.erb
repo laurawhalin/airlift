@@ -26,7 +26,7 @@
 			<%= item.location %>
 		</td>
     <td>
-      <%= number_to_currency(item.price.to_f / 100) %>
+      <%= number_to_currency(item.format_price) %>
     </td>
 		<td>
 			<%= item.quantity %>
@@ -38,25 +38,13 @@
 			<%= item.unit_weight %>
 		</td>
     <td>
-      <% if item.retired %>
-	      Retired
-      <% else %>
-	      Active
-      <% end %>
+      <%= item.item_retired %>
     </td>
 		<td>
-			<% if item.available %>
-				Currently Available
-			<% else %>
-				Not Currently Available
-			<% end %>
+			<%= item.item_available %>
 		</td>
 		<td>
-			<% if item.shippable %>
-				Shipping Available
-			<% else %>
-				Pick Up Only
-			<% end %>
+			<%= item.item_shippable %>
 		</td>
     <td>
       <%= link_to "Edit Item", edit_supplier_item_path(@supplier.slug, item) %>

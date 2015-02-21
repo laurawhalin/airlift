@@ -23,9 +23,11 @@
                 <%= item.title %>
               </h5>
               <p>
-                <%= number_to_currency(item.price.to_f / 100.00) %>
+                <%= number_to_currency(item.format_price) %>
               </p>
-              <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
+              <% if !current_user || current_user && !current_user.supplier? %>
+                <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
+              <% end %>
             </div>
           </div>
 
@@ -39,10 +41,16 @@
               			<div class="col-md-8">
                 			<h2><%= item.title %></h2>
                 			<p><%= item.description %></p>
-                		  <p><b>price: <%= number_to_currency(item.price.to_f / 100.00) %></b></p>
-                			<% if !item.retired %>
+                		  <p><b>price: <%= number_to_currency(item.format_price) %></b></p>
+                      <p>Quantity Available: <%= item.quantity %></p>
+                      <p>Current Location: <%= item.location %></p>
+                      <p>Unit Size: <%= item.unit_size %> </p>
+                      <p>Unit Weight: <%= item.unit_weight %> lbs.</p>
+                      <p><%= item.item_available %></p>
+                      <p><%= item.item_shippable %></p>
+                      <% if current_user && !current_user.supplier? %>
                 				<%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-lg btn-default" %>
-                		  <% end %>
+                      <% end %>
     							 	</div>
     							</div>
       					</div>
