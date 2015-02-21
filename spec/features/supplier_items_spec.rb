@@ -39,4 +39,22 @@ feature "supplier items page" do
       expect(page).to have_content("Life Straw")
     end
   end
+
+  scenario "Supplier can retire a listing" do
+    item = Item.create(item_attributes(supplier_id: @supplier.id))
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit supplier_items_path(@supplier.slug)
+    within(".WaterPurifier") do
+      click_link_or_button "Edit Item"
+    end
+    find(:css, "#item_retired[type='checkbox']").set(true)
+    find(:css, "#category_list_categories_water[type='checkbox']").set(true)
+    click_link_or_button "Save"
+    within(".WaterPurifier") do
+      expect(page).to have_content("retired")
+    end
+    visit items_path
+    expect(page).to_not have_css(".WaterPurifier")
+  end
 end
