@@ -48,5 +48,19 @@ $(document).ready(function(){
     $filterCategoryItems;
     $filterSupplierItems;
 
-});
+    $('#order-tabs a[href="#status-ordered"]').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
 
+    $('#order-tabs a[href="#status-cancelled"]').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+
+    $('#order-tabs a[href="#status-shipped"]').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+
+});

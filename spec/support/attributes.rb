@@ -54,3 +54,11 @@ def supplier_admin_attributes(overrides={})
 		supplier_id: 1
 	}.merge(overrides)
 end
+
+def order_attributes(overrides={})
+  {
+   status: "ordered",
+   total: 5000,
+  }.merge(overrides)
+end
+

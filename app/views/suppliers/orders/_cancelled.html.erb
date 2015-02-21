@@ -1,0 +1,14 @@
+<div roll="tabpanel" id="status-cancelled" class="tab-pane fade">
+  <h3>Cancelled Orders (<%= @orders[:cancelled].count %>)</h3>
+
+  <table class="table">
+    <% @orders[:cancelled].each do |order| %>
+    <tr>
+      <td>
+        <%= link_to "Order# #{order[:id]}: ", supplier_order_path(id: order[:id]) %>
+        <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
