@@ -17,13 +17,13 @@
 						<p><%= @supplier.description %></p>
 						<div class="create text-right">
 							<button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Edit</button>
-								<div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-lg">
-										<div class="modal-content">
-											<%= render partial: "/partials/supplier_edit_info_form"	%>
-										</div>
+							<div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<%= render partial: "/partials/supplier_edit_info_form"	%>
 									</div>
 								</div>
+							</div>
 						</div>
           </div>
         </div>
@@ -38,17 +38,16 @@
         </div>
         <div id="collapseTwo" class="panel-collapse account-details collapse ">
         	<div class="panel-body">
-						<p><%= @supplier.name %></p>
-						<p><%= @supplier.description %></p>
+						<p>I am a fucking boss</p>
 						<div class="create text-right">
-							<button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Edit</button>
-								<div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-lg">
+							<button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target=".reg-modal-1">Edit</button>
+							<div class="modal fade reg-modal-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
 										<div class="modal-content">
 											<%= render partial: "/partials/supplier_edit_info_form"	%>
 										</div>
-									</div>
 								</div>
+							</div>
 						</div>
         	</div>
       	</div>
