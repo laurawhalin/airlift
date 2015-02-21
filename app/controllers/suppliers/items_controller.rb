@@ -15,11 +15,11 @@ class Suppliers::ItemsController < SuppliersController
   def create
 		@supplier = Supplier.find_by(slug: params[:slug])
 		item = @supplier.items.new(supplier_item_params)
-    add_categories_to_item(params[:category_list][:categories], item)
     if category_list_nil?
       flash[:errors] = "You must select at least one category when creating a new item! Duh!"
       redirect_to :back
 		elsif item.save
+      item.add_categories_to_item(params[:category_list][:categories])
 			flash[:success] = "Item successfully saved"
       redirect_to supplier_items_path(@supplier.slug)
 		else
@@ -37,11 +37,11 @@ class Suppliers::ItemsController < SuppliersController
   def update
     @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
     item = @supplier.items.where(id: params[:id]).take
-    add_categories_to_item(params[:category_list][:categories], item)
     if category_list_nil?
       flash[:errors] = "Please reassign your item to at least one category "
       redirect_to :back
     else
+      item.add_categories_to_item(params[:category_list][:categories])
       item.update(supplier_item_params)
       flash[:success] = "Item successfully updated"
       redirect_to supplier_items_path(@supplier.slug)
