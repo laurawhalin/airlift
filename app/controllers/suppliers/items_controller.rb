@@ -24,7 +24,7 @@ class Suppliers::ItemsController < SuppliersController
       redirect_to supplier_items_path(@supplier.slug)
 		else
 			flash[:error] = "Item not saved"
-			redirect_to new_supplier_item_path(@supplier.slug)
+      redirect_to :back
     end
   end
 
@@ -54,8 +54,13 @@ class Suppliers::ItemsController < SuppliersController
 		params.require(:item).permit(:title,
 																 :description,
 																 :price,
+                                 :location,
 																 :retired,
 																 :supplier_id,
-																 :quantity)
+																 :quantity,
+                                 :unit_size,
+                                 :unit_weight,
+                                 :shippable,
+                                 :available)
 	end
 end
