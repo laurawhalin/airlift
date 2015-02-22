@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
   validates :supplier_id, presence: true
   validates :price, presence: true, numericality: { :greater_than_or_equal_to => 0 }
 	validates :supplier_id, presence: true
+  validates :location, presence: true
   has_attached_file :image, styles: { medium: "300x300>",
                                         thumb: "100x100>" },
                                         default_url: "items/beans.jpg"
@@ -33,4 +34,33 @@ class Item < ActiveRecord::Base
       self.categories << Category.find_by(name: cat_name)
     end
   end
+
+  def item_available
+    if self.available
+      "Currently Available"
+    else
+      "Not Currently Available"
+    end
+  end
+
+  def item_shippable
+    if self.shippable
+      "Shipping Available"
+    else
+      "Pick Up Only"
+    end
+  end
+
+  def format_price
+    self.price.to_f / 100.00
+  end
+
+  def item_retired
+    if self.retired
+      "Retired"
+    else
+      "Active"
+    end
+  end
+
 end
