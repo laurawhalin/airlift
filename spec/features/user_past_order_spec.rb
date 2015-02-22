@@ -2,11 +2,11 @@ require "rails_helper"
 
 feature "Past Orders" do
 
-  scenario "a user can view his orders" do
-    user = User.create(fullname: "Jeff Casmir", email: "demo+jeff@jumpstartlab.com", display_name: "j3", password: "password", role: 0)
-    order = user.orders.create(status: "completed", total: 1000)
-    item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
-    order1_item1 = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
+  xscenario "a user can view his orders" do
+    user = User.create(user_attributes)
+    order = Order.create(order_attributes)
+    item = Item.create(item_attributes)
+    line_item = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                           and_return(user)

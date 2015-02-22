@@ -28,14 +28,14 @@ def user_attributes(overrides={})
 		 role: 0,
 		 password: "foobar1234",
 		 password_confirmation: "foobar1234",
-		 display_name: "foo",
+		 display_name: "foo"
 	}.merge(overrides)
 end
 
 def admin_user_attributes(overrides={})
 	{
 	   fullname: "Joe Admin",
-		 email: "joe@gmial.com",
+		 email: "joe_admin@gmial.com",
 		 role: 1,
 		 password: "foobar1234",
 		 password_confirmation: "foobar1234",
@@ -63,7 +63,7 @@ end
 def order_attributes(overrides={})
   {
    status: "ordered",
-   total: 5000,
+   total: 5000
   }.merge(overrides)
 end
 
@@ -88,6 +88,5 @@ def billing_address_attributes(overrides={})
 		postal_code: "80222",
 		country: "United States",
 		address_type: "billing",
-		order_id: 1
 	}
 end

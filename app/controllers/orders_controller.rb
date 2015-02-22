@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
     @order = Order.create(
                           status: "ordered",
                           total: @cart.total * 100,
-                          user_id: @user.id
                           )
     items = Item.find(@cart.data.keys)
     @line_items = items.map do |item|

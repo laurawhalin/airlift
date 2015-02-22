@@ -9,7 +9,8 @@ class Suppliers::OrdersController < SuppliersController
 
   def show
     @order = Order.find(params[:id])
-    @user = User.find(@order.addresses.where(address_type: "billing").first.order_id)
+    @user = User.find(@order.addresses.where(address_type: "billing").first.user_id)
+    @shipping_address = @user.addresses.where(address_type: "shipping").first
   end
 
   def update

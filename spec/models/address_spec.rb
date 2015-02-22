@@ -4,9 +4,11 @@ RSpec.describe Address, :type => :model do
 
   let (:user) { User.create(user_attributes) }
   let (:order) { Order.create(order_attributes)}
-  let (:shipping_address) { order.addresses.create(shipping_address_attributes) }
+  let (:shipping_address) { order.addresses.create(shipping_address_attributes(user_id: user.id)) }
 
   it "is valid" do
+    shipping_address.user_id = user.id
+    shipping_address.save #I don't know how to get around this quirk
     expect(shipping_address).to be_valid
   end
 
