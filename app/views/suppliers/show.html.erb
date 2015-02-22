@@ -8,7 +8,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
         	<h4 class="panel-title" >
-          	<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Click Here To Show Account Details</a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><%= @supplier.name  %> Account Details</a>
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse account-details collapse ">
@@ -20,7 +20,7 @@
 							<div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 								<div class="modal-dialog modal-lg">
 									<div class="modal-content">
-										<%= render partial: "partials/supplier_edit_info_form"	%>
+										<%= render "partials/supplier_edit_info_form"	%>
 									</div>
 								</div>
 							</div>
@@ -33,7 +33,7 @@
     	<div class="panel panel-default">
       	<div class="panel-heading">
           <h4 class="panel-title" >
-          	<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Click Here To Do Some Shit</a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Manage <%=@supplier.name  %> Administrators</a>
           </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse account-details collapse ">
