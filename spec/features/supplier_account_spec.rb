@@ -9,7 +9,7 @@ feature "Supplier account information" do
 
 	scenario "supplier can view account details" do
 		visit supplier_path(@supplier.slug)
-		click_link "Click Here To Show Account Details"
+		click_link "Fireproof Account Details"
 		within(".account-details") do
 			expect(page).to have_content("Fireproof")
 			expect(page).to have_content("Fire disaster products")
@@ -18,7 +18,7 @@ feature "Supplier account information" do
 
 	scenario "supplier can edit account details" do
 		visit supplier_path(@supplier.slug)
-		click_link_or_button "Click Here To Show Account Details"
+		click_link_or_button "Fireproof Account Details"
 		within(".account-details") do
 			click_link_or_button "Edit"
 			fill_in "supplier[name]", with: "Helping Hand Relief"
@@ -31,5 +31,22 @@ feature "Supplier account information" do
 			expect(page).to have_content("Helping Hand Relief")
 			expect(page).to have_content("Disaster Supplies Worldwide")
 		end
+	end
+
+	scenario "supplier can edit administrators" do
+		supplier2 = Supplier.create(supplier_attributes(name: "Ghostbusters", 
+																										description: "Ghost face killas",
+																									  slug: "ghostbusters"))
+		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
+		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: supplier2.id)
+		visit supplier_path(@supplier.slug)
+		click_link "Manage Fireproof Administrators" 
+		expect(page).to have_content(@user.fullname)
+		first(:button, "Edit").click
+		within(".reg-modal-1") do
+			fill_in "user[fullname]", with: "Jason"
+		end
+		click_link_or_button "Update"
+		expect(page).to have_content("Jason")
 	end
 end

@@ -17,7 +17,7 @@ feature "supplier visits the site" do
 		end
 		expect(page).to have_link("View All Orders")
 		expect(page).to have_link("Manage Items")
-		expect(page).to have_link("Show Account Details")
+		expect(page).to have_link("Manage Fireproof Administrators")
 	end
 
 	scenario "Supplier can view manage their items path" do

@@ -36,18 +36,25 @@
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Manage <%=@supplier.name  %> Administrators</a>
           </h4>
         </div>
-        <div id="collapseTwo" class="panel-collapse account-details collapse ">
-        	<div class="panel-body">
-						<p>I am a fucking boss</p>
-						<div class="create text-right">
-							<button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target=".reg-modal-1">Edit</button>
-							<div class="modal fade reg-modal-1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-lg">
-										<div class="modal-content">
-										</div>
+        <div id="collapseTwo" class="panel-collapse admin-details collapse ">
+					<div class="panel-body">
+						<ul>
+							<% @supplier.find_user_admins.each do |user| %>
+							<li>
+								<%= user.fullname %>
+								<div class="create text-right">
+									<button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target=".reg-modal-<%= user.id %>">Edit</button>
+									<div class="modal fade reg-modal-<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<%= render "partials/register_form"  %>
+											</div>
+									</div>
 								</div>
 							</div>
-						</div>
+						</li>
+						<% end %>
+						</ul>
         	</div>
       	</div>
 			</div>

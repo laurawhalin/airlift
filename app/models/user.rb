@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :display_name, length: { in: 2..32 }, allow_nil: true
   has_many :orders
-  has_one :supplier_admin
-
+	#TODO Change this back if we don't need it
+	has_one :supplier
+  has_one :supplier, through: :supplier_admins
 
   enum role: %w(default supplier admin)
 
