@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20150221224152) do
     t.string   "title"
     t.string   "description"
     t.integer  "price"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.boolean  "retired"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(version: 20150221224152) do
     t.datetime "image_updated_at"
     t.integer  "supplier_id"
     t.integer  "quantity",           default: 0
+    t.boolean  "available",          default: true
+    t.integer  "unit_size",          default: 100
+    t.string   "location"
+    t.boolean  "shippable",          default: true
+    t.integer  "unit_weight",        default: 100
   end
 
   add_index "items", ["supplier_id"], name: "index_items_on_supplier_id", using: :btree

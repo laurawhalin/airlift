@@ -9,7 +9,7 @@
 		 </div>
 </div>
 <table class="table">
-  <tr><th>Item</th><th></th><th>Description</th><th>Status</th><th>Price</th><th>Quantity</th><th></th></tr>
+  <tr><th>Item</th><th></th><th>Description</th><th>Location</th><th>Price</th><th>Quantity</th><th>Unit Size</th><th>Unit Weight</th><th>Status</th><th>Availability</th><th>Shipping</th><th></th></tr>
   <% @supplier.items.each do |item| %>
 	<div class="<%= item.title.split.join %>">
   <tr>
@@ -22,18 +22,29 @@
     <td>
       <%= item.description %>
     </td>
+		<td>
+			<%= item.location %>
+		</td>
     <td>
-      <% if item.retired %>
-      retired
-      <% else %>
-      active
-      <% end %>
-    </td>
-    <td>
-      <%= number_to_currency(item.price.to_f / 100) %>
+      <%= number_to_currency(item.format_price) %>
     </td>
 		<td>
 			<%= item.quantity %>
+		</td>
+		<td>
+			<%= item.unit_size %>
+		</td>
+		<td>
+			<%= item.unit_weight %>
+		</td>
+    <td>
+      <%= item.item_retired %>
+    </td>
+		<td>
+			<%= item.item_available %>
+		</td>
+		<td>
+			<%= item.item_shippable %>
 		</td>
     <td>
       <%= link_to "Edit Item", edit_supplier_item_path(@supplier.slug, item) %>
