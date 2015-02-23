@@ -1,22 +1,6 @@
 require "rails_helper"
 
 feature "User login" do
-  let(:default_user_attributes) do
-      { fullname: "jimbobfrank",
-        email: "jimbobfrank@aol.com",
-        role: 0,
-        password: "foobar1234",
-        password_confirmation: "foobar1234",
-        display_name: "frankyboy" }
-  end
-  let(:admin_user_attributes) do
-      { fullname: "frank",
-        email: "frank@aol.com",
-        role: 2,
-        password: "foobar1234",
-        password_confirmation: "foobar1234",
-        display_name: "franky" }
-  end
   let(:protected_user_attributes) do
       { fullname: "bob",
         email: "bob@aol.com",
@@ -25,11 +9,12 @@ feature "User login" do
         password_confirmation: "pass",
         display_name: "bob" }
   end
-  let!(:user) { User.create(default_user_attributes) }
+
+  let!(:user) { User.create(user_attributes) }
   let(:admin_user) { User.create(admin_user_attributes) }
   let(:protected_user) { User.create(protected_user_attributes) }
 
-  scenario "User can Welcome Page" do
+  scenario "User can visit the Welcome Page" do
     visit "/"
     expect(page).to have_content("Emergency Supplies")
   end
@@ -38,12 +23,12 @@ feature "User login" do
     visit "/"
     first(:button, "Log In").click
     within(".login-modal") do
-      fill_in "session[email]", with: "jimbobfrank@aol.com"
+      fill_in "session[email]", with: "joe@gmial.com"
       fill_in "session[password]", with: "foobar1234"
       click_link_or_button "Log In"
     end
     within("#user_nav") do
-      expect(page).to have_content("Welcome, jimbobfrank")
+      expect(page).to have_content("Welcome, Joe Guy")
     end
   end
 
@@ -72,12 +57,15 @@ feature "User login" do
     end
   end
 
-  scenario "an admin can view other users information" do
-    order = user.orders.create(status: "completed", total: 1000)
-    item = Item.create(title: "Two Torpedo Tacos", description: "Two crispy chicken tacos.", price: 500)
-    order1_item1 = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
+  xscenario "an admin can view registered users information" do
+    # order = user.orders.create(status: "completed", total: 1000)
+    order = Order.create(order_attributes)
+    item = Item.create(item_attributes)
+    line_item = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
+    address = user.addresses.create(billing_address_attributes(order_id: order.id))
     allow_any_instance_of(ApplicationController).to receive(:current_user).
-    and_return(admin_user)
+      and_return(admin_user)
+
     visit user_orders_path(user)
     within("#orders") do
       expect(page).to have_content("Orders")

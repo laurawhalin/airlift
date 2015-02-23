@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
 	validates :password, presence: true, on: :create
   validates :email, presence: true, uniqueness: true, on: :create
   validates :display_name, length: { in: 2..32 }, allow_nil: true, on: :create
-  has_many :orders
-	#TODO Change this back if we don't need it
-	has_one :supplier
-  has_one :supplier, through: :supplier_admins
+  has_many :orders, through: :addresses
+  has_one :supplier_admin
+
 
   enum role: %w(default supplier admin)
 

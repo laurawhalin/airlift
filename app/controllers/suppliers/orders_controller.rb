@@ -5,10 +5,12 @@ class Suppliers::OrdersController < SuppliersController
                 completed: Order.completed,
                 cancelled: Order.cancelled
               }
-    @all_orders = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
+    @user = User.find(@order.addresses.where(address_type: "billing").first.user_id)
+    @shipping_address = @user.addresses.where(address_type: "shipping").first
   end
 
   def update

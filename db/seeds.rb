@@ -7,13 +7,14 @@ class Seed
     build_items_category
     build_supplier
     build_supplier_admin
+    build_addresses
   end
 
   def build_orders
-    statuses = ["ordered", "completed", "paid", "cancelled"]
+    statuses = ["ordered", "completed", "cancelled"]
     50.times do
       order_status = statuses.sample
-      Order.create(user_id: rand(1...10), status: order_status, total: rand(1...2000))
+      Order.create(status: order_status, total: rand(1...2000))
 
       rand(1...10).times do
         OrdersItem.create(item_id: rand(1...300), order_id: rand(1...50), quantity: 2)
@@ -37,6 +38,17 @@ class Seed
     300.times do
       rand_image = filenames.sample
       Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(1...500)}", image: open(rand_image), supplier_id: "#{rand(1...10)}", location: "Denver, CO USA")
+    end
+  end
+
+  def build_addresses
+    orders = Order.all
+    orders.map do |order|
+      order.addresses.create(line_one: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, postal_code: Faker::Address.zip_code, country: Faker::Address.country, address_type: "billing", user_id: "#{rand(1...100)}" )
+    end
+
+    orders[1..50].map do |order|
+      order.addresses.create(line_one: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, postal_code: Faker::Address.zip_code, country: Faker::Address.country, address_type: "shipping", user_id: "#{rand(1...50)}" )
     end
   end
 

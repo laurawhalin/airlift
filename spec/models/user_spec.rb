@@ -1,24 +1,9 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  let(:user) {
-    User.create(
-                fullname: "Daisy",
-                display_name: "lildaisy",
-                email: "daisy@example.com",
-                password: "password",
-                role: "default"
-                )
-  }
-  let(:default_supplier_attributes) do
-    { name: "Supplier X",
-      slug: "supplier-x",
-      description: "A store for all of you disaster relief needs",
-      retired: false,
-      address: "101 William White Blvd, Pueblo, Co 80111" }
-  end
-  let(:supplier) { Supplier.create(default_supplier_attributes) }
-  let!(:supplier_admin) { SupplierAdmin.create(user_id: user.id, supplier_id: supplier.id) }
+  let(:user) { User.create(user_attributes) }
+  let(:supplier) { Supplier.create(supplier_attributes) }
+  let!(:supplier_admin) { supplier.supplier_admins.create(supplier_admin_attributes(user_id: user.id)) }
 
   it "is valid" do
     expect(user).to be_valid
@@ -36,13 +21,7 @@ RSpec.describe User, type: :model do
 
   it "is not valid without a unique email" do
     user
-    user_2 = User.new(
-                      fullname: "Daisy",
-                      display_name: "lildaisy",
-                      email: "daisy@example.com",
-                      password: "password",
-                      role: "default"
-                      )
+    user_2 = User.new(user_attributes)
     expect(user_2).to_not be_valid
   end
 
@@ -83,12 +62,11 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it "can have many orders" do
-    user.orders.create(status: "pending", total: "2434")
-    expect(user.orders.map(&:user_id)).to eq([user.id])
-  end
+  it { should have_many(:orders).through(:addresses) }
 
-  it "can find it admin_supplier id" do
+  it "can find its supplier_admin id" do
     expect(user.find_supplier_admin(user.id).id).to eq(supplier_admin.id)
   end
+
+  it { should have_many(:addresses) }
 end
