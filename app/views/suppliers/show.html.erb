@@ -44,10 +44,10 @@
 								<%= user.fullname %>
 								<div class="create text-right">
 									<button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target=".reg-modal-<%= user.id %>">Edit</button>
-									<div class="modal fade reg-modal-<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+									<div class="modal fade reg-modal-<%= user.id %>" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
-												<%= render "partials/supplier_admin_edit_form"  %>
+												<%= render partial: "partials/supplier_admin_edit_form", :locals => {:user => user }  %>
 											</div>
 									</div>
 								</div>
