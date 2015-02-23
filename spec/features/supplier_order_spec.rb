@@ -6,7 +6,6 @@ feature "supplier views orders" do
     @item = @supplier.items.create(item_attributes)
     @admin_user = User.create(admin_user_attributes)
     @user = User.create(user_attributes)
-    # @cart = { @item.id => 3 }
     @order = Order.create(order_attributes)
     @billing_address = @user.addresses.create(billing_address_attributes(order_id = @order.id))
     @shipping_address = @user.addresses.create(shipping_address_attributes(order_id = @order.id))
