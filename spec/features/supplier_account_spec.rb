@@ -43,10 +43,10 @@ feature "Supplier account information" do
 		click_link "Manage Fireproof Administrators" 
 		expect(page).to have_content(@user.fullname)
 		first(:button, "Edit").click
-		within(".reg-modal-1") do
+		within(".reg-modal-11") do
 			fill_in "user[fullname]", with: "Jason"
 		end
-		click_link_or_button "Update"
+		first(:button, "Update").click
 		expect(page).to have_content("Jason")
 	end
 end

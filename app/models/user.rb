@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates :fullname, :password, :role, presence: true
-  validates :email, presence: true, uniqueness: true
-  validates :display_name, length: { in: 2..32 }, allow_nil: true
+  validates :fullname, :role, presence: true 
+	validates :password, presence: true, on: :create
+  validates :email, presence: true, uniqueness: true, on: :create
+  validates :display_name, length: { in: 2..32 }, allow_nil: true, on: :create
   has_many :orders
 	#TODO Change this back if we don't need it
 	has_one :supplier
