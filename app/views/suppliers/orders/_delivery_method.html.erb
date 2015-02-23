@@ -1,0 +1,18 @@
+<% if @shipping_address %>
+  <h5>Shipping Address:</h5>
+    <p>
+      <%= @shipping_address.line_one %></br>
+      <%= @shipping_address.line_two %></br>
+      <%= @shipping_address.city %></br>
+      <%= @shipping_address.state %></br>
+      <%= @shipping_address.postal_code %></br>
+      <%= @shipping_address.country %>
+    </p>
+<% elsif @coordinates %>
+  <h5>Delivery Coordinates:</h5>
+<% else %>
+  <h5>Delivery Method:</h5>
+    <p>
+      Pick-up
+    </p>
+<% end %>

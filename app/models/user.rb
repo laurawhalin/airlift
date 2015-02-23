@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   validates :fullname, :password, :role, presence: true
   validates :email, presence: true, uniqueness: true
   validates :display_name, length: { in: 2..32 }, allow_nil: true
-  has_many :orders
   has_one :supplier_admin
+  has_many :addresses
+  has_many :orders, through: :addresses
 
 
   enum role: %w(default supplier admin)

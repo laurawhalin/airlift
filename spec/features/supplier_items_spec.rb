@@ -73,7 +73,6 @@ feature "supplier items page" do
     find(:css, "#item_retired[type='checkbox']").set(true)
     find(:css, "#category_list_categories_water[type='checkbox']").set(true)
     click_link_or_button "Save"
-    save_and_open_page
     within(".WaterPurifier") do
       expect(page).to have_content("Retired")
     end
