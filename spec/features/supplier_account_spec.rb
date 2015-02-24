@@ -25,7 +25,6 @@ feature "Supplier account information" do
 			fill_in "supplier[description]", with: "Disaster Supplies Worldwide"
 			click_button "Update"
 		end
-		@supplier.update(name: "Helping Hand Relief", slug: "helping-hand-relief")
 		expect(current_path).to eq(supplier_path(@supplier.slug))
 		within(".account-details") do
 			expect(page).to have_content("Helping Hand Relief")
@@ -33,7 +32,7 @@ feature "Supplier account information" do
 		end
 	end
 
-	scenario "supplier can edit administrators information" do
+	scenario "supplier can edit administrators information", :js => true do
 		supplier2 = Supplier.create(supplier_attributes(name: "Ghostbusters", 
 																										description: "Ghost face killas",
 																									  slug: "ghostbusters"))
@@ -43,10 +42,11 @@ feature "Supplier account information" do
 		click_link "Manage Fireproof Administrators" 
 		expect(page).to have_content(@user.fullname)
 		first(:button, "Edit").click
-		within(".reg-modal-11") do
+		within(".reg-modal-#{@user.fullname.split.join}") do
 			fill_in "user[fullname]", with: "Jason"
 		end
 		first(:button, "Update").click
+		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
 			expect(page).to have_content("Jason")
 		end

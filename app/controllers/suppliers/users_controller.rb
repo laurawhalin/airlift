@@ -4,7 +4,7 @@ class Suppliers::UsersController < SuppliersController
 		@user =  User.find(params[:id])
 		if @user.update(supplier_admin_params)
 			flash[:success] = "User successfully updated"
-			redirect_to :back
+			redirect_to supplier_path(@user.supplier_slug(@user.id))
 		else
 			flash[:errors] = "User could not be updated"
 			redirect_to :back
