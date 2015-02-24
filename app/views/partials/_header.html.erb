@@ -50,13 +50,13 @@
 
     <div id="search-bar">
         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], size: 116, placeholder: "Search Supplies" %>
+          <%= text_field_tag :search, params[:search], size: 102, placeholder: "Search Supplies" %>
           <%= submit_tag "Search", :name => nil %>
         <% end %>
     </div>
     <div id="cart">
       <% if !current_user.present? || !current_user.supplier? %>
-        <i class="fa fa-shopping-cart fa-2x"></i><%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
+        <i class="fa fa-shopping-cart fa-2x"></i><%= link_to " Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
       <% end %>
     </div>
   </div>
