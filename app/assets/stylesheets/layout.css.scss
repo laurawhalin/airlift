@@ -112,6 +112,12 @@ a {
   padding-bottom: 25px;
 }
 
+.modal-content {
+  padding: 25px;
+  width: 800px;
+  height: 600px;
+}
+
 .modal-item-image {
   float: left;
 }
@@ -121,8 +127,10 @@ a {
 }
 
 .modal-cart-button {
-  float: right;
+  text-align: right;
+  padding: 15px;
 }
+
 
 #item_show {
   padding: 25px;
