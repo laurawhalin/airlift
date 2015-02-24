@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :items
     resources :orders
+		resources :users
   end
 end
