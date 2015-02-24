@@ -1,26 +1,17 @@
 class Suppliers::OrdersController < SuppliersController
   def index
-    @orders = { ordered: Order.ordered,
-                paid: Order.paid,
-                completed: Order.completed,
-                cancelled: Order.cancelled
-              }
+    @orders = Order.get_supplier_orders(params)
   end
 
   def show
-    @order = Order.find(params[:id])
-    @user = User.find(@order.addresses.where(address_type: "billing").first.user_id)
-    @shipping_address = @user.addresses.where(address_type: "shipping").first
+    @order = Order.get_order(current_user, params[:id])
+    @user = Order.get_user(@order)
+    @shipping_address = Order.get_shipping_address(@user)
   end
 
   def update
-    @order = Order.find(params[:id])
-    case params[:commit]
-    when "Cancel Order"
-      @order.update(status: "cancelled")
-    when "Mark as Shipped"
-      @order.update(status: "completed")
-    end
+    order = Order.get_order(current_user, params[:id])
+    order.change_status(order, params[:commit])
     redirect_to supplier_orders_path
   end
 end

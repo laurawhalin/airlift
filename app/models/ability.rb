@@ -11,7 +11,7 @@ class Ability
       cannot [:manage], Cart, id: user.id
     else
       can :read, User, id: user.id
-      can :read, Order#, user_id: user.id  not sure if I should replace this with something else that identifies the user?
+      can :read, Order
     end
   end
 end

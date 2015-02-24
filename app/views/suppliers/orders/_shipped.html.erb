@@ -1,14 +1,24 @@
 <div roll="tabpanel" id="status-shipped" class="tab-pane fade">
-  <h3>Shipped Orders (<%= @orders[:completed].count %>)</h3>
-
-  <table class="table">
-    <% @orders[:completed].each do |order| %>
-    <tr>
-      <td>
-        <%= link_to "Order# #{order[:id]}: ", supplier_order_path(id: order[:id]) %>
-        <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
-      </td>
-    </tr>
+  <h3>Shipped Orders
+    <% if @orders["completed"] %>
+      (<%= @orders["completed"].count %>)
     <% end %>
-  </table>
-</div>
+  </h3>
+
+  <% if @orders["completed"] %>
+    <table class="table">
+      <% @orders["completed"].each do |order| %>
+      <tr>
+        <td>
+          <%= link_to "Order# #{order[:id]}: ", supplier_order_path(id: order[:id]) %>
+          <%= order.created_at.strftime("Submitted at: %b %d, %Y %H:%M") %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>
+      There are no shipped orders to display.
+    </p>
+  <% end %>
+  </div>
