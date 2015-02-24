@@ -29,6 +29,10 @@ class Order < ActiveRecord::Base
     @orders = supplier_orders.group_by { |order| order.status }
   end
 
+  def self.get_order(current_user, order_id)
+    Item.find_by(supplier_id: current_user.id).orders.find(order_id)
+  end
+
   def self.get_user(order)
     User.find(order.addresses.where(address_type: "billing").first.user_id)
   end
