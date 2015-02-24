@@ -1,5 +1,4 @@
 class Suppliers::ItemsController < SuppliersController
-  load_and_authorize_resource
 
   include SupplierItemsHelper
   def index
@@ -20,12 +19,13 @@ class Suppliers::ItemsController < SuppliersController
 
   def create
 		@supplier = Supplier.find_by(slug: params[:slug])
-		item = @supplier.items.new(supplier_item_params)
+		@item = @supplier.items.new(supplier_item_params)
     if category_list_nil?
       flash[:errors] = "You must select at least one category when creating a new item! Duh!"
       redirect_to :back
-		elsif item.save
-      item.add_categories_to_item(params[:category_list][:categories])
+		elsif authorize! :manage, @item
+      @item.save
+      @item.add_categories_to_item(params[:category_list][:categories])
 			flash[:success] = "Item successfully saved"
       redirect_to supplier_items_path(@supplier.slug)
 		else
@@ -67,6 +67,7 @@ class Suppliers::ItemsController < SuppliersController
                                  :unit_size,
                                  :unit_weight,
                                  :shippable,
-                                 :available)
+                                 :available,
+                                 :image)
 	end
 end

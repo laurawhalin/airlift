@@ -2,7 +2,7 @@
   <h4>Customer Order</h4>
   <h5>Customer Name:<h5>
     <p><%= @user.fullname %></p>
-  <%= render "delivery_method" %>  
+  <%= render "delivery_method" %>
   <h5></h5>
 
   <p>email: <%= @user.email %> </p>
@@ -30,3 +30,4 @@
   <% end %>
   <tr><td>Order Total: </td><td/><td><%= number_to_currency(@order.total.to_f / 100.00) %></td></tr>
 </table>
+w
