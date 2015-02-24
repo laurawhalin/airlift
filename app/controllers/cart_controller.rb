@@ -1,4 +1,6 @@
 class CartController < ApplicationController
+  before_action :supplier_authorization
+
   def index
     redirect_to :back
   end
@@ -24,5 +26,11 @@ class CartController < ApplicationController
     item = Item.find(params[:id])
     @cart.delete_item(item.id)
     redirect_to cart_path
+  end
+
+  private
+
+  def supplier_authorization
+    redirect_to not_found_path if current_user && current_user.supplier?
   end
 end
