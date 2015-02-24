@@ -1,9 +1,15 @@
 class Suppliers::ItemsController < SuppliersController
+  load_and_authorize_resource
+
   include SupplierItemsHelper
   def index
-		 @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
-		 @item = Item.new
-		 get_all_categories
+		@supplier = Supplier.where(slug: params[:slug]).includes(:items).take
+		@item = Item.new
+    if authorize! :read, @supplier
+  		get_all_categories
+    else
+      redirect_to not_found_path
+    end
   end
 
   def new

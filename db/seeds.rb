@@ -2,26 +2,13 @@ class Seed
   def initialize
     build_items
     build_category
-    build_orders
     build_users
     build_items_category
     build_supplier
     build_supplier_admin
+    build_orders
     build_addresses
   end
-
-  def build_orders
-    statuses = ["ordered", "completed", "cancelled"]
-    50.times do
-      order_status = statuses.sample
-      Order.create(status: order_status, total: rand(1...2000))
-
-      rand(1...10).times do
-        OrdersItem.create(item_id: rand(1...300), order_id: rand(1...50), quantity: 2)
-      end
-    end
-  end
-
 
   def build_items
     filenames = Dir.glob("app/assets/images/items/*")
@@ -37,7 +24,29 @@ class Seed
     Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/items/beans.jpg"), supplier_id: 5, location: "London, England UK")
     300.times do
       rand_image = filenames.sample
-      Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(1...500)}", image: open(rand_image), supplier_id: "#{rand(1...10)}", location: "Denver, CO USA")
+      Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(500...50000)}", image: open(rand_image), supplier_id: "#{rand(1...10)}", location: "Denver, CO USA")
+    end
+  end
+
+  def build_orders
+    statuses = ["ordered", "completed", "cancelled"]
+    50.times do
+      order_status = statuses.sample
+      order = Order.create(status: order_status, total: 1)
+
+      rand(1...10).times do
+        item_id = rand(1...240)
+        quantity = rand(1...10)
+        price = Item.find(item_id).price
+        subtotal = (price * quantity)
+        order.orders_items.create(item_id: item_id, quantity: quantity, subtotal: subtotal)
+      end
+    end
+
+    orders = Order.all
+    orders.each do |order|
+      order.total = order.orders_items.reduce(0) { |sum, item| sum += item.subtotal }
+      order.save
     end
   end
 

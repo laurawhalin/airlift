@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "welcome#index"
+  get "/not_found", to: "welcome#not_found"
   get "/register", to: "users#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
