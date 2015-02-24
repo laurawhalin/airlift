@@ -25,7 +25,6 @@ feature "Supplier account information" do
 			fill_in "supplier[description]", with: "Disaster Supplies Worldwide"
 			click_button "Update"
 		end
-		expect(current_path).to eq(supplier_path(@supplier.slug))
 		within(".account-details") do
 			expect(page).to have_content("Helping Hand Relief")
 			expect(page).to have_content("Disaster Supplies Worldwide")
