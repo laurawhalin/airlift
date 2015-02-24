@@ -56,7 +56,7 @@
     </div>
     <div id="cart">
       <% if !current_user.present? || !current_user.supplier? %>
-        <i class="fa fa-shopping-cart fa-2x"></i><%= link_to "Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
+        <i class="fa fa-shopping-cart fa-2x"></i><%= link_to " Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
       <% end %>
     </div>
   </div>
