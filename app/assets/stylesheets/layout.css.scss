@@ -55,7 +55,11 @@ body {
 	padding-bottom: 150px;
 }
 #restaurant_name h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: 'Chango', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+#restarant_name h1 {
+  font-size: 60px;
 }
 
 a {
@@ -253,5 +257,5 @@ a {
 #item-info {
   position: absolute;
   bottom: 5px;
-  float: right; 
+  float: right;
 }
