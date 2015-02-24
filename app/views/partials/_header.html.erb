@@ -50,7 +50,7 @@
 
     <div id="search-bar">
         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], size: 116, placeholder: "Search Supplies" %>
+          <%= text_field_tag :search, params[:search], size: 102, placeholder: "Search Supplies" %>
           <%= submit_tag "Search", :name => nil %>
         <% end %>
     </div>
