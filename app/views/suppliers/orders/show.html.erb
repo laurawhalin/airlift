@@ -2,7 +2,7 @@
   <h4>Customer Order</h4>
   <h5>Customer Name:<h5>
     <p><%= @user.fullname %></p>
-  <%= render "delivery_method" %>  
+  <%= render "delivery_method" %>
   <h5></h5>
 
   <p>email: <%= @user.email %> </p>
@@ -21,7 +21,7 @@
     <th>Item</th><th>Quantity</th><th>Price</th>
   </tr>
 
-  <% @order.orders_items.each do |order_item|%>
+  <% @orders_items.each do |order_item|%>
   <tr>
     <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
     <td><%= order_item.quantity %></td>

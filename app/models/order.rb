@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.id_for(slug)
-    Supplier.find_by(slug: slug)
+    Supplier.find_by(slug: slug).id
   end
 
   def change_status(order, commit)
@@ -23,14 +23,33 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def self.get_supplier_orders(params)
-    orders_items = self.id_for(params[:slug]).id
-    supplier_orders = Order.joins(:orders_items).group(orders_items)
-    @orders = supplier_orders.group_by { |order| order.status }
+  def self.get_supplier_orders_by_status(params)
+    supplier_orders = self.get_supplier_orders(params)
+    supplier_orders.flatten.group_by { |order| order.status }
   end
 
-  def self.get_order(current_user, order_id)
-    Item.find_by(supplier_id: current_user.id).orders.find(order_id)
+  def self.get_supplier_orders(params)
+    items = Item.where(supplier_id: self.id_for(params[:slug]))
+    items.map do |item|
+      Order.joins(:orders_items).where(orders_items: { item_id: item.id })
+    end.flatten.uniq
+  end
+
+  def self.get_order(params)
+    # items = Item.where(supplier_id: self.id_for(params[:slug]))
+    # require 'pry' ; binding.pry
+    # @order = Order.joins(:orders_items).where(orders_items: { order_id: params[:id] } )
+    require 'pry' ; binding.pry
+    supplier_orders = self.get_supplier_orders(params)
+    supplier_orders.find(params[:id])
+
+    # return the order from params[:id]
+    # only search from the orders relevant to this user
+  end
+
+  def self.get_items(params)
+    items = Item.where(supplier_id: self.id_for(params[:slug]))
+
   end
 
   def self.get_user(order)
