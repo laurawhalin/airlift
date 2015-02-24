@@ -6,9 +6,6 @@ class SuppliersController < ApplicationController
 
 	def update
 			@supplier = Supplier.find_by(slug: params[:slug])
-			@user = User.find_by(id: @user.id)
-			require "pry" 
-			 binding.pry
 	  	if @supplier.update(supplier_params) || @user.update(supplier_admin_params)
 				flash[:success] = "Supplier successfully updated."
 				redirect_to supplier_path(@supplier.slug)
@@ -20,14 +17,9 @@ class SuppliersController < ApplicationController
 
 	private
 
-	def supplier_admin_params
-		params.require(:user).permit(:fullname,
-																 :email,
-																 :role)
-	end
-
 	def supplier_params
 		params.require(:supplier).permit(:name,
-																		 :description)
+																		 :description, 
+																		 :user )
 	end
 end

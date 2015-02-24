@@ -1,5 +1,5 @@
 <div class="form-horizontal reg-form">
-	<%= form_for [@supplier, user], url: supplier_path(@supplier.slug), method: :put do |f| %>
+	<%= form_for [@supplier, user], url: supplier_user_path(@supplier.slug, user), method: :put do |f| %>
   <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -35,9 +35,10 @@
 	<div class="form-group">
     <%= f.label :role, class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-			<%= select :user, :role, [["Admin", 1],["User", 0]], {:multipart => true } %>
+			<%= f.select(:role, [['Admin', "supplier"],["User", "default"]])  %>
     </div>
-  </div>
+	</div>
+
 
 	<div class="action col-sm-7 text-right">
 		<%= f.submit "Update", class: "btn btn-lg btn-default text-right" %>

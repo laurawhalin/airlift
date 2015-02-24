@@ -33,7 +33,7 @@ feature "Supplier account information" do
 		end
 	end
 
-	scenario "supplier can edit administrators" do
+	scenario "supplier can edit administrators information" do
 		supplier2 = Supplier.create(supplier_attributes(name: "Ghostbusters", 
 																										description: "Ghost face killas",
 																									  slug: "ghostbusters"))
@@ -47,6 +47,8 @@ feature "Supplier account information" do
 			fill_in "user[fullname]", with: "Jason"
 		end
 		first(:button, "Update").click
-		expect(page).to have_content("Jason")
+		within('.admin-details') do
+			expect(page).to have_content("Jason")
+		end
 	end
 end
