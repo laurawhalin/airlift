@@ -107,26 +107,27 @@ a {
   padding-right: 45px;
 }
 
+.modal-title {
+  text-align: left;
+  padding-bottom: 25px;
+}
+
+.modal-item-image {
+  float: left;
+}
+
+.modal-item-details {
+  float: right;
+}
+
+.modal-cart-button {
+  float: right;
+}
+
 #item_show {
-  margin-top: 30px;
-}
-
-#item_show img {
-  margin-top: 50px;
-}
-
-#item_show h2 {
-  margin-bottom: 30px;
-}
-
-#item_show p {
-  font-size: 20px;
-}
-
-#item_show .btn {
-  margin-top: 20px;
-  padding: 15px;
-  font-size: 20px;
+  padding: 25px;
+  height: 550px;
+  width: 700px;
 }
 
 .sidebar {
