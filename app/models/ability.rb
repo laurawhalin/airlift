@@ -8,10 +8,10 @@ class Ability
 		elsif user.supplier?
 			can [:read, :update], Supplier, slug: user.supplier_admin.supplier.slug
 			can [:manage], [Item, Order, Category], supplier_id: user.supplier_admin.supplier.id
-      cannot [:manage], Cart, id: user.id
     else
       can :read, User, id: user.id
       can :read, Order
+      can :read, Cart, id: user.id
     end
   end
 end

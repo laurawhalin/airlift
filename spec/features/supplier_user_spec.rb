@@ -40,10 +40,18 @@ feature "supplier visits the site" do
     expect(page).to have_content("Page Not Found")
   end
 
-  scenario "Supplier can not access other suppliers items" do
+  scenario "Supplier cannot access other suppliers items" do
     allow_any_instance_of(ApplicationController).to receive(:current_user)
       .and_return(@user)
     visit supplier_item_path(@supplier2.slug, @item2.id)
+    expect(current_path).to eq(not_found_path)
+    expect(page).to have_content("Page Not Found")
+  end
+
+  scenario "Supplier cannot access cart" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user)
+      .and_return(@user)
+    visit cart_path(@user.id)
     expect(current_path).to eq(not_found_path)
     expect(page).to have_content("Page Not Found")
   end
