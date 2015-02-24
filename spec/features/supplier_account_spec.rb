@@ -50,4 +50,22 @@ feature "Supplier account information" do
 			expect(page).to have_content("Jason")
 		end
 	end
+	scenario "supplier can edit administrators role", :js => true do
+		supplier2 = Supplier.create(supplier_attributes(name: "Ghostbusters", 
+																										description: "Ghost face killas",
+																									  slug: "ghostbusters"))
+		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
+		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: supplier2.id)
+		visit supplier_path(@supplier.slug)
+		click_link "Manage Fireproof Administrators" 
+		first(:button, "Edit").click
+		within(".reg-modal-#{@user.fullname.split.join}") do
+		find('#user_role').find(:xpath, 'option[2]').select_option
+		end
+		first(:button, "Update").click
+		click_link "Manage Fireproof Administrators"
+		within('.admin-details') do
+			expect(page).to_not have_content(@user.fullname)
+		end
+	end
 end

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	has_many :addresses
   has_many :orders, through: :addresses
   has_one :supplier_admin
-	
+ 	
 
   enum role: %w(default supplier admin)
 
@@ -23,4 +23,5 @@ class User < ActiveRecord::Base
   def find_supplier_admin(id)
     SupplierAdmin.find_by(user_id: id)
   end
+
 end
