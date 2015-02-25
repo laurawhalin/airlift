@@ -7,10 +7,9 @@ class Ability
       can :manage, :all
 		elsif user.supplier?
 			can [:read, :update], Supplier, slug: user.supplier_admin.supplier.slug
-			can [:manage], [Item, Order, Category], supplier_id: user.supplier_admin.supplier.id
+			can [:manage], [Item, Category], supplier_id: user.supplier_admin.supplier.id
     else
       can :read, User, id: user.id
-      can :read, Order
       can :read, Cart, id: user.id
     end
   end

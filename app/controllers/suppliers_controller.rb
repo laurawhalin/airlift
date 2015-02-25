@@ -1,4 +1,5 @@
 class SuppliersController < ApplicationController
+
   def show
     @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
 		@user = User.new
@@ -19,7 +20,11 @@ class SuppliersController < ApplicationController
 
 	def supplier_params
 		params.require(:supplier).permit(:name,
-																		 :description, 
+																		 :description,
 																		 :user )
 	end
+
+  def supplier_authorization
+    redirect_to not_found_path if !current_user || current_user.supplier_slug(current_user.id) != params[:slug]
+  end
 end

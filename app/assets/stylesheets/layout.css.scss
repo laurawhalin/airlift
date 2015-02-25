@@ -88,6 +88,10 @@ a {
   font-size: 20px;
 }
 
+.cart-dollars {
+  padding-right: 15px;
+}
+
 #cart_total .btn {
   margin-top: 10px;
 }
@@ -139,6 +143,43 @@ a {
 .modal-title {
   text-align: left;
   padding-bottom: 25px;
+}
+
+.login-modal-content {
+  text-align: left;
+  background-color: white;
+  padding: 25px;
+  height: 230px;
+  width: 500px;
+  z-index: 1;
+}
+
+.login-modal-info {
+  text-align: left;
+}
+
+.modal-login-button {
+  float: left;
+  padding-left: 190px;
+  padding-top: 15px;
+}
+
+#login-modal-register {
+  float: left;
+  padding-left: 132px;
+}
+
+.register-signup-button {
+  text-align: left;
+  padding-left: 195px;
+  font-size: 25px;
+}
+
+.register-modal-content {
+  padding: 25px;
+  height: 315px;
+  width: 800px;
+  background-color: white;
 }
 
 .modal-content {
