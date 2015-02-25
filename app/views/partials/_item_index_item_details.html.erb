@@ -1,0 +1,13 @@
+<div id="item-info">
+  <button type="button" class="btn btn-link view-btn" data-toggle="modal" data-target=".<%= item.title.split.join %>">View More Info</button></br>
+    <h5>
+      <%= item.title %>
+    </h5>
+    <p>
+      <%= number_to_currency(item.format_price) %>
+    </p>
+    <% if !current_user || current_user && !current_user.supplier? %>
+      <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-default" %>
+    <% end %>
+</div>
+
