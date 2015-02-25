@@ -21,7 +21,7 @@
     <th>Item</th><th>Quantity</th><th>Price</th>
   </tr>
 
-  <% @orders_items.each do |order_item|%>
+  <% @order.orders_items.each do |order_item|%>
   <tr>
     <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
     <td><%= order_item.quantity %></td>

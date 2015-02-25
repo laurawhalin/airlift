@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
   def find_supplier_admin(id)
     SupplierAdmin.find_by(user_id: id)
   end
+
+  def get_shipping_address(user)
+    user.addresses.find_by(address_type: "shipping")
+  end
 end

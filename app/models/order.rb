@@ -13,13 +13,11 @@ class Order < ActiveRecord::Base
     Supplier.find_by(slug: slug).id
   end
 
-  def change_status(order, commit)
+  def change_status(commit)
     if commit == "Cancel Order"
-      @order = order.update(status: "cancelled")
-    elsif commit == "Mark as Shipped"
-      @order = order.update(status: "completed")
-    else
-      @order
+      update(status: "cancelled")
+    else commit == "Mark as Shipped"
+      update(status: "completed")
     end
   end
 
@@ -35,28 +33,11 @@ class Order < ActiveRecord::Base
     end.flatten.uniq
   end
 
-  def self.get_order(params)
-    # items = Item.where(supplier_id: self.id_for(params[:slug]))
-    # require 'pry' ; binding.pry
-    # @order = Order.joins(:orders_items).where(orders_items: { order_id: params[:id] } )
-    require 'pry' ; binding.pry
-    supplier_orders = self.get_supplier_orders(params)
-    supplier_orders.find(params[:id])
-
-    # return the order from params[:id]
-    # only search from the orders relevant to this user
+  def self.get_order_and_items(id)
+    self.includes(:orders_items).find(id)
   end
 
-  def self.get_items(params)
-    items = Item.where(supplier_id: self.id_for(params[:slug]))
-
-  end
-
-  def self.get_user(order)
+  def get_user(order)
     User.find(order.addresses.where(address_type: "billing").first.user_id)
-  end
-
-  def self.get_shipping_address(user)
-    user.addresses.where(address_type: "shipping").first
   end
 end

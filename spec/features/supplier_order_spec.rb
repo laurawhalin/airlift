@@ -27,6 +27,7 @@ feature "supplier views orders" do
   scenario "a supplier can mark an order as shipped", js: true do
     allow_any_instance_of(ApplicationController).to receive(:current_user)
       .and_return(@admin_user)
+
     visit supplier_orders_path(@supplier.slug)
     first(:button, "Mark as Shipped").click
     expect(page).to_not have_content("Order# #{@order.id}")
