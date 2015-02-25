@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def find_supplier_admin(id)
     SupplierAdmin.find_by(user_id: id)
   end
+
+	def element_name
+		fullname.split.join.delete('^a-zA-Z')
+	end
 end
