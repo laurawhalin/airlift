@@ -25,12 +25,12 @@
                 <%= link_to('My Order History', user_orders_path(current_user), class: "btn btn-default logout") %>
               </div>
               <div class="col-sm-6">
-                <%= link_to('Logout', logout_path, :method => :delete, class: "btn btn-default logout") %>
+                <%= link_to('Logout', logout_path, :method => :get, class: "btn btn-default logout") %>
               </div>
             </div>
           <% else %>
             <div class="col-sm-12">
-              <%= link_to('Logout', logout_path, :method => :delete, class: "btn btn-default logout") %>
+              <%= link_to('Logout', logout_path, :method => :get, class: "btn btn-default logout") %>
             </div>
           <% end %>
 
@@ -82,8 +82,10 @@
 
     <div id="cart" class="col-md-2 text-right">
       <% if !current_user.present? || !current_user.supplier? %>
-        <i class="fa fa-shopping-cart fa-2x"></i><%= link_to " Items: #{@cart.count_total}", cart_path(cart_id = @cart) %>
-      <% end %>
+				<i class="fa fa-shopping-cart fa-2x"></i><%= link_to " Items: #{@cart.count_total}", cart_path(cart_id = @cart) %>
+			<% else %>
+      	<%= link_to "View Profile", supplier_path(current_user.supplier_slug(current_user.id)), class: "btn btn-default profile" %>
+			<% end %>
     </div>
 
     <div class="col-md-1">

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/not_found", to: "welcome#not_found"
   get "/register", to: "users#new"
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  get "/logout", to: "sessions#destroy"
   resources :items
   resources :cart
   resources :categories, only: [:show]

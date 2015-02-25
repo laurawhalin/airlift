@@ -77,6 +77,11 @@ a {
   margin-top: 5px;
 }
 
+.btn-default.profile {
+  height: 35px;
+  padding-top: 7px;
+}
+
 input#search {
   height: 35px;
 }
@@ -91,6 +96,10 @@ input#search {
 
 #cart_total {
   font-size: 20px;
+}
+
+.cart-dollars {
+  padding-right: 15px;
 }
 
 #cart_total .btn {

@@ -1,55 +1,63 @@
-<div class="create text-right">
-	<button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Create New Item</button>
-  	 <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-			 <div class="modal-dialog modal-lg">
-		  	 <div class="modal-content">
-		   		<%= render partial: "./partials/item_form" %>
-		   	 </div>
-			 </div>
-		 </div>
+<div class="row col-md-12">
+  <div class="row col-md-1">
+  </div>
+  <div class="row col-md-10">
+    <div class="create text-right">
+      <button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Create New Item</button>
+         <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+           <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+              <%= render partial: "./partials/item_form" %>
+             </div>
+           </div>
+         </div>
+    </div>
+    <table class="table">
+      <tr><th>Item</th><th></th><th>Description</th><th>Location</th><th>Price</th><th>Quantity</th><th>Unit Size</th><th>Unit Weight</th><th>Status</th><th>Availability</th><th>Shipping</th><th></th></tr>
+      <% @supplier.items.each do |item| %>
+      <div class="<%= item.title.split.join %>">
+      <tr>
+        <td>
+          <%= link_to item.title, item_path(item) %>
+        </td>
+        <td>
+          <%= image_tag item.image.url(:thumb) %>
+        </td>
+        <td>
+          <%= item.description %>
+        </td>
+        <td>
+          <%= item.location %>
+        </td>
+        <td>
+          <%= number_to_currency(item.format_price) %>
+        </td>
+        <td>
+          <%= item.quantity %>
+        </td>
+        <td>
+          <%= item.unit_size %>
+        </td>
+        <td>
+          <%= item.unit_weight %>
+        </td>
+        <td>
+          <%= item.item_retired %>
+        </td>
+        <td>
+          <%= item.item_available %>
+        </td>
+        <td>
+          <%= item.item_shippable %>
+        </td>
+        <td>
+          <%= link_to "Edit Item", edit_supplier_item_path(@supplier.slug, item) %>
+        </td>
+      </tr>
+      </div>
+      <% end %>
+    </table>
+  </div>
+  <div class="row col-md-1">
+  </div>
 </div>
-<table class="table">
-  <tr><th>Item</th><th></th><th>Description</th><th>Location</th><th>Price</th><th>Quantity</th><th>Unit Size</th><th>Unit Weight</th><th>Status</th><th>Availability</th><th>Shipping</th><th></th></tr>
-  <% @supplier.items.each do |item| %>
-	<div class="<%= item.title.split.join %>">
-  <tr>
-    <td>
-      <%= link_to item.title, item_path(item) %>
-    </td>
-    <td>
-      <%= image_tag item.image.url(:thumb) %>
-    </td>
-    <td>
-      <%= item.description %>
-    </td>
-		<td>
-			<%= item.location %>
-		</td>
-    <td>
-      <%= number_to_currency(item.format_price) %>
-    </td>
-		<td>
-			<%= item.quantity %>
-		</td>
-		<td>
-			<%= item.unit_size %>
-		</td>
-		<td>
-			<%= item.unit_weight %>
-		</td>
-    <td>
-      <%= item.item_retired %>
-    </td>
-		<td>
-			<%= item.item_available %>
-		</td>
-		<td>
-			<%= item.item_shippable %>
-		</td>
-    <td>
-      <%= link_to "Edit Item", edit_supplier_item_path(@supplier.slug, item) %>
-    </td>
-  </tr>
-	</div>
-  <% end %>
-</table>
