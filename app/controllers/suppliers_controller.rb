@@ -8,7 +8,6 @@ class SuppliersController < ApplicationController
 
 	def update
 			@supplier = Supplier.find_by(slug: params[:slug])
-      authorize! :update, @supplier
 	  	if @supplier.update(supplier_params) || @user.update(supplier_admin_params)
 				flash[:success] = "Supplier successfully updated."
 				redirect_to supplier_path(@supplier.slug)
