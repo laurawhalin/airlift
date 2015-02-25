@@ -68,18 +68,4 @@ feature "Supplier Login" do
     expect(current_path).to eq(root_path)
     expect(page).to_not have_content("Supplier Page")
   end
-
-  scenario "A user with a role of supplier who is a supplier admin cannot visit the suppliers page" do
-    visit root_path
-    first(:button, "Log In").click
-    within(".login-modal") do
-      fill_in "session[email]", with: user3.email
-      fill_in "session[password]", with: user3.password
-      click_link_or_button "Log In"
-    end
-    expect(current_path).to eq(root_path)
-    within("#flash_errors") do
-      expect(page).to have_content("User account not connected to supplier account, please contact system admin")
-    end
-  end
 end
