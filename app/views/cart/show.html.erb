@@ -12,7 +12,7 @@
       <tr>
         <td class="col-sm-2">
           <%= form_tag(cart_path, method: :put) do %>
-            <%= number_field_tag("qty", line_item[1], class: "qty") %>
+            <%= number_field_tag("qty", line_item[1], class: "qty", :min => 0) %>
             <%= hidden_field_tag("item_id", line_item[0].id) %>
             <%= submit_tag "Update Qty", class: "btn btn-default" %>
           <% end %>
