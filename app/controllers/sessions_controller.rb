@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
      		redirect_to supplier_path(user.supplier_slug(user.id))
     	elsif user.supplier? && !user.has_company?(user.id)
       	flash[:errors] = "User account not connected to supplier account, please contact system admin"
-      	redirect_to :back
+      	redirect_to root_path
 			else
 				redirect_to :back
 			end

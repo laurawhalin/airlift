@@ -32,56 +32,66 @@ a {
   color: #537344;
 }
 
-.container {
-  width: 100%;
-  padding-right: 0px;
-  padding-left: 0px;
-  background-color: white;
-  padding-bottom: 150px;
-}
-
-.alert-danger {
-  background-image: linear-gradient(to bottom,#f2dede 0,#e7c3c3 100%);
-  background-repeat: repeat-x;
-  border-color: #dca7a7;
-  margin-bottom: 20px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.05);
-  margin-bottom: 20px;
-  border-radius: 4px;
-  padding-left: 15px;
-}
-
 //Header
 
 #header-box {
   background-image: image-url('airliftlogo.jpg');
   background-repeat: no-repeat;
-  background-position-x: 40px;
+  background-position-x: 20px;
   background-size: 100px;
   background-color: white;
   width: 100%;
-  height: 170px;
-  border-bottom: 4px solid #ccc;
-}
-
-#restarant_name h1 {
-  font-size: 60px;
 }
 
 #restaurant_name a {
   text-decoration: none;
   color: black;
-  font-size: 50px;
+  font-size: 40px;
+}
+
+#restaurant_name h4 {
+  margin-bottom: 15px;
+}
+
+.btn.btn-link.btn-default.register {
+  margin-right: -30px;
+}
+
+.logout {
+  margin-top: 2px;
+}
+
+.search-nav {
+  background-color: #D7D8D9;
+  margin: 0;
+  padding: 7px;
 }
 
 #search-bar {
-  float: left;
-  margin-top: 10px;
-  padding-left: 69px;
+  margin-left: -21px;
 }
 
-#user-nav {
-  text-align: right;
+.btn-default.view-items {
+  height: 35px;
+  padding-top: 7px;
+  margin-top: 5px;
+}
+
+.btn-default.profile {
+  height: 35px;
+  padding-top: 7px;
+}
+
+input#search {
+  height: 35px;
+}
+
+.btn-default.search {
+  height: 35px;
+}
+
+#cart {
+  margin: 5px 0 0 55px;
 }
 
 #cart_total {
@@ -96,14 +106,20 @@ a {
   margin-top: 10px;
 }
 
-#cart {
-  float: right;
-  margin-top: 10px;
-  padding-right: 40px;
+.row.container {
+  margin: 0;
 }
 
-.logout {
-  margin-top: 2px;
+.container {
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: white;
+}
+
+.alert-danger {
+  background-color: #76CEDB;
+  padding-left: 15px;
 }
 
 //Welcome Page
@@ -111,7 +127,6 @@ a {
 #welcome {
   background-image: image-url('helicopter_pic.jpg');
   background-repeat: no-repeat;
-  // background-position-x: 40px;
   background-size: cover;
   height: 800px;
 }
@@ -124,15 +139,10 @@ a {
   padding: 475px 0 0 50px;
 }
 
+// Rich's Treasure Trove of CSS
 
 .table > tbody > tr > td {
   vertical-align: middle;
-}
-
-#all-supplies {
-  float: left;
-  margin-top: 10px;
-  padding-left: 40px;
 }
 
 .col-md-8 {
