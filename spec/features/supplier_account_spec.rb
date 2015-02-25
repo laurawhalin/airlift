@@ -40,10 +40,7 @@ feature "Supplier account information" do
 		within(".reg-modal-#{user1.fullname.split.join}") do
 			fill_in "user[fullname]", with: "Jason"
 		first(:button, "Update").click
-<<<<<<< HEAD
 		end
-=======
->>>>>>> fad741582ea3c2282977195e0d07a667b045747d
 		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
 			expect(page).to have_content("Jason")
