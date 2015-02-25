@@ -41,13 +41,7 @@ a {
   background-size: 100px;
   background-color: white;
   width: 100%;
-  // height: 170px;
-  // border-bottom: 4px solid #ccc;
 }
-
-// #restaurant_name h1 {
-//   font-size: 60px;
-// }
 
 #restaurant_name a {
   text-decoration: none;
@@ -73,28 +67,26 @@ a {
   padding: 7px;
 }
 
-
-.btn-default.view-items {
-  margin-top: 3px;
-  height: 35px;
-  padding-top: 7px;
+#search-bar {
+  margin-left: -21px;
 }
 
-form#search-form {
-  margin-top: -8px;
+.btn-default.view-items {
+  height: 35px;
+  padding-top: 7px;
+  margin-top: 5px;
 }
 
 input#search {
   height: 35px;
-  width: 780px;
 }
 
 .btn-default.search {
   height: 35px;
 }
 
-#search-bar {
-  margin: 10px 0 0 30px;
+#cart {
+  margin: 5px 0 0 55px;
 }
 
 #cart_total {
@@ -141,7 +133,7 @@ input#search {
   padding: 475px 0 0 50px;
 }
 
-// 
+//
 
 
 
