@@ -10,14 +10,12 @@
 
 <body>
   <%= render partial: './partials/header' %>
-  <div id="space" style="padding-top: 0px">
-  </div>
-<div class="container">
+<!-- <div class="container">
   <div class="alert-danger" role="alert">
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%#= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
-  </div>
+  </div> -->
 
   <%= yield %>
 

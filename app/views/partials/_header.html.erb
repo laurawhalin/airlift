@@ -1,65 +1,80 @@
 <div id="header-box">
-<div class="row">
-      <div id="logo" class="col-md-1">
-        <!-- airlift logo -->
-      </div>
-      <div id="restaurant_name" class="col-md-6">
-        <h1><%= link_to("Airlift", root_url )%></h1>
-        <h4>Emergency Supplies Delivered Fast</h4>
-      </div>
-      <div id="user_nav" class="col-md-5 text-right">
-        <div class="row">
-          <% if current_user %>
-           <% if !current_user.supplier? %>
-              <div class="col-sm-7">
+  <div class="row">
+    <div id="logo" class="col-md-1">
+      <!-- airlift logo -->
+    </div>
+
+    <div id="restaurant_name" class="col-md-7">
+      <h1><%= link_to("Airlift", root_url )%></h1>
+      <h4>Emergency Supplies Delivered Fast</h4>
+    </div>
+
+    <div id="user_nav" class="col-md-3 text-right">
+      <div class="row">
+
+        <% if current_user %>
+
+         <% if !current_user.supplier? %>
+            <div class="row">
+              <div class="col-sm-12">
                 <h4>Welcome, <%= current_user.fullname %></h4>
               </div>
-              <div class="col-sm-2">
-                <%= link_to('My Orders', user_orders_path(current_user), class: "btn btn-default logout") %>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= link_to('My Order History', user_orders_path(current_user), class: "btn btn-default logout") %>
               </div>
-            <% end %>
-              <div class="col-sm-3">
+              <div class="col-sm-6">
                 <%= link_to('Logout', logout_path, :method => :delete, class: "btn btn-default logout") %>
               </div>
-          <% else %>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".login-modal">Log In</button>
-            <div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                  <%= render partial: "./partials/login" %>
-                </div>
-              </div>
             </div>
-            <button type="button" class="btn btn-link btn-default" data-toggle="modal" data-target=".reg-modal">Register</button>
-            <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <%= render partial: "./partials/register_form" %>
-                </div>
-              </div>
-            </div>
-
           <% end %>
-        </div>
+
+        <% else %>
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target=".login-modal">Log In</button>
+          <div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <%= render partial: "./partials/login" %>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-link btn-default register" data-toggle="modal" data-target=".reg-modal">Register</button>
+          <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <%= render partial: "./partials/register_form" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
-  <div class="row text-right">
-    <div id="all-supplies">
-      <%= link_to "View All Supplies", items_path, class: "btn btn-default" %>
+    <div class="col-md-1">
+    </div>
+  </div>
+
+  <div class="row text-right search-nav">
+    <div class="col-md-1">
+    </div>
+    <div id="all-supplies" class="col-md-1">
+      <%= link_to "View All Supplies", items_path, class: "btn btn-default view-items" %>
     </div>
 
-    <div id="search-bar">
+    <div id="search-bar" class="col-md-7">
         <%= form_tag(items_path, :method => "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], size: 102, placeholder: "Search Supplies" %>
-          <%= submit_tag "Search", :name => nil %>
+          <%= submit_tag "Search", :name => nil, class: "btn btn-default search" %>
         <% end %>
     </div>
-    <div id="cart">
+    <div id="cart" class="col-md-2">
       <% if !current_user.present? || !current_user.supplier? %>
         <i class="fa fa-shopping-cart fa-2x"></i><%= link_to " Items in cart: #{@cart.count_total}", cart_path(cart_id = @cart) %>
       <% end %>
     </div>
+    <div class="col-md-1">
+    </div>
   </div>
+
 </div>
-</div>
-  </div>
