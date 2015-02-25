@@ -19,18 +19,17 @@ button {
   background-repeat: no-repeat;
   background-position-x: 10px;
   background-size: 100px;
-  background-color: #F7F8FA;
+  background-color: white;
   width: 100%;
   height: 150px;
-  border-bottom: solid;
-  border-width: 4px;
+  border-bottom: 4px solid #ccc;
 }
 
 .container {
   width: 100%;
   padding-right: 0px;
   padding-left: 0px;
-  background-color: #DCDCDC;
+  background-color: white;
   padding-bottom: 150px;
 }
 
@@ -107,26 +106,35 @@ a {
   padding-right: 45px;
 }
 
-#item_show {
-  margin-top: 30px;
+.modal-title {
+  text-align: left;
+  padding-bottom: 25px;
 }
 
-#item_show img {
-  margin-top: 50px;
+.modal-content {
+  padding: 25px;
+  width: 800px;
+  height: 600px;
 }
 
-#item_show h2 {
-  margin-bottom: 30px;
+.modal-item-image {
+  float: left;
 }
 
-#item_show p {
-  font-size: 20px;
+.modal-item-details {
+  float: right;
 }
 
-#item_show .btn {
-  margin-top: 20px;
+.modal-cart-button {
+  text-align: right;
   padding: 15px;
-  font-size: 20px;
+}
+
+
+#item_show {
+  padding: 25px;
+  height: 550px;
+  width: 700px;
 }
 
 .sidebar {
@@ -144,9 +152,10 @@ a {
   padding-bottom: 10px;
 }
 
-#item-list .btn {
-  padding-left: 5px;
+#item-list {
+  text-align: center;
 }
+
 #cart_total {
   font-size: 20px;
 }
@@ -184,7 +193,7 @@ a {
 }
 
 .btn {
-  padding: 4px 17px;
+  padding: 2px 17px;
 }
 
 .logout {
@@ -244,18 +253,23 @@ a {
   font-weight: bold;
 }
 
+#supplier-checkbox {
+  padding: 3px;
+}
+
 .item-box {
-   background-color: #d1cdd1;
-   box-shadow: 6px 6px 5px #888888;
-   border-radius: 21px;
+   background-color: white;
+   border-radius: 25px;
+   border: 3px solid #ccc;
    position: relative;
-   border: solid;
    margin: 5px;
    padding: 0px;
 }
 
 #item-info {
   position: absolute;
-  bottom: 5px;
-  float: right;
+  text-align: center;
+  bottom: 0;
+  padding-bottom: 5px;
 }
+
