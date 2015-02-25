@@ -1,13 +1,13 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates :fullname, :role, presence: true 
+  validates :fullname, :role, presence: true
 	validates :password, presence: true, on: :create
   validates :email, presence: true, uniqueness: true
   validates :display_name, length: { in: 2..32 }, allow_nil: true, on: :create
 	has_many :addresses
   has_many :orders, through: :addresses
   has_one :supplier_admin
- 	
+
 
   enum role: %w(default supplier admin)
 
@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
 
   def find_supplier_admin(id)
     SupplierAdmin.find_by(user_id: id)
+  end
+
+  def get_shipping_address(user)
+    user.addresses.find_by(address_type: "shipping")
   end
 
 	def element_name
