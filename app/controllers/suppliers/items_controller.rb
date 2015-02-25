@@ -1,5 +1,4 @@
 class Suppliers::ItemsController < SuppliersController
-  load_and_authorize_resource
 
   include SupplierItemsHelper
   def index
