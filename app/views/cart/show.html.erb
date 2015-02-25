@@ -1,5 +1,8 @@
-<div class="cart">
+<div class="cart row col-md-12">
+  <div class="row col-md-1">
+  </div>
 
+  <div class="row col-md-10">
     <h3>Your Cart</h3>
 
     <table id="cart_table" class="table">
@@ -34,11 +37,13 @@
     </table>
 
     <div id="cart_total" class="text-right">
-      Cart Total: <%= number_to_currency(@cart.total) %>
+      <div class="row col-md-12 cart-dollars">
+        Cart Total: <%= number_to_currency(@cart.total) %>
+      </div>
 
       <% if current_user == nil %>
         <div id="checkout" class="not_logged_in text-right">
-          <button type="button" class: "btn btn-lg btn-default">Checkout</button>
+          <button type="button" class="btn btn-lg btn-default">Checkout</button>
         </div>
       <% else %>
         <div id="checkout" class="logged_in text-right">
@@ -46,4 +51,7 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="row col-md-1">
+  </div>
 </div>
