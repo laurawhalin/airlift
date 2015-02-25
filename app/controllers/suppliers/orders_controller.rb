@@ -15,4 +15,5 @@ class Suppliers::OrdersController < SuppliersController
     @order.change_status(params[:commit])
     redirect_to supplier_orders_path
   end
+
 end
