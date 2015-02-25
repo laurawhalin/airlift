@@ -19,18 +19,17 @@ button {
   background-repeat: no-repeat;
   background-position-x: 10px;
   background-size: 100px;
-  background-color: #F7F8FA;
+  background-color: white;
   width: 100%;
   height: 150px;
-  border-bottom: solid;
-  border-width: 4px;
+  border-bottom: 4px solid #ccc;
 }
 
 .container {
   width: 100%;
   padding-right: 0px;
   padding-left: 0px;
-  background-color: #DCDCDC;
+  background-color: white;
   padding-bottom: 150px;
 }
 
@@ -153,9 +152,10 @@ a {
   padding-bottom: 10px;
 }
 
-#item-list .btn {
-  padding-left: 5px;
+#item-list {
+  text-align: center;
 }
+
 #cart_total {
   font-size: 20px;
 }
@@ -193,7 +193,7 @@ a {
 }
 
 .btn {
-  padding: 4px 17px;
+  padding: 2px 17px;
 }
 
 .logout {
@@ -253,18 +253,23 @@ a {
   font-weight: bold;
 }
 
+#supplier-checkbox {
+  padding: 3px;
+}
+
 .item-box {
    background-color: white;
-   box-shadow: 6px 6px 5px #888888;
-   border-radius: 21px;
+   border-radius: 25px;
+   border: 3px solid #ccc;
    position: relative;
-   border: solid;
    margin: 5px;
    padding: 0px;
 }
 
 #item-info {
   position: absolute;
-  bottom: 5px;
-  float: right;
+  text-align: center;
+  bottom: 0;
+  padding-bottom: 5px;
 }
+
