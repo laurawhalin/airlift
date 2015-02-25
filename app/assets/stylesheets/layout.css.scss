@@ -1,6 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Global elements
+
+body {
+  background-repeat: no-repeat;
+  background-position-x: 50px;
+  background-size: 200px;
+}
+
 button {
   margin: 10px;
 }
@@ -14,52 +22,8 @@ button {
   margin-left: 250px;
 }
 
-#header-box {
-  background-image: image-url('burrito_logo.jpg');
-  background-repeat: no-repeat;
-  background-position-x: 10px;
-  background-size: 100px;
-  background-color: #F7F8FA;
-  width: 100%;
-  height: 150px;
-  border-bottom: solid;
-  border-width: 4px;
-}
-
-.container {
-  width: 100%;
-  padding-right: 0px;
-  padding-left: 0px;
-  background-color: #DCDCDC;
-  padding-bottom: 150px;
-}
-
-body {
-  background-repeat: no-repeat;
-  background-position-x: 50px;
-  background-size: 200px;
-}
-
-.alert-danger {
-  background-image: linear-gradient(to bottom,#f2dede 0,#e7c3c3 100%);
-  background-repeat: repeat-x;
-  border-color: #dca7a7;
-  margin-bottom: 20px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.05);
-  margin-bottom: 20px;
-  border-radius: 4px;
-  padding-left: 15px;
-}
-
-#welcome {
-	padding-bottom: 150px;
-}
-#restaurant_name h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Montserrat', Arial, sans-serif;
-}
-
-#restarant_name h1 {
-  font-size: 60px;
 }
 
 a {
@@ -68,38 +32,117 @@ a {
   color: #537344;
 }
 
-#logo {
-  height: 10px;
+//Header
+
+#header-box {
+  background-image: image-url('airliftlogo.jpg');
+  background-repeat: no-repeat;
+  background-position-x: 20px;
+  background-size: 100px;
+  background-color: white;
+  width: 100%;
 }
 
 #restaurant_name a {
   text-decoration: none;
   color: black;
+  font-size: 40px;
 }
 
-.table > tbody > tr > td {
-  vertical-align: middle;
+#restaurant_name h4 {
+  margin-bottom: 15px;
 }
 
-#cart {
-  float: right;
-  margin-top: 10px;
-  padding-right: 40px;
+.btn.btn-link.btn-default.register {
+  margin-right: -30px;
+}
+
+.logout {
+  margin-top: 2px;
+}
+
+.search-nav {
+  background-color: #D7D8D9;
+  margin: 0;
+  padding: 7px;
 }
 
 #search-bar {
-  float: left;
-  margin-top: 10px;
-  padding-left: 69px;
+  margin-left: -21px;
 }
 
-#all-supplies {
-  float: left;
-  margin-top: 10px;
-  padding-left: 40px;
+.btn-default.view-items {
+  height: 35px;
+  padding-top: 7px;
+  margin-top: 5px;
 }
-#user-nav {
-  text-align: right;
+
+.btn-default.profile {
+  height: 35px;
+  padding-top: 7px;
+}
+
+input#search {
+  height: 35px;
+}
+
+.btn-default.search {
+  height: 35px;
+}
+
+#cart {
+  margin: 5px 0 0 55px;
+}
+
+#cart_total {
+  font-size: 20px;
+}
+
+.cart-dollars {
+  padding-right: 15px;
+}
+
+#cart_total .btn {
+  margin-top: 10px;
+}
+
+.row.container {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: white;
+}
+
+.alert-danger {
+  background-color: #76CEDB;
+  padding-left: 15px;
+}
+
+//Welcome Page
+
+#welcome {
+  background-image: image-url('helicopter_pic.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+
+#welcome .welcome-side h1 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  height: 100%;
+  color: white;
+  font-size: 90px;
+  padding: 475px 0 0 50px;
+}
+
+// Rich's Treasure Trove of CSS
+
+.table > tbody > tr > td {
+  vertical-align: middle;
 }
 
 .col-md-8 {
@@ -107,26 +150,71 @@ a {
   padding-right: 45px;
 }
 
-#item_show {
-  margin-top: 30px;
+.modal-title {
+  text-align: left;
+  padding-bottom: 25px;
 }
 
-#item_show img {
-  margin-top: 50px;
+.login-modal-content {
+  text-align: left;
+  background-color: white;
+  padding: 25px;
+  height: 230px;
+  width: 500px;
+  z-index: 1;
 }
 
-#item_show h2 {
-  margin-bottom: 30px;
+.login-modal-info {
+  text-align: left;
 }
 
-#item_show p {
-  font-size: 20px;
+.modal-login-button {
+  float: left;
+  padding-left: 190px;
+  padding-top: 15px;
 }
 
-#item_show .btn {
-  margin-top: 20px;
+#login-modal-register {
+  float: left;
+  padding-left: 132px;
+}
+
+.register-signup-button {
+  text-align: left;
+  padding-left: 195px;
+  font-size: 25px;
+}
+
+.register-modal-content {
+  padding: 25px;
+  height: 315px;
+  width: 800px;
+  background-color: white;
+}
+
+.modal-content {
+  padding: 25px;
+  width: 800px;
+  height: 600px;
+}
+
+.modal-item-image {
+  float: left;
+}
+
+.modal-item-details {
+  float: right;
+}
+
+.modal-cart-button {
+  text-align: right;
   padding: 15px;
-  font-size: 20px;
+}
+
+#item_show {
+  padding: 25px;
+  height: 550px;
+  width: 700px;
 }
 
 .sidebar {
@@ -144,22 +232,8 @@ a {
   padding-bottom: 10px;
 }
 
-#item-list .btn {
-  padding-left: 5px;
-}
-#cart_total {
-  font-size: 20px;
-}
-
-#cart_total .btn {
-  margin-top: 10px;
-}
-
-.footer {
-  width: 100%;
-  margin: 20px -10px -10px 0;
-  padding: 15px 20px 40px 120px;
-  background-color: #7FC1A9;
+#item-list {
+  text-align: center;
 }
 
 .form-control .logout {
@@ -184,11 +258,7 @@ a {
 }
 
 .btn {
-  padding: 4px 17px;
-}
-
-.logout {
-  margin-top: 2px;
+  padding: 2px 17px;
 }
 
 .form-control {
@@ -206,10 +276,6 @@ a {
 
 #session .register {
   font-size: 16px;
-}
-
-.footer h4 {
-  margin-bottom: 30px;
 }
 
 .view-btn {
@@ -244,18 +310,22 @@ a {
   font-weight: bold;
 }
 
+#supplier-checkbox {
+  padding: 3px;
+}
+
 .item-box {
-   background-color: #d1cdd1;
-   box-shadow: 6px 6px 5px #888888;
-   border-radius: 21px;
+   background-color: white;
+   border-radius: 25px;
+   border: 3px solid #ccc;
    position: relative;
-   border: solid;
    margin: 5px;
    padding: 0px;
 }
 
 #item-info {
   position: absolute;
-  bottom: 5px;
-  float: right;
+  text-align: center;
+  bottom: 0;
+  padding-bottom: 5px;
 }

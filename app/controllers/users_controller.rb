@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	include UsersHelper
   before_filter :authorize, only: [:show]
 
   def new
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:fullname,
                                  :email,
                                  :password,
+																 :password_confirmation,
                                  :display_name)
   end
 end

@@ -15,19 +15,23 @@
   </p>
 </div>
 
-<table class="table">
-  <h5>Order Details</h5>
-  <tr>
-    <th>Item</th><th>Quantity</th><th>Price</th>
-  </tr>
+<h5>Order Details</h5>
+<table id="ordertable" class="table">
+  <thead>
+    <tr>
+      <th>Item</th><th>Quantity</th><th>Price</th>
+    </tr>
+  </thead>
 
-  <% @order.orders_items.each do |order_item|%>
-  <tr>
-    <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
-    <td><%= order_item.quantity %></td>
-    <td><%= number_to_currency(order_item.subtotal.to_f / 100.00) %></td>
-  </tr>
-  <% end %>
-  <tr><td>Order Total: </td><td/><td><%= number_to_currency(@order.total.to_f / 100.00) %></td></tr>
+  <tbody>
+    <% @order.orders_items.each do |order_item|%>
+    <tr>
+      <td><%= link_to order_item.item.title, item_path(order_item.item) %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= number_to_currency(order_item.subtotal.to_f / 100.00) %></td>
+    </tr>
+    <% end %>
+    <tr><td>Order Total: </td><td/><td><%= number_to_currency(@order.total.to_f / 100.00) %></td></tr>
+  </tbody>
 </table>
 w

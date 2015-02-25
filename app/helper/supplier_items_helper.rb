@@ -1,6 +1,4 @@
 module SupplierItemsHelper
-
-
   def get_all_categories
     @categories = Category.all
   end

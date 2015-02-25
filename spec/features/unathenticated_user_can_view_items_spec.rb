@@ -36,7 +36,7 @@ feature "unathenticated users can see a list of items" do
     expect(page).to have_content("BB Gun")
   end
 
-  scenario "User can search for an item by title match" do
+  xscenario "User can search for an item by title match" do
     visit root_url
     fill_in "search", with: "Purifier"
     click_button "Search"
@@ -44,7 +44,7 @@ feature "unathenticated users can see a list of items" do
     expect(page).to have_content("Water Purifier")
   end
 
-  scenario "user can search for a second item from entire list" do
+  xscenario "user can search for a second item from entire list" do
     @item2 = Item.create(
       item_attributes(title: "BB Gun",
                       description: "For fending off zombie squirrels.",
@@ -60,7 +60,7 @@ feature "unathenticated users can see a list of items" do
     expect(page).to have_content("BB Gun")
   end
 
-  scenario "User can search for an item by description match" do
+  xscenario "User can search for an item by description match" do
     visit root_url
     fill_in "search", with: "purification"
     click_button "Search"

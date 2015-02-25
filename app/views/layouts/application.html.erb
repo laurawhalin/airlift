@@ -9,22 +9,23 @@
 </head>
 
 <body>
-  <%= render partial: './partials/header' %>
-  <div id="space" style="padding-top: 0px">
-  </div>
-<div class="container">
-  <div class="alert-danger" role="alert">
+
+
+<%= render partial: './partials/header' %>
+
+<div class="row container">
+  <!-- <div class="alert-danger col-md-12" role="alert"> -->
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert-danger col-md-12 text-center muted", role: "alert" %>
     <% end %>
-  </div>
-
-  <%= yield %>
-
-	<% if current_user.present? && current_user.admin? %>
-		<%= render partial: "./partials/admin_footer" %>
-  <% end %>
+  <!-- </div> -->
 </div>
+
+<%= yield %>
+
+<% if current_user.present? && current_user.admin? %>
+	<%= render partial: "./partials/admin_footer" %>
+<% end %>
   <!-- <%= debug(params) if Rails.env.development? %> -->
 
   <%= javascript_include_tag 'application' %>

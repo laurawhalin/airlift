@@ -1,57 +1,21 @@
-<div class="welcome">
- <div class="row">
-    <div class="col-md-12">
-
-      <div class="col-md-6 col-xs-12" id="hurricane">
-        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-          <div class="flipper">
-            <div class="front">
-              <img src="assets/Hurricane_Katrina_23.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
-            </div>
-            <div class="back">
-              <% @items.each do |item| %>
-                <%= item.title %><br/>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xs-12" id="fire">
-        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-          <div class="flipper">
-            <div class="front">
-              <img src="assets/house-fire.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
-            </div>
-            <div class="back">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xs-12" id="flood">
-        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-          <div class="flipper">
-            <div class="front">
-              <img src="assets/flood.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
-            </div>
-            <div class="back">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xs-12" id="earthquake">
-        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-          <div class="flipper">
-            <div class="front">
-              <img src="assets/earthquake.jpg" class="disaster" alt="Hurricane Image" width="300" height="300">
-            </div>
-            <div class="back">
-            </div>
-          </div>
-        </div>
-      </div>
+<div id="welcome">
+  <div class="row">
+    <div class="col-md-7">
+    </div>
+    <div class="col-md-5 welcome-side">
+      <h1>Get relief...<br/>
+      ...now</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Top Earthquake Supplies</h3>
+    </div>
+    <div class="col-md-4">
+      <h3>Most Needed Water Products</h3>
+    </div>
+    <div class="col-md-4">
+      <h3>Concrete Collection</h3>
     </div>
   </div>
 </div>
