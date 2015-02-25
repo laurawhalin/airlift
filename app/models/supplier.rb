@@ -10,4 +10,8 @@ class Supplier < ActiveRecord::Base
 	def update_slug
 		self.slug = name.parameterize
 	end
+
+	def find_user_admins
+		supplier_admins.map { |supplier_admin| User.find_by(id: supplier_admin.user_id) }
+	end
 end

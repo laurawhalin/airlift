@@ -52,9 +52,7 @@ feature "User login" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).
                                                   and_return(user)
     visit user_orders_path(protected_user)
-    within("#flash_alert") do
-      expect(page).to have_content("You are not authorized to access this page")
-    end
+    expect(page).to have_content("Page Not Found")
   end
 
   xscenario "an admin can view registered users information" do

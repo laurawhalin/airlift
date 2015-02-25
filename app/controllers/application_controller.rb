@@ -16,10 +16,11 @@ class ApplicationController < ActionController::Base
   before_action :set_new_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to not_found_path
   end
 
   private
+
 
   def authorize
     redirect_to login_path, alert: "Not authorized" if current_user.nil?
@@ -40,7 +41,7 @@ class ApplicationController < ActionController::Base
 	def current_suppliers
 		@suppliers ||= Supplier.all
 	end
-	 
+
   helper_method :current_categories
   helper_method :current_user
   helper_method :admin?

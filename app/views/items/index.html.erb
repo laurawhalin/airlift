@@ -1,11 +1,7 @@
 <div class="row">
-  <div class="filters sidebar col-md-3">
-    <h2>All Items</h2>
-    <h4>Filter by Category</h4>
-    <%= render partial: "partials/categories" %>
-    <h4>Filter by Supplier</h4>
-    <%= render partial: "partials/supplier_list" %>
-  </div>
+  
+  <%= render 'partials/sidebar' %>
+
   <div class="row-items">
     <div id="col-md-3">
     	<% @items.each do |item| %>
@@ -33,31 +29,47 @@
 
           <div class="modal fade <%= item.title.split.join %>"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md">
-        				<div class="modal-content">
-    						  <div id="item_show" class="row">
-        				 		<div class="col-md-4">
-              				<%= image_tag item.image.url(:medium) %>
-              			</div>
-              			<div class="col-md-8">
-                			<h2><%= item.title %></h2>
-                			<p><%= item.description %></p>
-                		  <p><b>price: <%= number_to_currency(item.format_price) %></b></p>
-                      <p>Quantity Available: <%= item.quantity %></p>
-                      <p>Current Location: <%= item.location %></p>
-                      <p>Unit Size: <%= item.unit_size %> </p>
-                      <p>Unit Weight: <%= item.unit_weight %> lbs.</p>
-                      <p><%= item.item_available %></p>
-                      <p><%= item.item_shippable %></p>
-                      <% if current_user && !current_user.supplier? %>
-                				<%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-lg btn-default" %>
-                      <% end %>
-    							 	</div>
-    							</div>
-      					</div>
-      				</div>
-      			</div>
+              <div class="modal-content">
+                <div id="item_show" class="row">
 
-   			</div>
+                  <div class="row">
+                    <div class="col-md-12 modal-title">
+                      <h2><%= item.title %></h2>
+                    </div>
+                  </div>
+
+                  <div class="row modal-box">
+                    <div class="row">                
+                      <div class="col-md-6 modal-item-image">
+                        <%= image_tag item.image.url(:medium) %>
+                      </div>
+                      
+                      <div class="col-md-6 modal-item-details">
+                        <p><%= item.description %></p>
+                        <p><b>Price: <%= number_to_currency(item.format_price) %></b></p>
+                        <p>Quantity Available: <%= item.quantity %></p>
+                        <p>Current Location: <%= item.location %></p>
+                        <p>Unit Size: <%= item.unit_size %> </p>
+                        <p>Unit Weight: <%= item.unit_weight %> lbs.</p>
+                        <p><%= item.item_available %></p>
+                        <p><%= item.item_shippable %></p>
+                      </div>                  
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-12 modal-cart-button">
+                        <% if !current_user || current_user && !current_user.supplier? %>
+                          <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-lg btn-default" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+          
+     			</div>
       	<% end %>
       <% end %>
     </div>

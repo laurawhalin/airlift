@@ -107,26 +107,35 @@ a {
   padding-right: 45px;
 }
 
-#item_show {
-  margin-top: 30px;
+.modal-title {
+  text-align: left;
+  padding-bottom: 25px;
 }
 
-#item_show img {
-  margin-top: 50px;
+.modal-content {
+  padding: 25px;
+  width: 800px;
+  height: 600px;
 }
 
-#item_show h2 {
-  margin-bottom: 30px;
+.modal-item-image {
+  float: left;
 }
 
-#item_show p {
-  font-size: 20px;
+.modal-item-details {
+  float: right;
 }
 
-#item_show .btn {
-  margin-top: 20px;
+.modal-cart-button {
+  text-align: right;
   padding: 15px;
-  font-size: 20px;
+}
+
+
+#item_show {
+  padding: 25px;
+  height: 550px;
+  width: 700px;
 }
 
 .sidebar {
@@ -245,7 +254,7 @@ a {
 }
 
 .item-box {
-   background-color: #d1cdd1;
+   background-color: white;
    box-shadow: 6px 6px 5px #888888;
    border-radius: 21px;
    position: relative;

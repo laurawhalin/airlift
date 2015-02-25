@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "welcome#index"
+  get "/not_found", to: "welcome#not_found"
   get "/register", to: "users#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -23,5 +24,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :items
     resources :orders
+		resources :users
   end
 end

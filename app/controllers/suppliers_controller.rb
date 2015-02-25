@@ -1,11 +1,12 @@
 class SuppliersController < ApplicationController
   def show
     @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
+		@user = User.new
 	end
 
 	def update
 			@supplier = Supplier.find_by(slug: params[:slug])
-	  	if @supplier.update(supplier_params)
+	  	if @supplier.update(supplier_params) || @user.update(supplier_admin_params)
 				flash[:success] = "Supplier successfully updated."
 				redirect_to supplier_path(@supplier.slug)
 			else
@@ -18,6 +19,7 @@ class SuppliersController < ApplicationController
 
 	def supplier_params
 		params.require(:supplier).permit(:name,
-																		 :description)
+																		 :description, 
+																		 :user )
 	end
 end
