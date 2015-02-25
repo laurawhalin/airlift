@@ -40,8 +40,9 @@ feature "Supplier account information" do
 			.and_return(user2)
 		visit supplier_path(@supplier.slug)
 		click_link "Manage Fireproof Administrators"
+		expect(page).to have_content(user2.fullname)
 		first(:button, "Edit").click
-		within(".reg-modal-#{user2.fullname.split.join}") do
+		within(".reg-modal-#{@user.fullname.split.join}") do
 			fill_in "user[fullname]", with: "Jason"
 		end
 		first(:button, "Update").click
@@ -59,13 +60,13 @@ feature "Supplier account information" do
 		visit supplier_path(@supplier.slug)
 		click_link "Manage Fireproof Administrators"
 		first(:button, "Edit").click
-		within(".reg-modal-#{user2.fullname.split.join}") do
+		within(".reg-modal-#{@user.fullname.split.join}") do
 			find('#user_role').find(:xpath, 'option[1]').select_option
 		end
 		first(:button, "Update").click
 		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
-			expect(page).to_not have_content(user2.fullname)
+			expect(page).to_not have_content(@user.fullname)
 		end
 	end
 
