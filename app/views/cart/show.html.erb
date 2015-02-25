@@ -1,5 +1,8 @@
-<div class="cart">
+<div class="cart row col-md-12">
+  <div class="row col-md-1">
+  </div>
 
+  <div class="row col-md-10">
     <h3>Your Cart</h3>
 
     <table id="cart_table" class="table">
@@ -12,7 +15,7 @@
       <tr>
         <td class="col-sm-2">
           <%= form_tag(cart_path, method: :put) do %>
-            <%= number_field_tag("qty", line_item[1], class: "qty") %>
+            <%= number_field_tag("qty", line_item[1], class: "qty", :min => 0) %>
             <%= hidden_field_tag("item_id", line_item[0].id) %>
             <%= submit_tag "Update Qty", class: "btn btn-default" %>
           <% end %>
@@ -34,11 +37,13 @@
     </table>
 
     <div id="cart_total" class="text-right">
-      Cart Total: <%= number_to_currency(@cart.total) %>
+      <div class="row col-md-12 cart-dollars">
+        Cart Total: <%= number_to_currency(@cart.total) %>
+      </div>
 
       <% if current_user == nil %>
         <div id="checkout" class="not_logged_in text-right">
-          <button type="button" class: "btn btn-lg btn-default">Checkout</button>
+          <button type="button" class="btn btn-lg btn-default">Checkout</button>
         </div>
       <% else %>
         <div id="checkout" class="logged_in text-right">
@@ -46,4 +51,7 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="row col-md-1">
+  </div>
 </div>

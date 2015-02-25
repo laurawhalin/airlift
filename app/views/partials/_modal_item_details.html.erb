@@ -1,0 +1,28 @@
+<div class="modal-content">
+  <div class="col-md-12 modal-title">
+    <h2><%= item.title %></h2>
+  </div>
+</div>
+
+<div id="item_show" class="row">
+  <div class="col-md-6">
+    <%= image_tag item.image.url(:medium) %>
+  </div>
+  <div class="col-md-6 modal-item-details">
+    <% if !item.retired %>
+    <p><%= item.description %></p>
+    <p><b>price: <%= number_to_currency(item.format_price) %></b></p>
+    <p>Quantity Available: <%= item.quantity %></p>
+    <p>Current Location: <%= item.location %></p>
+    <p>Unit Size: <%= item.unit_size %> </p>
+    <p>Unit Weight: <%= item.unit_weight %> lbs.</p>
+    <p><%= item.item_available %></p>
+    <p><%= item.item_shippable %></p>
+  </div>
+  <div class="col-md-12 modal-button">
+    <% if current_user && !current_user.supplier? %>
+    <%= button_to "Add to Cart", cart_index_path(item_id: item), class: "btn btn-lg btn-default" %>
+    <% end %>
+  </div>
+</div>
+
