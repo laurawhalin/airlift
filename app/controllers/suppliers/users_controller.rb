@@ -1,5 +1,5 @@
 class Suppliers::UsersController < SuppliersController
-
+	include SupplierUsersHelper
 	def update
 		@user =  User.find(params[:id])
 		role = params[:user][:role]
