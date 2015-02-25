@@ -111,6 +111,15 @@ a {
   padding-bottom: 25px;
 }
 
+.login-modal-content {
+  text-align: left;
+  background-color: white;
+  padding: 25px;
+  height: 175px;
+  width: 500px;
+  z-index: 1;
+}
+
 .modal-content {
   padding: 25px;
   width: 800px;
