@@ -10,34 +10,34 @@ class Order < ActiveRecord::Base
   end
 
   def self.id_for(slug)
-    Supplier.find_by(slug: slug)
+    Supplier.find_by(slug: slug).id
   end
 
-  def change_status(order, commit)
+  def change_status(commit)
     if commit == "Cancel Order"
-      @order = order.update(status: "cancelled")
-    elsif commit == "Mark as Shipped"
-      @order = order.update(status: "completed")
-    else
-      @order
+      update(status: "cancelled")
+    else commit == "Mark as Shipped"
+      update(status: "completed")
     end
   end
 
+  def self.get_supplier_orders_by_status(params)
+    supplier_orders = self.get_supplier_orders(params)
+    supplier_orders.flatten.group_by { |order| order.status }
+  end
+
   def self.get_supplier_orders(params)
-    orders_items = self.id_for(params[:slug]).id
-    supplier_orders = Order.joins(:orders_items).group(orders_items)
-    @orders = supplier_orders.group_by { |order| order.status }
+    items = Item.where(supplier_id: self.id_for(params[:slug]))
+    items.map do |item|
+      Order.joins(:orders_items).where(orders_items: { item_id: item.id })
+    end.flatten.uniq
   end
 
-  def self.get_order(current_user, order_id)
-    Item.find_by(supplier_id: current_user.id).orders.find(order_id)
+  def self.get_order_and_items(id)
+    self.includes(:orders_items).find(id)
   end
 
-  def self.get_user(order)
+  def get_user(order)
     User.find(order.addresses.where(address_type: "billing").first.user_id)
-  end
-
-  def self.get_shipping_address(user)
-    user.addresses.where(address_type: "shipping").first
   end
 end
