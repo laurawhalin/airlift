@@ -14,4 +14,8 @@ class Supplier < ActiveRecord::Base
 	def find_user_admins
 		supplier_admins.map { |supplier_admin| User.find_by(id: supplier_admin.user_id) }
 	end
+
+	def valid_supplier_admins?
+		supplier_admins.count > 1 
+	end
 end

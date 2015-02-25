@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	include UsersHelper
   before_filter :authorize, only: [:show]
 
   def new
