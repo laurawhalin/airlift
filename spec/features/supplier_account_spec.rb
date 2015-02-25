@@ -46,7 +46,6 @@ feature "Supplier account information" do
 			fill_in "user[fullname]", with: "Jason"
 		end
 		first(:button, "Update").click
-		save_and_open_page
 		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
 			expect(page).to have_content("Jason")
