@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
   def get_shipping_address(user)
     user.addresses.find_by(address_type: "shipping")
   end
+
+	def element_name
+		fullname.split.join.delete('^a-zA-Z')
+	end
 end
