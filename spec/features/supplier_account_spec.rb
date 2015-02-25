@@ -34,21 +34,18 @@ feature "Supplier account information" do
 	end
 
 	scenario "supplier can edit administrators information", :js => true do
-		# supplier2 = Supplier.create(supplier_attributes(name: "Ghostbusters",
-		# 																								description: "Ghost face killas",
-		# 																							  slug: "ghostbusters"))
 		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
 		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: @supplier.id)
 		allow_any_instance_of(ApplicationController).to receive(:current_user)
 			.and_return(user2)
 		visit supplier_path(@supplier.slug)
 		click_link "Manage Fireproof Administrators"
-		expect(page).to have_content(user2.fullname)
 		first(:button, "Edit").click
-		within(".reg-modal-#{@user.fullname.split.join}") do
+		within(".reg-modal-#{user2.fullname.split.join}") do
 			fill_in "user[fullname]", with: "Jason"
 		end
 		first(:button, "Update").click
+		save_and_open_page
 		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
 			expect(page).to have_content("Jason")
@@ -62,13 +59,13 @@ feature "Supplier account information" do
 		visit supplier_path(@supplier.slug)
 		click_link "Manage Fireproof Administrators"
 		first(:button, "Edit").click
-		within(".reg-modal-#{@user.fullname.split.join}") do
+		within(".reg-modal-#{user2.fullname.split.join}") do
 			find('#user_role').find(:xpath, 'option[1]').select_option
 		end
 		first(:button, "Update").click
 		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
-			expect(page).to_not have_content(@user.fullname)
+			expect(page).to_not have_content(user2.fullname)
 		end
 	end
 

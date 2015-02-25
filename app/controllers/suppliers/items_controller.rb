@@ -1,14 +1,15 @@
 class Suppliers::ItemsController < SuppliersController
+  before_action :supplier_authorization
 
   include SupplierItemsHelper
   def index
 		@supplier = Supplier.where(slug: params[:slug]).includes(:items).take
 		@item = Item.new
-    if authorize! :read, @supplier
+    # if authorize! :read, @supplier
   		get_all_categories
-    else
-      redirect_to not_found_path
-    end
+    # else
+      # redirect_to not_found_path
+    # end
   end
 
   def new
@@ -19,12 +20,12 @@ class Suppliers::ItemsController < SuppliersController
 
   def create
 		@supplier = Supplier.find_by(slug: params[:slug])
-		item = @supplier.items.new(supplier_item_params)
+		@item = @supplier.items.new(supplier_item_params)
     if category_list_nil?
       flash[:errors] = "You must select at least one category when creating a new item! Duh!"
       redirect_to :back
-		elsif item.save
-      item.add_categories_to_item(params[:category_list][:categories])
+		elsif @item.save #authorize! :manage, @item
+      @item.add_categories_to_item(params[:category_list][:categories])
 			flash[:success] = "Item successfully saved"
       redirect_to supplier_items_path(@supplier.slug)
 		else
@@ -54,6 +55,10 @@ class Suppliers::ItemsController < SuppliersController
   end
 
 	private
+
+  def supplier_authorization
+    redirect_to not_found_path if !current_user || current_user.supplier_slug(current_user.id) != params[:slug]
+  end
 
 	def supplier_item_params
 		params.require(:item).permit(:title,
