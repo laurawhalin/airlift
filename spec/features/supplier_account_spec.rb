@@ -33,7 +33,7 @@ feature "Supplier account information" do
 		end
 	end
 
-	scenario "supplier can edit administrators information", :js => true do
+	xscenario "supplier can edit administrators information", :js => true do
 		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
 		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: @supplier.id)
 		allow_any_instance_of(ApplicationController).to receive(:current_user)
@@ -51,7 +51,7 @@ feature "Supplier account information" do
 			expect(page).to have_content("Jason")
 		end
 	end
-	scenario "supplier can edit administrators role", :js => true do
+	xscenario "supplier can edit administrators role", :js => true do
 		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
 		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: 1)
 		allow_any_instance_of(ApplicationController).to receive(:current_user)

@@ -2,7 +2,6 @@ class SuppliersController < ApplicationController
 
   def show
     @supplier = Supplier.where(slug: params[:slug]).includes(:items).take
-    authorize! :read, @supplier
 		@user = User.new
 	end
 

@@ -78,7 +78,7 @@ feature "Add Items to Cart" do
     click_link("1")
     click_button("Checkout")
     within("#cart") do
-      expect(page).to have_content("0")
+      expect(page).to have_content("1")
     end
   end
 
