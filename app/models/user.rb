@@ -23,5 +23,4 @@ class User < ActiveRecord::Base
   def find_supplier_admin(id)
     SupplierAdmin.find_by(user_id: id)
   end
-
 end
