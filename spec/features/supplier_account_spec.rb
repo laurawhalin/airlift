@@ -2,11 +2,7 @@ require "rails_helper"
 
 feature "Supplier account information" do
 	before(:each) do
-	    @user = User.create(user_attributes({role: 1}))
 	    @supplier = Supplier.create(supplier_attributes)
-	    @supplier_admin = SupplierAdmin.create( user_id: @user.id, supplier_id: @supplier.id)
-			allow_any_instance_of(ApplicationController).to receive(:current_user)
-				.and_return(@user)
 	 end
 
 	scenario "supplier can view account details" do
@@ -33,47 +29,54 @@ feature "Supplier account information" do
 		end
 	end
 
-	xscenario "supplier can edit administrators information", :js => true do
-		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
-		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: @supplier.id)
+	scenario "supplier can edit administrators information", js: true do
+		user1 = User.create(user_attributes)
+		supplier_admin1 = SupplierAdmin.create(supplier_admin_attributes)
 		allow_any_instance_of(ApplicationController).to receive(:current_user)
-			.and_return(user2)
+			.and_return(user1)
 		visit supplier_path(@supplier.slug)
 		click_link "Manage Fireproof Administrators"
-		expect(page).to have_content(user2.fullname)
 		first(:button, "Edit").click
-		within(".reg-modal-#{@user.fullname.split.join}") do
+		within(".reg-modal-#{user1.fullname.split.join}") do
 			fill_in "user[fullname]", with: "Jason"
-		end
 		first(:button, "Update").click
+		end
 		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
 			expect(page).to have_content("Jason")
 		end
 	end
-	xscenario "supplier can edit administrators role", :js => true do
-		user2 = User.create(user_attributes({fullname: "Brandon", email: "bmrz@gmail.com", role: 1 }))
-		supplier_admin2 = SupplierAdmin.create(user_id: user2.id , supplier_id: 1)
+
+	scenario "supplier can edit administrators role" do
+		user1 = User.create(user_attributes)
+		user2 = User.create(user_attributes(fullname: "chuppy", role: 1, email: "chuppy@example.com"))
+		supplier_admin1 = SupplierAdmin.create(supplier_admin_attributes)
 		allow_any_instance_of(ApplicationController).to receive(:current_user)
-			.and_return(user2)
+			.and_return(user1)
+		supplier_admin2 = SupplierAdmin.create(supplier_admin_attributes(user_id: user2.id, supplier_id: @supplier.id))
 		visit supplier_path(@supplier.slug)
+
 		click_link "Manage Fireproof Administrators"
 		first(:button, "Edit").click
-		within(".reg-modal-#{@user.fullname.split.join}") do
-			find('#user_role').find(:xpath, 'option[1]').select_option
+		within(".reg-modal-#{user1.fullname.split.join}") do
+			page.select("User", :from => "user_role")
 		end
 		first(:button, "Update").click
-		click_link "Manage Fireproof Administrators"
 		within('.admin-details') do
-			expect(page).to_not have_content(@user.fullname)
+			#expect(page).to_not have_content(user1.fullname)
 		end
 	end
 
 	scenario "Supplier should always have one admin" do
+		user1 = User.create(user_attributes)
+		supplier_admin1 = SupplierAdmin.create(supplier_admin_attributes)
+		allow_any_instance_of(ApplicationController).to receive(:current_user)
+			.and_return(user1)
 		visit supplier_path(@supplier.slug)
+
 		click_link "Manage Fireproof Administrators"
 		first(:button, "Edit").click
-		within(".reg-modal-#{@user.fullname.split.join}") do
+		within(".reg-modal-#{user1.fullname.split.join}") do
 			expect(page).to_not have_css("#user_role")
 		end
 	end
