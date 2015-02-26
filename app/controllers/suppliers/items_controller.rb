@@ -5,7 +5,7 @@ class Suppliers::ItemsController < SuppliersController
   def index
 		@supplier = Supplier.where(slug: params[:slug]).includes(:items).take
 		@item = Item.new
-  		get_all_categories
+		get_all_categories
   end
 
   def new
@@ -67,6 +67,7 @@ class Suppliers::ItemsController < SuppliersController
                                  :unit_size,
                                  :unit_weight,
                                  :shippable,
-                                 :available)
+                                 :available,
+                                 :image)
 	end
 end
