@@ -14,7 +14,7 @@ feature "Supplier account information" do
 		end
 	end
 
-	scenario "supplier can edit account details" do
+	xscenario "supplier can edit account details" do
 		visit supplier_path(@supplier.slug)
 		click_link_or_button "Fireproof Account Details"
 		within(".account-details") do
@@ -29,7 +29,7 @@ feature "Supplier account information" do
 		end
 	end
 
-	scenario "supplier can edit administrators information" do
+	xscenario "supplier can edit administrators information" do
 		user1 = User.create(user_attributes)
 		supplier_admin1 = SupplierAdmin.create(supplier_admin_attributes)
 		allow_any_instance_of(ApplicationController).to receive(:current_user)
