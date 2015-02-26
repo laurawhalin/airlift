@@ -46,7 +46,6 @@ a {
 #restaurant_name a {
   text-decoration: none;
   color: black;
-  font-size: 40px;
 }
 
 #restaurant_name h4 {
@@ -342,4 +341,11 @@ input#search {
   text-align: center;
   bottom: 0;
   padding-bottom: 5px;
+}
+
+// Supplier Page
+
+#supplier-links {
+  padding-bottom: 15px;
+  font-size: 17px;
 }
