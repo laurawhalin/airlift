@@ -4,7 +4,7 @@
   <div class="row col-md-10">
     <h1><%= @supplier.name %></h1>
     <div class="open-orders">
-      <div id="supplier-links">
+      <div id="supplier-links" class="panel-heading">
         <%= link_to "View All Orders", supplier_orders_path %><br>
         <%= link_to "Manage Items", supplier_items_path %>
       </div>
