@@ -46,7 +46,6 @@ a {
 #restaurant_name a {
   text-decoration: none;
   color: black;
-  font-size: 40px;
 }
 
 #restaurant_name h4 {
@@ -80,6 +79,7 @@ a {
 .btn-default.profile {
   height: 35px;
   padding-top: 7px;
+  margin-right: 30px;
 }
 
 input#search {
@@ -107,7 +107,7 @@ input#search {
 }
 
 .row.container {
-  margin: 0;
+  margin-top: -5px;
 }
 
 .container {
@@ -125,19 +125,32 @@ input#search {
 //Welcome Page
 
 #welcome {
-  background-image: image-url('helicopter_pic.jpg');
+  background-image: image-url('helicopter_pic_sm.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 500px;
 }
 
 #welcome .welcome-side h1 {
   font-family: 'Montserrat', Arial, sans-serif;
   height: 100%;
   color: white;
-  font-size: 90px;
-  padding: 475px 0 0 50px;
+  font-size: 70px;
+  padding: 305px 0 0 15px;
 }
+
+.col-md-4.feature {
+  width: 32%;
+  margin-top: 15px;
+  padding-bottom: 7px;
+}
+
+.feature {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 7px;
+}
+
 
 // Rich's Treasure Trove of CSS
 
@@ -328,4 +341,11 @@ input#search {
   text-align: center;
   bottom: 0;
   padding-bottom: 5px;
+}
+
+// Supplier Page
+
+#supplier-links {
+  padding-bottom: 15px;
+  font-size: 17px;
 }
