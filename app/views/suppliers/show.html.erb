@@ -1,31 +1,30 @@
-<div id="supplier_home">
-  <div class="row col-md-12">
-    <div class="row col-md-1">
-    </div>
-    <div class="row col-md-10">
-      <h1><%= @supplier.name %></h1>
-      <div class="open-orders">
-        <h2>Open Orders</h2>
+<div id="supplier_home" class="row col-md-12">
+  <div class="row col-md-1">
+  </div>
+  <div class="row col-md-10">
+    <h1><%= @supplier.name %></h1>
+    <div class="open-orders">
+      <div id="supplier-links">
         <%= link_to "View All Orders", supplier_orders_path %><br>
         <%= link_to "Manage Items", supplier_items_path %>
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title" >
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><%= @supplier.name  %> Account Details</a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse account-details collapse ">
-              <div class="panel-body">
-                <p><%= @supplier.name %></p>
-                <p><%= @supplier.description %></p>
-                <div class="create text-right">
-                  <button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Edit</button>
-                  <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <%= render "partials/supplier_edit_info_form"	%>
-                      </div>
+      </div>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title" >
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><%= @supplier.name  %> Account Details</a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse account-details collapse ">
+            <div class="panel-body">
+              <p><%= @supplier.name %></p>
+              <p><%= @supplier.description %></p>
+              <div class="create text-right">
+                <button type="button" class="btn btn-lg btn-default create" data-toggle="modal" data-target=".reg-modal">Edit</button>
+                <div class="modal fade reg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <%= render "partials/supplier_edit_info_form"	%>
                     </div>
                   </div>
                 </div>
@@ -33,38 +32,39 @@
             </div>
           </div>
         </div>
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title" >
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Manage <%=@supplier.name  %> Administrators</a>
-              </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse admin-details collapse ">
-              <div class="panel-body">
-                <ul>
-                  <% @supplier.find_user_admins.each do |user| %>
-                  <li>
-                    <%= user.fullname %>
-                    <div class="create text-right">
-                      <button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target=".reg-modal-<%= user.element_name %>">Edit</button>
-                      <div class="modal fade reg-modal-<%= user.element_name %>" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
-                            <%= render partial: "partials/supplier_admin_edit_form", :locals => {:user => user }  %>
-                          </div>
-                      </div>
+      </div>
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title" >
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Manage <%=@supplier.name  %> Administrators</a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse admin-details collapse ">
+            <div class="panel-body">
+              <ul>
+                <% @supplier.find_user_admins.each do |user| %>
+                <li>
+                  <%= user.fullname %>
+                  <div class="create text-right">
+                    <button type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target=".reg-modal-<%= user.element_name %>">Edit</button>
+                    <div class="modal fade reg-modal-<%= user.element_name %>" id="admin-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <%= render partial: "partials/supplier_admin_edit_form", :locals => {:user => user }  %>
+                        </div>
                     </div>
                   </div>
-                </li>
-                <% end %>
-                </ul>
-              </div>
+                </div>
+              </li>
+              <% end %>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="row col-md-1">
-      </div>
+    </div>
+    <div class="row col-md-1">
+    </div>
 	</div>
 </div>
