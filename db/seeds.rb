@@ -16,12 +16,12 @@ class Seed
     Item.create(title: "Water", description: "Just water to drink", price: 850, image: open("app/assets/images/items/water.jpg"), supplier_id: 1, location: "Denver, CO USA")
     Item.create(title: "Water Purifier", description: "Purfiy your water", price: 8000, image:open("app/assets/images/items/water_purifier.jpg"), supplier_id: 2, location: "Denver, CO USA")
     Item.create(title: "Water Tablets", description: "Great way to purify small amounts of water", price: 689, image: open("app/assets/images/items/water_tablets.jpg"), supplier_id: 2, location: "Denver, CO USA")
-    Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/items/beans.jpg"), supplier_id: 3, location: "Denver, CO USA")
-    Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/items/beans.jpg"), supplier_id: 3, location: "Denver, CO USA")
+    Item.create(title: "Water-Beans", description: "Just imagine this was a can of water", price: 899, image: open("app/assets/images/items/beans_original.jpg"), supplier_id: 3, location: "Denver, CO USA")
+    Item.create(title: "Beans", description: "Yummy Beans", price: 500, image: open("app/assets/images/items/beans_original.jpg"), supplier_id: 3, location: "Denver, CO USA")
     Item.create(title: "Baby Formula", description: "Food for babies", price: 550, image: open("app/assets/images/items/formula.jpg"), supplier_id: 4, location: "Denver, CO USA")
     Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/items/soup.jpg"), supplier_id: 4, location: "Denver, CO USA")
     Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/items/tuna.jpg"), supplier_id: 5, location: "London, England UK")
-    Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/items/beans.jpg"), supplier_id: 5, location: "London, England UK")
+    Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/items/beans_original.jpg"), supplier_id: 5, location: "London, England UK")
     300.times do
       rand_image = filenames.sample
       Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(500...50000)}", image: open(rand_image), supplier_id: "#{rand(1...10)}", location: "Denver, CO USA")
