@@ -36,7 +36,7 @@ def admin_user_attributes(overrides={})
 	{
 	   fullname: "Joe Admin",
 		 email: "joe_admin@gmial.com",
-		 role: 1,
+		 role: 2,
 		 password: "foobar1234",
 		 password_confirmation: "foobar1234",
 		 display_name: "foo"
@@ -76,7 +76,7 @@ def shipping_address_attributes(overrides={})
 		postal_code: "80202",
 		country: "United States",
 		address_type: "shipping"
-	}
+	}.merge(overrides)
 end
 
 def billing_address_attributes(overrides={})
@@ -88,5 +88,5 @@ def billing_address_attributes(overrides={})
 		postal_code: "80222",
 		country: "United States",
 		address_type: "billing",
-	}
+	}.merge(overrides)
 end

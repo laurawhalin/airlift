@@ -28,7 +28,7 @@ feature "unathenticated users can see a list of items" do
                       description: "For fending off zombie squirrels.",
                       price: 7000,
                       supplier_id: @supplier.id)
-                        )
+                      )
     visit items_path
     find(:css, "#WaterID[type='checkbox']").set(true)
     find(:css, "#SuppliesID[type='checkbox']").set(true)
@@ -36,12 +36,21 @@ feature "unathenticated users can see a list of items" do
     expect(page).to have_content("BB Gun")
   end
 
-  xscenario "User can search for an item by title match" do
-    visit root_url
-    fill_in "search", with: "Purifier"
-    click_button "Search"
-    expect(current_path).to eq(items_path(@items))
+  scenario "User can search for an item by title match" do
+    @item2 = Item.create(
+    item_attributes(title: "BB Gun",
+    description: "For fending off zombie squirrels.",
+    price: 7000,
+    supplier_id: @supplier.id)
+    )
+    visit items_path
     expect(page).to have_content("Water Purifier")
+    expect(page).to have_content("BB Gun")
+    fill_in "search", with: "Purifier"
+    expect(page).to have_selector("input[value='Purifier']")
+    click_button "Search"
+    expect(page).to have_content("Water Purifier")
+    expect(page).to_not have_content("BB Gun")
   end
 
   xscenario "user can search for a second item from entire list" do
@@ -54,6 +63,7 @@ feature "unathenticated users can see a list of items" do
     visit root_url
     fill_in "search", with: "Water"
     click_button "Search"
+    expect(page).to have_content("Water Purifier")
     expect(page).to_not have_content("BB Gun")
     fill_in "search", with: "BB Gun"
     click_button "Search"

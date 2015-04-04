@@ -8,8 +8,8 @@ feature "supplier views orders" do
     @supplier_admin = SupplierAdmin.create(user_id: @admin_user.id, supplier_id: @supplier.id)
     @user = User.create(user_attributes)
     @order = Order.create(order_attributes)
-    @billing_address = @order.addresses.create(billing_address_attributes(user_id = @user.id))
-    @shipping_address = @order.addresses.create(shipping_address_attributes(user_id = @user.id))
+    @billing_address = @order.addresses.create(billing_address_attributes(user_id: @user.id))
+    @shipping_address = @order.addresses.create(shipping_address_attributes(user_id: @user.id))
     @line_items = @item.orders_items.create(
                                            order_id: @order.id,
                                            quantity: 3,
@@ -66,10 +66,10 @@ feature "supplier views orders" do
     supplier2 = Supplier.create(supplier_attributes(name: "Seller 2", slug: "seller-2"))
     item2 = supplier2.items.create(item_attributes(title: "BB Gun"))
     order2 = Order.create(order_attributes)
-    billing_address2 = @user.addresses.create(billing_address_attributes(order_id = order2.id))
+    billing_address2 = @user.addresses.create(billing_address_attributes(order_id: order2.id))
     billing_address2.order_id = order2.id
     billing_address2.save
-    shipping_address2 = @user.addresses.create(shipping_address_attributes(order_id = order2.id))
+    shipping_address2 = @user.addresses.create(shipping_address_attributes(order_id: order2.id))
     shipping_address2.order_id = order2.id
     shipping_address2.save
     line_items2 = item2.orders_items.create(
@@ -93,10 +93,10 @@ feature "supplier views orders" do
     supplier2 = Supplier.create(supplier_attributes)
     item2 = supplier2.items.create(item_attributes(title: "BB Gun"))
     order2 = Order.create(order_attributes)
-    billing_address2 = @user.addresses.create(billing_address_attributes(user_id = @user.id))
+    billing_address2 = @user.addresses.create(billing_address_attributes(user_id: @user.id))
     billing_address2.order_id = order2.id
     billing_address2.save
-    shipping_address2 = @user.addresses.create(shipping_address_attributes(user_id = @user.id))
+    shipping_address2 = @user.addresses.create(shipping_address_attributes(user_id: @user.id))
     shipping_address2.order_id = order2.id
     shipping_address2.save
       line_items2 = item2.orders_items.create(
@@ -107,10 +107,10 @@ feature "supplier views orders" do
 
     item3 = @supplier.items.create(item_attributes(title: "Lemon Zester"))
     order3 = Order.create(order_attributes)
-    billing_address3 = @user.addresses.create(billing_address_attributes(order_id = order3.id))
+    billing_address3 = @user.addresses.create(billing_address_attributes(order_id: order3.id))
     billing_address3.order_id = order3.id
     billing_address3.save
-    shipping_address3 = @user.addresses.create(shipping_address_attributes(order_id = order3.id))
+    shipping_address3 = @user.addresses.create(shipping_address_attributes(order_id: order3.id))
     shipping_address3.order_id = order3.id
     shipping_address3.save
     line_items3 = item3.orders_items.create(

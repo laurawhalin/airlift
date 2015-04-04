@@ -22,31 +22,9 @@ class Seed
     Item.create(title: "Soup", description: "Canned Soup", price: 750, image: open("app/assets/images/items/soup.jpg"), supplier_id: 4, location: "Denver, CO USA")
     Item.create(title: "Tuna", description: "Chicken of the sea", price: 1200, image: open("app/assets/images/items/tuna.jpg"), supplier_id: 5, location: "London, England UK")
     Item.create(title: "More beans", description: "So many beans!!!", price: 650, image: open("app/assets/images/items/beans_original.jpg"), supplier_id: 5, location: "London, England UK")
-    300.times do
+    100.times do
       rand_image = filenames.sample
       Item.create(title: Faker::Commerce.product_name, description: Faker::Commerce.department, price: "#{rand(500...50000)}", image: open(rand_image), supplier_id: "#{rand(1...10)}", location: "Denver, CO USA")
-    end
-  end
-
-  def build_orders
-    statuses = ["ordered", "completed", "cancelled"]
-    50.times do
-      order_status = statuses.sample
-      order = Order.create(status: order_status, total: 1)
-
-      rand(1...10).times do
-        item_id = rand(1...240)
-        quantity = rand(1...10)
-        price = Item.find(item_id).price
-        subtotal = (price * quantity)
-        order.orders_items.create(item_id: item_id, quantity: quantity, subtotal: subtotal)
-      end
-    end
-
-    orders = Order.all
-    orders.each do |order|
-      order.total = order.orders_items.reduce(0) { |sum, item| sum += item.subtotal }
-      order.save
     end
   end
 
@@ -63,9 +41,32 @@ class Seed
 
   def build_items_category
      i = 1
-     250.times do
+     50.times do
        ItemCategory.create(item_id: i, category_id: rand(1...5))
        i = i + 1
+     end
+   end
+
+   def build_orders
+     statuses = ["ordered", "completed", "cancelled"]
+     sleep 10
+     50.times do
+       order_status = statuses.sample
+       order = Order.create(status: order_status, total: 1)
+
+       rand(1...10).times do
+         item_id = rand(1...100)
+         quantity = rand(1...10)
+         price = Item.find(item_id).price
+         subtotal = (price * quantity)
+         order.orders_items.create(item_id: item_id, quantity: quantity, subtotal: subtotal)
+       end
+     end
+
+     orders = Order.all
+     orders.each do |order|
+       order.total = order.orders_items.reduce(0) { |sum, item| sum += item.subtotal }
+       order.save
      end
    end
 
