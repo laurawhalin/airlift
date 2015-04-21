@@ -55,12 +55,11 @@ feature "User login" do
     expect(page).to have_content("Page Not Found")
   end
 
-  xscenario "an admin can view registered users information" do
-    # order = user.orders.create(status: "completed", total: 1000)
+  scenario "an admin can view registered users information" do
     order = Order.create(order_attributes)
     item = Item.create(item_attributes)
     line_item = OrdersItem.create(item_id: item.id, order_id: order.id, quantity: 2, subtotal: 1000)
-    address = user.addresses.create(billing_address_attributes(order_id: order.id))
+    address = user.addresses.create(billing_address_attributes(order_id: order.id, user_id: user.id))
     allow_any_instance_of(ApplicationController).to receive(:current_user).
       and_return(admin_user)
 

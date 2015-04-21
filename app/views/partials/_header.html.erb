@@ -66,11 +66,11 @@
     <div id="search-bar" class="col-md-6">
       <div class="row">
         <div class="col-sm-9">
-          <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], size: 102, placeholder: "Search Supplies", class: "form-control" %>
+          <%= form_tag(items_path, method: "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "search supplies",size: 102, class: "form-control" %>
         </div>
         <div class="col-sm-3">
-          <%= submit_tag "Search", :name => nil, class: "btn btn-default search" %>
+          <%= submit_tag "Search", name: nil, class: "btn btn-default search" %>
         <% end %>
         </div>
       </div>

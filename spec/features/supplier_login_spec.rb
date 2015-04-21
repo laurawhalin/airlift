@@ -53,7 +53,7 @@ feature "Supplier Login" do
     end
     expect(current_path).to eq(supplier_path(supplier.slug))
     within("#supplier_home") do
-      expect(page).to have_content("Supplier X Supplier Page")
+      expect(page).to have_content("Supplier X Account Details")
     end
   end
 

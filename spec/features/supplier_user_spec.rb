@@ -17,10 +17,9 @@ feature "supplier visits the site" do
 			.and_return(@user)
 		visit supplier_path(@supplier.slug)
 		within('.open-orders') do
-			expect(page).to have_content("Open Orders")
+  		expect(page).to have_link("View All Orders")
+  		expect(page).to have_link("Manage Items")
 		end
-		expect(page).to have_link("View All Orders")
-		expect(page).to have_link("Manage Items")
 		expect(page).to have_link("Manage Fireproof Administrators")
 	end
 
