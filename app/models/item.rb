@@ -5,9 +5,11 @@ class Item < ActiveRecord::Base
   validates :price, presence: true, numericality: { :greater_than_or_equal_to => 0 }
 	validates :supplier_id, presence: true
   validates :location, presence: true
-  has_attached_file :image, styles: { medium: "300x300>",
-                                      thumb: "100x100>" },
-                                      default_url: "items/beans_:style.jpg"
+  has_attached_file :image, path: "public/assets/images/items/:basename.:extension",
+                             url: "public/assets/images/items/:basename.:extension",
+                          styles: { medium: "300x300>",
+                           thumb: "100x100>" },
+                     default_url: "items/beans_:style.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   has_many :item_categories
   has_many :categories, through: :item_categories
