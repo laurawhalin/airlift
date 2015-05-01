@@ -1,5 +1,4 @@
-class Seed
-  Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/items/canteen.jpg"), supplier_id: 1, location: "Denver, CO USA")
+Item.create(title: "Canteen", description: "It holds the water for you", price: 1000, image: open("app/assets/images/items/canteen.jpg"), supplier_id: 1, location: "Denver, CO USA")
 
   # def initialize
   #   build_items
@@ -138,6 +137,3 @@ class Seed
   #   Supplier.create(name: "To the Rescue", slug: "to-the-rescue", description: "Supplies for those in need.", retired: false, address: "20 bake St. , CA " )
   #   Supplier.create(name: "Band-Aid", slug: "band-aid", description: "temporary solutions for big problems", retired: false, address: "2 baker St. , NY " )
   # end
-end
-
-Seed.new
