@@ -35,6 +35,8 @@ gem 'cancancan'
 gem "paperclip", "~> 4.2"
 gem "bootstrap_form"
 gem "faker"
+gem "figaro"
+gem "aws-sdk"
 
 group :production do
   gem 'rails_12factor'
